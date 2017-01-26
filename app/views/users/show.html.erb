@@ -1,6 +1,7 @@
 
 <div class='booyah-box col-10 offset-1'>
   <h1>User Profile</h1>
+  <h1><%= @user.first_name %></h1>
   <h1><%= @user.email %></h1>
   <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
 </div>
