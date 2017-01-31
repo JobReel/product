@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170129233524) do
+ActiveRecord::Schema.define(version: 20170131015134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,11 @@ ActiveRecord::Schema.define(version: 20170129233524) do
     t.string   "state"
     t.text     "bio"
     t.string   "degree"
+    t.string   "degree_type"
+    t.string   "degree_field"
     t.index ["city"], name: "index_users_on_city", using: :btree
+    t.index ["degree_field"], name: "index_users_on_degree_field", using: :btree
+    t.index ["degree_type"], name: "index_users_on_degree_type", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["first_name"], name: "index_users_on_first_name", using: :btree
     t.index ["last_name"], name: "index_users_on_last_name", using: :btree

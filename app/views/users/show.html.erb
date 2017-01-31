@@ -1,12 +1,30 @@
 
-<div class='booyah-box col-10 offset-1'>
-  <h1>User Profile</h1>
-  <div class="float-right">
-  <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
+<div class="container-fluid">
+<div class="row">
+  <div class='booyah-box col-5 offset-1'>
+    <h1>User Profile</h1>
+
+    <div class="float-right">
+      <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
+    </div>
+
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <h2><%= @user.title %></h2>
+    <h3><%= @user.city %> <%= @user.state %></h3>
+    <h3><%= @user.degree_type %>, <%= @user.degree_field %></h3>
+    <br \>
+    About
+    <br \>
+    <%= @user.bio %>
+  </div>
+
+  <div class='booyah-box col-5'>
+    <h4><% @user.work_histories.each do |workhistory| %>
+        <%= workhistory.job_title %>
+        <%= workhistory.employment_dates %>
+      <% end %>
+
+    <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
+  </div>
 </div>
-  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-  <h2><%= @user.title %></h2>
-  <h3><%= @user.city %> <%= @user.state %></h3>
-  <br \>
-  <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
 </div>
