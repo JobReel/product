@@ -1,9 +1,6 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="left">
-    <!-- <div class="video-box">
-    </div> -->
       <div class='booyah-box col-5 offset-1 user-profile'>
         <div class ="row justify-content-between">
           <h1>User Profile</h1>
@@ -20,14 +17,8 @@
         <br \>
         <%= @user.bio %>
       </div> <!-- user-profile -->
-    <div class="logo-box">
-      Logo Box
-    </div>
-  </div> <!-- left -->
-    <div class="right">
-      <!-- <div class="social">
-      </div> -->
-      <div class='booyah-box col-5 user-profile'>
+
+      <div class='booyah-box col-5 work-history'>
         <div class ="row justify-content-between">
           <h1>Work History</h1>
           <div>
@@ -47,6 +38,9 @@
           <%= workhistory.job_description %>
         <% end %>
       </div>    <!-- work-history -->
-    </div> <!-- right -->
+    </div> <!-- End row -->
+    <div class="logo-box col-5 offset-1">
+      Logo Box
+    </div>
   </div><!-- row -->
 </div> <!-- container-fluid -->
