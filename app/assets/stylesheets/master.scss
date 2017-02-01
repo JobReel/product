@@ -16,7 +16,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .booyah-box {
   background: #fff;
-  margin-top:  10px;
   padding: 20px;
 }
 
@@ -63,6 +62,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .logo-box {
   background-color: #102649;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .navbar {
@@ -79,8 +80,23 @@ font-family: 'Montserrat', sans-serif;
   color:white;
 }
 
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
 .right {
 
+}
+
+.social {
+  background-color: #FFFFFF;
 }
 
 .user-profile {
@@ -88,6 +104,17 @@ font-family: 'Montserrat', sans-serif;
   color: #FFFFFF;
   background-color: #1b3257;
 }
+
+.video-box {
+  background-color: #123ABC;
+  margin-top: 40px;
+}
+
+.video-box img {
+  width: 100%;
+  height: auto;
+}
+
 
 .work-history {
   font-family: 'Montserrat', sans-serif;
