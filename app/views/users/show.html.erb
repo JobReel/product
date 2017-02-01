@@ -1,53 +1,56 @@
 
 <div class="container-fluid">
   <div class="row">
-  <div class="video-box col-4 offset-1 text-center">
-    <%= image_tag 'video-placeholder.jpg' %>
-  </div>
-  <div class='booyah-box col-4 offset-1 user-profile'>
-    <div class ="row justify-content-between">
-      <h1>User Profile</h1>
-      <div>
-        <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
+    <div class="leftside">
+      <div class="video-box col-4 offset-1 text-center">
+        <%= image_tag 'video-placeholder.jpg' %>
       </div>
-    </div>
-    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-    <h2><%= @user.title %></h2>
-    <h3><%= @user.city %> <%= @user.state %></h3>
-    <h3><%= @user.degree_type %>, <%= @user.degree_field %></h3>
-    <br \>
-    About
-    <br \>
-    <%= @user.bio %>
-  </div> <!-- End user-profile -->
-
-  <div class="logo-box col-4 offset-1 text-center">
-    <%= image_tag 'logo-new.png' %>
-  </div> <!-- End logo-box -->
-
-
-  <div class="social col-8 text-center">
-    Social Placeholder
-  </div>
-  <div class='booyah-box col-8 work-history'>
-    <div class ="row justify-content-between">
-      <h1>Work History</h1>
-      <div>
-        <%= link_to 'Edit', edit_work_history_path(@user), class: 'btn btn-primary' %>
-      </div>
-    </div>
-    <% @user.work_histories.each do |workhistory| %>
-      <h1><%= workhistory.company_name %></h1>
-      <div class="row justify-content-between">
-        <h3><%= workhistory.job_title %></h3>
-        <div>
-          <%= workhistory.employment_dates.strftime("%B %d, %Y") %> - Present
+      <div class='booyah-box col-4 offset-1 user-profile'>
+        <div class ="row justify-content-between">
+          <h1>User Profile</h1>
+          <div>
+            <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
+          </div>
         </div>
+        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <h2><%= @user.title %></h2>
+        <h3><%= @user.city %> <%= @user.state %></h3>
+        <h3><%= @user.degree_type %>, <%= @user.degree_field %></h3>
+        <br \>
+        About
+        <br \>
+        <%= @user.bio %>
+      </div> <!-- End user-profile -->
+
+      <div class="logo-box col-4 offset-1 text-center">
+        <%= image_tag 'logo-new.png' %>
+      </div> <!-- End logo-box -->
+    </div> <!-- End leftside -->
+
+    <div class = "rightside">
+      <div class="social col-8 text-center">
+        Social Placeholder
       </div>
-      Job Description
-      <br \>
-      <%= workhistory.job_description %>
-    <% end %>
-  </div>    <!-- End work-history -->
-</div><!-- End row wrapper -->
+      <div class='booyah-box col-8 work-history'>
+        <div class ="row justify-content-between">
+          <h1>Work History</h1>
+          <div>
+            <%= link_to 'Edit', edit_work_history_path(@user), class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <% @user.work_histories.each do |workhistory| %>
+          <h1><%= workhistory.company_name %></h1>
+          <div class="row justify-content-between">
+            <h3><%= workhistory.job_title %></h3>
+            <div>
+              <%= workhistory.employment_dates.strftime("%B %d, %Y") %> - Present
+            </div>
+          </div>
+          Job Description
+          <br \>
+          <%= workhistory.job_description %>
+        <% end %>
+      </div>    <!-- End work-history -->
+    </div> <!-- End rightside -->
+  </div><!-- End row wrapper -->
 </div><!-- End container wrapper -->
