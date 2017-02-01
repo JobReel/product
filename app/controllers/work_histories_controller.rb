@@ -4,10 +4,20 @@ class WorkHistoriesController < ApplicationController
     @work_histories = WorkHistory.find(params[:id])
   end
 
+  def edit
+    @work_histories = WorkHistory.find(params[:id])
+  end
+
+  def update
+    @work_histories = WorkHistory.find(params[:id])
+    @work_histories.update_attributes(work_history_params)
+    redirect_to user_path
+  end
+
   private
 
-  def user_params
-    params.require(:work_histories).permit(:first_name, :last_name, :title, :city, :state)
+  def work_history_params
+    params.require(:work_history).permit(:company_name, :job_title, :employment_dates, :job_description)
   end
 
 end

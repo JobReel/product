@@ -1,30 +1,52 @@
 
 <div class="container-fluid">
-<div class="row">
-  <div class='booyah-box col-5 offset-1'>
-    <h1>User Profile</h1>
-
-    <div class="float-right">
-      <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
+  <div class="row">
+    <div class="left">
+    <!-- <div class="video-box">
+    </div> -->
+      <div class='booyah-box col-5 offset-1 user-profile'>
+        <div class ="row justify-content-between">
+          <h1>User Profile</h1>
+          <div>
+            <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <h2><%= @user.title %></h2>
+        <h3><%= @user.city %> <%= @user.state %></h3>
+        <h3><%= @user.degree_type %>, <%= @user.degree_field %></h3>
+        <br \>
+        About
+        <br \>
+        <%= @user.bio %>
+      </div> <!-- user-profile -->
+    <div class="logo-box">
+      Logo Box
     </div>
-
-    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-    <h2><%= @user.title %></h2>
-    <h3><%= @user.city %> <%= @user.state %></h3>
-    <h3><%= @user.degree_type %>, <%= @user.degree_field %></h3>
-    <br \>
-    About
-    <br \>
-    <%= @user.bio %>
-  </div>
-
-  <div class='booyah-box col-5'>
-    <h4><% @user.work_histories.each do |workhistory| %>
-        <%= workhistory.job_title %>
-        <%= workhistory.employment_dates %>
-      <% end %>
-
-    <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
-  </div>
-</div>
-</div>
+  </div> <!-- left -->
+    <div class="right">
+      <!-- <div class="social">
+      </div> -->
+      <div class='booyah-box col-5 user-profile'>
+        <div class ="row justify-content-between">
+          <h1>Work History</h1>
+          <div>
+            <%= link_to 'Edit', edit_work_history_path(@user), class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <% @user.work_histories.each do |workhistory| %>
+          <h1><%= workhistory.company_name %></h1>
+          <div class="row justify-content-between">
+            <h3><%= workhistory.job_title %></h3>
+          <div>
+            <%= workhistory.employment_dates.strftime("%B %d, %Y") %>
+          </div>
+        </div>
+          Job Description
+          <br \>
+          <%= workhistory.job_description %>
+        <% end %>
+      </div>    <!-- work-history -->
+    </div> <!-- right -->
+  </div><!-- row -->
+</div> <!-- container-fluid -->

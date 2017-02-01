@@ -15,12 +15,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .booyah-box {
-  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
-  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
-  box-shadow: 1px 1px 2px 0 #d0d0d0;
   background: #fff;
-  border: 1px solid #ccc;
-  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
   margin-top:  10px;
   margin-bottom:  15px;
   padding: 20px;
@@ -42,13 +37,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .frosty h1 {
-  font-family: "Helvetica Neue", Helvetica;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 100;
   text-shadow: rgba(0, 0, 0, 0.95) 1px 1px;
 }
 
 .frosty h2 {
-  font-family: "Helvetica Neue", Helvetica;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 200;
   text-shadow: rgba(0, 0, 0, 0.95) 1px 1px;
 }
@@ -63,16 +58,34 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0px 3px 8px #2a2a2a;
 }
 
+.left {
+
+}
+
+.logo-box {
+  background-color: #102649;
+}
+
 .navbar {
   border-radius:0;
-  font-family: "Helvetica Neue", Helvetica;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 200;
   box-shadow: 0px 1px 3px #2a2a2a;
   background: image_url('asanoha.png');
 }
 
 .navbar-inverse a.navbar-brand {
-  font-family: "Helvetica Neue", Helvetica;
+font-family: 'Montserrat', sans-serif;
   font-weight: 100;
   color:white;
+}
+
+.right {
+  
+}
+
+.user-profile {
+  font-family: 'Montserrat', sans-serif;
+  color: #FFFFFF;
+  background-color: #1b3257;
 }
