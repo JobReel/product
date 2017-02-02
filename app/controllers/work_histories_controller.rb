@@ -17,7 +17,7 @@ class WorkHistoriesController < ApplicationController
   private
 
   def work_history_params
-    params.require(:work_history).permit(:company_name, :job_title, :employment_dates, :job_description)
+    params.require(:work_history).permit(:company_name, :job_title, :job_start_date, :job_start_date, :job_description)
   end
 
 end

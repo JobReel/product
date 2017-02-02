@@ -43,7 +43,7 @@
           <div class="row justify-content-between">
             <h3><%= workhistory.job_title %></h3>
             <div>
-              <%= workhistory.employment_dates.strftime("%B %d, %Y") %> - Present
+              <%= workhistory.job_start_date.strftime("%B %d, %Y") %> - <%= workhistory.job_end_date.strftime("%B %d, %Y") %>
             </div>
           </div>
           Job Description
@@ -52,5 +52,5 @@
         <% end %>
       </div>    <!-- End work-history -->
     </div> <!-- End rightside -->
-  </div><!-- End row wrapper -->
+</div><!-- End row wrapper -->
 </div><!-- End container wrapper -->
