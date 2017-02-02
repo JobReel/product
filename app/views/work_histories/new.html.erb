@@ -1,1 +1,12 @@
-<h1>This is a sample work history</h2>
+<div class="booyah-box col-10 offset-1">
+  <h1>Edit Your User Information</h1>
+  <%= simple_form_for @work_histories do |f| %>
+    <%= f.input :company_name %>
+    <%= f.input :job_title %>
+    <%= f.input :job_start_date %>
+    <%= f.input :job_end_date %>
+    <%= f.input :job_description %>
+    <br />
+    <%= f.submit 'Update', class: 'btn btn-primary' %>
+  <% end %>
+</div>

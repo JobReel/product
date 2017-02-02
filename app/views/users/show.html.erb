@@ -35,7 +35,11 @@
         <div class ="row justify-content-between">
           <h1>Work History</h1>
           <div>
+            <% if @user.work_histories.present? %>
             <%= link_to 'Edit', edit_work_history_path(@user), class: 'btn btn-primary' %>
+            <% else %>
+            <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
+            <% end %>
           </div>
         </div>
         <% @user.work_histories.each do |workhistory| %>
