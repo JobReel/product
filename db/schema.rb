@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126022341) do
+ActiveRecord::Schema.define(version: 20170201235137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,14 +34,29 @@ ActiveRecord::Schema.define(version: 20170126022341) do
     t.string   "city"
     t.string   "state"
     t.text     "bio"
+    t.string   "degree"
+    t.string   "degree_type"
+    t.string   "degree_field"
+    t.index ["city"], name: "index_users_on_city", using: :btree
+    t.index ["degree_field"], name: "index_users_on_degree_field", using: :btree
+    t.index ["degree_type"], name: "index_users_on_degree_type", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["first_name"], name: "index_users_on_first_name", using: :btree
+    t.index ["last_name"], name: "index_users_on_last_name", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["state"], name: "index_users_on_state", using: :btree
+    t.index ["title"], name: "index_users_on_title", using: :btree
   end
 
   create_table "work_histories", force: :cascade do |t|
-    t.integer "user_id"
-    t.string  "job_title"
-    t.string  "company_name"
+    t.integer  "user_id"
+    t.string   "job_title"
+    t.string   "company_name"
+    t.datetime "job_end_date"
+    t.text     "job_description"
+    t.datetime "job_start_date"
+    t.index ["company_name"], name: "index_work_histories_on_company_name", using: :btree
+    t.index ["job_title"], name: "index_work_histories_on_job_title", using: :btree
   end
 
 end

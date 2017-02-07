@@ -1,7 +1,66 @@
 
-<div class='booyah-box col-10 offset-1'>
-  <h1>User Profile</h1>
-  <h1><%= @user.first_name %></h1>
-  <h1><%= @user.email %></h1>
-  <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
-</div>
+<div class="container-fluid">
+  <div class="row offset-1 match-my-cols">
+    <div class="leftside col-4">
+      <div class="video-box text-center">
+        <%= image_tag 'video-placeholder.jpg' %>
+      </div>
+      <div class='booyah-box user-profile'>
+        <div class ="row justify-content-between">
+          <h1>User Profile</h1>
+          <div>
+            <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <h2><%= @user.title %></h2>
+        <div class="row padded">
+          <%= image_tag 'location-icon.png' %><h3>&nbsp<%= @user.city %> <%= @user.state %></h3>
+        </div>
+        <div class="row padded">
+          <%= image_tag 'education-icon.png' %><h3>&nbsp<%= @user.degree_type %>, <%= @user.degree_field %></h3>
+        </div>
+        <br \>
+        About
+        <br \>
+        <%= @user.bio %>
+      </div> <!-- End user-profile -->
+
+      <div class="logo-box text-center">
+        <%= image_tag 'logo-new.png' %>
+      </div> <!-- End logo-box -->
+    </div> <!-- End leftside -->
+
+    <div class = "rightside col-7">
+      <div class="social text-center">
+        Social Placeholder
+      </div>
+      <div class='booyah-box work-history'>
+        <div class ="row padded justify-content-between">
+          <h1>Work History</h1>
+          <div>
+            <% if @user.work_histories.present? %>
+            <%= link_to 'Edit', edit_work_history_path(@user), class: 'btn btn-primary' %>
+            <% else %>
+            <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+        <br \>
+        <% @user.work_histories.each do |workhistory| %>
+        <div class="row padded justify-content-between">
+          <h2><%= workhistory.company_name %></h2>
+          <br \>
+          <br \>
+          <div>
+            <h4><%= workhistory.job_start_date.strftime("%B %d, %Y") %> - <%= workhistory.job_end_date.strftime("%B %d, %Y") %></h4>
+          </div>
+        </div>
+            <h3><%= workhistory.job_title %></h3>
+            <br \>
+          <h5><%= workhistory.job_description %></h5>
+        <% end %>
+      </div>    <!-- End work-history -->
+    </div> <!-- End rightside -->
+</div><!-- End row wrapper -->
+</div><!-- End container wrapper -->
