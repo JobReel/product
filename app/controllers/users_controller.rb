@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.valid?
       redirect_to user_path(@user)
     else
-      render :show, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
