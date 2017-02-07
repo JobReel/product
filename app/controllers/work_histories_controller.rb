@@ -22,7 +22,11 @@ class WorkHistoriesController < ApplicationController
   def update
     @work_histories = WorkHistory.find(params[:id])
     @work_histories.update_attributes(work_history_params)
-    redirect_to user_path
+    if @work_histories.valid?
+      redirect_to user_path(@work_histories)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
