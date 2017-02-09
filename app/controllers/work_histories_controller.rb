@@ -1,7 +1,7 @@
 class WorkHistoriesController < ApplicationController
 
   def show
-    @work_histories = WorkHistory.find(current_user.work_histories.last.id)
+    @work_histories = WorkHistory.find(params[:id])
   end
 
   def new
@@ -16,7 +16,7 @@ class WorkHistoriesController < ApplicationController
   end
 
   def edit
-    @work_histories = WorkHistory.find(current_user.work_histories.last.id)
+    @work_histories = WorkHistory.find(params[:id])
   end
 
   def update
@@ -25,7 +25,7 @@ class WorkHistoriesController < ApplicationController
     if @work_histories.valid?
       redirect_to user_path(@work_histories)
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
