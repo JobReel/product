@@ -40,17 +40,16 @@
           <h1>Work History</h1>
           <div>
             <% if @user.work_histories.present? %>
-            <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
-            <%= link_to 'Edit', edit_work_history_path(@user), class: 'btn btn-primary' %>
+              <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
             <% else %>
-            <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
+              <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
             <% end %>
           </div>
         </div>
         <br \>
-        <% @user.work_histories.each do |workhistory| %>
+        <% @user.work_histories.order(:job_start_date).each do |workhistory| %>
         <div class="row padded justify-content-between">
-          <h2><%= workhistory.company_name %>&nbsp<%= link_to 'Edit', edit_work_history_path(@user), class: 'badge badge-primary' %></h2>
+          <h2><%= workhistory.company_name %>&nbsp<%= link_to 'Edit', edit_work_history_path(workhistory), class: 'badge badge-primary' %></h2>
           <br \>
           <br \>
           <div>
