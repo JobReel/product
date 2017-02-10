@@ -157,6 +157,10 @@ font-family: 'Montserrat', sans-serif;
   color:white;
 }
 
+p {
+  margin: 0;
+}
+
 .padded {
   padding-left: 15px;
 }
@@ -167,6 +171,12 @@ font-family: 'Montserrat', sans-serif;
 
 .padded3 {
   padding-left: 6%;
+}
+
+.padded4 {
+  padding-top: 1%;
+  padding-left: 6%;
+  padding-right: 10%;
 }
 
 .public-footer {
