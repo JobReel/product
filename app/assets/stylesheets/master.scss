@@ -9,7 +9,7 @@ $sizes: (
 ) !default;
 
 @import "bootstrap";
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800');
 
 body {
   /* Location of the image */
@@ -79,6 +79,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 3%;
   margin-left: 10%;
   margin-right: 10%;
+  box-shadow: 0px 7px 18px 0px rgba(0, 0, 0, 0.85);
 }
 
 .feature {
@@ -126,6 +127,11 @@ h1, h2, h3, h4, h5, h6 {
   margin: 10px;
 }
 
+hr {
+  text-align: right;
+  margin-right: 0;
+}
+
 .icon {
   height: 12px;
   width: 14px;
@@ -151,8 +157,26 @@ font-family: 'Montserrat', sans-serif;
   color:white;
 }
 
+p {
+  margin: 0;
+}
+
 .padded {
   padding-left: 15px;
+}
+
+.padded2 {
+  padding-left: 7.5%;
+}
+
+.padded3 {
+  padding-left: 6%;
+}
+
+.padded4 {
+  padding-top: 1%;
+  padding-left: 6%;
+  padding-right: 10%;
 }
 
 .public-footer {
@@ -184,6 +208,12 @@ font-family: 'Montserrat', sans-serif;
 .social {
   font-family: 'Montserrat', sans-serif;
   background-color: #FFFFFF;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom: 3px;
+  border-color: #eaf0f6;
+  border-style: solid;
 }
 
 .row {
@@ -208,6 +238,7 @@ font-family: 'Montserrat', sans-serif;
 .user-profile h2 {
   font-size: 20px;
   color: #4795fb;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .user-profile h3 {
@@ -233,9 +264,10 @@ font-family: 'Montserrat', sans-serif;
 .work-history {
   font-family: 'Montserrat', sans-serif;
   color: #6A6A6A;
+  background-image: url(resume-background.png);
+  background-repeat: repeat-y;
   background-color: #FFFFFF;
-  border-top: 3px;
-  padding-left: 20px;
+  padding-left: 3%;
 }
 
 .work-history h1 {
