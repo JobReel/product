@@ -1,5 +1,16 @@
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: (
+  25: 25%,
+  33: 33%,
+  50: 50%,
+  66: 66%,
+  75: 75%,
+  100: 100%
+) !default;
+
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 
 body {
   /* Location of the image */
@@ -38,12 +49,37 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0;
 }
 
+.card {
+  border: 0px;
+}
+
+.card-block {
+  padding: 0px;
+  margin: 0px;
+  padding-bottom: 0px;
+  background-color: #1b3257;
+}
+
+.card-footer {
+  padding: 0px;
+  margin: 0px;
+  padding-bottom: 0px;
+  background-color: #1b3257;
+}
+
 .col-4 {
   padding-right: 0px;
 }
 
 .col-7 {
   padding-left: 0px;
+}
+
+.container-fluid {
+  margin-top: 3%;
+  margin-bottom: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .feature {
@@ -92,11 +128,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 14px;
 }
 
-.leftside {
-  margin-top: 3%;
-  margin-bottom: 5%;
-}
-
 .logo-box {
   background-color: #102649;
   padding-top: 10px;
@@ -117,37 +148,17 @@ font-family: 'Montserrat', sans-serif;
   color:white;
 }
 
-.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-
-  > .col,
-  > [class*="col-"] {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-
 .padded {
   padding-left: 15px;
-}
-
-.rightside {
-  margin-top: 3%;
-  margin-bottom: 5%;
-}
-
-.row.match-my-cols {
-    overflow: hidden;
-}
-
-.row.match-my-cols [class*="col-"]{
-  overflow: hidden;
 }
 
 .social {
   font-family: 'Montserrat', sans-serif;
   background-color: #FFFFFF;
+}
+
+.row {
+
 }
 
 .user-title {
@@ -184,14 +195,16 @@ font-family: 'Montserrat', sans-serif;
   height: auto;
 }
 
+.whiten {
+  background-color: #FFFFFF;
+}
 
 .work-history {
   font-family: 'Montserrat', sans-serif;
   color: #6A6A6A;
   background-color: #FFFFFF;
   border-top: 3px;
-  margin-bottom: -99999px;
-  padding-bottom: 99999px;
+  padding-left: 20px;
 }
 
 .work-history h1 {
@@ -203,11 +216,15 @@ font-family: 'Montserrat', sans-serif;
 .work-history h2 {
   color: #4795fb;
   font-size: 18px;
+  font-weight: 700;
 }
 
 .work-history h3 {
   color: #3a475c;
+  font-variant: small-caps;
   font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
 }
 
 .work-history h4 {
