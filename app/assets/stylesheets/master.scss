@@ -9,7 +9,7 @@ $sizes: (
 ) !default;
 
 @import "bootstrap";
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800');
 
 body {
   /* Location of the image */
@@ -97,6 +97,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 10%;
   margin-right: 10%;
   box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.35);
+
 }
 
 .feature {
@@ -166,6 +167,10 @@ h1, h2, h3, h4, h5, h6 {
 .hire-button:hover {
     background-color: #579df9;
     color: #FFFFFF;
+
+hr {
+  text-align: right;
+  margin-right: 0;
 }
 
 .icon {
@@ -192,8 +197,26 @@ font-family: 'Montserrat', sans-serif;
   color:white;
 }
 
+p {
+  margin: 0;
+}
+
 .padded {
   padding-left: 15px;
+}
+
+.padded2 {
+  padding-left: 7.5%;
+}
+
+.padded3 {
+  padding-left: 6%;
+}
+
+.padded4 {
+  padding-top: 1%;
+  padding-left: 6%;
+  padding-right: 10%;
 }
 
 .public-footer {
@@ -304,9 +327,10 @@ font-family: 'Montserrat', sans-serif;
 .work-history {
   font-family: 'Montserrat', sans-serif;
   color: #6A6A6A;
+  background-image: url(resume-background.png);
+  background-repeat: repeat-y;
   background-color: #FFFFFF;
-  border-top: 3px;
-  padding-left: 20px;
+  padding-left: 3%;
 }
 
 .work-history h1 {
