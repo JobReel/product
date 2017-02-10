@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
+
   def show
     @user = User.find(current_user.id)
+    render :layout => 'public_view'
   end
 
   def edit
