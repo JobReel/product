@@ -7,39 +7,57 @@
       </div>
       <div class="card-block">
       <div class='booyah-box user-profile'>
-        <div class ="row justify-content-between">
-          <h1>User Profile</h1>
+        <div class ="row blue-box justify-content-between">
+          <h1><%= @user.first_name %> <%= @user.last_name %></h1>
           <div>
             <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
           </div>
         </div>
-        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-        <h2><%= @user.title %></h2>
-        <div class="row">
-          <%= image_tag 'location-icon.png' %><h3>&nbsp<%= @user.city %> <%= @user.state %></h3>
+        <div class="row blue-box">
+          <h2><%= @user.title %></h2><br />
         </div>
-        <div class="row">
-          <%= image_tag 'education-icon.png' %><h3>&nbsp<%= @user.degree_type %>, <%= @user.degree_field %></h3>
+        <div class="row blue-box-city-degree">
+          <%= image_tag 'location-icon.png' %><h3>&nbsp&nbsp&nbsp<%= @user.city %>, <%= @user.state %></h3>
+        </div>
+        <div class="row blue-box-city-degree">
+          <%= image_tag 'education-icon.png' %><h3>&nbsp&nbsp<%= @user.degree_type %>, <%= @user.degree_field %></h3>
         </div>
         <br \>
-        About
-        <br \>
-        <%= @user.bio %>
+        <div class="row blue-box">
+          <h4>about</h4><br \>
+          <h5><%= @user.bio %></h5>
+        </div>
+
+        <div class='row badges justify-content-between'>
+          <%= image_tag 'badge-1.png' %><%= image_tag 'badge-2.png' %><%= image_tag 'badge-3.png' %><%= image_tag 'badge-4.png' %>
+        </div>
+
+
+
       </div> <!-- End user-profile -->
     </div><!-- End user-profile card block -->
 
     <div class="card-footer">
       <div class="logo-box text-center">
-        <%= image_tag 'logo-new.png' %>
+        <%= link_to image_tag('logo-new.png'), root_path %>
       </div> <!-- End logo-box -->
     </div>
   </div> <!-- End card -->
 
 
     <div class="card w-66">
-      <div class="social text-center">
-        Social Placeholder
+
+      <div class="social">
+        <div class="row justify-content-between">
+          <button class='hire-button'>Hire <%= @user.first_name %></button>
+
+          <div class='social-icons'>
+            <%= image_tag 'facebook-icon.png' %>&nbsp<%= image_tag 'twitter-icon.png' %>&nbsp<%= image_tag 'linkedin-icon.png' %>&nbsp<%= image_tag 'mail-icon.png' %>
+          </div>
+
+        </div>
       </div>
+
       <div class="card-block whiten">
       <div class='booyah-box work-history'>
         <div class ="row justify-content-between">
