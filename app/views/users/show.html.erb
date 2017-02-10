@@ -41,35 +41,34 @@
         Social Placeholder
       </div>
       <div class="card-block whiten">
-      <div class='booyah-box work-history'>
-        <div class ="row justify-content-between">
-          <h1>Work History</h1>
-          <div>
-            <% if @user.work_histories.present? %>
-              <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
-            <% else %>
-              <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
-            <% end %>
-          </div>
-        </div>
+          <div class='booyah-box work-history'>
+            <div class ="row justify-content-between">
+              <div><h1><%= image_tag 'briefcase.png' %>&nbsp Work History</h1></div>
+              <div>
+                <% if @user.work_histories.present? %>
+                  <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
+                <% else %>
+                  <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
+                <% end %>
+              </div>
+            </div>
         <br \>
         <% @user.work_histories.order(:job_start_date).each do |workhistory| %>
-        <div class="row justify-content-between">
+        <div class="row justify-content-between padded2">
           <h2><%= workhistory.company_name %>&nbsp<%= link_to 'Edit', edit_work_history_path(workhistory), class: 'badge badge-primary' %></h2>
-          <br \>
           <br \>
           <div>
             <h4><%= workhistory.job_start_date.strftime("%B %d, %Y") %> - <%= workhistory.job_end_date.strftime("%B %d, %Y") %></h4>
           </div>
         </div>
-            <h3><%= workhistory.job_title.upcase %></h3>
-            <br \>
-          <h5><%= workhistory.job_description %></h5>
-          <br \>
+        <hr width="94%">
+            <h3><p class="padded3"><%= workhistory.job_title.upcase %></p></h3>
+          <h5><p class="padded3"><%= workhistory.job_description %></p></h5>
           <br \>
         <% end %>
-      </div>
-    </div>    <!-- End work-history -->
+      </div><!-- End work-history -->
+      <br \>
+</div> <!-- End card-block -->
   </div> <!-- End card -->
 </div> <!-- End row wrapper -->
 </div><!-- End container wrapper -->
