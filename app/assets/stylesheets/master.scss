@@ -104,6 +104,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   padding-left: 5%;
   padding-right: 5%;
+  color: #FFFFFF;
 }
 
 .frosty {
@@ -167,6 +168,7 @@ h1, h2, h3, h4, h5, h6 {
 .hire-button:hover {
     background-color: #579df9;
     color: #FFFFFF;
+}
 
 hr {
   text-align: right;
@@ -226,7 +228,12 @@ p {
   color: #8fc0ff;
 }
 
-.public-footer a:link, a:visited, a:active {
+.public-footer a:link {
+  color: white;
+  text-decoration: underline;
+}
+
+.public-footer a:visited {
   color: white;
   text-decoration: underline;
 }
@@ -234,6 +241,11 @@ p {
 .public-footer a:hover {
   color: white;
   opacity: 0.4;
+  text-decoration: underline;
+}
+
+.public-footer a:active {
+  color: white;
   text-decoration: underline;
 }
 

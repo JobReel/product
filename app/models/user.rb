@@ -6,12 +6,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :title, presence: true
-  validates :city, presence: true
-  validates :state, presence: true
-  validates :bio, presence: true
-  validates :degree_type, presence: true
-  validates :degree_field, presence: true
+ validates :first_name, presence: true, on: :update
+ validates :last_name, presence: true, on: :update
+ validates :title, presence: true, on: :update
+ validates :city, presence: true, on: :update
+ validates :state, presence: true, on: :update
+ validates :bio, presence: true, on: :update
+ validates :degree_type, presence: true, on: :update
+ validates :degree_field, presence: true, on: :update
 end
