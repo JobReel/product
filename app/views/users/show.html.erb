@@ -3,7 +3,10 @@
     <div class="row">
     <div class="card w-33">
       <div class="video-box text-center">
-        <%= image_tag 'video-placeholder.jpg' %>
+        <% if @user.image.present? %>
+          <%= image_tag @user.image_url, class: 'img-fluid' %>
+        <% else %>
+        <% end %>
       </div>
       <div class="card-block">
       <div class='booyah-box user-profile'>
