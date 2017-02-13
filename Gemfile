@@ -60,3 +60,7 @@ gem 'simple_form'
 gem 'font-awesome-rails'
 # Enable devise user-authentication
 gem 'devise'
+# image upload w/ activerecord
+gem 'carrierwave'
+# video editing suite
+gem 'cloudinary'

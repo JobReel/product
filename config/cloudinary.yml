@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: jobreel
+  api_key: '265291551969121'
+  api_secret: A_dCJhgUiUv0bf7IZ4JJHt1mA6o
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: jobreel
+  api_key: '265291551969121'
+  api_secret: A_dCJhgUiUv0bf7IZ4JJHt1mA6o
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: jobreel
+  api_key: '265291551969121'
+  api_secret: A_dCJhgUiUv0bf7IZ4JJHt1mA6o
+  enhance_image_tag: true
+  static_image_support: false

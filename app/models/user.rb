@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :image, ImageUploader
   has_many :work_histories
 
   # Include default devise modules. Others available are:
