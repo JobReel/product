@@ -4,7 +4,7 @@
     <div class="card w-33">
       <div class="video-box text-center">
         <% if @user.image.present? %>
-          <%= image_tag @user.image_url, class: 'img-fluid' %>
+          <%= image_tag(@user.image_url(:thumbnail), :width => 50, :height => 50) %>
         <% else %>
         <% end %>
       </div>
