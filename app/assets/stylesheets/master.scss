@@ -322,12 +322,18 @@ p {
 }
 
 .video-box {
-  background-color: #123ABC;
+
 }
 
 .video-box img {
   width: 100%;
   height: auto;
+}
+
+video {
+ width: 100%    !important;
+ height: auto   !important;
+ display: block;
 }
 
 .whiten {

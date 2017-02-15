@@ -2,9 +2,9 @@
 <div class="container-fluid">
     <div class="row">
     <div class="card w-33">
-      <div class="video-box text-center">
-        <% if @user.image.present? %>
-          <%= image_tag(@user.image_url(:thumbnail), :width => 50, :height => 50) %>
+      <div class="video-box">
+        <% if @user.video.present? %>
+          <%= video_tag(@user.video, controls: true, autobuffer: true) %>
         <% else %>
         <% end %>
       </div>
