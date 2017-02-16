@@ -4,8 +4,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
     render :layout => 'public_view'
-    @video_short = @user.video.to_s
-    @video_short.slice!("http://res.cloudinary.com/jobreel/video/upload/")
   end
 
   def edit
