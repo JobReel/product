@@ -10,6 +10,7 @@ $sizes: (
 
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
 body {
   /* Location of the image */
@@ -187,16 +188,23 @@ hr {
 
 .navbar {
   border-radius:0;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 500;
   box-shadow: 0px 1px 3px #2a2a2a;
-  background: image_url('asanoha.png');
+  background-color: #1b3257;
 }
 
-.navbar-inverse a.navbar-brand {
-font-family: 'Montserrat', sans-serif;
-  font-weight: 100;
-  color:white;
+.nav-link {
+  color: #FFFFFF;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+.nav-link:hover {
+  color: #c8c8c8;
 }
 
 p {
