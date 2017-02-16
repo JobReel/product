@@ -192,6 +192,7 @@ hr {
   font-weight: 500;
   box-shadow: 0px 1px 3px #2a2a2a;
   background-color: #1b3257;
+  padding: 0.5% 7% 0.5% 7%;
 }
 
 .nav-link {
@@ -205,6 +206,10 @@ hr {
 
 .nav-link:hover {
   color: #c8c8c8;
+}
+
+.nav-image {
+  padding-left: 15px;
 }
 
 p {
@@ -286,6 +291,30 @@ p {
 
 .row {
 
+}
+
+.top-search-bar {
+  width: 600px;
+  outline: none;
+  border: 0;
+  font-size: 16px;
+  margin-left: 8%;
+  background-image: url('search-icon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 8px 20px 8px 40px;
+  background-color: #0f2444;
+
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 500;
+}
+
+.top-search-bar:focus {
+    background-color: #244270;
+}
+
+.top-search-bar, textarea {
+  color: #FFFFFF;
 }
 
 .user-title {

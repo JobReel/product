@@ -25,6 +25,10 @@
     <%= image_tag "logo-new.png", class: "img-responsive" %>
   <% end %>
 
+  <div>
+    <input type="text" name="search" placeholder="Search for people, jobs, companies, and more..." class="top-search-bar">
+  </div>
+
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
     </ul>
@@ -32,14 +36,14 @@
       <li class="nav-item">
         <%= link_to 'Studio', studio_users_path, class: 'nav-link' %>
       </li>
-  <% if user_signed_in? %>
-    <li class="nav-item">
-      <%= link_to 'My Profile', user_path(current_user), class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-    </li>
-  <% else %>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'My Profile', user_path(current_user), class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+      <% else %>
     <li class="nav-item">
       <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
     </li>
@@ -50,10 +54,10 @@
 </ul>
   </div>
   <%= link_to root_path do %>
-    <%= image_tag "notification-bell", class: "img-responsive" %>
+    <%= image_tag "notification-bell", class: "nav-image" %>
   <% end %>
   <%= link_to root_path do %>
-    <%= image_tag "avatar.png", class: "img-responsive" %>
+    <%= image_tag "avatar.png", class: "nav-image" %>
   <% end %>
 </nav>
     <%= yield %>
