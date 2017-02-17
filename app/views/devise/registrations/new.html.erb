@@ -1,7 +1,7 @@
 <br />
 <div class="booyah-box col-10 offset-1">
   <h2>Sign up</h2>
-  <br \>
+  <br />
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
@@ -10,11 +10,11 @@
       <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
       <%= f.input :password_confirmation, required: true %>
     </div>
-    <br \>
+    <br />
     <div class="form-actions">
       <%= f.button :submit, "Sign up" %>
     </div>
   <% end %>
-  <br \>
+  <br />
   <%= render "devise/shared/links" %>
 </div>

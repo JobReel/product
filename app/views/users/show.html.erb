@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid container-fluid-mod">
     <div class="row">
     <div class="card w-33">
       <div class="video-box">
@@ -49,9 +49,9 @@
         <div class="row blue-box-city-degree">
           <%= image_tag 'education-icon.png' %><h3>&nbsp&nbsp<%= @user.degree_type %>, <%= @user.degree_field %></h3>
         </div>
-        <br \>
+        <br />
         <div class="row blue-box">
-          <h4>about</h4><br \>
+          <h4>about</h4><br />
           <h5><%= @user.bio %></h5>
         </div>
 
@@ -97,11 +97,11 @@
                 <% end %>
               </div>
             </div>
-        <br \>
+        <br />
         <% @user.work_histories.order(:job_start_date).each do |workhistory| %>
         <div class="row justify-content-between padded2">
           <h2><%= workhistory.company_name %>&nbsp<%= link_to 'Edit', edit_work_history_path(workhistory), class: 'badge badge-primary' %></h2>
-          <br \>
+          <br />
           <div>
             <h4><%= workhistory.job_start_date.strftime("%B %d, %Y") %> - <%= workhistory.job_end_date.strftime("%B %d, %Y") %></h4>
           </div>
@@ -109,10 +109,10 @@
         <hr width="94%">
             <h3><p class="padded3"><%= workhistory.job_title.upcase %></p></h3>
           <h5><p class="padded4"><%= workhistory.job_description %></p></h5>
-          <br \>
+          <br />
         <% end %>
       </div><!-- End work-history -->
-      <br \>
+      <br />
 </div> <!-- End card-block -->
   </div> <!-- End card -->
 </div> <!-- End row wrapper -->
