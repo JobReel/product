@@ -17,7 +17,7 @@
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 
-<nav class="navbar navbar-toggleable-md navbar-dark bg-inverse">
+<nav class="navbar navbar-toggleable-md">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -25,18 +25,25 @@
     <%= image_tag "logo-new.png", class: "img-responsive" %>
   <% end %>
 
+  <div>
+    <input type="text" name="search" placeholder="Search for people, jobs, companies, and more..." class="top-search-bar">
+  </div>
+
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
     </ul>
     <ul class="navbar-nav">
-  <% if user_signed_in? %>
-    <li class="nav-item">
-      <%= link_to 'My Profile', user_path(current_user), class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-    </li>
-  <% else %>
+      <li class="nav-item">
+        <%= link_to 'Studio', studio_users_path, class: 'nav-link' %>
+      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'My Profile', user_path(current_user), class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+      <% else %>
     <li class="nav-item">
       <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
     </li>
@@ -46,6 +53,12 @@
   <% end %>
 </ul>
   </div>
+  <%= link_to root_path do %>
+    <%= image_tag "notification-bell", class: "nav-image" %>
+  <% end %>
+  <%= link_to root_path do %>
+    <%= image_tag "avatar.png", class: "nav-image" %>
+  <% end %>
 </nav>
     <%= yield %>
   </body>

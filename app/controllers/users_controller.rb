@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def studio
+    @user = User.find(current_user.id)
+  end
+
   private
 
   def user_params
