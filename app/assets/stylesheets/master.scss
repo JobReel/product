@@ -344,6 +344,20 @@ p {
   font-size: 12pt;
 }
 
+.studio-player {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 1%;
+  background-color: #FFFFFF;
+}
+
+.studio-timeline {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 1%;
+  background-color: #FFFFFF;
+}
+
 .studio-top {
   padding-top: 2%;
   padding-bottom: 2%;
@@ -442,6 +456,12 @@ p {
   padding-bottom: 5%;
 }
 
+.vert-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 video {
  width: 100%    !important;
  height: auto   !important;
@@ -488,11 +508,21 @@ video {
   margin-left: 2;
 }
 
+.vid-library-body h3 {
+  color: #8a9dab;
+  font-size: 10pt;
+}
+
 .vid-library-body-first {
   background-color: #FFFFFF;
-  padding-top: 7%;
+  padding-top: 5%;
   padding-bottom: 3%;
   padding-left: 3.5%;
+}
+
+.vid-library-body-first h3 {
+  color: #8a9dab;
+  font-size: 10pt;
 }
 
 .vid-library-body-first hr {
@@ -506,6 +536,15 @@ video {
   padding-top: 3%;
   padding-bottom: 7%;
   padding-left: 3.5%;
+}
+
+.vid-library-body-last h3 {
+  color: #8a9dab;
+  font-size: 10pt;
+}
+
+.instructions {
+  margin-top: -2%;
 }
 
 .white {
