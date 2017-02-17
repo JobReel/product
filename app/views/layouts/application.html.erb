@@ -61,5 +61,85 @@
   <% end %>
 </nav>
     <%= yield %>
+
+    <footer class="footer-private-view">
+      <div class="container-fluid">
+        <div class="row row-footer-private">
+
+          <div class="footer-logo-box col-2 offset-1">
+            <%= link_to root_path do %>
+              <%= image_tag "logo-new.png", class: "img-responsive" %>
+            <% end %>
+            <br /><br />
+            © 2017 JobReel, Inc.<br />
+            All rights reserved.
+          </div>
+
+          <div class="verticalLine ">
+          </div>
+
+          <div class="list-footer-left col-2">
+            <nav>
+              <ul style="list-style-type: none">
+                <li><a href="#">Dashboard</a>
+                </li>
+                <li><a href="#">Explore</a>
+                </li>
+                <li><a href="#">My Network</a>
+                </li>
+                <li><a href="#">My Jobs</a>
+                </li>
+                <li><a href="#">Support</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="list-footer-middle col-2">
+            <nav>
+              <ul style="list-style-type: none">
+                <li><a href="#">About</a>
+                </li>
+                <li><a href="#">Contact</a>
+                </li>
+                <li><a href="#">Terms of Service</a>
+                </li>
+                <li><a href="#">Privacy Policy</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="verticalLine">
+          </div>
+
+          <div class="social-footer col-2">
+            <h1>Follow Us</h1>
+            <div class="row social-footer-list">
+              <%= image_tag 'facebook-footer-icon.png' %><h3>&nbsp&nbsp&nbsp<a href="#">Facebook</a></h3>
+            </div>
+            <div class="row social-footer-list">
+              <%= image_tag 'twitter-footer-icon.png' %><h3>&nbsp&nbsp&nbsp<a href="#">Twitter</a></h3>
+            </div>
+            <div class="row social-footer-list">
+              <%= image_tag 'rss-icon.png' %><h3>&nbsp&nbsp&nbsp<a href="#">RSS</a></h3>
+            </div>
+          </div>
+
+          <div class="verticalLine">
+          </div>
+
+          <div class="newsletter-footer col-3">
+            <h1>Subscribe To Our News</h1>
+            <div class="row newsletter-bar-footer ">
+                <input type="text" name="search" placeholder="Enter Your Email" class="newsletter-bar">
+                <%= image_tag 'mail-footer-icon-green.png' %>
+            </div>
+        </div>
+      </div>
+    </footer>
+
+
+
   </body>
 </html>
