@@ -1,34 +1,112 @@
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+<!-- User Edit Modal -->
+<div class="modal fade bd-example-modal-lg" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content modal-lg">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Edit User Info</h4>
       </div>
-      <%= simple_form_for @user do |f| %>
-        <%= f.input :first_name %>
-        <%= f.input :last_name %>
-        <%= f.input :title %>
-        <%= f.input :city %>
-        <%= f.input :state %>
-        <%= f.input :degree_type %>
-        <%= f.input :degree_field %>
-        <%= f.input :bio %>
-        <%= f.input :video %>
-        <br />
-        <%= f.submit 'Update', class: 'btn btn-primary' %>
-      <% end %>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <%= simple_form_for @user do |f| %>
+          <div class="row padded">
+            <div class="col-3">
+            <%= f.input :first_name %>
+          </div>
+          <div class="col-1">&nbsp</div>
+          <div class="col-3">
+            <%= f.input :last_name %>
+          </div>
+          <div class="col-1">&nbsp</div>
+          <div class="col-3">
+            <%= f.input :title %>
+          </div>
+        </div>
+          <div class="row padded">
+            <div class="col-3">
+            <%= f.input :city %>
+          </div>
+            <div class="col-1">&nbsp</div>
+            <div class="col-3">
+            <%= f.input :state %>
+          </div>
+        </div>
+        <div class="row padded">
+
+          <div class="col-3">
+            <%= f.input :degree_type %>
+          </div>
+          <div class="col-1">&nbsp</div>
+          <div class="col-3">
+            <%= f.input :degree_field %>
+          </div>
+        </div>
+        <div class="col-12">
+            <%= f.input :bio, :input_html => {:rows => 4} %>
+          </div>
+          <div class="row padded">
+            <div class="col-12">
+            <%= f.input :video %>
+          </div>
+          </div>
+            <br />
+            <%= f.submit 'Update', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container-fluid container-fluid-mod">
+
+<!-- Work History Edit Modal -->
+<div class="modal fade bd-example-modal-lg" id="whModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Job Info</h4>
+      </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+          <%= simple_form_for @work_histories do |f| %>
+          <div class="row padded">
+            <div class="col-5">
+            <%= f.input :company_name %>
+          </div>
+            <div class="col-1">&nbsp</div>
+            <div class="col-5">
+            <%= f.input :job_title %>
+          </div>
+          </div>
+            <div class="row padded">
+              <div class="col-5">
+              <%= f.input :job_start_date %>
+              </div>
+              <div class="col-1">&nbsp</div>
+              <div class="col-5">
+              <%= f.input :job_end_date %>
+              </div>
+          </div>
+          <div class="col-12">
+            <%= f.input :job_description, :input_html => {:rows => 4} %>
+          </div>
+            <br />
+            <%= f.submit 'Update', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid-profile">
     <div class="row">
     <div class="card w-33">
       <div class="video-box">
         <% if @user.video.present? %>
-          <%= cl_video_tag(@user.video.public_id) %>
+          <%= cl_video_tag(@user.video.public_id, controls: true, quality: 50) %>
         <% else %>
         <% end %>
       </div>
@@ -37,7 +115,7 @@
         <div class ="row blue-box justify-content-between">
           <h1><%= @user.first_name %> <%= @user.last_name %></h1>
           <div>
-            <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary', data: {toggle: 'modal', target: '#myModal'} %>
+            <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary', data: {toggle: 'modal', target: '#userModal'} %>
           </div>
         </div>
         <div class="row blue-box">
@@ -100,8 +178,8 @@
         <br />
         <% @user.work_histories.order(:job_start_date).each do |workhistory| %>
         <div class="row justify-content-between padded2">
-          <h2><%= workhistory.company_name %>&nbsp<%= link_to 'Edit', edit_work_history_path(workhistory), class: 'badge badge-primary' %></h2>
-          <br />
+          <h2><%= workhistory.company_name %>&nbsp<%= link_to 'Edit', edit_work_history_path(workhistory), class: 'badge badge-primary', data: {toggle: 'modal', target: '#whModal'} %></h2>
+          <br \>
           <div>
             <h4><%= workhistory.job_start_date.strftime("%B %d, %Y") %> - <%= workhistory.job_end_date.strftime("%B %d, %Y") %></h4>
           </div>
