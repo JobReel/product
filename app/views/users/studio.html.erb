@@ -37,7 +37,9 @@
     <% if @user.video.present? %>
         <%= cl_video_tag(@user.video.public_id) %>
       <% else %>
+
     <% end %>
+    <%= f.input @videos(:cloud_video) %>
 <%= image_tag 'upload-video.png' %>
   </div>
   </div>
