@@ -92,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 0px;
 }
 
-.container-fluid {
+.container-fluid-mod {
   margin-top: 3%;
   margin-bottom: 1%;
   margin-left: 10%;
@@ -289,8 +289,34 @@ p {
   padding-top: 1%;
 }
 
-.row {
+.studio-bar {
+  background-color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
 
+}
+
+.studio-bar h1 {
+  color: #3a475c;
+  font-size: 28pt;
+}
+
+.studio-bar h2 {
+
+}
+
+.studio-bar h3 {
+  color: #8a9dab;
+  font-size: 14pt;
+}
+
+.studio-top {
+  padding-top: 3%;
+  padding-bottom: 3%;
+
+}
+
+.tiny {
+  font-size: 12px;
 }
 
 .top-search-bar {
