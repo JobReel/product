@@ -186,6 +186,10 @@ hr {
   padding: 0.5% 7% 0.5% 7%;
 }
 
+.nav-item {
+  margin: 0px;
+}
+
 .nav-link {
   color: #FFFFFF;
   -o-transition:.5s;
@@ -193,6 +197,11 @@ hr {
   -moz-transition:.5s;
   -webkit-transition:.5s;
   transition:.5s;
+}
+
+.nav-link:focus {
+  color: #c8c8c8;
+  text-decoration: none;
 }
 
 .nav-link:hover {

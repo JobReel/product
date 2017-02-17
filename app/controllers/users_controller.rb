@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
-
-
   def show
     @user = User.find(current_user.id)
     @work_histories = WorkHistory.find(params[:id])
-    render :layout => 'public_view'
+    render :layout => 'profile_view'
   end
 
   def edit
@@ -26,6 +24,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def logged_in
+    if user_signed_in?
+      render :layout => 'user-loggedin'
+    else
+      render :layout => 'public_view'
+    end
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :title, :city, :state, :bio, :degree_type, :degree_field, :video)
