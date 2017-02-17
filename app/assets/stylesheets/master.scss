@@ -90,8 +90,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.35);
 }
 
-
-
 .feature {
   width: 100%;
   padding-left: 5%;
@@ -283,28 +281,13 @@ p {
   color: white;
 }
 
-
-.side-border {
-  border-top: 0px;
-  border-right: 0px;
-  border-bottom: 0px;
-  border-left: 1px;
-  border-color: #3c90fd;
-  border-style: solid;
-  background-color: #277cea;
-  color: #FFFFFF;
-  padding-top: 3%;
-  padding-bottom: 3%;
-
 .footer-public-view {
   padding: 0;
   margin: 0;
 }
 
 .footer-private-view {
-  position: absolute;
   padding: 2% 0% 3% 0%;
-  bottom: 0;
   width: 100%;
   background-color: #1b3257;
   border-radius:0;
@@ -351,6 +334,19 @@ p {
 
 li {
     margin-bottom: 15px;
+}
+
+.side-border {
+  border-top: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+  border-left: 1px;
+  border-color: #3c90fd;
+  border-style: solid;
+  background-color: #277cea;
+  color: #FFFFFF;
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
 
 .social {
@@ -491,6 +487,7 @@ li {
 .upload-button:hover {
     background-color: #579df9;
     color: #FFFFFF;
+}
 
 .newsletter-bar {
   width: 225px;
@@ -582,7 +579,8 @@ video {
  width: 100%    !important;
  height: auto   !important;
  display: block;
-=======
+}
+
 .verticalLine {
   border-left: thin solid #FFFFFF;
   opacity:0.1;
