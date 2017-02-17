@@ -34,12 +34,16 @@
     <h3>Upload videos that you would like to use for your introduction.</h3>
   </div>
   <div class="col-9 offset-1">
-    <% if @user.video.present? %>
+    <!-- <% if @user.video.present? %>
         <%= cl_video_tag(@user.video.public_id) %>
       <% else %>
+    <% end %> -->
 
+    <%= form_for @videos do |f| %>
+    <%= f.file_field :cloud_video %>
+    <%= f.submit 'Update', class: 'btn btn-primary' %>
     <% end %>
-    <%= f.input @videos(:cloud_video) %>
+
 <%= image_tag 'upload-video.png' %>
   </div>
   </div>

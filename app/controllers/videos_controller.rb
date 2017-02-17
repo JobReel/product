@@ -24,7 +24,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:cloud_video, :section)
+    params.require(:video).permit(:cloud_video, :section, :user_id)
   end
 
 end
