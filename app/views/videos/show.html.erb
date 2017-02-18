@@ -1,0 +1,139 @@
+<!-- Video Edit Modal -->
+<div class="modal fade bd-example-modal-sm" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit User Info</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <%= form_for @library do |f| %>
+            <%= f.file_field :cloud_video %>
+            <%= f.submit 'Update', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row studio-bar">
+    <div class="col-6 offset-1 studio-top">
+    <h1>JobReel Studio</h1>
+    <h3>Build your JobReel below. First, upload the videos that you'd like to use for each section in the left column and then, click and drag them to build your timeline below, one section at a time.</h3>
+  </div>
+<div class="col-2">&nbsp</div>
+<div class="col-2 align-self-center">
+          <button class='upload-button'>+&nbsp&nbsp&nbspUPLOAD VIDEO</button>
+  </div>
+</div>
+</div>
+
+<div class="row studio-body">
+  <div class="col-3 offset-1">
+  <div class="card vid-library padded5">
+    <div class="card-block"> <!--Library Navigation Block-->
+<div class="row nopadding">
+  <div class="col-10 vid-library-top">
+    PROFILE JOBREEL
+  </div>
+  <div class="col-2 text-center side-border">
+    +
+  </div>
+</div>
+</div>
+
+<div class="card-block white">
+  <div class="row vid-library-body-first">
+    <div class="col-2">
+    <%= image_tag 'intro-icon-lg.png' %>
+  </div>
+  <div class="col-9 vert-align">Introduction
+</div>
+
+  <div class="col-9 offset-2 instructions">
+    <h3>Upload videos that you would like to use for your introduction.</h3>
+  </div>
+  <div class="col-9 offset-1">
+    <% if @library.present? %>
+      <%= cl_image_tag(@library.cloud_video.public_id + ".jpg", :resource_type => "video", :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
+    <% else %>
+    <% end %>
+
+      <%= image_tag "upload-video.png", data: {toggle: 'modal', target: '#userModal'} %>
+      
+  </div>
+  </div>
+  <hr>
+  <div class="row vid-library-body">
+    <div class="col-2">
+    <%= image_tag 'education-icon-lg.png' %>
+  </div>
+  <div class="col-9 vert-align">Education
+</div>
+  <div class="col-9 offset-2 instructions">
+    <h3>Upload videos that you would like to use for your education.</h3>
+  </div>
+  </div>
+    <hr>
+  <div class="row vid-library-body">
+    <div class="col-2">
+    <%= image_tag 'work-icon-lg.png' %>
+  </div>
+  <div class="col-9 vert-align">Work Experience
+</div>
+  <div class="col-9 offset-2 instructions">
+    <h3>Upload videos that you would like to use for your work history.</h3>
+  </div>
+  </div>
+    <hr>
+  <div class="row vid-library-body">
+    <div class="col-2">
+    <%= image_tag 'hobbies-icon-lg.png' %>
+  </div>
+  <div class="col-9 vert-align">Hobbies
+</div>
+  <div class="col-9 offset-2 instructions">
+    <h3>Upload videos that you would like to use to show off your hobbies and interests.</h3>
+  </div>
+  </div>
+    <hr>
+  <div class="row vid-library-body-last">
+    <div class="col-2">
+    <%= image_tag 'recs-icon-lg.png' %>
+  </div>
+  <div class="col-9 vert-align">Recommendations
+</div>
+  <div class="col-9 offset-2 instructions">
+    <h3>Manage the video recommendations that you would like to display.</h3>
+  </div>
+  </div>
+</div>
+</div> <!--End of Video Library Card -->
+</div>
+
+<div class="col-7">
+<div class="card studio-player nopadding">
+    <div class="card-block studio-blend nopadding">
+      <%= image_tag 'video-player-lg.png' %>
+</div>
+</div>
+<div class="card studio-timeline padded5">
+  <div class="card-block white vert-align timeline-bot-bar">
+    Introduction
+  </div>
+  <div class="card-block white">
+    <h3>From the left column where you've uploaded your videos, drag the ones you'd like to show viewers in the space provided below in the order you'd like them to appear.</h3>
+  </div>
+  <div class="card-block white">
+    <div class="row justify-content-around">
+  <%= image_tag 'empty-frame.png' %>&nbsp
+  <%= image_tag 'empty-frame.png' %>&nbsp
+  <%= image_tag 'empty-frame.png' %>&nbsp
+</div>
+</div>
+</div>
+
+</div>
