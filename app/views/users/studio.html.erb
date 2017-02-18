@@ -9,10 +9,12 @@
           <button class='upload-button'>+&nbsp&nbsp&nbspUPLOAD VIDEO</button>
   </div>
 </div>
+</div>
 
 <div class="row studio-body">
-  <div class="card w-25 offset-1 vid-library padded5">
-    <div class="card-block align-self-stretch"> <!--Library Navigation Block-->
+  <div class="col-3 offset-1">
+  <div class="card vid-library padded5">
+    <div class="card-block"> <!--Library Navigation Block-->
 <div class="row nopadding">
   <div class="col-10 vid-library-top">
     PROFILE JOBREEL
@@ -34,10 +36,7 @@
     <h3>Upload videos that you would like to use for your introduction.</h3>
   </div>
   <div class="col-9 offset-1">
-    <% if @user.video.present? %>
-        <%= cl_video_tag(@user.video.public_id) %>
-      <% else %>
-    <% end %>
+
 <%= image_tag 'upload-video.png' %>
   </div>
   </div>
@@ -86,24 +85,29 @@
   </div>
   </div>
 </div>
-
 </div> <!--End of Video Library Card -->
-<div class="card-columns studio-player padded5">
-  <div class="card w-50 studio-player padded5">
-    <div class="card-block white">
-<div class="row">
-      Im a new card.
-    </div>
-    </div>
-
-  </div>
-
-  <div class="card">
-    Im the timeline!
-  </div>
-  </div>
-
 </div>
 
+<div class="col-7">
+<div class="card studio-player nopadding">
+    <div class="card-block studio-blend nopadding">
+      <%= image_tag 'video-player-lg.png' %>
+</div>
+</div>
+<div class="card studio-timeline padded5">
+  <div class="card-block white vert-align timeline-bot-bar">
+    Introduction
+  </div>
+  <div class="card-block white">
+    <h3>From the left column where you've uploaded your videos, drag the ones you'd like to show viewers in the space provided below in the order you'd like them to appear.</h3>
+  </div>
+  <div class="card-block white">
+    <div class="row justify-content-around">
+  <%= image_tag 'empty-frame.png' %>&nbsp
+  <%= image_tag 'empty-frame.png' %>&nbsp
+  <%= image_tag 'empty-frame.png' %>&nbsp
+</div>
+</div>
+</div>
 
 </div>

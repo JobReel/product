@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
 
   resources :work_histories
+  resources :videos, only: [:show, :edit, :update, :destroy]
 end

@@ -1,9 +1,5 @@
 class WorkHistoriesController < ApplicationController
 
-  def show
-    @work_histories = WorkHistory.find(params[:id])
-  end
-
   def new
     @work_histories = WorkHistory.new
   end

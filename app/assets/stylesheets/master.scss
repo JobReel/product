@@ -3,6 +3,9 @@ $sizes: (
   25: 25%,
   33: 33%,
   50: 50%,
+  55: 55%,
+  57: 57%,
+  60: 60%,
   66: 66%,
   75: 75%,
   100: 100%
@@ -396,6 +399,20 @@ li {
   padding-top: 1%;
 }
 
+.space-top {
+  margin-top: 3%;
+}
+
+.card-columns {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1%;
+}
+
+.studio-blend {
+    background-color: #dbe5ee;
+}
+
 .studio-body {
   background-color: #dbe5ee;
   font-family: 'Montserrat', sans-serif;
@@ -424,20 +441,38 @@ li {
   margin-top: 2%;
   margin-bottom: 2%;
   margin-left: 1%;
-  background-color: #FFFFFF;
 }
 
 .studio-timeline {
   margin-top: 2%;
   margin-bottom: 2%;
   margin-left: 1%;
+  padding-top: 1%;
+  padding-bottom: 3%;
   background-color: #FFFFFF;
+}
+
+.studio-timeline h3 {
+  color: #8a9dab;
+  font-size: 10pt;
+}
+
+.studio-timeline hr {
+  width: 100%;
 }
 
 .studio-top {
   padding-top: 2%;
   padding-bottom: 2%;
 
+}
+
+.timeline-bot-bar {
+  border: 0;
+  border-bottom: 1px;
+  border-color: #eaf0f6;
+  border-style: solid;
+  padding-bottom: 1%;
 }
 
 .tiny {
@@ -598,8 +633,13 @@ video {
   height: auto;
 }
 
+.studio-player img {
+  width: 100%;
+  height: auto;
+}
+
 .vid-library {
-  margin-top: 2%;
+  margin-top: 5%;
   margin-bottom: 2%;
   background-color: #FFFFFF;
 }
