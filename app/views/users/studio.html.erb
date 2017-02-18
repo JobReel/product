@@ -32,6 +32,26 @@
   </div>
   <div class="col-9 vert-align">Introduction
 </div>
+
+<div class="video-box">
+  <% if @user.video.present? %>
+    <%= cl_video_tag(@user.video.public_id, controls: true, quality: 50) %>
+  <% else %>
+  <% end %>
+</div>
+
+<%= form_for @videos do |f| %>
+  <%= f.file_field :cloud_video %>
+  <%= f.submit 'Update', class: 'btn btn-primary' %>
+<% end %>
+
+<div class="video-box">
+  <% if @videos.cloud_video.present? %>
+    <%= cl_video_tag(@videos.cloud_video.public_id, controls: true, quality: 50) %>
+  <% else %>
+  <% end %>
+</div>
+
   <div class="col-9 offset-2 instructions">
     <h3>Upload videos that you would like to use for your introduction.</h3>
   </div>

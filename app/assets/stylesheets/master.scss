@@ -704,6 +704,11 @@ video {
   font-size: 10pt;
 }
 
+.vid-library-body-first img {
+ cursor: pointer;
+ cursor: hand;
+}
+
 .instructions {
   margin-top: -2%;
 }

@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
     @work_histories = WorkHistory.find(params[:id])
-
     render :layout => 'profile_view'
   end
 
@@ -22,7 +21,7 @@ class UsersController < ApplicationController
 
   def studio
     @user = User.find(current_user.id)
-    @videos = Video.new
+    @videos = User.find(current_user.id)
   end
 
   private

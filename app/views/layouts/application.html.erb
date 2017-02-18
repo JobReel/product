@@ -23,7 +23,7 @@
         <ul class="navbar-nav">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to 'Studio', studio_users_path, class: 'nav-link' %>
+              <%= link_to 'Video', video_path(current_user), class: 'nav-link' %>
             </li>
             <li class="nav-item">
               <%= link_to 'My Profile', user_path(current_user), class: 'nav-link' %>
