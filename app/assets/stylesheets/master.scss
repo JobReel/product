@@ -15,6 +15,11 @@ $sizes: (
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800');
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
+.vid-library-body-first img {
+  cursor: pointer;
+  cursor: hand;
+}
+
 body {
   background-image: url(user-profile-background-overlay.jpg);
   background-position: center center;
@@ -702,11 +707,6 @@ video {
 .vid-library-body-last h3 {
   color: #8a9dab;
   font-size: 10pt;
-}
-
-.vid-library-body-first img {
- cursor: pointer;
- cursor: hand;
 }
 
 .instructions {
