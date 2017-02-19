@@ -8,7 +8,7 @@ class VideoUploader < CarrierWave::Uploader::Base
     end
 
     def public_id
-      return model.video_section +  "-" + generate_code(10)
+      return model.private_id
     end
 
   # Include RMagick or MiniMagick support:

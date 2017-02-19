@@ -8,6 +8,7 @@ class VideosController < ApplicationController
   def create
     @vid = Video.new(video_params)
     @vid.user_id=current_user.id
+    @vid.private_id=generate_code(10)
     @vid.save!
     redirect_to video_path(current_user.id)
   end
@@ -27,6 +28,11 @@ class VideosController < ApplicationController
   end
 
   private
+
+  def generate_code(number)
+    charset = Array('A'..'Z') + Array('a'..'z')
+    Array.new(number) { charset.sample }.join
+  end
 
   def video_params
     params.require(:video).permit(:cloud_video, :video_section, :user_id)
