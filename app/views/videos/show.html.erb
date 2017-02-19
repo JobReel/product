@@ -61,7 +61,7 @@
   <div class="col-9 offset-2">
     <% if @videos.present? %>
     <% @videos.each do |disp| %>
-      <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
+      <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
       <% end %>
     <% else %>
     <% end %>
