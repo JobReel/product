@@ -8,8 +8,9 @@
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-          <%= form_for @library do |f| %>
-            <%= f.file_field :cloud_video %>
+          <%= simple_form_for @video_new do |f| %>
+            <%= f.input :video_section, collection: ["Introduction", "Education", "Work Experience", "Hobbies", "Recommendations"], label: "Video Section", :include_blank => false %>
+            <%= f.input :cloud_video %>
             <%= f.submit 'Update', class: 'btn btn-primary' %>
           <% end %>
         </div>
@@ -56,14 +57,17 @@
   <div class="col-9 offset-2 instructions">
     <h3>Upload videos that you would like to use for your introduction.</h3>
   </div>
-  <div class="col-9 offset-1">
-    <% if @library.present? %>
-      <%= cl_image_tag(@library.cloud_video.public_id + ".jpg", :resource_type => "video", :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
+  <br /><br />
+  <div class="col-9 offset-2">
+    <% if @videos.present? %>
+    <% @videos.each do |disp| %>
+      <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
+      <% end %>
     <% else %>
     <% end %>
 
       <%= image_tag "upload-video.png", data: {toggle: 'modal', target: '#userModal'} %>
-      
+
   </div>
   </div>
   <hr>
