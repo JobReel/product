@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def show
     @user = User.find(current_user.id)
     @work_histories = WorkHistory.find(params[:id])
@@ -19,12 +20,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def studio
-    @user = User.find(current_user.id)
-    @videos = User.find(current_user.id)
-  end
-
-  private
+private
 
   def logged_in
     if user_signed_in?
