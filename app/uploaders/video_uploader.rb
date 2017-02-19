@@ -2,8 +2,13 @@ class VideoUploader < CarrierWave::Uploader::Base
 
     include Cloudinary::CarrierWave
 
+    def generate_code(number)
+      charset = Array('A'..'Z') + Array('a'..'z')
+      Array.new(number) { charset.sample }.join
+    end
+
     def public_id
-      return "poatoe"
+      return current_user.first_name + generate-code(10)
     end
 
   # Include RMagick or MiniMagick support:

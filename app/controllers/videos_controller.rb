@@ -3,7 +3,7 @@ class VideosController < ApplicationController
   def show
     @videos = Video.where("user_id = ?", current_user.id)
     # @video_new = Video.new
-    @video_new = Video.find(params[:id])
+    @video_new = Video.new
   end
 
   def create
