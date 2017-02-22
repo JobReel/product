@@ -157,14 +157,7 @@
 <div class="card studio-player nopadding">
     <div class="card-block studio-blend nopadding">
       <!-- <%= image_tag 'video-player-lg.png' %> -->
-      <% if current_user.video.present? %>
-      <%= cl_video_tag(@intro_videos.first.private_id, controls: true, :transformation=>[
-        {:width=>300, :height=>200, :crop=>"fill"},
-        {:overlay=>"video:" + @education_videos.first.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"}, {:overlay=>"video:" + @work_videos.first.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"},
-        {:overlay=>"video:" + @hobby_videos.first.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"},
-        ]) %>
-        <% else %>
-      <% end %>
+
 </div>
 </div>
 <div class="card studio-timeline padded5">
