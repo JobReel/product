@@ -46,7 +46,7 @@
           </div>
           <div class="row padded">
             <div class="col-12">
-              Current Image: <%= cl_image_tag(@user.image.public_id + ".png", :width=>40, :height=>40, :gravity=>"face", :radius=>"20", :crop=>"thumb") %>
+              Current Image: <%= cl_image_tag(@user.image.public_id + ".png", :width=>40, :height=>40, :gravity=>"face", :radius=>"20", :crop=>"thumb", version: @user.image.stored_version) %>
               <%= f.input :image %>
             </div>
           </div>
