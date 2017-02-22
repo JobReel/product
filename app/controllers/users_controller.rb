@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
     @work_histories = WorkHistory.find(params[:id])
-    render :layout => 'profile_view'
   end
 
   def edit
