@@ -20,6 +20,16 @@ $sizes: (
   cursor: hand;
 }
 
+.vid-library-body img {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.vid-library-body-last img {
+  cursor: pointer;
+  cursor: hand;
+}
+
 body {
   background-image: url(user-profile-background-overlay.jpg);
   background-position: center center;
@@ -250,6 +260,21 @@ p {
   padding-top: 6%;
 }
 
+.padded7 {
+  padding-left: 10px;
+}
+
+.poster-display {
+  padding-top: 2%;
+  padding-right: 2%;
+  padding-left: 2%;
+}
+
+.poster-display img {
+  padding-right: 2px;
+  padding-bottom: 2px;
+}
+
 .nopadding {
   padding: 0px;
 }
@@ -444,17 +469,17 @@ li {
 }
 
 .studio-player {
-  margin-top: 2%;
+  margin-top: 3%;
   margin-bottom: 2%;
   margin-left: 1%;
 }
 
 .studio-timeline {
-  margin-top: 2%;
+  margin-top: 4%;
   margin-bottom: 2%;
   margin-left: 1%;
   padding-top: 1%;
-  padding-bottom: 3%;
+  padding-bottom: 4%;
   background-color: #FFFFFF;
 }
 
@@ -478,7 +503,28 @@ li {
   border-bottom: 1px;
   border-color: #eaf0f6;
   border-style: solid;
-  padding-bottom: 1%;
+  padding-top: 2%;
+  padding-bottom: 3%;
+  padding-left: 2%;
+}
+
+.timeline-bot-bar h1 {
+  font-family: 'Monserrat', sans-serif;
+  font-size: 18pt;
+}
+
+.timeline-instructions {
+  padding-top: 1%;
+  padding-left: 3%;
+}
+
+.timeline-instructions h3 {
+  line-height: 150%;
+}
+
+.timeline-workspace {
+  padding-top: 2%;
+  padding-left: 3%;
 }
 
 .tiny {
@@ -646,7 +692,7 @@ video {
 
 .vid-library {
   margin-top: 5%;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
   background-color: #FFFFFF;
 }
 
@@ -712,6 +758,7 @@ video {
 
 .instructions {
   margin-top: -2%;
+  padding-left: 10px;
 }
 
 .white {

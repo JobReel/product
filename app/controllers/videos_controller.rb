@@ -1,14 +1,20 @@
 class VideosController < ApplicationController
 
   def show
-    @videos = Video.where("user_id = ?", current_user.id)
+    @intro_videos = Video.where("video_section = ? and user_id = ?", "Introduction", current_user.id)
+    @education_videos = Video.where("video_section = ? and user_id = ?", "Education", current_user.id)
+    @work_videos = Video.where("video_section = ? and user_id = ?", "Work Experience", current_user.id)
+    @hobby_videos = Video.where("video_section = ? and user_id = ?", "Hobbies", current_user.id)
+    @rec_videos = Video.where("video_section = ? and user_id = ?", "Recommendations", current_user.id)
+
     @video_new = Video.new
+    byebug
   end
 
   def create
     @vid = Video.new(video_params)
-    @vid.user_id=current_user.id
-    @vid.private_id=generate_code(10)
+    @vid.user_id = current_user.id
+    @vid.private_id = generate_code(10)
     @vid.save!
     redirect_to video_path(current_user.id)
   end
