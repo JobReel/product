@@ -160,7 +160,8 @@
       <% if current_user.video.present? %>
       <%= cl_video_tag(@intro_videos.first.private_id, :transformation=>[
         {:width=>300, :height=>200, :crop=>"fill"},
-        {:overlay=>"video:" + @education_videos.first.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"}
+        {:overlay=>"video:" + @education_videos.first.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"}, {:overlay=>"video:" + @work_videos.first.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"},
+        {:overlay=>"video:" + @hobby_videos.first.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"},
         ]) %>
 
 
