@@ -46,8 +46,15 @@
           </div>
           <div class="row padded">
             <div class="col-12">
-            <%= f.input :video %>
+              Current Image: <%= cl_image_tag(@user.image.public_id + ".png", :width=>40, :height=>40, :gravity=>"face", :radius=>"20", :crop=>"thumb") %>
+              <%= f.input :image %>
+            </div>
           </div>
+          <div class="row padded">
+            <div class="col-12">
+              Current Video: <%= cl_image_tag(@user.video.public_id + ".jpg", :resource_type => "video", :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
+              <%= f.input :video %>
+            </div>
           </div>
             <br />
             <%= f.submit 'Update', class: 'btn btn-primary' %>

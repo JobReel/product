@@ -31,7 +31,7 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :title, :city, :state, :bio, :degree_type, :degree_field, :video)
+    params.require(:user).permit(:first_name, :last_name, :title, :city, :state, :bio, :degree_type, :degree_field, :image, :video)
   end
 
 end
