@@ -20,6 +20,16 @@ $sizes: (
   cursor: hand;
 }
 
+.vid-library-body img {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.vid-library-body-last img {
+  cursor: pointer;
+  cursor: hand;
+}
+
 body {
   background-image: url(user-profile-background-overlay.jpg);
   background-position: center center;
@@ -251,6 +261,12 @@ p {
 
 .padded7 {
   padding-left: 10px;
+}
+
+.poster-display {
+  padding-top: 2%;
+  padding-right: 2%;
+  padding-left: 2%;
 }
 
 .poster-display img {
@@ -675,7 +691,7 @@ video {
 
 .vid-library {
   margin-top: 5%;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
   background-color: #FFFFFF;
 }
 

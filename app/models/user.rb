@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :image, ImageUploader
   mount_uploader :video, ImageUploader
   has_many :work_histories
   has_many :videos
