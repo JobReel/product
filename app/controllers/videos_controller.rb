@@ -1,20 +1,23 @@
 class VideosController < ApplicationController
 
   def show
-    @intro_video = Video.where(video_section: "Introduction", user_id: current_user.id).first
-    education_videos = Video.where(video_section: "Education", user_id: current_user.id)
-    work_videos = Video.where(video_section: "Work Experience", user_id: current_user.id)
-    hobby_videos = Video.where(video_section: "Hobbies", user_id: current_user.id)
+    @intro_videos = Video.where(video_section: "Introduction", user_id: current_user.id)
+    @education_videos = Video.where(video_section: "Education", user_id: current_user.id)
+    @work_videos = Video.where(video_section: "Work Experience", user_id: current_user.id)
+    @hobby_videos = Video.where(video_section: "Hobbies", user_id: current_user.id)
     @rec_videos = Video.where(video_section: "Recommendations", user_id: current_user.id)
 
     ev = []
-    education_videos.each do |vid|
+    @intro_videos.each do |vid|
       ev << {:overlay=>"video:" + vid.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"}
     end
-    work_videos.each do |vid|
+    @education_videos.each do |vid|
       ev << {:overlay=>"video:" + vid.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"}
     end
-    hobby_videos.each do |vid|
+    @work_videos.each do |vid|
+      ev << {:overlay=>"video:" + vid.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"}
+    end
+    @hobby_videos.each do |vid|
       ev << {:overlay=>"video:" + vid.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"}
     end
     @overlays = [{:width=>300, :height=>200, :crop=>"fill"}]
