@@ -1,11 +1,26 @@
 class VideosController < ApplicationController
 
   def show
-    @intro_videos = Video.where("video_section = ? and user_id = ?", "Introduction", current_user.id)
-    @education_videos = Video.where("video_section = ? and user_id = ?", "Education", current_user.id)
-    @work_videos = Video.where("video_section = ? and user_id = ?", "Work Experience", current_user.id)
-    @hobby_videos = Video.where("video_section = ? and user_id = ?", "Hobbies", current_user.id)
-    @rec_videos = Video.where("video_section = ? and user_id = ?", "Recommendations", current_user.id)
+    @intro_video = Video.where(video_section: "Introduction", user_id: current_user.id).first
+    education_videos = Video.where(video_section: "Education", user_id: current_user.id)
+    work_videos = Video.where(video_section: "Work Experience", user_id: current_user.id)
+    hobby_videos = Video.where(video_section: "Hobbies", user_id: current_user.id)
+    @rec_videos = Video.where(video_section: "Recommendations", user_id: current_user.id)
+
+    ev = []
+    education_videos.each do |vid|
+      ev << {:overlay=>"video:" + vid.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"}
+    end
+    work_videos.each do |vid|
+      ev << {:overlay=>"video:" + vid.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"}
+    end
+    hobby_videos.each do |vid|
+      ev << {:overlay=>"video:" + vid.private_id, :flags=>"splice", :width=>300, :height=>200, :crop=>"fill"}
+    end
+    @overlays = [{:width=>300, :height=>200, :crop=>"fill"}]
+    @overlays << ev
+    @overlays.flatten!
+
 
     @video_new = Video.new
     @timeline_preview = current_user.video

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def set_user
     if user_signed_in?
-      @user = User.find(current_user.id)
+      @user = current_user
     else
     end
   end
