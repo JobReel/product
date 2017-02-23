@@ -8,6 +8,7 @@ class VideosController < ApplicationController
     @rec_videos = Video.where("video_section = ? and user_id = ?", "Recommendations", current_user.id)
 
     @video_new = Video.new
+    @timeline_preview = current_user.video
   end
 
   def create

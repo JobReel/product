@@ -1,5 +1,5 @@
 <!-- Video Edit Modal -->
-<div class="modal fade bd-example-modal-sm" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade bd-example-modal-sm" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content modal-sm">
       <div class="modal-header">
@@ -28,7 +28,8 @@
   </div>
 <div class="col-2">&nbsp</div>
 <div class="col-2 align-self-center">
-          <button class='upload-button'>+&nbsp&nbsp&nbspUPLOAD VIDEO</button>
+
+          <button type="button" class='upload-button' data-toggle="modal" data-target="#uploadModal">+&nbsp&nbsp&nbspUPLOAD VIDEO</button>
   </div>
 </div>
 </div>
@@ -65,7 +66,7 @@
     <% else %>
     <% end %>
 
-      <%= image_tag "upload-video.png", data: {toggle: 'modal', target: '#userModal'} %>
+      <%= image_tag "upload-video.png", data: {toggle: 'modal', target: '#uploadModal'} %>
 
   </div>
   </div>
@@ -85,7 +86,7 @@
     <% else %>
     <% end %>
 
-      <%= image_tag "upload-video.png", data: {toggle: 'modal', target: '#userModal'} %>
+      <%= image_tag "upload-video.png", data: {toggle: 'modal', target: '#uploadModal'} %>
 
   </div>
   </div>
@@ -105,7 +106,7 @@
     <% else %>
     <% end %>
 
-      <%= image_tag "upload-video.png", data: {toggle: 'modal', target: '#userModal'} %>
+      <%= image_tag "upload-video.png", data: {toggle: 'modal', target: '#uploadModal'} %>
 
   </div>
   </div>
@@ -125,7 +126,7 @@
     <% else %>
     <% end %>
 
-      <%= image_tag "upload-video.png", data: {toggle: 'modal', target: '#userModal'} %>
+      <%= image_tag "upload-video.png", data: {toggle: 'modal', target: '#uploadModal'} %>
 
   </div>
   </div>
@@ -145,7 +146,7 @@
     <% else %>
     <% end %>
 
-      <%= image_tag "upload-video.png", data: {toggle: 'modal', target: '#userModal'} %>
+      <%= image_tag "upload-video.png", data: {toggle: 'modal', target: '#uploadModal'} %>
 
   </div>
   </div>
@@ -157,6 +158,10 @@
 <div class="card studio-player nopadding">
     <div class="card-block studio-blend nopadding">
       <!-- <%= image_tag 'video-player-lg.png' %> -->
+      <% if current_user.video.present? %>
+      <%= cl_video_tag(@timeline_preview.public_id, controls: true, quality: 50) %>
+        <% else %>
+      <% end %>
 
 </div>
 </div>
