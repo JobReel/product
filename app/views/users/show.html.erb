@@ -113,7 +113,7 @@
     <div class="card w-33">
       <div class="video-box">
         <% if @user.video.present? %>
-          <%= cl_video_tag(@user.video.public_id, controls: true, quality: 50) %>
+          <%= cl_video_tag(@user.video.public_id, controls: true, quality: 50, version: @user.video.stored_version) %>
         <% else %>
         <% end %>
       </div>

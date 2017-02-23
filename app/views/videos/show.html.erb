@@ -159,7 +159,7 @@
     <div class="card-block studio-blend nopadding">
       <!-- <%= image_tag 'video-player-lg.png' %> -->
       <% if current_user.video.present? %>
-      <%= cl_video_tag(@timeline_preview.public_id, controls: true, quality: 50) %>
+      <%= cl_video_tag(@timeline_preview.public_id, controls: true, quality: 50, version: @timeline_preview.stored_version) %>
         <% else %>
       <% end %>
 
