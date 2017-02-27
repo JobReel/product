@@ -1,13 +1,9 @@
-<% if user_signed_in? %>
-<!-- && !current_page?(controller: 'users' action: 'show') -->
   <footer class="footer-private-view">
     <div class="container-fluid">
       <div class="row row-footer-private">
 
         <div class="footer-logo-box col-2 offset-1">
-          <%= link_to root_path do %>
-            <%= image_tag "logo-new.png", class: "img-responsive" %>
-          <% end %>
+          <%= link_to (image_tag ("logo-new.png"), class: 'nav-image'), root_path %>
           <br /><br />
           © 2017 JobReel, Inc.<br />
           All rights reserved.
@@ -74,12 +70,3 @@
       </div>
     </div>
   </footer>
-<% else %>
-  <footer class="footer-public-view text-center">
-    <div class="container">
-      <span class="public-footer">Show off your online resume at <%= link_to 'jobreel.com', root_path %>. Already have an account? <%= link_to 'Login', root_path %>.</span>
-      <br />
-      <span class="public-footer-copy">COPYRIGHTED 2017 JOBREEL.COM. ALL RIGHTS RESERVED.</span>
-    </div>
-  </footer>
-<% end %>

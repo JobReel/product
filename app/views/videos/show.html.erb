@@ -20,6 +20,8 @@
 </div>
 <!-- End Modal -->
 
+
+
 <div class="container-fluid">
   <div class="row studio-bar">
     <div class="col-6 offset-1 studio-top">
@@ -159,9 +161,9 @@
     <div class="card-block studio-blend nopadding">
       <!-- <%= image_tag 'video-player-lg.png' %> -->
       <% if current_user.video.present? %>
-      <%= cl_video_tag(@timeline_preview.public_id, controls: true, quality: 50, version: @timeline_preview.stored_version) %>
-        <% else %>
+        <%= cl_video_tag(@intro_video.private_id, controls: true, transformation: @overlays) %>
       <% end %>
+
 
 </div>
 </div>
@@ -171,12 +173,11 @@
   </div>
   <div class="card-block white timeline-instructions">
     <h3>From the left column where you've uploaded your videos, drag the ones you'd like to show viewers in the space provided below in the order you'd like them to appear.</h3>
+    <div class="col-12">Dropdown here </div>
   </div>
   <div class="card-block white timeline-workspace">
     <div class="row justify-content-around">
-  <%= image_tag 'empty-frame.png' %>&nbsp
-  <%= image_tag 'empty-frame.png' %>&nbsp
-  <%= image_tag 'empty-frame.png' %>&nbsp
+
 </div>
 </div>
 </div>
