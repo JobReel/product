@@ -8,7 +8,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= render "layouts/navbar" %>
+    <% if current_page?(controller: 'users', action: 'show', id: current_user.id) %>
+      <% else %>
+      <%= render "layouts/navbar" %>
+    <% end %>
     <% if notice.present? %>
       <p class="alert alert-info"><%= notice %></p>
     <% end %>
@@ -16,6 +19,9 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
     <%= yield %>
+    <% if current_page?(controller: 'users', action: 'show', id: current_user.id) %>
+    <% else %>
     <%= render "layouts/footer" %>
+    <% end %>
   </body>
 </html>
