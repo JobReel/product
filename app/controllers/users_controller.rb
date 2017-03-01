@@ -21,14 +21,6 @@ class UsersController < ApplicationController
 
 private
 
-  def logged_in
-    if user_signed_in?
-      render :layout => 'user-loggedin'
-    else
-      render :layout => 'public_view'
-    end
-  end
-
   def user_params
     params.require(:user).permit(:first_name, :last_name, :title, :city, :state, :bio, :degree_type, :degree_field, :image, :video)
   end
