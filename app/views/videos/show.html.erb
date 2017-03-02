@@ -1,3 +1,32 @@
+<!-- Video Selection Modal -->
+<script>
+  function selectVideo(element){
+    alert('Hello World'+element.childNodes[0].alt)
+
+    // extract .alt text (maybe also version) into variable, use jquery to get dom element of add new video to timeline, manipulate DOM element
+    
+  }
+</script>
+<div class="modal fade bd-example-modal-lg" id="selectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Select a Video to Add</h4>
+      </div>
+      <div class="modal-body">
+        <% if @intro_videos.present? %>
+        <% @intro_videos.each do |disp| %>
+          <a href="#" onclick="selectVideo(this)"><%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %></a>
+          <% end %>
+        <% else %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+
 <!-- Video Edit Modal -->
 <div class="modal fade bd-example-modal-sm" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-sm" role="document">
@@ -177,7 +206,7 @@
   </div>
   <div class="card-block white timeline-instructions">
     <h3>From the left column where you've uploaded your videos, drag the ones you'd like to show viewers in the space provided below in the order you'd like them to appear.</h3>
-    <div class="col-12">Dropdown here </div>
+    <div class="col-12"><%= image_tag 'empty-frame.png', data: {toggle: 'modal', target: '#selectModal'}%></div>
   </div>
   <div class="card-block white timeline-workspace">
     <div class="row justify-content-around">
@@ -187,29 +216,24 @@
 </div>
 
 </div>
+
+
+
 <script>
 $(document).ready(function(){
     $("#intro_collapse").click(function(){
         $("#intro_hidden").toggle(400);
     });
-});
-$(document).ready(function(){
     $("#edu_collapse").click(function(){
         $("#edu_hidden").toggle(400);
         //$("#edu_icon").attr('src', '/assets/edu-icon-active.png');
     });
-});
-$(document).ready(function(){
     $("#work_collapse").click(function(){
         $("#work_hidden").toggle(400);
     });
-});
-$(document).ready(function(){
     $("#hobby_collapse").click(function(){
         $("#hobby_hidden").toggle(400);
     });
-});
-$(document).ready(function(){
     $("#rec_collapse").click(function(){
         $("#rec_hidden").toggle(400);
     });
