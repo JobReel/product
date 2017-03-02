@@ -1,12 +1,18 @@
 <!-- Video Selection Modal -->
 <script>
   function selectVideo(element){
-    alert('Hello World'+element.childNodes[0].alt)
+    var publicID = element.childNodes[0].alt;
+    var posterSrc = element.childNodes[0].src;
+
+    $('#insertion-point').prepend('<img src="'+posterSrc+'" width = "188" height = "104"></img>')
+    $('#selectModal').modal('hide');
+    event.preventDefault();
 
     // extract .alt text (maybe also version) into variable, use jquery to get dom element of add new video to timeline, manipulate DOM element
-    
+
   }
 </script>
+
 <div class="modal fade bd-example-modal-lg" id="selectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content modal-lg">
@@ -206,10 +212,11 @@
   </div>
   <div class="card-block white timeline-instructions">
     <h3>From the left column where you've uploaded your videos, drag the ones you'd like to show viewers in the space provided below in the order you'd like them to appear.</h3>
-    <div class="col-12"><%= image_tag 'empty-frame.png', data: {toggle: 'modal', target: '#selectModal'}%></div>
+
   </div>
   <div class="card-block white timeline-workspace">
     <div class="row justify-content-around">
+          <div class="col-12" id="insertion-point"><%= image_tag 'empty-frame.png', data: {toggle: 'modal', target: '#selectModal'}%></div>
 
 </div>
 </div>
