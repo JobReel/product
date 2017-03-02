@@ -1,3 +1,32 @@
+<!-- Video Selection Modal -->
+<script>
+  function selectVideo(element){
+    alert('Hello World'+element.childNodes[0].alt)
+
+    // extract .alt text (maybe also version) into variable, use jquery to get dom element of add new video to timeline, manipulate DOM element
+    
+  }
+</script>
+<div class="modal fade bd-example-modal-lg" id="selectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Select a Video to Add</h4>
+      </div>
+      <div class="modal-body">
+        <% if @intro_videos.present? %>
+        <% @intro_videos.each do |disp| %>
+          <a href="#" onclick="selectVideo(this)"><%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %></a>
+          <% end %>
+        <% else %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+
 <!-- Video Edit Modal -->
 <div class="modal fade bd-example-modal-sm" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-sm" role="document">
@@ -56,11 +85,11 @@
     <%= image_tag 'intro-icon-lg.png' %>
   </div>
   <div class="col-9 vert-align padded7">
-    Introduction
-</div>
+    <span id = "intro_collapse">Introduction</span>
+  </div>
 
   <br /><br />
-  <div class="col-10 offset-1 poster-display">
+  <div id = "intro_hidden" class="col-10 offset-1 poster-display">
     <% if @intro_videos.present? %>
     <% @intro_videos.each do |disp| %>
       <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
@@ -75,12 +104,13 @@
   <hr>
   <div class="row vid-library-body">
     <div class="col-2 nopadding text-center">
-    <%= image_tag 'education-icon-lg.png' %>
+    <%= image_tag 'education-icon-lg.png', id:"edu_icon" %>
   </div>
-  <div class="col-9 vert-align padded7">Education
+  <div class="col-9 vert-align padded7">
+    <span id = "edu_collapse">Education</span>
 </div>
   <br /><br />
-  <div class="col-10 offset-1 poster-display">
+  <div id ="edu_hidden" class="col-10 offset-1 poster-display" style="display: none;">
     <% if @education_videos.present? %>
     <% @education_videos.each do |disp| %>
       <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
@@ -97,10 +127,11 @@
     <div class="col-2 nopadding text-center">
     <%= image_tag 'work-icon-lg.png' %>
   </div>
-  <div class="col-9 vert-align padded7">Work Experience
+  <div class="col-9 vert-align padded7">
+    <span id="work_collapse">Work Experience</span>
 </div>
   <br /><br />
-  <div class="col-10 offset-1 poster-display">
+  <div id="work_hidden" class="col-10 offset-1 poster-display" style="display: none;">
     <% if @work_videos.present? %>
     <% @work_videos.each do |disp| %>
       <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
@@ -117,10 +148,11 @@
     <div class="col-2 nopadding text-center">
     <%= image_tag 'hobbies-icon-lg.png' %>
   </div>
-  <div class="col-9 vert-align padded7">Hobbies
+  <div class="col-9 vert-align padded7">
+    <span id="hobby_collapse">Hobbies</span>
 </div>
   <br /><br />
-  <div class="col-10 offset-1 poster-display">
+  <div id="hobby_hidden" class="col-10 offset-1 poster-display" style="display: none;">
     <% if @hobby_videos.present? %>
     <% @hobby_videos.each do |disp| %>
       <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
@@ -137,10 +169,11 @@
     <div class="col-2 nopadding text-center">
     <%= image_tag 'recs-icon-lg.png' %>
   </div>
-  <div class="col-9 vert-align padded7">Recommendations
+  <div class="col-9 vert-align padded7">
+    <span id="rec_collapse">Recommendations</span>
 </div>
   <br /><br />
-  <div class="col-10 offset-1 poster-display">
+  <div id = "rec_hidden" class="col-10 offset-1 poster-display" style="display: none;">
     <% if @rec_videos.present? %>
     <% @rec_videos.each do |disp| %>
       <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
@@ -161,7 +194,7 @@
     <div class="card-block studio-blend nopadding">
       <!-- <%= image_tag 'video-player-lg.png' %> -->
       <% if current_user.video.present? %>
-        <%= cl_video_tag(@intro_video.private_id, controls: true, transformation: @overlays) %>
+        <%= cl_video_tag(@intro_videos.first.private_id, controls: true, transformation: @overlays) %>
       <% end %>
 
 
@@ -173,7 +206,7 @@
   </div>
   <div class="card-block white timeline-instructions">
     <h3>From the left column where you've uploaded your videos, drag the ones you'd like to show viewers in the space provided below in the order you'd like them to appear.</h3>
-    <div class="col-12">Dropdown here </div>
+    <div class="col-12"><%= image_tag 'empty-frame.png', data: {toggle: 'modal', target: '#selectModal'}%></div>
   </div>
   <div class="card-block white timeline-workspace">
     <div class="row justify-content-around">
@@ -183,3 +216,26 @@
 </div>
 
 </div>
+
+
+
+<script>
+$(document).ready(function(){
+    $("#intro_collapse").click(function(){
+        $("#intro_hidden").toggle(400);
+    });
+    $("#edu_collapse").click(function(){
+        $("#edu_hidden").toggle(400);
+        //$("#edu_icon").attr('src', '/assets/edu-icon-active.png');
+    });
+    $("#work_collapse").click(function(){
+        $("#work_hidden").toggle(400);
+    });
+    $("#hobby_collapse").click(function(){
+        $("#hobby_hidden").toggle(400);
+    });
+    $("#rec_collapse").click(function(){
+        $("#rec_hidden").toggle(400);
+    });
+});
+</script>

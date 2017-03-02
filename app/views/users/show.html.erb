@@ -110,7 +110,7 @@
 
 <div class="container-fluid-profile">
     <div class="row">
-    <div class="card w-33">
+    <div class="card w-35">
       <div class="video-box">
         <% if @user.video.present? %>
           <%= cl_video_tag(@user.video.public_id, controls: true, quality: 50, version: @user.video.stored_version) %>
@@ -157,7 +157,7 @@
   </div> <!-- End card -->
 
 
-    <div class="card w-66">
+    <div class="card w-65">
 
       <div class="social">
         <div class="row justify-content-between">
@@ -173,7 +173,7 @@
       <div class="card-block whiten">
           <div class='booyah-box work-history'>
             <div class ="row justify-content-between">
-              <div><h1><%= image_tag 'briefcase.png' %>&nbsp Work History</h1></div>
+              <div><i class="fa fa-briefcase" aria-hidden="true"></i><h1>Work History</h1></div>
               <div>
                 <% if @user.work_histories.present? %>
                   <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
@@ -202,11 +202,3 @@
   </div> <!-- End card -->
 </div> <!-- End row wrapper -->
 </div><!-- End container wrapper -->
-
-<footer class="footer-public-view text-center">
-  <div class="container">
-    <span class="public-footer">Show off your online resume at <%= link_to 'jobreel.com', root_path %>. Already have an account? <%= link_to 'Login', root_path %>.</span>
-    <br />
-    <span class="public-footer-copy">COPYRIGHTED 2017 JOBREEL.COM. ALL RIGHTS RESERVED.</span>
-  </div>
-</footer>

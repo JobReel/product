@@ -57,7 +57,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 # Enable simple_form for web forms
 gem 'simple_form'
 # Enable integrated icons
-gem 'font-awesome-rails'
+gem 'font-awesome-sass'
 # Enable devise user-authentication
 gem 'devise'
 # image upload w/ activerecord
