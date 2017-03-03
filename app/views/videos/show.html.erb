@@ -202,9 +202,7 @@
       <% if current_user.video.present? %>
         <%= cl_video_tag(@intro_videos.first.private_id, controls: true, transformation: @overlays) %>
       <% end %>
-
-
-</div>
+    </div>
 </div>
 <div class="card studio-timeline padded5">
   <div class="card-block white vert-align timeline-bot-bar">
@@ -216,10 +214,11 @@
   </div>
   <div class="card-block white timeline-workspace">
     <div class="row justify-content-around">
-          <div class="col-12" id="insertion-point"><%= image_tag 'empty-frame.png', data: {toggle: 'modal', target: '#selectModal'}%></div>
-
-</div>
-</div>
+          <div class="col-12" id="insertion-point">
+            <%= image_tag 'empty-frame.png', data: {toggle: 'modal', target: '#selectModal'}%>
+          </div>
+    </div>
+  </div>
 </div>
 
 </div>
