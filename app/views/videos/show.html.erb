@@ -55,8 +55,6 @@
 </div>
 <!-- End Modal -->
 
-
-
 <div class="container-fluid">
   <div class="row studio-bar">
     <div class="col-6 offset-1 studio-top">
@@ -213,9 +211,19 @@
 
   </div>
   <div class="card-block white timeline-workspace">
-    <div class="row justify-content-around">
-          <div class="col-12" id="insertion-point">
+    <div class="row">
+          <div class="col-4 text-center">
             <%= image_tag 'empty-frame.png', data: {toggle: 'modal', target: '#selectModal'}%>
+          </div>
+          <div class="col-8 no-pad-left">
+            <div class="slider">
+              <div class="scroll-left" id ="left1">&lt;
+              </div>
+              <div class="scroll-right" id="right1">&gt;
+              </div>
+              <div class="track" id="insertion-point">
+              </div>
+            </div>
           </div>
     </div>
   </div>
@@ -223,7 +231,18 @@
 
 </div>
 
+<script>
+setInterval(function() {
+    var left1 = parseInt($('#insertion-point').css('left'));
 
+    if ($('#left1').is(":hover")) {
+        $('#insertion-point').css('left', left1+2);
+    }
+    else if ($('#right1').is(":hover")) {
+        $('#insertion-point').css('left', left1-2);
+    }
+}, 10);
+</script>
 
 <script>
 $(document).ready(function(){

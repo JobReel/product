@@ -46,6 +46,64 @@ $sizes: (
 
 }
 
+.slider {
+    position: relative;
+
+    background-color: #FFFFFF;
+    height: 120px;
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+}
+
+.track {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    width: auto;
+    overflow-y: hidden;
+}
+
+.track img {
+  float: left;
+  margin: 0;
+  margin-right: 10px;
+  padding: 0;
+  border: 0;
+
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s;
+}
+
+.track img:hover {
+  opacity: 0.5;
+}
+
+.scroll-left, .scroll-right {
+    position: absolute;
+    color: #BBB;
+    font-size: 48px;
+    top: 30px;
+
+    cursor: pointer;
+    z-index: 1;
+}
+.scroll-left {
+    left: 0;
+}
+.scroll-right {
+    right: 0;
+}
+
 .vid-library-body-first img {
   cursor: pointer;
   cursor: hand;
@@ -300,6 +358,14 @@ p {
 
 .nopadding {
   padding: 0px;
+}
+
+.no-pad-left {
+  padding-left: 0px;
+}
+
+.no-pad-right {
+  padding-right: 0px;
 }
 
 .public-footer {
