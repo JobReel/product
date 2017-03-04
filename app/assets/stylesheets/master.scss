@@ -914,7 +914,30 @@ video {
    overflow: hidden;
  }
 
- .timeline-bar>.fill {
-     background-color: #229AD6 ;
-     width: 4px;
+.timeline-bar>.fill {
+   background-color: #229AD6 ;
+   width: 4px;
+ }
+
+ .add-button {
+   background-color: #4795fb;
+   border: none;
+   color: white;
+   padding: 18px 20px;
+   text-align: center;
+   text-decoration: none;
+   display: flex;
+   font-size: 12px;
+   font-weight: 400;
+   border-radius: 4px;
+   font-family: 'Montserrat', sans-serif;
+   text-transform: uppercase;
+   -webkit-transition-duration: 0.4s; /* Safari */
+   transition-duration: 0.4s;
+   cursor: pointer;
+ }
+
+ .add-button:hover {
+     background-color: #579df9;
+     color: #FFFFFF;
  }

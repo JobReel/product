@@ -2,6 +2,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
+    if @user.nil?
+      @user = User.new
+    else
+    end
+
+
     @work_histories = WorkHistory.find(params[:id])
   end
 
