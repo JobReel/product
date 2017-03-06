@@ -1,6 +1,4 @@
-<% if current_page?(controller: 'users', action: 'show', id: current_user.id) %>
-
-<% else %>
+<!-- Show on all pages except user profile -->
   <nav class="navbar navbar-toggleable-md">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,4 +34,3 @@
       </ul>
     </div>
   </nav>
-<% end %>
