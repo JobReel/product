@@ -1,4 +1,4 @@
-<% if current_page?(controller: 'users', action: 'show', id: current_user.id) %>
+<!-- Profile page footer -->
   <footer class="footer-public-view text-center">
     <div class="container">
       <span class="public-footer">Show off your online resume at <%= link_to 'jobreel.com', root_path %>. Already have an account? <%= link_to 'Login', root_path %>.</span>
@@ -6,7 +6,8 @@
       <span class="public-footer-copy">COPYRIGHTED 2017 JOBREEL.COM. ALL RIGHTS RESERVED.</span>
     </div>
   </footer>
-<% else %>
+
+  <!-- Universal page footer -->
   <footer class="footer-private-view">
     <div class="container-fluid">
       <div class="row row-footer-private">
@@ -79,4 +80,3 @@
       </div>
     </div>
   </footer>
-<% end %>
