@@ -1,0 +1,2 @@
+class JobreelsController < ApplicationController
+end
