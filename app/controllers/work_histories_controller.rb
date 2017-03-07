@@ -25,6 +25,12 @@ class WorkHistoriesController < ApplicationController
     end
   end
 
+  def destroy
+    @work_histories = WorkHistory.find(params[:id])
+    @work_histories.destroy
+    redirect_to user_path(current_user.id)
+  end
+
   private
 
   def work_history_params

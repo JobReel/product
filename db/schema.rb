@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219191637) do
+ActiveRecord::Schema.define(version: 20170306223608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,12 +60,12 @@ ActiveRecord::Schema.define(version: 20170219191637) do
   end
 
   create_table "work_histories", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "job_title"
-    t.string   "company_name"
-    t.datetime "job_end_date"
-    t.text     "job_description"
-    t.datetime "job_start_date"
+    t.integer "user_id"
+    t.string  "job_title"
+    t.string  "company_name"
+    t.date    "job_end_date"
+    t.text    "job_description"
+    t.date    "job_start_date"
     t.index ["company_name"], name: "index_work_histories_on_company_name", using: :btree
     t.index ["job_title"], name: "index_work_histories_on_job_title", using: :btree
   end

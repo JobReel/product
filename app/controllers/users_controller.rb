@@ -6,9 +6,6 @@ class UsersController < ApplicationController
       @user = User.new
     else
     end
-
-
-    @work_histories = WorkHistory.find(params[:id])
   end
 
   def edit
