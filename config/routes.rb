@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :work_histories
   resources :videos
   resources :jobs
+  resources :jobreels
 end

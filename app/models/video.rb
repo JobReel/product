@@ -4,8 +4,7 @@ class Video < ApplicationRecord
   belongs_to :job
   belongs_to :work_history
   belongs_to :jobreel
-  
-  belongs_to :viewable, polymorphic: true
+
 
 
 end

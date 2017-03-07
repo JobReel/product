@@ -1,6 +1,6 @@
 class WorkHistory < ActiveRecord::Base
   belongs_to :user
-  has_many :videos, as: :viewable
+  has_many :videos
 
   validates :job_title, presence: true
   validates :company_name, presence: true
