@@ -1,0 +1,40 @@
+<!-- Work History Edit Modal -->
+<div class="modal fade bd-example-modal-lg" id="whModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Job Info</h4>
+      </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+          <%= simple_form_for @test do |f| %>
+          <div class="row padded">
+            <div class="col-5">
+            <%= f.input :company_name %>
+          </div>
+            <div class="col-1">&nbsp</div>
+            <div class="col-5">
+            <%= f.input :job_title %>
+          </div>
+          </div>
+            <div class="row padded">
+              <div class="col-5">
+              <%= f.input :job_start_date %>
+              </div>
+              <div class="col-1">&nbsp</div>
+              <div class="col-5">
+              <%= f.input :job_end_date %>
+              </div>
+          </div>
+          <div class="col-12">
+            <%= f.input :job_description, :input_html => {:rows => 4} %>
+          </div>
+            <br />
+            <%= f.submit 'Update', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,10 @@
-<div class="booyah-box col-10 offset-1">
+<div class="booyah-box col-6 offset-3">
   <h1>Edit Your User Information</h1>
   <%= simple_form_for @work_histories do |f| %>
     <%= f.input :company_name %>
     <%= f.input :job_title %>
-    <%= f.input :job_start_date %>
-    <%= f.input :job_end_date %>
+    <%= f.input :job_start_date, as: :date, html5: true %>
+    <%= f.input :job_end_date, as: :date, html5: true %>
     <%= f.input :job_description %>
     <br />
     <%= f.submit 'Edit', class: 'btn btn-primary' %>
