@@ -4,6 +4,8 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   has_many :work_histories
   has_many :videos
+  has_many :educations
+  has_many :recommendations
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

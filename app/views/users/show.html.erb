@@ -131,6 +131,26 @@
              </div>
            </div>
           <div class='booyah-box work-history'>
+
+            <div class ="row">
+              <i class="fa fa-university" aria-hidden="true"></i><h1>Education</h1>&nbsp<%= link_to '<i class="fa fa-plus-circle" aria-hidden="true"></i>'.html_safe, new_education_path(@user) %>
+            </div>
+        <br />
+        <% @user.educations.order(:college_start_date).each do |education| %>
+        <div class="row justify-content-between padded2">
+          <!-- This edit button should pop open a modal/live edit -->
+          <h2><%= education.college_name %>&nbsp<%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_education_path(education) %>&nbsp<%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, education_path(education), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %></h2>
+          <br \>
+          <div>
+            <h4><%= education.college_start_date.to_date.strftime("%B %Y") %> - <%= education.college_end_date.to_date.strftime("%B %Y") %></h4>
+          </div>
+        </div>
+        <hr width="94%">
+            <h3><p class="padded3"><%= education.college_name.upcase %><%= education.college_major.upcase %></p></h3>
+          <h5><p class="padded4"><%= education.education_description %></p></h5>
+          <br />
+        <% end %>
+
             <div class ="row">
               <i class="fa fa-briefcase" aria-hidden="true"></i><h1>Work History</h1>&nbsp<%= link_to '<i class="fa fa-plus-circle" aria-hidden="true"></i>'.html_safe, new_work_history_path(@user) %>
             </div>
@@ -149,6 +169,23 @@
           <h5><p class="padded4"><%= workhistory.job_description %></p></h5>
           <br />
         <% end %>
+
+        <div class ="row">
+          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i><h1>Recommendations</h1>&nbsp<%= link_to '<i class="fa fa-plus-circle" aria-hidden="true"></i>'.html_safe, new_work_history_path(@user) %>
+        </div>
+    <br />
+    <% @user.work_histories.order(:job_start_date).each do |workhistory| %>
+    <div class="row justify-content-between padded2">
+      <h2><%= workhistory.company_name %>&nbsp<%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_work_history_path(workhistory) %>&nbsp<%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, work_history_path(workhistory), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %></h2>
+      <br \>
+      <div>
+        <h4><%= workhistory.job_start_date.strftime("%B %Y") %> - <%= workhistory.job_end_date.strftime("%B %Y") %></h4>
+      </div>
+    </div>
+      <br />
+    <% end %>
+
+
       </div><!-- End work-history -->
       <br />
 </div> <!-- End card-block -->
