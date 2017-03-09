@@ -65,49 +65,6 @@
   </div>
 </div>
 
-
-<!-- Work History Edit Modal -->
-<div class="modal fade bd-example-modal-lg" id="whModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Edit Job Info</h4>
-      </div>
-        <div class="modal-body">
-          <div class="container-fluid">
-          <%= simple_form_for @work_histories do |f| %>
-          <div class="row padded">
-            <div class="col-5">
-            <%= f.input :company_name %>
-          </div>
-            <div class="col-1">&nbsp</div>
-            <div class="col-5">
-            <%= f.input :job_title %>
-          </div>
-          </div>
-            <div class="row padded">
-              <div class="col-5">
-              <%= f.input :job_start_date %>
-              </div>
-              <div class="col-1">&nbsp</div>
-              <div class="col-5">
-              <%= f.input :job_end_date %>
-              </div>
-          </div>
-          <div class="col-12">
-            <%= f.input :job_description, :input_html => {:rows => 4} %>
-          </div>
-            <br />
-            <%= f.submit 'Update', class: 'btn btn-primary' %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <div class="container-fluid-profile">
     <div class="row">
     <div class="card w-35">
@@ -119,11 +76,8 @@
       </div>
       <div class="card-block">
       <div class='booyah-box user-profile'>
-        <div class ="row blue-box justify-content-between">
-          <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-          <div>
-            <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary', data: {toggle: 'modal', target: '#userModal'} %>
-          </div>
+        <div class ="row blue-box">
+          <h1><%= @user.first_name %> <%= @user.last_name %></h1>&nbsp&nbsp<%= link_to link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_user_path(@user), data: {toggle: 'modal', target: '#userModal'} %>
         </div>
         <div class="row blue-box">
           <h2><%= @user.title %></h2><br />
@@ -177,24 +131,37 @@
              </div>
            </div>
           <div class='booyah-box work-history'>
-            <div class ="row justify-content-between">
-              <div><i class="fa fa-briefcase" aria-hidden="true"></i><h1>Work History</h1></div>
-              <div>
-                <% if @user.work_histories.present? %>
-                  <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
-                <% else %>
-                  <%= link_to 'Add', new_work_history_path(@user), class:'btn btn-primary' %>
-                <% end %>
-              </div>
+
+            <div class ="row">
+              <i class="fa fa-university" aria-hidden="true"></i><h1>Education</h1>&nbsp<%= link_to '<i class="fa fa-plus-circle" aria-hidden="true"></i>'.html_safe, new_education_path(@user) %>
+            </div>
+        <br />
+        <% @user.educations.order(:college_start_date).each do |education| %>
+        <div class="row justify-content-between padded2">
+          <!-- This edit button should pop open a modal/live edit -->
+          <h2><%= education.college_name %>&nbsp<%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_education_path(education) %>&nbsp<%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, education_path(education), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %></h2>
+          <br \>
+          <div>
+            <h4><%= education.college_start_date.to_date.strftime("%B %Y") %> - <%= education.college_end_date.to_date.strftime("%B %Y") %></h4>
+          </div>
+        </div>
+        <hr width="94%">
+            <h3><p class="padded3"><%= education.college_name.upcase %><%= education.college_major.upcase %></p></h3>
+          <h5><p class="padded4"><%= education.education_description %></p></h5>
+          <br />
+        <% end %>
+
+            <div class ="row">
+              <i class="fa fa-briefcase" aria-hidden="true"></i><h1>Work History</h1>&nbsp<%= link_to '<i class="fa fa-plus-circle" aria-hidden="true"></i>'.html_safe, new_work_history_path(@user) %>
             </div>
         <br />
         <% @user.work_histories.order(:job_start_date).each do |workhistory| %>
         <div class="row justify-content-between padded2">
           <!-- This edit button should pop open a modal/live edit -->
-          <h2><%= workhistory.company_name %>&nbsp<%= link_to 'Edit', edit_work_history_path(workhistory), class: 'badge badge-primary' %></h2>
+          <h2><%= workhistory.company_name %>&nbsp<%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_work_history_path(workhistory) %>&nbsp<%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, work_history_path(workhistory), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %></h2>
           <br \>
           <div>
-            <h4><%= workhistory.job_start_date.strftime("%B %d, %Y") %> - <%= workhistory.job_end_date.strftime("%B %d, %Y") %></h4>
+            <h4><%= workhistory.job_start_date.strftime("%B %Y") %> - <%= workhistory.job_end_date.strftime("%B %Y") %></h4>
           </div>
         </div>
         <hr width="94%">
@@ -202,6 +169,30 @@
           <h5><p class="padded4"><%= workhistory.job_description %></p></h5>
           <br />
         <% end %>
+
+        <div class ="row">
+          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i><h1>Recommendations</h1>&nbsp<%= link_to '<i class="fa fa-plus-circle" aria-hidden="true"></i>'.html_safe, new_recommendation_path(@user) %>
+        </div>
+    <br />
+    <% @user.recommendations.order(:time_known).each do |recommendation| %>
+    <div class="row justify-content-between padded2">
+      <div>
+        <h2><%= cl_image_tag(recommendation.profile_image.public_id + ".png", :width=>40, :height=>40, :gravity=>"face", :radius=>"20", :crop=>"thumb") %></h2>
+        <h2><%= recommendation.company_name %>&nbsp<%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_recommendation_path(recommendation) %>&nbsp<%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, recommendation_path(recommendation), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %></h2>
+        <h3><p class="padded3"><%= recommendation.company_title.upcase %></p></h3>
+        <h5><p class="padded4"><%= recommendation.user_relationship %>, <%= recommendation.time_known %></p></h5>
+
+      </div>
+
+      <br \>
+      <div>
+
+      </div>
+    </div>
+      <br />
+    <% end %>
+
+
       </div><!-- End work-history -->
       <br />
 </div> <!-- End card-block -->

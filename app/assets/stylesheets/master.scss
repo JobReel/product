@@ -29,7 +29,7 @@ $sizes: (
     box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.35);
   }
 
-  .work-history .fa {
+  .work-history .fa-briefcase {
     color: #ddd;
     font-size: 20px;
     padding: 6px 4px;
@@ -40,10 +40,43 @@ $sizes: (
     text-align: center;
     position: absolute;
     background-color: #fff;
-    left: 19.5px;
+    left: 19px;
     margin: 0 auto;
   }
 
+  .work-history .fa-university {
+    color: #ddd;
+    font-size: 20px;
+    padding: 4px 4px;
+    width: 34px;
+    height: 34px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    background-color: #fff;
+    left: 19px;
+    margin: 0 auto;
+  }
+
+  .work-history .fa-thumbs-o-up {
+    color: #ddd;
+    font-size: 20px;
+    padding: 4px 4px;
+    width: 34px;
+    height: 34px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    background-color: #fff;
+    left: 19px;
+    margin: 0 auto;
+  }
+}
+
+.fa-pencil-square-o .fa-trash {
+  line-height: inherit;
 }
 
 .slider {
@@ -126,6 +159,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-color: #464646;
+  line-height: 17px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -134,9 +168,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .badges {
-  padding-left: 15%;
-  padding-right: 18%;
-  padding-bottom: 1%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-topc : 10%;
+  padding-bottom: 10%;
 }
 
 .booyah-box {
@@ -319,17 +354,19 @@ p {
 }
 
 .padded2 {
-  padding-left: 7.5%;
+  padding-left: 7%;
+  padding-right: 3%;
 }
 
 .padded3 {
-  padding-left: 6%;
+  padding-left: 5%;
 }
 
 .padded4 {
   padding-top: 1%;
-  padding-left: 6%;
+  padding-left: 5%;
   padding-right: 10%;
+  padding-bottom: 2%;
 }
 
 .padded5 {
@@ -720,23 +757,25 @@ margin: 5px;
 }
 
 .user-profile h1 {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 400;
+  padding-bottom: 2%;
 }
 
 .user-profile h2 {
-  font-size: 20px;
+  font-size: 15px;
   color: #4795fb;
   font-weight: 400;
+  padding-bottom: 3%;
 }
 
 .user-profile h3 {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
 }
 
 .user-profile h4 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   font-variant: small-caps;
   letter-spacing: 1px;
@@ -877,37 +916,38 @@ video {
   font-size: 22px;
   font-weight: 700;
   margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 41.5px;
+  margin-bottom: 0px;
+  margin-left: 40px;
 }
 
 .work-history h2 {
   color: #4795fb;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .work-history h3 {
   color: #3a475c;
   font-variant: small-caps;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 1.5px;
 }
 
 .work-history h4 {
   color: #3A475C;
-  font-size: 13px;
+  font-size: 12px;
+  padding-top: 3%;
 }
 
 .work-history h5 {
   color: #8a9dab;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 20px;
 }
 
 .timeline-bar {
-   width: 4px;
+   width: 3px;
    background-color: #ddd;
    margin: 0 auto;
    position: relative;
@@ -916,7 +956,7 @@ video {
 
 .timeline-bar>.fill {
    background-color: #229AD6 ;
-   width: 4px;
+   width: 3px;
  }
 
  .add-button {

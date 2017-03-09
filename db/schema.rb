@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170309000407) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +49,31 @@ ActiveRecord::Schema.define(version: 20170309000407) do
     t.string   "requirements",    default: [],              array: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+  end
+
+  create_table "educations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "college_name"
+    t.string   "college_major"
+    t.string   "college_end_date"
+    t.string   "college_start_date"
+    t.text     "education_description"
+    t.string   "video_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.boolean  "verified"
+    t.string   "company_name"
+    t.string   "company_title"
+    t.string   "user_relationship"
+    t.string   "time_known"
+    t.string   "video_id"
+    t.string   "profile_image"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,12 +121,12 @@ ActiveRecord::Schema.define(version: 20170309000407) do
   end
 
   create_table "work_histories", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "job_title"
-    t.string   "company_name"
-    t.datetime "job_end_date"
-    t.text     "job_description"
-    t.datetime "job_start_date"
+    t.integer "user_id"
+    t.string  "job_title"
+    t.string  "company_name"
+    t.date    "job_end_date"
+    t.text    "job_description"
+    t.date    "job_start_date"
     t.index ["company_name"], name: "index_work_histories_on_company_name", using: :btree
     t.index ["job_title"], name: "index_work_histories_on_job_title", using: :btree
   end
