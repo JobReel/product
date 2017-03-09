@@ -1,11 +1,11 @@
 <div class="booyah-box col-6 offset-3">
   <h1>Edit Your User Information</h1>
-  <%= simple_form_for @educations do |f| %>
-    <%= f.input :college_name %>
-    <%= f.input :college_major %>
-    <%= f.input :college_start_date, as: :date, html5: true %>
-    <%= f.input :college_end_date, as: :date, html5: true %>
-    <%= f.input :education_description %>
+  <%= simple_form_for @recommendations do |f| %>
+    <%= f.input :company_name %>
+    <%= f.input :company_title %>
+    <%= f.input :time_known %>
+    <%= f.input :user_relationship %>
+    <%= f.input :profile_image %>
     <br />
     <%= f.submit 'Edit', class: 'btn btn-primary' %>
   <% end %>
