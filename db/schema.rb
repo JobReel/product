@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308002219) do
+
+ActiveRecord::Schema.define(version: 20170309000407) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "jobreels", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "overall_rating"
+    t.integer  "competency_ratings", default: [],              array: true
+    t.string   "video_list",         default: [],              array: true
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "job_id"
+    t.string   "section1_title"
+    t.string   "section2_title"
+    t.string   "section3_title"
+    t.string   "section4_title"
+    t.string   "section5_title"
+    t.string   "section1_videos"
+    t.string   "section2_videos"
+    t.string   "section3_videos"
+    t.string   "section4_videos"
+    t.string   "section5_videos"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "overall_rating"
+    t.string   "company_name"
+    t.string   "logo"
+    t.string   "job_title"
+    t.string   "city"
+    t.string   "state"
+    t.text     "job_description"
+    t.string   "requirements",    default: [],              array: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "educations", force: :cascade do |t|
     t.integer  "user_id"

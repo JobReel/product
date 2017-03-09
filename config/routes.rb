@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :educations
   resources :recommendations
   resources :videos
+  resources :jobs
+  resources :jobreels
 end

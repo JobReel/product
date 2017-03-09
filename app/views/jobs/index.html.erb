@@ -1,0 +1,13 @@
+<div class="booyah-box col-10 offset-1">
+  <%= link_to 'Create New Job', new_job_path, class:'btn btn-primary' %>
+
+  <% @jobs.each do |job| %>
+    <div>
+      <h1><%= link_to job.job_title, job_path(job) %></h1><br />
+      <i><%= job.city %>, <%= job.state %></i><br />
+    </div>
+
+    <hr />
+  <% end %>
+
+</div>

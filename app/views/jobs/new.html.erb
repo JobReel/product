@@ -1,0 +1,13 @@
+<div class="booyah-box col-10 offset-1">
+  <h1>Enter New Job Posting Information</h1>
+  <%= simple_form_for @job do |f| %>
+    <%= f.input :job_title %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :job_description %>
+    <br />
+    <br />
+    <!-- This button should also create a new jobreel -->
+    <%= f.submit 'Create', class: 'btn btn-primary' %>
+  <% end %>
+</div>

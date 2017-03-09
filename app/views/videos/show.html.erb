@@ -1,8 +1,10 @@
 <!-- Video Selection Modal -->
 <script>
+  var selectedVideos = []
   function selectVideo(element){
     var publicID = element.childNodes[0].alt;
     var posterSrc = element.childNodes[0].src;
+    selectedVideos.push(publicID);
 
     $('#insertion-point').prepend('<img src="'+posterSrc+'" width = "188" height = "104"></img>')
     $('#selectModal').modal('hide');
@@ -76,6 +78,9 @@
 <div class="row nopadding">
   <div class="col-10 vid-library-top">
     PROFILE JOBREEL
+    <!-- <% @jobreels.each do |list| %>
+    <%= list.job.job_title %>
+    <% end %> -->
   </div>
   <div class="col-2 text-center side-border">
     +
@@ -205,7 +210,10 @@
 <div class="card studio-timeline padded5">
   <div class="card-block white timeline-bot-bar">
     <div class="row justify-content-between">
-    <h1>Introduction</h1> <button class="add-button">Preview</button>
+    <h1 class="vert-align">Introduction</h1>
+    <button class="add-button">Preview</button>
+    <!-- This needs to update the current jobreel with the selectedVideos as params -->
+    <%= link_to 'Save', new_jobreel_path, class: "add-button" %>
   </div>
   </div>
   <div class="card-block white timeline-instructions">

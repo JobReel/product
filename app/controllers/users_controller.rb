@@ -24,6 +24,11 @@ class UsersController < ApplicationController
 
 private
 
+def generate_code(number)
+  charset = Array('A'..'Z') + Array('a'..'z')
+  Array.new(number) { charset.sample }.join
+end
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :title, :city, :state, :bio, :degree_type, :degree_field, :image, :video)
   end
