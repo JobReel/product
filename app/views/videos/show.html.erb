@@ -3,6 +3,7 @@
   var selectedVideos = []
   function selectVideo(element){
     var publicID = element.childNodes[0].alt;
+    var versionID = element.childNodes[0].src;
     var posterSrc = element.childNodes[0].src;
     selectedVideos.push(publicID);
 
@@ -31,7 +32,7 @@
   $.ajax({
   type: "PATCH",
   url: "<%= jobreel_path(@jobreel) %>.json",
-  data: selectedVideos,
+  data: { section1_videos: selectedVideos },
   success: success,
     });
   }
