@@ -2,6 +2,11 @@ class JobreelsController < ApplicationController
   before_action :set_jobreels, only: [:update]
   respond_to :html, :js
 
+  def index
+    render json: Jobreel.all
+  end
+
+
   def create
     @new_jobreel = Jobreel.new
   end
