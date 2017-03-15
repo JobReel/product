@@ -101,9 +101,16 @@
     <div class="card-block"> <!--Library Navigation Block-->
 <div class="row nopadding">
   <div class="col-10 vid-library-top">
-    PROFILE JOBREEL
+    <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Current Jobreel - Job.title</button>
+      <div id="myDropdown" class="dropdown-content">
+        <span id="#jobreel-id-1">User Jobreel 2</span>
+        <span id="#jobreel-id-2">User Jobreel 3</span>
+        <span id="#jobreel-id-3">User Jobreel 4</span>
+      </div>
+    </div>
   </div>
-  <div class="col-2 text-center side-border">
+  <div class="col-2 text-center vert-align side-border">
     +
   </div>
 </div>
@@ -261,6 +268,29 @@
 </div>
 
 </div>
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 
 <script>
 setInterval(function() {
