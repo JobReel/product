@@ -18,9 +18,10 @@
     });
   });
 </script>
+
 <!-- Video Selection Modal -->
 <script>
-  var selectedVideos = []
+  var selectedVideos = [];
   function selectVideo(element){
     var publicID = element.childNodes[0].alt;
     var versionID = element.childNodes[0].src;
@@ -31,8 +32,6 @@
     $('#selectModal').modal('hide');
     event.preventDefault();
 
-    // extract .alt text (maybe also version) into variable, use jquery to get dom element of add new video to timeline, manipulate DOM element
-
   }
 </script>
 
@@ -40,10 +39,6 @@
   function success(){
     alert('Success');
   }
-
-// associate data sending back with Ajax request with some field name --use a hash
-// get variable data through byebug
-// save data into section1_videos field
 // how should server respond to request lookup how rails responds to different format requests.
 // build hash-block responds-to, either it worked or didn't work
 
@@ -56,13 +51,8 @@
       }
     });
   }
-  // $.ajax({
-  // type: "PATCH",
-  // url: "<%= jobreel_path(@jobreel) %>.json",
-  // data: { section1_videos: selectedVideos },
-  // success: success,
-  //   });
-  // }
+
+  // figure out success handler to update the various DOM elemments
 
 </script>
 
