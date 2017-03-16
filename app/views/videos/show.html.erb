@@ -1,3 +1,23 @@
+<script>
+  $(function() {
+    $.get("/jobreels").success( function( data ) {
+      var htmlString = "";
+      $.each(data, function(index,  jobreel) {
+        console.log(jobreel);
+        var liElement = '<span id="jobreel-id-' +
+        jobreel.id +
+        '">Jobreel: ' +
+        jobreel.job_title +
+        '</span>';
+        htmlString += liElement;
+        console.log(htmlString);
+      });
+      var ulJobreels = $('.dropdown-content');
+      ulJobreels.html(htmlString);
+
+    });
+  });
+</script>
 <!-- Video Selection Modal -->
 <script>
   var selectedVideos = []
@@ -28,14 +48,21 @@
 // build hash-block responds-to, either it worked or didn't work
 
   function pushVideos(){
-
-  $.ajax({
-  type: "PATCH",
-  url: "<%= jobreel_path(@jobreel) %>.json",
-  data: { section1_videos: selectedVideos },
-  success: success,
+    alert('pushing next');
+    $.post("/jobreels/" + <%= @jobreel.id %>, {
+      _method: "PATCH",
+      jobreel: {
+        section1_videos: selectedVideos
+      }
     });
   }
+  // $.ajax({
+  // type: "PATCH",
+  // url: "<%= jobreel_path(@jobreel) %>.json",
+  // data: { section1_videos: selectedVideos },
+  // success: success,
+  //   });
+  // }
 
 </script>
 
@@ -104,9 +131,6 @@
     <div class="dropdown">
     <button onclick="myFunction()" class="dropbtn">Current Jobreel - Job.title</button>
       <div id="myDropdown" class="dropdown-content">
-        <span id="#jobreel-id-1">User Jobreel 2</span>
-        <span id="#jobreel-id-2">User Jobreel 3</span>
-        <span id="#jobreel-id-3">User Jobreel 4</span>
       </div>
     </div>
   </div>
@@ -324,8 +348,8 @@ $(document).ready(function(){
         $("#rec_hidden").toggle(400);
     });
     $('#push-button').click(function (event) {
-    pushVideos();
-    event.preventDefault();
+        pushVideos();
+        event.preventDefault();
     });
 });
 </script>

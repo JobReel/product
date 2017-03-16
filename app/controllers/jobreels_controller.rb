@@ -3,7 +3,8 @@ class JobreelsController < ApplicationController
   respond_to :html, :js
 
   def index
-    render json: Jobreel.all
+
+    render json: Jobreel.where(user_id: current_user.id)
   end
 
 
@@ -16,9 +17,12 @@ class JobreelsController < ApplicationController
   end
 
   def update
-    @jobreel = Jobreel.find(params[:id])
     byebug
+    # @jobreel = Jobreel.find(params[:id])
+    # @jobreel.update_attributes(jobreel_params)
+    @jobreel = Jobreel.find(params[:id])
     @jobreel.update_attributes(jobreel_params)
+    render json: @jobreel
   end
 
   def destroy
@@ -32,7 +36,7 @@ class JobreelsController < ApplicationController
   end
 
   def jobreel_params
-    params.require(:jobreel).permit(:user_id, :section1_videos, :section2_videos, :section3_videos, :section4_videos, :section5_videos)
+    params.require(:jobreel).permit(:user_id, {:section1_videos=>[]}, :section2_videos, :section3_videos, :section4_videos, :section5_videos)
   end
 
 end
