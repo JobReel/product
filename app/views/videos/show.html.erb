@@ -21,6 +21,7 @@
 </script>
 
 <script>
+// This grabs the public IDs of the selected videos and inserts the posters into the workspace
   var selectedVideos = [];
   function selectVideo(element){
     var publicID = element.childNodes[0].alt;
@@ -35,6 +36,7 @@
 </script>
 
 <script>
+// This should update the current jobreel with the selectedVideos for the appropriate section
   function pushVideos(){
     alert('pushing next');
     $.post("/jobreels/" + <%= @jobreel.id %>, {
@@ -299,6 +301,7 @@ window.onclick = function(event) {
 </script>
 
 <script>
+// This controls the netflix-style scrolling div
 setInterval(function() {
     var left1 = parseInt($('#insertion-point').css('left'));
 
@@ -312,6 +315,7 @@ setInterval(function() {
 </script>
 
 <script>
+// This controls the collapsing sections and the click handler for the push-button to update public IDs with selected videos
 $(document).ready(function(){
     $("#intro_collapse").click(function(){
         $("#intro_hidden").toggle(400);
