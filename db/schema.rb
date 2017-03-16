@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20170309000407) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "educations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "college_name"
+    t.string   "college_major"
+    t.string   "college_end_date"
+    t.string   "college_start_date"
+    t.text     "education_description"
+    t.string   "video_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "jobreels", force: :cascade do |t|
     t.integer  "user_id"
@@ -49,18 +59,6 @@ ActiveRecord::Schema.define(version: 20170309000407) do
     t.string   "requirements",    default: [],              array: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-  end
-
-  create_table "educations", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "college_name"
-    t.string   "college_major"
-    t.string   "college_end_date"
-    t.string   "college_start_date"
-    t.text     "education_description"
-    t.string   "video_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
   end
 
   create_table "recommendations", force: :cascade do |t|

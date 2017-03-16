@@ -1,20 +1,55 @@
-<!-- Video Selection Modal -->
 <script>
-  var selectedVideos = []
+// Builds the drop-down of Jobreels for that user.
+// This should also set the active jobreel to whichever is selected. Default profile?
+  $(function() {
+    $.get("/jobreels").success( function( data ) {
+      var htmlString = "";
+      $.each(data, function(index,  jobreel) {
+        console.log(jobreel);
+        var liElement = '<span id="jobreel-id-' +
+        jobreel.id +
+        '">Jobreel: ' +
+        jobreel.job_title +
+        '</span>';
+        htmlString += liElement;
+        console.log(htmlString);
+      });
+      var ulJobreels = $('.dropdown-content');
+      ulJobreels.html(htmlString);
+    });
+  });
+</script>
+
+<script>
+// This grabs the public IDs of the selected videos and inserts the posters into the workspace
+  var selectedVideos = [];
   function selectVideo(element){
     var publicID = element.childNodes[0].alt;
+    var versionID = element.childNodes[0].src;
     var posterSrc = element.childNodes[0].src;
     selectedVideos.push(publicID);
 
     $('#insertion-point').prepend('<img src="'+posterSrc+'" width = "188" height = "104"></img>')
     $('#selectModal').modal('hide');
     event.preventDefault();
-
-    // extract .alt text (maybe also version) into variable, use jquery to get dom element of add new video to timeline, manipulate DOM element
-
   }
 </script>
 
+<script>
+// This should update the current jobreel with the selectedVideos for the appropriate section
+  function pushVideos(){
+    alert('pushing next');
+    $.post("/jobreels/" + <%= @jobreel.id %>, {
+      _method: "PATCH",
+      jobreel: {
+        section1_videos: selectedVideos
+      }
+    });
+  }
+  // figure out success handler to update the various DOM elements
+</script>
+
+<!-- Video Selection Modal -->
 <div class="modal fade bd-example-modal-lg" id="selectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content modal-lg">
@@ -77,12 +112,13 @@
     <div class="card-block"> <!--Library Navigation Block-->
 <div class="row nopadding">
   <div class="col-10 vid-library-top">
-    PROFILE JOBREEL
-    <!-- <% @jobreels.each do |list| %>
-    <%= list.job.job_title %>
-    <% end %> -->
+    <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Current Jobreel - Job.title</button>
+      <div id="myDropdown" class="dropdown-content">
+      </div>
+    </div>
   </div>
-  <div class="col-2 text-center side-border">
+  <div class="col-2 text-center vert-align side-border">
     +
   </div>
 </div>
@@ -213,7 +249,7 @@
     <h1 class="vert-align">Introduction</h1>
     <button class="add-button">Preview</button>
     <!-- This needs to update the current jobreel with the selectedVideos as params -->
-    <%= link_to 'Save', new_jobreel_path, class: "add-button" %>
+    <%= link_to 'Save', '#', id: "push-button", class: "add-button" %>
   </div>
   </div>
   <div class="card-block white timeline-instructions">
@@ -242,6 +278,30 @@
 </div>
 
 <script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+<script>
+// This controls the netflix-style scrolling div
 setInterval(function() {
     var left1 = parseInt($('#insertion-point').css('left'));
 
@@ -255,6 +315,7 @@ setInterval(function() {
 </script>
 
 <script>
+// This controls the collapsing sections and the click handler for the push-button to update public IDs with selected videos
 $(document).ready(function(){
     $("#intro_collapse").click(function(){
         $("#intro_hidden").toggle(400);
@@ -271,6 +332,10 @@ $(document).ready(function(){
     });
     $("#rec_collapse").click(function(){
         $("#rec_hidden").toggle(400);
+    });
+    $('#push-button').click(function (event) {
+        pushVideos();
+        event.preventDefault();
     });
 });
 </script>
