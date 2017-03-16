@@ -3,7 +3,6 @@ class JobreelsController < ApplicationController
   respond_to :html, :js
 
   def index
-
     render json: Jobreel.where(user_id: current_user.id)
   end
 

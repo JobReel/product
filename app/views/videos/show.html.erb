@@ -1,4 +1,6 @@
 <script>
+// Builds the drop-down of Jobreels for that user.
+// This should also set the active jobreel to whichever is selected. Default profile?
   $(function() {
     $.get("/jobreels").success( function( data ) {
       var htmlString = "";
@@ -14,12 +16,10 @@
       });
       var ulJobreels = $('.dropdown-content');
       ulJobreels.html(htmlString);
-
     });
   });
 </script>
 
-<!-- Video Selection Modal -->
 <script>
   var selectedVideos = [];
   function selectVideo(element){
@@ -31,17 +31,10 @@
     $('#insertion-point').prepend('<img src="'+posterSrc+'" width = "188" height = "104"></img>')
     $('#selectModal').modal('hide');
     event.preventDefault();
-
   }
 </script>
 
 <script>
-  function success(){
-    alert('Success');
-  }
-// how should server respond to request lookup how rails responds to different format requests.
-// build hash-block responds-to, either it worked or didn't work
-
   function pushVideos(){
     alert('pushing next');
     $.post("/jobreels/" + <%= @jobreel.id %>, {
@@ -51,11 +44,10 @@
       }
     });
   }
-
-  // figure out success handler to update the various DOM elemments
-
+  // figure out success handler to update the various DOM elements
 </script>
 
+<!-- Video Selection Modal -->
 <div class="modal fade bd-example-modal-lg" id="selectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content modal-lg">
