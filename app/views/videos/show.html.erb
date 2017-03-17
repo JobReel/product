@@ -1,6 +1,6 @@
 <script>
 // This sets the active jobreel to the selected jobreel from the dropdown. It updates all sections and the workspace
-  var activeJobreel = "";
+  var activeJobreel = "<%= @jobreel.ids.first %>";
   function setActiveJobreel(e) {
     console.log(e);
     $.get("/jobreels/").success( function( data ) {
@@ -71,12 +71,13 @@
 // This should update the current jobreel with the selectedVideos for the appropriate section
   function pushVideos(){
     alert('pushing next');
-    $.post("/jobreels/" + <%= @jobreel.id %>, {
+    $.post("/jobreels/" + activeJobreel, {
       _method: "PATCH",
       jobreel: {
         section1_videos: selectedVideos
       }
     });
+    selectedVideos = [];
   }
   // figure out success handler to update the various DOM elements
 </script>
@@ -102,13 +103,13 @@
 </div>
 <!-- End Modal -->
 
-<!-- Video Edit Modal -->
+<!-- Video Upload Modal -->
 <div class="modal fade bd-example-modal-sm" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content modal-sm">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Edit User Info</h4>
+        <h4 class="modal-title" id="myModalLabel">Upload a New Video</h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
@@ -347,6 +348,23 @@ setInterval(function() {
 </script>
 
 <script>
+// Checks if user is clicking to another section before saving their selected videos for the current sectionm
+function saveProgress(){
+    if (selectedVideos.length > 0) {
+      if (confirm("You haven't saved your work on this section yet. Would you like to save?")) {
+        // Updates the database with the selectedVideos
+        pushVideos();
+      }
+      else {
+        // Clears the selectedVideos
+        selectedVideos = [];
+      }
+    }
+    else {
+      // Do nothing
+    }
+}
+
 // This controls the collapsing sections and the click handler for the push-button to update public IDs with selected videos
 $(document).ready(function(){
     $("#section1_collapse").click(function(e){

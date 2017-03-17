@@ -1,8 +1,8 @@
 class VideosController < ApplicationController
 
   def show
-
-    @jobreel = Jobreel.last
+  
+    @jobreel = Jobreel.where(user_id: current_user.id, job_id: nil)
 
     @intro_videos = Video.where(video_section: "Introduction", user_id: current_user.id)
     @education_videos = Video.where(video_section: "Education", user_id: current_user.id)
@@ -30,6 +30,7 @@ class VideosController < ApplicationController
 
     @video_new = Video.new
     @timeline_preview = current_user.video
+    byebug
   end
 
   def create
