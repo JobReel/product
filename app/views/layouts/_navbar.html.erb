@@ -25,7 +25,11 @@
             <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
           </li>
           <%= link_to (image_tag ("notification-bell.png"), class: 'nav-image'), root_path %>
-          <%= link_to (cl_image_tag(current_user.image.public_id + ".png", :width=>40, :height=>40, :gravity=>"face", :radius=>"20", :crop=>"thumb", version: current_user.image.stored_version)), root_path %>
+          <% if current_user.image? %>
+            <%= link_to (cl_image_tag(current_user.image.public_id + ".png", :width=>40, :height=>40, :gravity=>"face", :radius=>"20", :crop=>"thumb", version: current_user.image.stored_version)), root_path %>
+          <% else %>
+            <%= link_to (cl_image_tag("default_avatar.png", :width=>40, :height=>40, :gravity=>"face", :radius=>"20", :crop=>"thumb")), root_path %>
+          <% end %>
         <% else %>
           <li class="nav-item">
             <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
