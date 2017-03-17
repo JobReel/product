@@ -1,4 +1,5 @@
 <script>
+// This sets the active jobreel to the selected jobreel from the dropdown. It updates all sections and the workspace
   var activeJobreel = "";
   function setActiveJobreel(e) {
     console.log(e);
@@ -24,6 +25,11 @@
         }
     });
 
+  }
+
+  function setActiveSection(e) {
+    console.log(e.target.textContent);
+    $('#workspace-section').html(e.target.textContent);
   }
 // Builds the drop-down of Jobreels for that user.
 // This should also set the active jobreel to whichever is selected. Default profile?
@@ -272,7 +278,7 @@
 <div class="card studio-timeline padded5">
   <div class="card-block white timeline-bot-bar">
     <div class="row justify-content-between">
-    <h1 class="vert-align">Introduction</h1>
+    <h1 class="vert-align">Active Section: <span id ="workspace-section"></span></h1>
     <button class="add-button">Preview</button>
     <!-- This needs to update the current jobreel with the selectedVideos as params -->
     <%= link_to 'Save', '#', id: "push-button", class: "add-button" %>
@@ -343,20 +349,25 @@ setInterval(function() {
 <script>
 // This controls the collapsing sections and the click handler for the push-button to update public IDs with selected videos
 $(document).ready(function(){
-    $("#section1_collapse").click(function(){
+    $("#section1_collapse").click(function(e){
+        setActiveSection(e);
         $("#section1_hidden").toggle(400);
     });
-    $("#section2_collapse").click(function(){
+    $("#section2_collapse").click(function(e){
+        setActiveSection(e);
         $("#section2_hidden").toggle(400);
         //$("#edu_icon").attr('src', '/assets/edu-icon-active.png');
     });
-    $("#section3_collapse").click(function(){
+    $("#section3_collapse").click(function(e){
+        setActiveSection(e);
         $("#section3_hidden").toggle(400);
     });
-    $("#section4_collapse").click(function(){
+    $("#section4_collapse").click(function(e){
+        setActiveSection(e);
         $("#section4_hidden").toggle(400);
     });
-    $("#section5_collapse").click(function(){
+    $("#section5_collapse").click(function(e){
+        setActiveSection(e);
         $("#section5_hidden").toggle(400);
     });
     $('#push-button').click(function (event) {
