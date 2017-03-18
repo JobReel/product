@@ -1,6 +1,7 @@
 <script>
 // This sets the active jobreel to the selected jobreel from the dropdown. It updates all sections and the workspace
-  var activeJobreel = "<%= @jobreel.ids.first %>";
+  var activeJobreel = "";
+  setActiveJobreel(<%= @jobreel.ids.first %>);
   function setActiveJobreel(e) {
     console.log(e);
     $.get("/jobreels/").success( function( data ) {
@@ -8,7 +9,6 @@
       item = data.find(result => result.id === id);
       console.log(item);
       activeJobreel = item;
-      console.log(activeJobreel);
        if (activeJobreel.job_id === null) {
         $('#section1_collapse').html("Introduction");
         $('#section2_collapse').html("Education");
@@ -44,7 +44,6 @@
         jobreel.job_title +
         '</span></div>';
         htmlString += liElement;
-        console.log(htmlString);
       });
       var ulJobreels = $('.dropdown-content');
       ulJobreels.html(htmlString);
