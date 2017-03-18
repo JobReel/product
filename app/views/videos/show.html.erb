@@ -67,16 +67,17 @@
 </script>
 
 <script>
-// This should update the current jobreel with the selectedVideos for the appropriate section
+// This updates the current jobreel with the selectedVideos for the appropriate section.
   function pushVideos(){
     alert('pushing next');
-    $.post("/jobreels/" + activeJobreel, {
+    $.post("/jobreels/" + activeJobreel.id, {
       _method: "PATCH",
       jobreel: {
         section1_videos: selectedVideos
       }
     });
     selectedVideos = [];
+    $("#insertion-point").html("");
   }
   // figure out success handler to update the various DOM elements
 </script>
@@ -367,23 +368,28 @@ function saveProgress(){
 // This controls the collapsing sections and the click handler for the push-button to update public IDs with selected videos
 $(document).ready(function(){
     $("#section1_collapse").click(function(e){
+        saveProgress();
         setActiveSection(e);
         $("#section1_hidden").toggle(400);
     });
     $("#section2_collapse").click(function(e){
+        saveProgress();
         setActiveSection(e);
         $("#section2_hidden").toggle(400);
         //$("#edu_icon").attr('src', '/assets/edu-icon-active.png');
     });
     $("#section3_collapse").click(function(e){
+        saveProgress();
         setActiveSection(e);
         $("#section3_hidden").toggle(400);
     });
     $("#section4_collapse").click(function(e){
+        saveProgress();
         setActiveSection(e);
         $("#section4_hidden").toggle(400);
     });
     $("#section5_collapse").click(function(e){
+        saveProgress();
         setActiveSection(e);
         $("#section5_hidden").toggle(400);
     });
