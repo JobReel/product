@@ -58,6 +58,7 @@
     var publicID = element.childNodes[0].alt;
     var versionID = element.childNodes[0].src;
     var posterSrc = element.childNodes[0].src;
+    console.log(publicID);
     selectedVideos.push(publicID);
 
     $('#insertion-point').prepend('<img src="'+posterSrc+'" width = "188" height = "104"></img>')
@@ -69,6 +70,7 @@
 <script>
 // This updates the current jobreel with the selectedVideos for the appropriate section.
   function pushVideos(){
+
     alert('pushing next');
     $.post("/jobreels/" + activeJobreel.id, {
       _method: "PATCH",
@@ -167,7 +169,7 @@
   </div>
 
   <br /><br />
-  <div id = "section1_hidden" class="col-10 offset-1 poster-display">
+  <div id = "section1_hidden" class="col-10 offset-1 poster-display" style="display: none;">
     <% if @intro_videos.present? %>
     <% @intro_videos.each do |disp| %>
       <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
@@ -370,28 +372,48 @@ $(document).ready(function(){
     $("#section1_collapse").click(function(e){
         saveProgress();
         setActiveSection(e);
-        $("#section1_hidden").toggle(400);
+        $("#section1_hidden").show(400);
+        $("#section2_hidden").hide(400);
+        $("#section3_hidden").hide(400);
+        $("#section4_hidden").hide(400);
+        $("#section5_hidden").hide(400);
     });
     $("#section2_collapse").click(function(e){
         saveProgress();
         setActiveSection(e);
-        $("#section2_hidden").toggle(400);
+        $("#section2_hidden").show(400);
+        $("#section3_hidden").hide(400);
+        $("#section4_hidden").hide(400);
+        $("#section5_hidden").hide(400);
+        $("#section1_hidden").hide(400);
         //$("#edu_icon").attr('src', '/assets/edu-icon-active.png');
     });
     $("#section3_collapse").click(function(e){
         saveProgress();
         setActiveSection(e);
-        $("#section3_hidden").toggle(400);
+        $("#section3_hidden").show(400);
+        $("#section4_hidden").hide(400);
+        $("#section5_hidden").hide(400);
+        $("#section1_hidden").hide(400);
+        $("#section2_hidden").hide(400);
     });
     $("#section4_collapse").click(function(e){
         saveProgress();
         setActiveSection(e);
-        $("#section4_hidden").toggle(400);
+        $("#section4_hidden").show(400);
+        $("#section5_hidden").hide(400);
+        $("#section1_hidden").hide(400);
+        $("#section2_hidden").hide(400);
+        $("#section3_hidden").hide(400);
     });
     $("#section5_collapse").click(function(e){
         saveProgress();
         setActiveSection(e);
-        $("#section5_hidden").toggle(400);
+        $("#section5_hidden").show(400);
+        $("#section1_hidden").hide(400);
+        $("#section2_hidden").hide(400);
+        $("#section3_hidden").hide(400);
+        $("#section4_hidden").hide(400);
     });
     $('#push-button').click(function (event) {
         pushVideos();

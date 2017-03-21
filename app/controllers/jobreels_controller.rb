@@ -16,7 +16,6 @@ class JobreelsController < ApplicationController
   end
 
   def update
-    byebug
     @jobreel = Jobreel.find(params[:id])
     @jobreel.update_attributes(jobreel_params)
     render json: @jobreel
