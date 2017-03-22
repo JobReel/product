@@ -15,10 +15,11 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     @user.update_attributes(user_params)
-    if @user.valid?
-      redirect_to user_path(@user)
-    else
-      render :edit, status: :unprocessable_entity
+      if @user.valid?
+        redirect_to user_path(@user)
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 

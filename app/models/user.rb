@@ -8,7 +8,6 @@ class User < ApplicationRecord
   has_many :educations
   has_many :recommendations
 
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -22,4 +21,5 @@ class User < ApplicationRecord
  validates :bio, presence: true, on: :update
  validates :degree_type, presence: true, on: :update
  validates :degree_field, presence: true, on: :update
+
 end

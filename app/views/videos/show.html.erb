@@ -1,4 +1,37 @@
 <script>
+// This sets the active jobreel to the selected jobreel from the dropdown. It updates all sections and the workspace
+  var activeJobreel = "<%= @jobreel.id %>";
+
+  function setActiveJobreel(e) {
+    console.log(e);
+    $.get("/jobreels/").success( function( data ) {
+      id = e;
+      item = data.find(result => result.id === id);
+      console.log(item);
+      activeJobreel = item;
+       if (activeJobreel.job_id === null) {
+        $('#section1_collapse').html("Introduction");
+        $('#section2_collapse').html("Education");
+        $('#section3_collapse').html("Work Experience");
+        $('#section4_collapse').html("Hobbies");
+        $('#section5_collapse').html("Recommendations");
+       }
+       else {
+        $('#section1_collapse').html(activeJobreel.section1_title);
+        $('#section2_collapse').html(activeJobreel.section2_title);
+        $('#section3_collapse').html(activeJobreel.section3_title);
+        $('#section4_collapse').html(activeJobreel.section4_title);
+        $('#section5_collapse').html(activeJobreel.section5_title);
+        }
+      $('#library-dropdown').html('Current Jobreel - ' + activeJobreel.job_title);
+    });
+
+  }
+
+  function setActiveSection(e) {
+    console.log(e.target.textContent);
+    $('#workspace-section').html(e.target.textContent);
+  }
 // Builds the drop-down of Jobreels for that user.
 // This should also set the active jobreel to whichever is selected. Default profile?
   $(function() {
@@ -6,13 +39,12 @@
       var htmlString = "";
       $.each(data, function(index,  jobreel) {
         console.log(jobreel);
-        var liElement = '<span id="jobreel-id-' +
+        var liElement = '<div id="jobreel-id-' +
         jobreel.id +
-        '">Jobreel: ' +
+        '" onclick="setActiveJobreel(' + jobreel.id + ')"><span>Jobreel: ' +
         jobreel.job_title +
-        '</span>';
+        '</span></div>';
         htmlString += liElement;
-        console.log(htmlString);
       });
       var ulJobreels = $('.dropdown-content');
       ulJobreels.html(htmlString);
@@ -27,6 +59,7 @@
     var publicID = element.childNodes[0].alt;
     var versionID = element.childNodes[0].src;
     var posterSrc = element.childNodes[0].src;
+    console.log(publicID);
     selectedVideos.push(publicID);
 
     $('#insertion-point').prepend('<img src="'+posterSrc+'" width = "188" height = "104"></img>')
@@ -36,15 +69,18 @@
 </script>
 
 <script>
-// This should update the current jobreel with the selectedVideos for the appropriate section
+// This updates the current jobreel with the selectedVideos for the appropriate section.
   function pushVideos(){
+
     alert('pushing next');
-    $.post("/jobreels/" + <%= @jobreel.id %>, {
+    $.post("/jobreels/" + activeJobreel.id, {
       _method: "PATCH",
       jobreel: {
         section1_videos: selectedVideos
       }
     });
+    selectedVideos = [];
+    $("#insertion-point").html("");
   }
   // figure out success handler to update the various DOM elements
 </script>
@@ -70,13 +106,13 @@
 </div>
 <!-- End Modal -->
 
-<!-- Video Edit Modal -->
+<!-- Video Upload Modal -->
 <div class="modal fade bd-example-modal-sm" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content modal-sm">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Edit User Info</h4>
+        <h4 class="modal-title" id="myModalLabel">Upload a New Video</h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
@@ -113,7 +149,7 @@
 <div class="row nopadding">
   <div class="col-10 vid-library-top">
     <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Current Jobreel - Job.title</button>
+    <button id = "library-dropdown" onclick="myFunction()" class="dropbtn">My Jobreel Library</button>
       <div id="myDropdown" class="dropdown-content">
       </div>
     </div>
@@ -130,11 +166,11 @@
     <%= image_tag 'intro-icon-lg.png' %>
   </div>
   <div class="col-9 vert-align padded7">
-    <span id = "intro_collapse">Introduction</span>
+    <span id = "section1_collapse">Introduction</span>
   </div>
 
   <br /><br />
-  <div id = "intro_hidden" class="col-10 offset-1 poster-display">
+  <div id = "section1_hidden" class="col-10 offset-1 poster-display" style="display: none;">
     <% if @intro_videos.present? %>
     <% @intro_videos.each do |disp| %>
       <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
@@ -152,10 +188,10 @@
     <%= image_tag 'education-icon-lg.png', id:"edu_icon" %>
   </div>
   <div class="col-9 vert-align padded7">
-    <span id = "edu_collapse">Education</span>
+    <span id = "section2_collapse">Education</span>
 </div>
   <br /><br />
-  <div id ="edu_hidden" class="col-10 offset-1 poster-display" style="display: none;">
+  <div id ="section2_hidden" class="col-10 offset-1 poster-display" style="display: none;">
     <% if @education_videos.present? %>
     <% @education_videos.each do |disp| %>
       <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
@@ -173,10 +209,10 @@
     <%= image_tag 'work-icon-lg.png' %>
   </div>
   <div class="col-9 vert-align padded7">
-    <span id="work_collapse">Work Experience</span>
+    <span id="section3_collapse">Work Experience</span>
 </div>
   <br /><br />
-  <div id="work_hidden" class="col-10 offset-1 poster-display" style="display: none;">
+  <div id="section3_hidden" class="col-10 offset-1 poster-display" style="display: none;">
     <% if @work_videos.present? %>
     <% @work_videos.each do |disp| %>
       <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
@@ -194,10 +230,10 @@
     <%= image_tag 'hobbies-icon-lg.png' %>
   </div>
   <div class="col-9 vert-align padded7">
-    <span id="hobby_collapse">Hobbies</span>
+    <span id="section4_collapse">Hobbies</span>
 </div>
   <br /><br />
-  <div id="hobby_hidden" class="col-10 offset-1 poster-display" style="display: none;">
+  <div id="section4_hidden" class="col-10 offset-1 poster-display" style="display: none;">
     <% if @hobby_videos.present? %>
     <% @hobby_videos.each do |disp| %>
       <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
@@ -215,10 +251,10 @@
     <%= image_tag 'recs-icon-lg.png' %>
   </div>
   <div class="col-9 vert-align padded7">
-    <span id="rec_collapse">Recommendations</span>
+    <span id="section5_collapse">Recommendations</span>
 </div>
   <br /><br />
-  <div id = "rec_hidden" class="col-10 offset-1 poster-display" style="display: none;">
+  <div id = "section5_hidden" class="col-10 offset-1 poster-display" style="display: none;">
     <% if @rec_videos.present? %>
     <% @rec_videos.each do |disp| %>
       <%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
@@ -246,7 +282,7 @@
 <div class="card studio-timeline padded5">
   <div class="card-block white timeline-bot-bar">
     <div class="row justify-content-between">
-    <h1 class="vert-align">Introduction</h1>
+    <h1 class="vert-align">Active Section: <span id ="workspace-section"></span></h1>
     <button class="add-button">Preview</button>
     <!-- This needs to update the current jobreel with the selectedVideos as params -->
     <%= link_to 'Save', '#', id: "push-button", class: "add-button" %>
@@ -315,23 +351,70 @@ setInterval(function() {
 </script>
 
 <script>
+// Checks if user is clicking to another section before saving their selected videos for the current sectionm
+function saveProgress(){
+    if (selectedVideos.length > 0) {
+      if (confirm("You haven't saved your work on this section yet. Would you like to save?")) {
+        // Updates the database with the selectedVideos
+        pushVideos();
+      }
+      else {
+        // Clears the selectedVideos
+        selectedVideos = [];
+      }
+    }
+    else {
+      // Do nothing
+    }
+}
+
 // This controls the collapsing sections and the click handler for the push-button to update public IDs with selected videos
 $(document).ready(function(){
-    $("#intro_collapse").click(function(){
-        $("#intro_hidden").toggle(400);
+    $("#section1_collapse").click(function(e){
+        saveProgress();
+        setActiveSection(e);
+        $("#section1_hidden").show(400);
+        $("#section2_hidden").hide(400);
+        $("#section3_hidden").hide(400);
+        $("#section4_hidden").hide(400);
+        $("#section5_hidden").hide(400);
     });
-    $("#edu_collapse").click(function(){
-        $("#edu_hidden").toggle(400);
+    $("#section2_collapse").click(function(e){
+        saveProgress();
+        setActiveSection(e);
+        $("#section2_hidden").show(400);
+        $("#section3_hidden").hide(400);
+        $("#section4_hidden").hide(400);
+        $("#section5_hidden").hide(400);
+        $("#section1_hidden").hide(400);
         //$("#edu_icon").attr('src', '/assets/edu-icon-active.png');
     });
-    $("#work_collapse").click(function(){
-        $("#work_hidden").toggle(400);
+    $("#section3_collapse").click(function(e){
+        saveProgress();
+        setActiveSection(e);
+        $("#section3_hidden").show(400);
+        $("#section4_hidden").hide(400);
+        $("#section5_hidden").hide(400);
+        $("#section1_hidden").hide(400);
+        $("#section2_hidden").hide(400);
     });
-    $("#hobby_collapse").click(function(){
-        $("#hobby_hidden").toggle(400);
+    $("#section4_collapse").click(function(e){
+        saveProgress();
+        setActiveSection(e);
+        $("#section4_hidden").show(400);
+        $("#section5_hidden").hide(400);
+        $("#section1_hidden").hide(400);
+        $("#section2_hidden").hide(400);
+        $("#section3_hidden").hide(400);
     });
-    $("#rec_collapse").click(function(){
-        $("#rec_hidden").toggle(400);
+    $("#section5_collapse").click(function(e){
+        saveProgress();
+        setActiveSection(e);
+        $("#section5_hidden").show(400);
+        $("#section1_hidden").hide(400);
+        $("#section2_hidden").hide(400);
+        $("#section3_hidden").hide(400);
+        $("#section4_hidden").hide(400);
     });
     $('#push-button').click(function (event) {
         pushVideos();

@@ -16,9 +16,6 @@ class JobreelsController < ApplicationController
   end
 
   def update
-    byebug
-    # @jobreel = Jobreel.find(params[:id])
-    # @jobreel.update_attributes(jobreel_params)
     @jobreel = Jobreel.find(params[:id])
     @jobreel.update_attributes(jobreel_params)
     render json: @jobreel
@@ -35,7 +32,7 @@ class JobreelsController < ApplicationController
   end
 
   def jobreel_params
-    params.require(:jobreel).permit(:user_id, {:section1_videos=>[]}, :section2_videos, :section3_videos, :section4_videos, :section5_videos)
+    params.require(:jobreel).permit(:user_id, {:section1_videos=>[]}, {:section2_videos=>[]}, {:section3_videos=>[]}, {:section4_videos=>[]}, {:section5_videos=>[]})
   end
 
 end
