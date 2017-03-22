@@ -23,6 +23,7 @@
         $('#section4_collapse').html(activeJobreel.section4_title);
         $('#section5_collapse').html(activeJobreel.section5_title);
         }
+      $('#library-dropdown').html('Current Jobreel - ' + activeJobreel.job_title);
     });
 
   }
@@ -148,7 +149,7 @@
 <div class="row nopadding">
   <div class="col-10 vid-library-top">
     <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">My Jobreel Library</button>
+    <button id = "library-dropdown" onclick="myFunction()" class="dropbtn">My Jobreel Library</button>
       <div id="myDropdown" class="dropdown-content">
       </div>
     </div>
