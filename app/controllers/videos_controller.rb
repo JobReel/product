@@ -2,7 +2,7 @@ class VideosController < ApplicationController
 
   def show
 
-    @jobreel = Jobreel.where(user_id: current_user.id, job_id: nil)
+    @jobreel = Jobreel.where(user_id: current_user.id, job_id: nil).first
 
     @intro_videos = Video.where(video_section: "Introduction", user_id: current_user.id)
     @education_videos = Video.where(video_section: "Education", user_id: current_user.id)

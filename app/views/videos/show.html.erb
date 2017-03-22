@@ -1,7 +1,7 @@
 <script>
 // This sets the active jobreel to the selected jobreel from the dropdown. It updates all sections and the workspace
-  var activeJobreel = "";
-  setActiveJobreel(<%= @jobreel.ids.first %>);
+  var activeJobreel = "<%= @jobreel.id %>";
+
   function setActiveJobreel(e) {
     console.log(e);
     $.get("/jobreels/").success( function( data ) {

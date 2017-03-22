@@ -7,26 +7,26 @@ class Jobreel < ApplicationRecord
   def job_title
     job ? job.job_title : "Profile Jobreel"
   end
-
-  def section1_title
-    job ? section1_title : "Introduction"
-  end
-
-  def section2_title
-    job ? section2_title : "Education"
-  end
-
-  def section3_title
-    job ? section3_title : "Work Experience"
-  end
-
-  def section4_title
-    job ? section4_title : "Hobbies"
-  end
-
-  def section5_title
-    job ? section5_title : "Recommendations"
-  end
+  #
+  # def section1_title
+  #   job ? section1_title : "Introduction"
+  # end
+  #
+  # def section2_title
+  #   job ? section2_title : "Education"
+  # end
+  #
+  # def section3_title
+  #   job ? section3_title : "Work Experience"
+  # end
+  #
+  # def section4_title
+  #   job ? section4_title : "Hobbies"
+  # end
+  #
+  # def section5_title
+  #   job ? section5_title : "Recommendations"
+  # end
 
   def as_json(options = { })
     h = super (options)
