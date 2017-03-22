@@ -7,7 +7,7 @@ class Jobreel < ApplicationRecord
   def job_title
     job ? job.job_title : "Profile Jobreel"
   end
-  #
+
   # def section1_title
   #   job ? section1_title : "Introduction"
   # end
