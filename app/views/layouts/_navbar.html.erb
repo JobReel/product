@@ -41,7 +41,7 @@
       <div class="modal-body">
         <h2>Sign Up</h2>
         <br />
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "sign-box"},:format => :json, :remote => true) do |f| %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "signup-box"},:format => :json, :remote => true) do |f| %>
           <div class="form-inputs">
             Email: <%= f.email_field :email, required: false, autofocus: true %>
             <br />
@@ -108,17 +108,20 @@
   </nav>
 <script>
 $(document).ready(function(){
-  $("form#login-box").bind "ajax:success", (e, data, status, xhr) ->
+  $("form#login-box").bind("ajax:success"), function(e, data, status, xhr) {
     if data.success
       //javascript that executes if everything goes o.k.
+      alert('ok!');
       $('#signinModal').modal('hide');
     else
-      alert('failure!');
-  $("form#signup-box").bind "ajax:success", (e, data, status, xhr) ->
+      alert('failure!')};
+
+  $("form#signup-box").bind("ajax:success"), function(e, data, status, xhr) {
+    alert('success!');
     if data.success
       //javascript that executes if everything goes o.k.
       $('#signupModal').modal('hide');
     else
-      alert('failure!');
-};
+      alert('failure!')};
+});
 </script>
