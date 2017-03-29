@@ -39,7 +39,23 @@
         <h4 class="modal-title" id="myModalLabel">Sign Up for a New Account</h4>
       </div>
       <div class="modal-body">
-
+        <h2>Sign Up</h2>
+        <br />
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "sign-box"},:format => :json, :remote => true) do |f| %>
+          <div class="form-inputs">
+            Email: <%= f.email_field :email, required: false, autofocus: true %>
+            <br />
+            Password: <%= f.password_field :password, required: false %>
+            <br />
+            Confirm Password: <%= f.password_field :password_confirmation, required: true %>
+          </div>
+          <br />
+          <div class="form-actions">
+            <%= f.submit "Sign up", :class => "btn btn-default" %>
+          </div>
+        <% end %>
+        <br />
+        <%= render "devise/shared/links" %>
       </div>
     </div>
   </div>
@@ -96,6 +112,12 @@ $(document).ready(function(){
     if data.success
       //javascript that executes if everything goes o.k.
       $('#signinModal').modal('hide');
+    else
+      alert('failure!');
+  $("form#signup-box").bind "ajax:success", (e, data, status, xhr) ->
+    if data.success
+      //javascript that executes if everything goes o.k.
+      $('#signupModal').modal('hide');
     else
       alert('failure!');
 };
