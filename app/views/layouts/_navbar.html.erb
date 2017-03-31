@@ -30,13 +30,13 @@
 </div>
 <!-- End Modal -->
 
-<!-- Sign Up Modal -->
+<!-- Job-Seeker Sign Up Modal -->
 <div class="modal fade bd-example-modal-lg" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content modal-lg">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign Up for a New Account</h4>
+        <h4 class="modal-title" id="myModalLabel">Sign Up for a New Job Seeker Account</h4>
       </div>
       <div class="modal-body">
         <h2>Sign Up</h2>
@@ -61,7 +61,6 @@
   </div>
 </div>
 <!-- End Modal -->
-
 
   <nav class="navbar navbar-toggleable-md">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,7 +99,10 @@
 
           </li>
           <li class="nav-item">
-            <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link', data: {toggle: 'modal', target: '#signupModal'} %>
+            <%= link_to 'Job Seeker Sign up', new_user_registration_path, class: 'nav-link', data: {toggle: 'modal', target: '#signupModal'} %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Employer Sign up', new_user_registration_path, class: 'nav-link', data: {toggle: 'modal', target: '#employer-signupModal'} %>
           </li>
         <% end %>
       </ul>
