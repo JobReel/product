@@ -67,44 +67,14 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <%= link_to (image_tag ("logo-new.png"), class: 'nav-image'), root_path %>
-    <div>
-      <input type="text" name="search" placeholder="Search for people, jobs, companies, and more..." class="top-search-bar">
-    </div>
+
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       </ul>
       <ul class="navbar-nav">
-        <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to 'Jobs', jobs_path, class: 'nav-link' %>
+            <%= link_to 'For Employers', employer_path, class: 'nav-link', data: {toggle: 'modal', target: '#signinModal'} %>
           </li>
-          <li class="nav-item">
-            <%= link_to 'Video', video_path(current_user), class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'My Profile', user_path(current_user), class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-          </li>
-          <%= link_to (image_tag ("notification-bell.png"), class: 'nav-image'), root_path %>
-          <% if current_user.image? %>
-            <%= link_to (cl_image_tag(current_user.image.public_id + ".png", :width=>40, :height=>40, :gravity=>"face", :radius=>"20", :crop=>"thumb", version: current_user.image.stored_version)), root_path %>
-          <% else %>
-            <%= link_to (cl_image_tag("default_avatar.png", :width=>40, :height=>40, :gravity=>"face", :radius=>"20", :crop=>"thumb")), root_path %>
-          <% end %>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to 'Sign in', new_user_session_path, class: 'nav-link', data: {toggle: 'modal', target: '#signinModal'} %>
-
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Job Seeker Sign up', new_user_registration_path, class: 'nav-link', data: {toggle: 'modal', target: '#signupModal'} %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Employer Sign up', new_user_registration_path, class: 'nav-link', data: {toggle: 'modal', target: '#employer-signupModal'} %>
-          </li>
-        <% end %>
       </ul>
     </div>
   </nav>

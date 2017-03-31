@@ -14,6 +14,7 @@ class SessionsController < Devise::SessionsController
     resource ||= resource_or_scope
     sign_in(scope, resource) unless warden.user(scope) == resource
     return render :json => {:success => true}
+
   end
 
   def failure

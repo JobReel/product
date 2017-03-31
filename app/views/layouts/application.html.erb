@@ -8,7 +8,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= render "layouts/navbar" %>
+    <% if params[:action] == 'index' %>
+    <%= render "layouts/index-navbar" %>
+    <% end %>
+    <% if params[:action] == 'employer' %>
+    <%= render "layouts/footer" %>
+    <% end %>
     <% if notice.present? %>
       <p class="alert alert-info"><%= notice %></p>
     <% end %>
