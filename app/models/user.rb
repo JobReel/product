@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :jobreels
   has_many :educations
   has_many :recommendations
+  after_create :set_defaults!
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -21,5 +22,10 @@ class User < ApplicationRecord
  validates :bio, presence: true, on: :update
  validates :degree_type, presence: true, on: :update
  validates :degree_field, presence: true, on: :update
+
+ def set_defaults!
+   byebug
+   self.image.public_id = "default_avatar"
+ end
 
 end
