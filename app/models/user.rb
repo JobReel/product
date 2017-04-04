@@ -33,11 +33,10 @@ class User < ApplicationRecord
      self.degree = "degree"
      self.degree_type = "Type of Degree"
      self.degree_field = "Degree Field"
-     byebug
      self.save!
      self.image = ImageUploader.new
      self.video = ImageUploader.new
-     byebug
+     self.first_name = "First Name"
      self.save!
  #   self.image = ImageUploader.new
  #   byebug
