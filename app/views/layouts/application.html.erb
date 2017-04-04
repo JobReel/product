@@ -15,6 +15,9 @@
     <% if params[:action] == 'employer' %>
     <%= render "layouts/employer-index-navbar" %>
     <% end %>
+    <% if params[:controller] == 'dashboards' %>
+    <%= render "layouts/navbar" %>
+    <% end %>
     <% if notice.present? %>
       <p class="alert alert-info"><%= notice %></p>
     <% end %>
