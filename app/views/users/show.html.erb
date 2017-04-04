@@ -46,13 +46,23 @@
           </div>
           <div class="row padded">
             <div class="col-12">
-              Current Image: <%= cl_image_tag(@user.image.public_id + ".png", :width=>40, :height=>40, :gravity=>"face", :radius=>"20", :crop=>"thumb", version: @user.image.stored_version) %>
+              Current Image:
+              <% if @user.image.present? %>
+              No Current image
+              <% else %>
+              <%= cl_image_tag(@user.image.public_id + ".png", :width=>40, :height=>40, :gravity=>"face", :radius=>"20", :crop=>"thumb", version: @user.image.stored_version) %>
+              <% end %>
               <%= f.input :image %>
             </div>
           </div>
           <div class="row padded">
             <div class="col-12">
-              Current Video: <%= cl_image_tag(@user.video.public_id + ".jpg", :resource_type => "video", :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
+              Current Video:
+              <% if @user.video.present? %>
+              No Current Video
+              <% else %>
+              <%= cl_image_tag(@user.video.public_id + ".jpg", :resource_type => "video", :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
+              <% end %>
               <%= f.input :video %>
             </div>
           </div>

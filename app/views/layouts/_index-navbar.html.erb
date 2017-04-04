@@ -92,17 +92,20 @@
       $('#signinModal').modal('hide');
       location.reload();
     }
-     else
+     else {
       alert('failure!');
+    }
     }
     );
     $("form#signup-box").bind ("ajax:success", function(e, data, status, xhr){
-     if (data.success)
+     if (data.success) {
       //javascript that executes if everything goes o.k.
       $('#signupModal').modal('hide');
       location.reload();
-     else
+    }
+     else {
       alert('failure!');
+    }
     }
     );
   });

@@ -23,9 +23,25 @@ class User < ApplicationRecord
  validates :degree_type, presence: true, on: :update
  validates :degree_field, presence: true, on: :update
 
- def set_defaults!
-   byebug
-   self.image.public_id = "default_avatar"
- end
+  def set_defaults!
+     self.first_name = "default_avatar"
+     self.last_name = "Last Name"
+     self.title = "Job Title"
+     self.city = "City"
+     self.state = "State"
+     self.bio = "Your Bio"
+     self.degree = "degree"
+     self.degree_type = "Type of Degree"
+     self.degree_field = "Degree Field"
+     byebug
+     self.save!
+     self.image = ImageUploader.new
+     self.video = ImageUploader.new
+     byebug
+     self.save!
+ #   self.image = ImageUploader.new
+ #   byebug
+ #   self.image.public_id = "default_avatar"
+  end
 
 end
