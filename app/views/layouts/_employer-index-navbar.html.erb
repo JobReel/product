@@ -1,0 +1,104 @@
+<!-- Show on all pages except user profile -->
+<!-- Sign In Modal -->
+<div class="modal fade bd-example-modal-lg" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign In to Your Account</h4>
+      </div>
+      <div class="modal-body">
+        <h2>Log in</h2>
+        <br />
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:id => "login-box"},:format => :json, :remote => true) do |f| %>
+          <div class="form-inputs">
+            <%= f.email_field :email, required: false, autofocus: true %>
+            <%= f.password_field :password, required: false %>
+            <%= f.check_box :remember_me, :style => "margin-top:20px;margin-bottom:20px;" %>
+            <%= f.label :remember_me, :style => "margin-top:20px;margin-bottom:20px;" %>
+          </div>
+          <br />
+          <div class="form-actions">
+            <%= f.submit "Log in", :class => "btn btn-default" %>
+          </div>
+        <% end %>
+        <br />
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+
+<!-- Employer Sign Up Modal -->
+<div class="modal fade bd-example-modal-lg" id="employer-signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign Up for a Employer Account</h4>
+      </div>
+      <div class="modal-body">
+        <h2>Sign Up</h2>
+        <br />
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "signup-box"},:format => :json, :remote => true) do |f| %>
+          <div class="form-inputs">
+            Email: <%= f.email_field :email, required: false, autofocus: true %>
+            <br />
+            Password: <%= f.password_field :password, required: false %>
+            <br />
+            Confirm Password: <%= f.password_field :password_confirmation, required: true %>
+          </div>
+          <br />
+          <div class="form-actions">
+            <%= f.submit "Sign up", :class => "btn btn-default" %>
+          </div>
+        <% end %>
+        <br />
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+
+  <nav class="navbar navbar-toggleable-md">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to (image_tag ("logo-new.png"), class: 'nav-image'), root_path %>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+      </ul>
+      <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to 'For Job Seekers', root_path, class: 'nav-link' %>
+            <!-- data: {toggle: 'modal', target: '#signinModal'} -->
+          </li>
+      </ul>
+    </div>
+  </nav>
+  <script>
+  $(document).ready(function(){
+    $("form#login-box").bind ("ajax:success", function(e, data, status, xhr){
+     if (data.success) {
+      //javascript that executes if everything goes o.k.
+      $('#signinModal').modal('hide');
+      location.reload();
+    }
+     else
+      alert('failure!');
+    }
+    );
+    $("form#signup-box").bind ("ajax:success", function(e, data, status, xhr){
+     if (data.success)
+      //javascript that executes if everything goes o.k.
+      $('#signupModal').modal('hide');
+      location.reload();
+     else
+      alert('failure!');
+    }
+    );
+  });
+  </script>
