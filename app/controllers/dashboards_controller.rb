@@ -7,7 +7,6 @@ class DashboardsController < ApplicationController
     @jobreels = Jobreel.where(user_id: current_user.id)
     @jobs = Job.where(user_id: current_user.id)
     @recs = Recommendation.where(user_id: current_user.id)
-    byebug
   end
 
 end
