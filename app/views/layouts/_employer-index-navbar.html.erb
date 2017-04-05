@@ -43,15 +43,21 @@
         <br />
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "signup-box"},:format => :json, :remote => true) do |f| %>
           <div class="form-inputs">
-            First Name: <%= f.text_field :first_name, required: true, autofocus: true %>
+            <%= f.label :first_name %>:
+            <%= f.text_field :first_name, required: true, autofocus: true %>
             <br />
-            Last Name: <%= f.text_field :last_name, required: true %>
+            <%= f.label :last_name %>:
+            <%= f.text_field :last_name, required: true %>
             <br />
-            Email: <%= f.email_field :email, required: true %>
+            <%= f.label :email %>:
+            <%= f.email_field :email, required: true %>
             <br />
-            Password: <%= f.password_field :password, required: true %>
+            <%= f.label :password %>:
+            <%= f.password_field :password, required: true %>
             <br />
-            Confirm Password: <%= f.password_field :password_confirmation, required: true %>
+            <%= f.label :password_confirmation %>:
+            <%= f.password_field :password_confirmation, required: true %>
+            <%= f.hidden_field :employer_role, value: true %>
           </div>
           <br />
           <div class="form-actions">
@@ -87,7 +93,6 @@
         <% end %>
           <li class="nav-item">
             <%= link_to 'For Job Seekers', root_path, class: 'nav-link' %>
-            <!-- data: {toggle: 'modal', target: '#signinModal'} -->
           </li>
       </ul>
     </div>

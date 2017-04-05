@@ -24,7 +24,6 @@ class User < ApplicationRecord
  validates :degree_field, presence: true, on: :update
 
   def set_defaults!
-     byebug
      self.first_name ||= "default_avatar"
      self.last_name ||= "Last Name"
      self.title = "Job Title"
@@ -39,7 +38,6 @@ class User < ApplicationRecord
      self.video = ImageUploader.new
      self.first_name ||= "First Name"
      self.save!
-     byebug
  #   self.image = ImageUploader.new
  #   byebug
  #   self.image.public_id = "default_avatar"
