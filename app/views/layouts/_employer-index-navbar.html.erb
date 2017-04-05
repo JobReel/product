@@ -43,11 +43,21 @@
         <br />
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "signup-box"},:format => :json, :remote => true) do |f| %>
           <div class="form-inputs">
-            Email: <%= f.email_field :email, required: false, autofocus: true %>
+            <%= f.label :first_name %>:
+            <%= f.text_field :first_name, required: true, autofocus: true %>
             <br />
-            Password: <%= f.password_field :password, required: false %>
+            <%= f.label :last_name %>:
+            <%= f.text_field :last_name, required: true %>
             <br />
-            Confirm Password: <%= f.password_field :password_confirmation, required: true %>
+            <%= f.label :email %>:
+            <%= f.email_field :email, required: true %>
+            <br />
+            <%= f.label :password %>:
+            <%= f.password_field :password, required: true %>
+            <br />
+            <%= f.label :password_confirmation %>:
+            <%= f.password_field :password_confirmation, required: true %>
+            <%= f.hidden_field :employer_role, value: true %>
           </div>
           <br />
           <div class="form-actions">
@@ -72,9 +82,17 @@
       <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       </ul>
       <ul class="navbar-nav">
+        <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to 'Sign in', new_user_session_path, class: 'nav-link', data: {toggle: 'modal', target: '#signinModal'} %>
+        </li>
+        <% end %>
           <li class="nav-item">
             <%= link_to 'For Job Seekers', root_path, class: 'nav-link' %>
-            <!-- data: {toggle: 'modal', target: '#signinModal'} -->
           </li>
       </ul>
     </div>

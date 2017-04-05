@@ -1,0 +1,36 @@
+<h1> Future home of the new User Dashboard </h1>
+<br />
+<div>
+<h2>User's Work History</h2>
+<% @workhistory.each do |w| %>
+ <%= w.company_name %> - <%= w.job_title %><br />
+ <%= w.job_start_date.strftime("%B %Y") %> to <%= w.job_end_date.strftime("%B %Y") %><br />
+ <%= w.job_description %>
+ <% end %>
+</div>
+
+<div>
+<h2>User's Videos</h2>
+<div class = "row">
+<% @videos.each do |v| %>
+  <div>
+    <%= cl_video_tag(v.private_id, controls: true, transformation: {:width=>300, :height=>200, :crop=>"fill"}) %><br />
+    <%= v.video_section %> - <%= v.private_id %>
+  </div>
+  <% end %>
+</div>
+
+<div>
+<h2>User's JobReels</h2>
+<% @jobreels.each do |j| %>
+  JobReel for Job ID <%= j.job_id %>
+    <% end %>
+</div>
+
+<div>
+<h2>User's Jobs</h2>
+<% @jobs.each do |p| %>
+  <%= p.company_name %> - <%= p.job_title %>
+  Last Updated: <%= p.updated_at.strftime("%A %B %d") %>
+    <% end %>
+</div>
