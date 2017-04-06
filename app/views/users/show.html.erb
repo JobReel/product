@@ -61,11 +61,7 @@
           <div class="row padded">
             <div class="col-12">
               Current Video:
-              <% if @user.video.present? %>
-              No Current Video
-              <% else %>
-              <%= cl_image_tag(@user.video.public_id + ".jpg", :resource_type => "video", :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
-              <% end %>
+              <%= @video_avatar.html_safe %>
               <%= f.input :video %>
             </div>
           </div>
