@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :videos
   resources :jobs
   resources :jobreels
-  resources :dashboards, only: [:show]
+  resource :dashboards, only: [:show]
 end
