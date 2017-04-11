@@ -75,6 +75,74 @@ $sizes: (
   }
 }
 
+
+
+
+.Site {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* 1, 3 */
+}
+
+.Site-header,
+.Site-footer {
+  flex: none; /* 2 */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  color: rgba(81, 166, 213, 0.4);
+  font-size: 12px;
+}
+
+.Site-content {
+  flex: 1 0 auto; /* 2 */
+  padding: var(--space) var(--space) 0;
+  width: 100%;
+}
+.Site-content::after {
+  content: '\00a0'; /* &nbsp; */
+  display: block;
+  margin-top: var(--space);
+  height: 0px;
+  visibility: hidden;
+}
+@media (--break-lg) {
+  .Site-content {
+    padding-top: var(--space-lg);
+  }
+  .Site-content::after {
+    margin-top: var(--space-lg);
+  }
+}
+
+.Site-content--full {
+  padding: 0;
+}
+.Site-content--full::after {
+  content: none;
+}
+
+.index-footer {
+  padding-bottom: 20px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+}
+
+.opacity50:hover {
+    opacity: 1;
+}
+
+.opacity50 {
+    opacity: 0.5;
+    webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+
 .fa-pencil-square-o .fa-trash {
   line-height: inherit;
 }
@@ -161,6 +229,9 @@ body {
   background-color: #464646;
   line-height: 17px;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* 1, 3 */
 }
 
 h1, h2, h3, h4, h5, h6 {
