@@ -264,7 +264,7 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
-.login-tab {
+.login-tab-active {
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
@@ -276,13 +276,37 @@ h1, h2, h3, h4, h5, h6 {
   border-style: solid;
 }
 
-.signup-tab {
+.login-tab-inactive {
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
   border-top: 0px;
   border-bottom: 1px;
+  border-left: 0px;
+  border-right: 0px;
+  border-color: #BBB;
+  border-style: solid;
+}
+
+.signup-tab-active {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  border-top: 1px;
+  border-bottom: 0px;
   border-left: 1px;
+  border-right: 1px;
+  border-color: #BBB;
+  border-style: solid;
+}
+
+.signup-tab-inactive {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  border-top: 0px;
+  border-bottom: 1px;
+  border-left: 0px;
   border-right: 0px;
   border-color: #BBB;
   border-style: solid;
@@ -296,6 +320,25 @@ h1, h2, h3, h4, h5, h6 {
 
 .welcome-bar {
   text-align: center;
+}
+
+.login-form-box {
+  display: auto;
+}
+
+.signup-form-box {
+  display: none;
+}
+
+.form-inputs input {
+  width: 100%;
+  height: 1.5em;
+  padding: 20px;
+}
+
+.btn {
+  border-radius: 6px;
+  font-weight: 700;
 }
 
 .feature {
