@@ -25,7 +25,7 @@
                     <%= @avatar.html_safe %>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <%= link_to user_path(current_user), action: 'show', class="no-show" do %>
+                    <%= link_to user_path(current_user), action: 'show', class: "no-show" do %>
                     <div class="dropdown-item dd-profile text-center">
                       <%= @avatarlg.html_safe %>
                       <span class="dd-text"><%= current_user.first_name %>&nbsp<%= current_user.last_name %></span>
