@@ -32,7 +32,7 @@
       <%= yield %>
     </main>
 
-    <footer class="Site-footer">
+    <footer class="Site-footer text-center">
       <% if params[:controller] == 'users' && params[:action] == 'show' %>
         <%= render "layouts/profile-footer" %>
       <% elsif !user_signed_in? %>
