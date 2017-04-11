@@ -1,31 +1,63 @@
-
-<div class="hero">
-  <br />
-  <div class="frosty col-10 offset-1 text-center">
-  </br \>
-    <h1>Welcome to the first edition of JobReel</h1>
+  <div class="container-fluid-index">
+    <div class="cta-box">
+      <div class="col-12 logo vert-align">
+      <p><span class="big-blue">job</span>reel</p>
+    </div>
     <br />
-    <%= link_to 'Sign Up', '#', class: 'btn btn-success', data: {toggle: 'modal', target: '#signupModal'} %>
-    <br /><br />
+    <div class = "row welcome-box">
+    <div class="col-6 login-tab-active vert-align" id="login-tab">
+      LOG IN
+    </div>
+    <div class="col-6 signup-tab-inactive vert-align" id="signup-tab">
+      SIGN UP
+    </div>
+    <div class="col-12 welcome-bar vert-align">
+      <br />
+      <span class="big-blue">WELCOME BACK!</span>
+      <br />
+    </div>
+    <div class="col-12 login-form-box">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:id => "login-box"},:format => :json, :remote => true) do |f| %>
+        <div class="form-inputs">
+          <%= f.email_field :email, required: false, placeholder: "Email", autofocus: true %>
+          <br />
+          <br />
+          <%= f.password_field :password, required: false, placeholder: "Password" %>
+          <br />
+          <%= f.check_box :remember_me, :style => "margin-top:20px;margin-bottom:20px;padding:0px;width:auto;" %>
+          <%= f.label :remember_me, :style => "margin-top:20px;margin-bottom:20px;padding:0px;width:auto" %>
+        </div>
+        <br />
+        <div class="col-10 offset-1 form-actions vert-align">
+          <%= f.submit "LOG IN", :class => "btn btn-info btn-block" %>
+        </div>
+      <% end %>
+      <br />
+      <%= render "devise/shared/links" %>
+    </div>
+    <div class="col-12 signup-form-box">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:id => "login-box"},:format => :json, :remote => true) do |f| %>
+        <div class="form-inputs">
+          <%= f.email_field :email, required: false, placeholder: "Email", autofocus: true %>
+          <br />
+          <br />
+          <%= f.password_field :password, required: false, placeholder: "Password" %>
+          <br />
+          <%= f.check_box :remember_me, :style => "margin-top:20px;margin-bottom:20px;padding:0px;width:auto;" %>
+          <%= f.label :remember_me, :style => "margin-top:20px;margin-bottom:20px;padding:0px;width:auto" %>
+        </div>
+        <br />
+        <div class="col-10 offset-1 form-actions vert-align">
+          <%= f.submit "LOG IN", :class => "btn btn-info btn-block" %>
+        </div>
+      <% end %>
+      <br />
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-</div>
+      <br />
+      <br />
+      <br />
+    </div>
+  </div>
 <br />
-<div class="row feature text-center">
-  <div class="col-12 col-sm">
-    <h3>Feature 1</h3>
-    <br />
-    <p>Save time and money.</p>
-  </div>
-
-  <div class="col-12 col-sm">
-    <h3>Feature 2</h3>
-    <br />
-    <p>Make better hiring decisions.</p>
-  </div>
-
-  <div class="col-12 col-sm">
-    <h3>Feature 3</h3>
-    <br />
-    <p>Humanize the recruitment process.</p>
-  </div>
-</div>
