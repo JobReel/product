@@ -339,48 +339,44 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
-  border-top: 1px;
-  border-bottom: 0px;
-  border-left: 1px;
-  border-right: 1px;
   border-color: #BBB;
+  border-bottom-color: #FFF;
   border-style: solid;
+  border-width: 1px;
 }
 
 .login-tab-inactive {
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
-  border-top: 0px;
-  border-bottom: 1px;
-  border-left: 0px;
-  border-right: 0px;
   border-color: #BBB;
+  border-top-color: #FFF;
+  border-left-color: #FFF;
+  border-right-color: #FFF;
   border-style: solid;
+  border-width: 1px;
 }
 
 .signup-tab-active {
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
-  border-top: 1px;
-  border-bottom: 0px;
-  border-left: 1px;
-  border-right: 1px;
   border-color: #BBB;
+  border-bottom-color: #FFF;
   border-style: solid;
+  border-width: 1px;
 }
 
 .signup-tab-inactive {
+  border-color: #BBB;
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
-  border-top: 0px;
-  border-bottom: 1px;
-  border-left: 0px;
-  border-right: 0px;
-  border-color: #BBB;
+  border-top-color: #FFF;
+  border-left-color: #FFF;
+  border-right-color: #FFF;
   border-style: solid;
+  border-width: 1px;
 }
 
 .welcome-box {
@@ -394,7 +390,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .login-form-box {
-  display: auto;
+  display: inline-block;
 }
 
 .signup-form-box {
