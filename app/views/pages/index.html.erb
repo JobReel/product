@@ -79,3 +79,32 @@ $(document).ready(function(){
     });
 });
 </script>
+<script>
+$(document).ready(function(){
+  $("form#login-box").bind ("ajax:success", function(e, data, status, xhr){
+   if (data.success) {
+    //javascript that executes if everything goes o.k.
+    $('#signinModal').modal('hide');
+    // location.reload();
+    window.location.replace("http://localhost:3030/dashboards/");
+  }
+   else {
+    alert('failure!');
+  }
+  }
+  );
+  $("form#signup-box").bind ("ajax:success", function(e, data, status, xhr){
+   if (data.success) {
+    //javascript that executes if everything goes o.k.
+    $('#signupModal').modal('hide');
+    //location.reload();
+    window.location.replace("http://localhost:3030/dashboards/");
+
+  }
+   else {
+    alert('failure!');
+  }
+  }
+  );
+});
+</script>
