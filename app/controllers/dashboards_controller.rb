@@ -10,6 +10,7 @@ before_action :authenticate_user!
     @recs = Recommendation.where(user_id: current_user.id)
 
     @avatar = display_avatar(@user)
+    @avatarlg = display_avatar_lg(@user)
     @video_avatar = display_video(@user)
   end
 

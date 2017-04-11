@@ -31,9 +31,17 @@ class ApplicationController < ActionController::Base
 
   def display_avatar(user)
     if user.image.blank?
-      return '<img src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_40,r_20,w_40/v1491256810/default_avatar.png" alt="Default avatar">'
+      return '<img src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_30,r_15,w_30/v1491256810/default_avatar.png" alt="Default avatar">'
     else
-      return '<img src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_40,r_20,w_40/v'+ user.image.stored_version + '/' + user.first_name + '.png" alt="User Avatar">'
+      return '<img src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_30,r_15,w_30/v'+ user.image.stored_version + '/' + user.first_name + '.png" alt="User Avatar">'
+    end
+  end
+
+  def display_avatar_lg(user)
+    if user.image.blank?
+      return '<img src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_50,r_25,w_50/v1491256810/default_avatar.png" alt="Default avatar">'
+    else
+      return '<img src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_50,r_25,w_50/v'+ user.image.stored_version + '/' + user.first_name + '.png" alt="User Avatar">'
     end
   end
 
