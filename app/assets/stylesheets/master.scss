@@ -29,6 +29,14 @@ $sizes: (
     box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.35);
   }
 
+  .container-fluid-index {
+    width: 420px;
+    margin: auto;
+    margin-top: 7%;
+    margin-bottom: 1%;
+    box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.35);
+  }
+
   .work-history .fa-briefcase {
     color: #ddd;
     font-size: 20px;
@@ -153,7 +161,7 @@ $sizes: (
 }
 
 body {
-  background-image: url(user-profile-background-overlay.jpg);
+  background-image: url(hero.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -173,6 +181,10 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 10%;
   padding-topc : 10%;
   padding-bottom: 10%;
+}
+
+.big-blue{
+  color: #51a6d5;
 }
 
 .booyah-box {
@@ -225,6 +237,64 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 0px;
 }
 
+.cta-box {
+  width: 420px;
+  margin: 0 auto;
+}
+
+.logo {
+  background: image_url('transparent_logo.png') no-repeat;
+  width: 412px;
+  height: 152px;
+  margin: 0 auto;
+}
+
+.logo p {
+  text-transform: uppercase;
+  color: #FFF;
+  font-family: GothamMedium;
+  font-size: 52px;
+  letter-spacing: 0.15em;
+  position: absolute;
+  display: block;
+  margin-left: 95px;
+
+}
+
+.login-tab {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  text-align: center;
+  border-top: 1px;
+  border-bottom: 0px;
+  border-left: 1px;
+  border-right: 1px;
+  border-color: #BBB;
+  border-style: solid;
+}
+
+.signup-tab {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  text-align: center;
+  border-top: 0px;
+  border-bottom: 1px;
+  border-left: 1px;
+  border-right: 0px;
+  border-color: #BBB;
+  border-style: solid;
+}
+
+.welcome-box {
+  margin: 0;
+  margin-top: 4px;
+  background-color: #FFF;
+}
+
+.welcome-bar {
+  text-align: center;
+}
+
 .feature {
   width: 100%;
   padding-left: 5%;
@@ -255,8 +325,6 @@ h1, h2, h3, h4, h5, h6 {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 370px;
-  box-shadow: 0px 3px 8px #2a2a2a;
 }
 
 .help-block {
