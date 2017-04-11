@@ -11,58 +11,57 @@
           <%= simple_form_for @user do |f| %>
           <div class="row padded">
             <div class="col-3">
-            <%= f.input :first_name %>
+              <%= f.input :first_name %>
+            </div>
+            <div class="col-1">
+              &nbsp
+            </div>
+            <div class="col-3">
+              <%= f.input :last_name %>
+            </div>
+            <div class="col-1">
+              &nbsp
+            </div>
+            <div class="col-3">
+              <%= f.input :title %>
+            </div>
           </div>
-          <div class="col-1">&nbsp</div>
-          <div class="col-3">
-            <%= f.input :last_name %>
-          </div>
-          <div class="col-1">&nbsp</div>
-          <div class="col-3">
-            <%= f.input :title %>
-          </div>
-        </div>
           <div class="row padded">
             <div class="col-3">
-            <%= f.input :city %>
-          </div>
-            <div class="col-1">&nbsp</div>
+              <%= f.input :city %>
+            </div>
+            <div class="col-1">
+              &nbsp
+            </div>
             <div class="col-3">
-            <%= f.input :state %>
+              <%= f.input :state %>
+            </div>
           </div>
-        </div>
-        <div class="row padded">
-
-          <div class="col-3">
-            <%= f.input :degree_type %>
+          <div class="row padded">
+            <div class="col-3">
+              <%= f.input :degree_type %>
+            </div>
+            <div class="col-1">
+              &nbsp
+            </div>
+            <div class="col-3">
+              <%= f.input :degree_field %>
+            </div>
           </div>
-          <div class="col-1">&nbsp</div>
-          <div class="col-3">
-            <%= f.input :degree_field %>
-          </div>
-        </div>
-        <div class="col-12">
+          <div class="col-12">
             <%= f.input :bio, :input_html => {:rows => 4} %>
           </div>
           <div class="row padded">
             <div class="col-12">
               Current Image:
-              <% if @user.image.present? %>
-              No Current image
-              <% else %>
-              <%= cl_image_tag(@user.image.public_id + ".png", :width=>40, :height=>40, :gravity=>"face", :radius=>"20", :crop=>"thumb", version: @user.image.stored_version) %>
-              <% end %>
+              <%= @avatar.html_safe %>
               <%= f.input :image %>
             </div>
           </div>
           <div class="row padded">
             <div class="col-12">
               Current Video:
-              <% if @user.video.present? %>
-              No Current Video
-              <% else %>
-              <%= cl_image_tag(@user.video.public_id + ".jpg", :resource_type => "video", :transformation => { :width => 100, :height => 72, :crop => :fill }) %>
-              <% end %>
+              <%= @video_avatar.html_safe %>
               <%= f.input :video %>
             </div>
           </div>

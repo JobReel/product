@@ -38,9 +38,6 @@ class User < ApplicationRecord
      self.video = ImageUploader.new
      self.first_name ||= "First Name"
      self.save!
- #   self.image = ImageUploader.new
- #   byebug
- #   self.image.public_id = "default_avatar"
   end
 
 end
