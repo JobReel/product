@@ -7,30 +7,40 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
   <body>
-    <!-- from http://stackoverflow.com/questions/19036541/in-rails-4-how-can-i-change-the-text-in-the-nav-bar-based-on-the-current-page -->
-    <% if params[:action] == 'index' %>
-    <%= render "layouts/index-navbar" %>
-    <% end %>
-    <% if params[:action] == 'employer' %>
-    <%= render "layouts/employer-index-navbar" %>
-    <% end %>
-    <% if params[:controller] == 'dashboards' %>
-    <%= render "layouts/navbar" %>
-    <% end %>
-    <% if notice.present? %>
-      <p class="alert alert-info"><%= notice %></p>
-    <% end %>
-    <% if alert.present? %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-    <%= yield %>
-    <% if params[:controller] == 'users' && params[:action] == 'show' %>
-    <%= render "layouts/profile-footer" %>
-    <% end %>
+    <header class="Site-header">
+      <!-- from http://stackoverflow.com/questions/19036541/in-rails-4-how-can-i-change-the-text-in-the-nav-bar-based-on-the-current-page -->
+      <% if params[:action] == 'index' %>
+      <%= render "layouts/index-navbar" %>
+      <% end %>
+      <% if params[:action] == 'employer' %>
+      <%= render "layouts/employer-index-navbar" %>
+      <% end %>
+      <% if params[:controller] == 'dashboards' %>
+      <%= render "layouts/navbar" %>
+      <% end %>
+      <% if notice.present? %>
+        <p class="alert alert-info"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+    </header>
 
-    <%= render "layouts/footer" %>
+    <main class="Site-content">
+      <%= yield %>
+    </main>
 
+    <footer class="Site-footer text-center">
+      <% if params[:controller] == 'users' && params[:action] == 'show' %>
+        <%= render "layouts/profile-footer" %>
+      <% elsif !user_signed_in? %>
+          <%= render "layouts/index-footer" %>
+      <% else %>
+        <%= render "layouts/footer" %>
+      <% end %>
+    </footer>
 
   </body>
 </html>
