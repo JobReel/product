@@ -75,16 +75,16 @@ $sizes: (
   }
 }
 
-
-
-
 .Site {
   display: flex;
   flex-direction: column;
   height: 100%; /* 1, 3 */
 }
 
-.Site-header,
+.Site-header {
+  flex: none; /* 2 */
+}
+
 .Site-footer {
   flex: none; /* 2 */
   font-family: 'Montserrat', sans-serif;
