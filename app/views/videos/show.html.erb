@@ -1,6 +1,6 @@
 <script>
 // This sets the active jobreel to the selected jobreel from the dropdown. It updates all sections and the workspace
-  var activeJobreel = "<%= @jobreel.id %>";
+  var activeJobreel = <%= @jobreel.to_json.html_safe %>;
 
   function setActiveJobreel(e) {
     console.log(e);
@@ -273,9 +273,8 @@
 <div class="col-5">
 <div class="card studio-player nopadding">
     <div class="card-block studio-blend nopadding">
-      <!-- <%= image_tag 'video-player-lg.png' %> -->
       <% if current_user.video.present? %>
-        <%= cl_video_tag(@intro_videos.first.private_id, controls: true, transformation: @overlays) %>
+        <%= default_intro(@intro_videos.first) %>
       <% end %>
     </div>
 </div>

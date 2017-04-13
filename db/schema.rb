@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330001117) do
+ActiveRecord::Schema.define(version: 20170412235707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,7 +98,6 @@ ActiveRecord::Schema.define(version: 20170330001117) do
     t.string   "degree_field"
     t.string   "image"
     t.string   "video"
-    t.string   "role"
     t.boolean  "employer_role",          default: false
     t.index ["city"], name: "index_users_on_city", using: :btree
     t.index ["degree_field"], name: "index_users_on_degree_field", using: :btree
@@ -115,9 +114,12 @@ ActiveRecord::Schema.define(version: 20170330001117) do
     t.integer  "user_id"
     t.string   "cloud_video"
     t.string   "video_section"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "private_id"
+    t.integer  "job_id"
+    t.integer  "jobreel_id"
+    t.integer  "work_history_id"
   end
 
   create_table "work_histories", force: :cascade do |t|

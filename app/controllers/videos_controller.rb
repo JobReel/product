@@ -64,4 +64,12 @@ class VideosController < ApplicationController
   def video_params
     params.require(:video).permit(:cloud_video, :video_section, :user_id)
   end
+
+  def display_default_video(user)
+    if user.videos.blank?
+      return '<img src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_30,r_15,w_30/v1491256810/default_avatar.png" alt="Default avatar">'
+    else
+      return '<img src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_30,r_15,w_30/v'+ user.image.stored_version + '/' + user.first_name + '.png" alt="User Avatar">'
+    end
+  end
 end
