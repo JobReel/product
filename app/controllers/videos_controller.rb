@@ -1,6 +1,9 @@
 class VideosController < ApplicationController
 
   def show
+    @user = current_user
+    @avatar = display_avatar(@user)
+    @avatarlg = display_avatar_lg(@user)
 
     @jobreel = Jobreel.where(user_id: current_user.id, job_id: nil).first
 

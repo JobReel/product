@@ -62,7 +62,7 @@
     console.log(publicID);
     selectedVideos.push(publicID);
 
-    $('#insertion-point').prepend('<img src="'+posterSrc+'" width = "188" height = "104"></img>')
+    $('#insertion-point').append('<img src="'+posterSrc+'" width = "188" height = "104"></img>')
     $('#selectModal').modal('hide');
     event.preventDefault();
   }
@@ -119,8 +119,11 @@
           <%= simple_form_for @video_new do |f| %>
             <%= f.input :video_section, collection: ["Introduction", "Education", "Work Experience", "Hobbies", "Recommendations"], label: "Video Section", :include_blank => false %>
             <%= f.input :cloud_video %>
-            <%= f.submit 'Update', class: 'btn btn-primary' %>
+            <%= f.submit 'Upload', class: 'btn btn-primary' %>
           <% end %>
+        </div>
+        <div>
+          <%= cl_video_tag(@intro_videos.first.private_id, controls: true, transformation: @overlays) %>
         </div>
       </div>
     </div>
@@ -282,7 +285,7 @@
   <div class="card-block white timeline-bot-bar">
     <div class="row justify-content-between">
     <h1 class="vert-align">Active Section: <span id ="workspace-section"></span></h1>
-    <button class="add-button">Preview</button>
+    <button class="add-button" onClick="previewVideoHTML()">Preview</button>
     <!-- This needs to update the current jobreel with the selectedVideos as params -->
     <%= link_to 'Save', '#', id: "push-button", class: "add-button" %>
   </div>
@@ -420,4 +423,18 @@ $(document).ready(function(){
         event.preventDefault();
     });
 });
+</script>
+
+<script>
+// This creates the html for the concatentated video poster from selectedVideos
+function previewVideoHTML() {
+  var videoHTML = '<video controls="controls" poster="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_200,w_300/';
+
+  $.each(selectedVideos, function(clipID){
+    var singleClip = "c_fill,fl_splice,h_200,l_video:"+ selectedVideos[clipID] +",w_300/";
+    videoHTML += singleClip;
+  });
+  videoHTML += selectedVideos[0] + '.jpg">';
+
+};
 </script>
