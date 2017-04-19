@@ -131,6 +131,22 @@
 </div>
 <!-- End Modal -->
 
+<!-- Video Preview Modal -->
+<div class="modal fade bd-example-modal-lg" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Preview your JobReel Section</h4>
+      </div>
+      <div class="modal-body" id="previewModalPlayer">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+
 <div class="container-fluid">
   <div class="row studio-bar">
     <div class="col-6 offset-1 studio-top">
@@ -285,7 +301,7 @@
   <div class="card-block white timeline-bot-bar">
     <div class="row justify-content-between">
     <h1 class="vert-align">Active Section: <span id ="workspace-section"></span></h1>
-    <button class="add-button" onClick="previewVideoHTML()">Preview</button>
+    <button class="add-button" onClick="previewVideoHTML()" data-toggle="modal" data-target="#previewModal">Preview</button>
     <!-- This needs to update the current jobreel with the selectedVideos as params -->
     <%= link_to 'Save', '#', id: "push-button", class: "add-button" %>
   </div>
@@ -429,41 +445,43 @@ $(document).ready(function(){
 // This creates the html for the concatentated video from selectedVideos
 
 function previewVideoHTML() {
-  var videoHTML = '<video controls="controls" poster="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_200,w_300/';
+  var videoHTML = '<video controls="controls" poster="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_400,w_600/';
 
   $.each(selectedVideos, function(clipID){
-    var singleClip = "c_fill,fl_splice,h_200,l_video:"+ selectedVideos[clipID] +",w_300/";
+    var singleClip = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos[clipID] +",w_600/";
     videoHTML += singleClip;
   });
   videoHTML += selectedVideos[0] + '.jpg">';
 
-  var videoWebmHTML = '<source src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_200,w_300/';
+  var videoWebmHTML = '<source src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_400,w_600/';
 
   $.each(selectedVideos, function(clipID){
-    var singleID = "c_fill,fl_splice,h_200,l_video:"+ selectedVideos[clipID] +",w_300/";
+    var singleID = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos[clipID] +",w_600/";
     videoWebmHTML += singleID;
   });
   videoWebmHTML += selectedVideos[0] + '.webm" type="video/webm">';
   videoHTML += videoWebmHTML;
 
-  var videoMp4HTML = '<source src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_200,w_300/';
+  var videoMp4HTML = '<source src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_400,w_600/';
 
   $.each(selectedVideos, function(clipID){
-    var singleID = "c_fill,fl_splice,h_200,l_video:"+ selectedVideos[clipID] +",w_300/";
+    var singleID = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos[clipID] +",w_600/";
     videoMp4HTML += singleID;
   });
   videoMp4HTML += selectedVideos[0] + '.mp4" type="video/mp4">';
   videoHTML += videoMp4HTML;
 
-  var videoOggHTML = '<source src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_200,w_300/';
+  var videoOggHTML = '<source src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_400,w_600/';
 
   $.each(selectedVideos, function(clipID){
-    var singleID = "c_fill,fl_splice,h_200,l_video:"+ selectedVideos[clipID] +",w_300/";
+    var singleID = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos[clipID] +",w_600/";
     videoOggHTML += singleID;
   });
   videoOggHTML += selectedVideos[0] + '.ogg" type="video/ogg"></video>';
   videoHTML += videoOggHTML;
 
   console.log(videoHTML);
+  var previewPlayer = $('#previewModalPlayer');
+  previewPlayer.html(videoHTML);
 };
 </script>
