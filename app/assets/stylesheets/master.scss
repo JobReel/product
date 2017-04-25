@@ -256,6 +256,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .big-blue{
   color: #51a6d5;
+  padding-bottom: 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
 }
 
 .booyah-box {
@@ -391,6 +394,35 @@ h1, h2, h3, h4, h5, h6 {
 
 .login-form-box {
   display: inline-block;
+}
+
+.loginbox-links {
+  padding-bottom: 14px;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  color: #51a6d5;
+}
+
+.loginbox-rememberme {
+  padding-bottom: 8px;
+  display: flex;
+
+  justify-content: space-around;
+}
+
+.label {
+  display: standard;
+}
+
+.loginbox-links span{
+  transition: .5s;
+}
+
+.loginbox-links span:hover{
+  color: rgba(81, 166, 213, 0.4);
+  cursor: pointer;
+  transition: .5s;
 }
 
 .signup-form-box {
