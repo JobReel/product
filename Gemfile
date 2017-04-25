@@ -68,3 +68,5 @@ gem 'devise'
 gem 'carrierwave'
 # video editing suite
 gem 'cloudinary'
+# send data to js
+gem 'gon'

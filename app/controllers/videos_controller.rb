@@ -2,6 +2,7 @@ class VideosController < ApplicationController
 
   def show
     @user = current_user
+    gon.user_id = @user.id
     @avatar = display_avatar(@user)
     @avatarlg = display_avatar_lg(@user)
 
