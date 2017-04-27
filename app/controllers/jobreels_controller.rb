@@ -10,7 +10,6 @@ class JobreelsController < ApplicationController
     render json: Jobreel.where(job_id: (params[:job_id]))
   end
 
-
   def create
     @new_jobreel = Jobreel.new
   end
