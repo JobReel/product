@@ -3,6 +3,7 @@ class VideosController < ApplicationController
   def show
     @user = current_user
     gon.user_id = @user.id
+
     @avatar = display_avatar(@user)
     @avatarlg = display_avatar_lg(@user)
 
@@ -13,6 +14,12 @@ class VideosController < ApplicationController
     @work_videos = Video.where(video_section: "Work Experience", user_id: current_user.id)
     @hobby_videos = Video.where(video_section: "Hobbies", user_id: current_user.id)
     @rec_videos = Video.where(video_section: "Recommendations", user_id: current_user.id)
+
+    gon.intro_videos = @intro_videos
+    gon.education_videos = @education_videos
+    gon.work_videos = @work_videos
+    gon.hobby_videos = @hobby_videos
+    gon.rec_videos = @rec_videos
 
     ev = []
     @intro_videos.each do |vid|
