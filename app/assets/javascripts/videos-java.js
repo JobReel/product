@@ -1,4 +1,6 @@
 
+var activeSection = "";
+var activeSaveSection = "";
 
 // This sets the active jobreel to the default/profile jobreel.
 function setDefaultJobreel() {
@@ -48,9 +50,24 @@ function setDefaultJobreel() {
 
 
   function setActiveSection(e) {
-    var activeSection = e.target.textContent;
+    var sectionThumbnails = "";
+    activeSaveSection = e.target.parentElement.id;
+    activeSection = e.target.textContent;
+
+//Rewrites the Video Selection Modal content
+var sections = [];
+  var sections = JSON.parse(activeJobreel[activeSaveSection]);
+    $.each(sections, function(index, clipID){
+
+      var singleID = '<a href="#" onclick="selectVideo(this)"><img src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_72,w_100/'+clipID+'.jpg" alt="'+clipID+'"></a>';
+      sectionThumbnails += singleID;
+      console.log(clipID);
+    });
+
+    console.log(sectionThumbnails);
     console.log(activeSection);
     $('#workspace-section').html(e.target.textContent);
+    $('#videoStrip').html(sectionThumbnails)
   }
 // Builds the drop-down of Jobreels for that user.
 // This should also set the active jobreel to whichever is selected. Default profile?
@@ -92,7 +109,7 @@ function setDefaultJobreel() {
     $.post("/jobreels/" + activeJobreel.id, {
       _method: "PATCH",
       jobreel: {
-        section1_videos: selectedVideos
+        activeSaveSection: selectedVideos
       }
     });
     selectedVideos = [];

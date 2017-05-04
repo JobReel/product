@@ -6,7 +6,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Select a Video to Add</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="videoStrip">
         <% if @intro_videos.present? %>
         <% @intro_videos.each do |disp| %>
           <a href="#" onclick="selectVideo(this)"><%= cl_image_tag(disp.cloud_video.public_id + ".jpg", :resource_type => "video", :version => disp.cloud_video.stored_version, :transformation => { :width => 100, :height => 72, :crop => :fill }) %></a>

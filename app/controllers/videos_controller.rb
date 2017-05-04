@@ -76,4 +76,5 @@ class VideosController < ApplicationController
       return '<img src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_30,r_15,w_30/v'+ user.image.stored_version + '/' + user.first_name + '.png" alt="User Avatar">'
     end
   end
+
 end
