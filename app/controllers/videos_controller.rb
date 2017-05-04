@@ -15,11 +15,11 @@ class VideosController < ApplicationController
     @hobby_videos = Video.where(video_section: "Hobbies", user_id: current_user.id)
     @rec_videos = Video.where(video_section: "Recommendations", user_id: current_user.id)
 
-    gon.intro_videos = @intro_videos
-    gon.education_videos = @education_videos
-    gon.work_videos = @work_videos
-    gon.hobby_videos = @hobby_videos
-    gon.rec_videos = @rec_videos
+    gon.section1_videos = @intro_videos
+    gon.section2_videos = @education_videos
+    gon.section3_videos = @work_videos
+    gon.section4_videos = @hobby_videos
+    gon.section5_videos = @rec_videos
 
     ev = []
     @intro_videos.each do |vid|
