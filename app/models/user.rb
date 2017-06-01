@@ -24,20 +24,29 @@ class User < ApplicationRecord
  validates :degree_field, presence: true, on: :update
 
   def set_defaults!
-     self.first_name ||= "default_avatar"
-     self.last_name ||= "Last Name"
-     self.title = "Job Title"
-     self.city = "City"
-     self.state = "State"
-     self.bio = "Your Bio"
-     self.degree = "degree"
-     self.degree_type = "Type of Degree"
-     self.degree_field = "Degree Field"
-     self.save!
-     self.image = ImageUploader.new
-     self.video = ImageUploader.new
-     self.first_name ||= "First Name"
-     self.save!
+    self.first_name ||= "default_avatar"
+    self.last_name ||= "Last Name"
+    self.title = "Job Title"
+    self.city = "City"
+    self.state = "State"
+    self.bio = "Your Bio"
+    self.degree = "degree"
+    self.degree_type = "Type of Degree"
+    self.degree_field = "Degree Field"
+    self.save!
+    self.image = ImageUploader.new
+    self.video = ImageUploader.new
+    self.first_name ||= "First Name"
+    self.save!
+    set_default_jobreel(self)
   end
+
+  private
+
+  def set_default_jobreel(user)
+    @defaultjr = Jobreel.new(user_id:user.id)
+    @defaultjr.save!
+  end
+
 
 end

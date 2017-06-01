@@ -6,6 +6,9 @@ class JobreelsController < ApplicationController
     render json: Jobreel.where(user_id: current_user.id)
   end
 
+  def jobreel_by_job_id
+    render json: Jobreel.where(job_id: (params[:job_id]))
+  end
 
   def create
     @new_jobreel = Jobreel.new
@@ -33,6 +36,10 @@ class JobreelsController < ApplicationController
 
   def jobreel_params
     params.require(:jobreel).permit(:user_id, {:section1_videos=>[]}, {:section2_videos=>[]}, {:section3_videos=>[]}, {:section4_videos=>[]}, {:section5_videos=>[]})
+  end
+
+  def employer_jobreel_params
+    params.require(:jobreel).permit(:user_id, :job_id, {:section1_videos=>[]}, {:section2_videos=>[]}, {:section3_videos=>[]}, {:section4_videos=>[]}, {:section5_videos=>[]})
   end
 
 end
