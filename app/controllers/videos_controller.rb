@@ -3,6 +3,7 @@ class VideosController < ApplicationController
   def show
     @user = current_user
     gon.user_id = @user.id
+
     @avatar = display_avatar(@user)
     @avatarlg = display_avatar_lg(@user)
 
@@ -13,6 +14,12 @@ class VideosController < ApplicationController
     @work_videos = Video.where(video_section: "Work Experience", user_id: current_user.id)
     @hobby_videos = Video.where(video_section: "Hobbies", user_id: current_user.id)
     @rec_videos = Video.where(video_section: "Recommendations", user_id: current_user.id)
+
+    gon.section1_videos = @intro_videos
+    gon.section2_videos = @education_videos
+    gon.section3_videos = @work_videos
+    gon.section4_videos = @hobby_videos
+    gon.section5_videos = @rec_videos
 
     ev = []
     @intro_videos.each do |vid|
@@ -76,4 +83,5 @@ class VideosController < ApplicationController
       return '<img src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_30,r_15,w_30/v'+ user.image.stored_version + '/' + user.first_name + '.png" alt="User Avatar">'
     end
   end
+
 end
