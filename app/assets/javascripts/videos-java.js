@@ -105,15 +105,31 @@ $.each(sections2, function (index, clipID){
   function pushVideos(){
 
     alert('pushing next');
-    $.post("/jobreels/" + activeJobreel.id, {
-      _method: "PATCH",
-      jobreel: {
-        activeSaveSection: selectedVideos
+    var dataObj = {};
+    dataObj[activeSaveSection] = selectedVideos;
+    $.ajax({
+      'type' : 'POST',
+      'method' : 'PATCH',
+      'dataType' : 'JSON',
+      'data': {jobreel: dataObj},
+      'url': "/jobreels/" + activeJobreel.id,
+      'success': function(response){
+      alert('save successful')
       }
     });
+
     selectedVideos = [];
     $("#insertion-point").html("");
   }
+
+  // $.post("/jobreels/" + activeJobreel.id, {
+  //   _method: "PATCH",
+  //   jobreel: {
+  //     activeSaveSection: selectedVideos
+  //   }
+  // });
+
+
   // figure out success handler to update the various DOM elements
 
 
