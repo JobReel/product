@@ -22,7 +22,7 @@
     </div>
   </nav>
   <script>
-  $(document).ready(function(){
+$(document).on('turbolinks:load', function(){
     $("form#login-box").bind ("ajax:success", function(e, data, status, xhr){
      if (data.success) {
       //javascript that executes if everything goes o.k.

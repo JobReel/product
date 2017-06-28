@@ -66,7 +66,7 @@
 </div>
 <br />
 <script>
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   $("#signup-tab").click(function(e){
       $("#signup-tab").attr('class', 'col-6 vert-align signup-tab-active');
       $("#login-tab").attr('class', 'col-6 vert-align login-tab-inactive');
@@ -84,7 +84,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
 $("form#login-box").bind ("ajax:success", function(e, data, status, xhr){
  if (data.success) {
   //javascript that executes if everything goes o.k.
