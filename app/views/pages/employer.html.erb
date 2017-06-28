@@ -1,114 +1,72 @@
 <div class="container-fluid-index">
   <div class="cta-box">
     <div class="col-12 logo vert-align">
-    <p><span class="big-blue">job</span>reel</p>
-  </div>
-  <br />
-  <div class = "row welcome-box">
-  <div class="col-6 login-tab-active vert-align" id="login-tab">
-    LOG IN
-  </div>
-  <div class="col-6 signup-tab-inactive vert-align" id="signup-tab">
-    SIGN UP
-  </div>
-  <div class="col-12 welcome-bar vert-align" id="welcome-bar">
+      <p><span class="big-blue">job</span>reel</p>
+    </div>
     <br />
-    <span class="big-blue">WELCOME BACK!</span>
-    <br />
-  </div>
-  <div class="col-12 login-form-box" id="login-form-box">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:id => "login-box"},:format => :json, :remote => true) do |f| %>
-      <div class="form-inputs">
-        <%= f.email_field :email, required: false, placeholder: "Email", autofocus: true %>
-        <br />
-        <br />
-        <%= f.password_field :password, required: false, placeholder: "Password" %>
-        <br />
-        <%= f.check_box :remember_me, :style => "margin-top:20px;margin-bottom:20px;padding:0px;width:auto;" %>
-        <%= f.label :remember_me, :style => "margin-top:20px;margin-bottom:20px;padding:0px;width:auto;" %>
+    <div class = "row welcome-box">
+      <div class="col-6 login-tab-active vert-align" id="login-tab">
+        LOG IN
       </div>
-      <br />
-      <div class="form-actions">
-        <%= f.submit "EMPLOYER LOG IN", :class => "btn btn-info btn-block" %>
+      <div class="col-6 signup-tab-inactive vert-align" id="signup-tab">
+        SIGN UP
       </div>
-    <% end %>
-    <br />
-    <%= render "devise/shared/links" %>
-  </div>
-  <div class="col-12 signup-form-box" id="signup-form-box">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "signup-box"},:format => :json, :remote => true) do |f| %>
-      <div class="form-inputs">
-        <%= f.text_field :first_name, required: true, placeholder: "First Name", autofocus: true %>
+      <div class="col-12 welcome-bar vert-align" id="welcome-bar">
         <br />
+        <span class="big-blue">WELCOME BACK EMPLOYER!</span>
         <br />
-        <%= f.text_field :last_name, required: true, placeholder: "Last Name" %>
-        <br />
-        <br />
-        <%= f.email_field :email, required: true, placeholder: "Email" %>
-        <br />
-        <br />
-        <%= f.password_field :password, required: true, placeholder: "Password" %>
-        <br />
-        <br />
-        <%= f.password_field :password_confirmation, required: true, placeholder: "Confirm Password" %>
-        <%= f.hidden_field :employer_role, value: true %>
       </div>
-      <br />
-      <div class="form-actions">
-        <%= f.submit "EMPLOYER SIGN UP", :class => "btn btn-info btn-block" %>
+      <div class="col-12 login-form-box" id="login-form-box">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:id => "login-box"},:format => :json, :remote => true) do |f| %>
+        <div class="form-inputs">
+          <%= f.email_field :email, required: false, placeholder: "Email", autofocus: true %>
+          <br />
+          <br />
+          <%= f.password_field :password, required: false, placeholder: "Password" %>
+          <br /><br />
+        </div>
+        <div class="loginbox-rememberme">
+          <%= f.label :remember_me do %>
+            <%= f.check_box :remember_me %>
+            <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              Remember me<%= link_to "Forgot your password?", new_password_path(resource_name), {:style=>'margin-left: 150px;'} %><br />
+            <% end %>
+          <% end %>
+        </div>
+        <br />
+        <div class="form-actions">
+          <%= f.submit "EMPLOYER LOG IN", :class => "btn btn-info btn-block" %>
+        </div>
+        <% end %>
+        <br />
+        <div class="loginbox-links text-center">
+          No account? <span id="signup-tab-text"> Sign up now!</span><br />
+        </div>
       </div>
-    <% end %>
-    <br />
-    <%= render "devise/shared/links" %>
+      <div class="col-12 signup-form-box" id="signup-form-box">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "signup-box"},:format => :json, :remote => true) do |f| %>
+        <div class="form-inputs">
+          <%= f.text_field :first_name, required: true, placeholder: "First Name", autofocus: true %>
+          <br />          <br />
+          <%= f.text_field :last_name, required: true, placeholder: "Last Name" %>
+          <br />          <br />
+          <%= f.email_field :email, required: true, placeholder: "Email" %>
+          <br />          <br />
+          <%= f.password_field :password, required: true, placeholder: "Password" %>
+          <br />          <br />
+          <%= f.password_field :password_confirmation, required: true, placeholder: "Confirm Password" %>
+          <%= f.hidden_field :employer_role, value: true %>
+        </div>
+        <br />
+        <div class="form-actions">
+          <%= f.submit "EMPLOYER SIGN UP", :class => "btn btn-info btn-block" %>
+        </div>
+        <% end %>
+        <br />
+        <div class="loginbox-links text-center">
+          Already have an account? <span id="login-tab-text"> Log in now!</span><br />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-  </div>
-</div>
-<br />
-<script>
-$(document).on('turbolinks:load', function(){
-  $("#signup-tab").click(function(e){
-      $("#signup-tab").attr('class', 'col-6 vert-align signup-tab-active');
-      $("#login-tab").attr('class', 'col-6 vert-align login-tab-inactive');
-      $("#welcome-bar").html('<br /><span class="big-blue">START TODAY!</span><br />');
-      $("#signup-form-box").attr('class', 'col-12 login-form-box');
-      $("#login-form-box").attr('class', 'col-12 signup-form-box');
-  });
-  $("#login-tab").click(function(e){
-      $("#login-tab").attr('class', 'col-6 vert-align login-tab-active');
-      $("#signup-tab").attr('class', 'col-6 vert-align signup-tab-inactive');
-      $("#welcome-bar").html('<br /><span class="big-blue">WELCOME BACK!</span><br />');
-      $("#signup-form-box").attr('class', 'col-12 signup-form-box');
-      $("#login-form-box").attr('class', 'col-12 login-form-box');
-  });
-});
-</script>
-<script>
-$(document).on('turbolinks:load', function(){
-$("form#login-box").bind ("ajax:success", function(e, data, status, xhr){
- if (data.success) {
-  //javascript that executes if everything goes o.k.
-  $('#signinModal').modal('hide');
-  // location.reload();
-  window.location.replace("http://localhost:3030/dashboards/");
-}
- else {
-  alert('failure!');
-}
-}
-);
-$("form#signup-box").bind ("ajax:success", function(e, data, status, xhr){
- if (data.success) {
-  //javascript that executes if everything goes o.k.
-  $('#signupModal').modal('hide');
-  //location.reload();
-  window.location.replace("http://localhost:3030/dashboards/");
-
-}
- else {
-  alert('failure!');
-}
-}
-);
-});
-</script>
