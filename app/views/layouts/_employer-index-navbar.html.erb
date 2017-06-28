@@ -22,7 +22,7 @@
     </div>
   </nav>
   <script>
-  $(document).ready(function(){
+$(document).on('turbolinks:load', function(){
     $("form#login-box").bind ("ajax:success", function(e, data, status, xhr){
      if (data.success) {
       //javascript that executes if everything goes o.k.
@@ -30,7 +30,7 @@
       window.location.replace("http://localhost:3030/dashboards/");
       location.reload();
     }
-     else
+     else {
       alert('failure!');
     }
     );
@@ -42,7 +42,7 @@
       //javascript that executes if everything goes o.k.
       $('#signupModal').modal('hide');
       window.location.replace("http://localhost:3030/dashboards/");
-     else
+     else {
       alert('failure!');
     }
     );

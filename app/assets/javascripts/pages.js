@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', function(){
     $("#signup-tab").click(function(e){
         $("#signup-tab").attr('class', 'col-6 vert-align signup-tab-active');
         $("#login-tab").attr('class', 'col-6 vert-align login-tab-inactive');
@@ -43,12 +43,13 @@ $(document).on('turbolinks:load', function() {
         $("#signup-form-box").attr('class', 'col-12 signup-form-box');
         $("#login-form-box").attr('class', 'col-12 login-form-box');
     });
+
     $("form#login-box").bind ("ajax:success", function(e, data, status, xhr){
       window.location.replace("http://localhost:3030/dashboards/");
     }
     );
     $("form#login-box").bind ("ajax:error", function(e, data, status, xhr){
-      sweetAlert("Oops...", "Please Try Again!", "error");
+      sweetAlert("Oops...", "Please try again!", "error");
     }
     );
     $("form#signup-box").bind ("ajax:success", function(e, data, status, xhr){
@@ -58,7 +59,7 @@ $(document).on('turbolinks:load', function() {
       window.location.replace("http://localhost:3030/dashboards/");
     }
      else {
-      sweetAlert("Oops...", "Please Try Again!", "error");
+      sweetAlert("Oops...", "Please try again!", "error");
     }
     });
 });
