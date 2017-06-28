@@ -14,4 +14,18 @@ class Jobreel < ApplicationRecord
     h
   end
 
+  def get_section1_videos
+    JSON.parse(section1_videos)
+  end
+
+  def get_videos(section)
+    JSON.parse(section)
+    case section
+    when :section1
+      JSON.parse(section1_videos)
+    when :section2
+      JSON.parse(section2_videos)
+    end
+  end
+
 end

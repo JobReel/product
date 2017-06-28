@@ -29,6 +29,14 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
 
   def show
     @job = Job.find(params[:id])
+    @jobreel = Jobreel.find_by(job_id: params[:id])
+
+    @intro_videos = @jobreel.section1_videos
+    @challenge_videos = @jobreel.section2_videos
+    @expectation_videos = @jobreel.section3_videos
+    @team_videos = @jobreel.section4_videos
+    @benefit_videos = @jobreel.section5_videos
+
   end
 
   def edit

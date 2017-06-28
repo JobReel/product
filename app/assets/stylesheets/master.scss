@@ -392,6 +392,30 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+.jobposting-top {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.jobposting-bar {
+  background-color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.jobposting-bar h1 {
+  color: #3a475c;
+  font-size: 28pt;
+}
+
+.jobposting-bar h2 {
+
+}
+
+.jobposting-bar h3 {
+  color: #8a9dab;
+  font-size: 12pt;
+}
+
 .login-form-box {
   display: inline-block;
 }
@@ -861,7 +885,6 @@ li {
 .studio-top {
   padding-top: 2%;
   padding-bottom: 2%;
-
 }
 
 .timeline-bot-bar {

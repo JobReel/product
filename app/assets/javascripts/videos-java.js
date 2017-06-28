@@ -105,15 +105,31 @@ $.each(sections2, function (index, clipID){
   function pushVideos(){
 
     alert('pushing next');
-    $.post("/jobreels/" + activeJobreel.id, {
-      _method: "PATCH",
-      jobreel: {
-        activeSaveSection: selectedVideos
+    var dataObj = {};
+    dataObj[activeSaveSection] = selectedVideos;
+    $.ajax({
+      'type' : 'POST',
+      'method' : 'PATCH',
+      'url': "/jobreels/" + activeJobreel.id,
+      'dataType' : 'JSON',
+      'data': {jobreel: dataObj},
+      'success': function(response){
+      alert('save successful')
       }
     });
+
     selectedVideos = [];
     $("#insertion-point").html("");
   }
+
+  // $.post("/jobreels/" + activeJobreel.id, {
+  //   _method: "PATCH",
+  //   jobreel: {
+  //     activeSaveSection: selectedVideos
+  //   }
+  // });
+
+
   // figure out success handler to update the various DOM elements
 
 
@@ -142,10 +158,10 @@ $.each(sections2, function (index, clipID){
   setInterval(function() {
       var left1 = parseInt($('#insertion-point').css('left'));
 
-      if ($('#left1').is(":hover")) {
+      if ($('#left1:hover').length) {
           $('#insertion-point').css('left', left1+2);
       }
-      else if ($('#right1').is(":hover")) {
+      else if ($('#right1:hover').length) {
           $('#insertion-point').css('left', left1-2);
       }
   }, 10);
