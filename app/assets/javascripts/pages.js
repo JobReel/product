@@ -59,7 +59,7 @@ $(document).on('turbolinks:load', function(){
       window.location.replace("http://localhost:3030/dashboards/");
     }
      else {
-      sweetAlert("Oops...", "Please try again!", "error");
+       sweetAlert("Oops...", data.data, "error");
     }
     });
 });
