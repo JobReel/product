@@ -392,6 +392,21 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+.job-requirements-title {
+  margin-top: 3%;
+  background-color: #FFFFFF;
+  padding: 5%;
+  border-bottom: 3px;
+  border-bottom-color: #D2D2D2;
+}
+
+.job-requirements-icons {
+  background-color: #FFFFFF;
+  padding: 5%;
+  border: 3px;
+  border-color: #C2C2C2;
+}
+
 .jobposting-top {
   padding-top: 2%;
   padding-bottom: 2%;
@@ -653,6 +668,14 @@ p {
 .poster-display img {
   padding-right: 2px;
   padding-bottom: 2px;
+}
+
+.nomargin {
+  margin: 0px;
+}
+
+.noborder {
+  border: 0px;
 }
 
 .nopadding {
