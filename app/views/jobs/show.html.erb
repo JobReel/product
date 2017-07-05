@@ -25,10 +25,10 @@
     </div>
   </div>
 </div>
-<div class="row studio-body">
-<div class="col-5 offset-1">
-  <div class="card studio-player nopadding">
-    <div class="card-block studio-blend nopadding">
+<div class="row is-flex studio-body justify-content-center">
+<div class="col-5 no-pad-left">
+  <div class="card job-box nopadding">
+    <div class="card-block studio-blend nopadding match">
       <% if @intro_videos.present? %>
         <%= default_intro(@intro_videos.first) %>
       <% end %>
@@ -36,12 +36,13 @@
   </div>
 </div>
 
-  <div class="col-4 noborder">
-    <div class="card job-requirements-title">
+  <div class="col-3 noborder">
+    <div class="card job-box nopadding">
+      <div class="card-block job-requirements-title">
       APPLICATION REQUIREMENTS
-    </div>
-    <div class="card-block">
-      <div class="row nomargin text-center">
+      </div>
+    <div class="card-block match">
+      <div class="row nomargin text-center match">
         <div class="col-6 job-requirements-icons vert-align">
           CardBlock1
         </div>
@@ -56,8 +57,9 @@
     </div>
     </div>
   </div>
-    <div class="card-block apply-box text-center">
+  <div class="card-block apply-box text-center">
     APPLY FOR THIS JOB
   </div>
+</div>
 
 </div> <!--end of row studio body -->

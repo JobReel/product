@@ -393,18 +393,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .job-requirements-title {
-  margin-top: 3%;
+  padding-top: 3%;
   background-color: #FFFFFF;
   padding: 5%;
-  border-bottom: 3px;
-  border-bottom-color: #D2D2D2;
+  border-bottom: 1px solid;
+  border-color: #F4F4F4;
 }
 
 .job-requirements-icons {
   background-color: #FFFFFF;
   padding: 5%;
-  border: 3px;
-  border-color: #C2C2C2;
+  border-right: 1px solid;
+  border-bottom:1px solid;
+  border-color: #F4F4F4;
 }
 
 .jobposting-top {
@@ -1314,6 +1315,24 @@ video {
   color: #FFF;
   padding-top: 2%;
   padding-bottom: 2%;
+}
+
+.row.is-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row.is-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+.job-box {
+  margin-top: 20px;
+  margin-bottom: 2%;
+}
+
+.match {
+
 }
 
 .dropdown a:hover {background-color: #f1f1f1}
