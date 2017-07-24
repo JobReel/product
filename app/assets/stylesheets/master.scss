@@ -397,7 +397,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #FFFFFF;
   padding: 5%;
   border-bottom: 1px solid;
-  border-color: #F4F4F4;
+  border-color: #E4E4E4;
 }
 
 .job-requirements-icons {
@@ -405,7 +405,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 5%;
   border-right: 1px solid;
   border-bottom:1px solid;
-  border-color: #F4F4F4;
+  border-color: #E4E4E4;
 }
 
 .jobposting-top {
@@ -1334,8 +1334,28 @@ video {
 .job-description {
   padding: 15px;
   border-bottom: 1px solid;
-  border-color: #F4F4F4;
+  border-color: #E4E4E4;
+}
 
+.job-description-full {
+  padding: 15px;
+}
+
+.job-description-full:before {
+  content:'';
+  width:100%;
+  height:80%;
+  position:absolute;
+  left:0;
+  top:0;
+  background:linear-gradient(transparent 100px, white);
+}
+
+.job-collapse {
+  background: #FFF;
+  padding: 15px;
+  border-bottom: 1px solid;
+  border-color: #E4E4E4;
 }
 
 .jobposting-sidebar {
@@ -1346,11 +1366,19 @@ video {
   width: 90%;
   height: 1px;
   margin: 0px auto;
-  border-bottom: 1px solid #F4F4F4;
+  border-bottom: 1px solid #E4E4E4;
 }
 
-.match {
+.newcard {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 
+.vert-divide {
+  width: 1px;
+  background-color: #E4E4E4;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .dropdown a:hover {background-color: #f1f1f1}
