@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'pages#index'
   get '/employer' => 'pages#employer'
   get '/employerAPI' => 'jobreels#jobreel_by_job_id'
+  get '/vidtest' => 'pages#vidtest'
   # Going to need to use nested resources so that a work history is created for a specific user
 
   resources :users, only: [:show, :edit, :update, :destroy]

@@ -37,6 +37,13 @@ $sizes: (
     box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.35);
   }
 
+  .container-fluid-job {
+    width: 1000px;
+    background-color: #dbe5ee;
+    font-family: 'Montserrat', sans-serif;
+    margin: auto;
+  }
+
   .work-history .fa-briefcase {
     color: #ddd;
     font-size: 20px;
@@ -1381,6 +1388,49 @@ video {
   margin-bottom: 2px;
 }
 
-.dropdown a:hover {background-color: #f1f1f1}
+.video-player {
+  z-index: 99;
+}
+
+.video-player-controls {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #4795fb;
+  width: 100%;
+  height: 20px;
+
+}
+
+.custom-play {
+ position: absolute;
+ height: 30px;
+ width: 30px;
+}
+
+.custom-pause {
+
+}
+
+.custom-section2 {
+
+}
+
+.custom-section3 {
+
+}
+
+.custom-section4 {
+
+}
+
+.custom-section5 {
+
+}
+
+.dropdown a:hover {
+  background-color: #f1f1f1;
+}
 
 .show {display:block;}
