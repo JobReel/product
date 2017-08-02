@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412235707) do
+ActiveRecord::Schema.define(version: 20170802210933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,11 @@ ActiveRecord::Schema.define(version: 20170412235707) do
     t.string   "section3_videos"
     t.string   "section4_videos"
     t.string   "section5_videos"
+    t.float    "section1_duration"
+    t.float    "section2_duration"
+    t.float    "section3_duration"
+    t.float    "section4_duration"
+    t.float    "section5_duration"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -120,6 +125,7 @@ ActiveRecord::Schema.define(version: 20170412235707) do
     t.integer  "job_id"
     t.integer  "jobreel_id"
     t.integer  "work_history_id"
+    t.float    "duration"
   end
 
   create_table "work_histories", force: :cascade do |t|
