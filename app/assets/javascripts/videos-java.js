@@ -103,7 +103,7 @@ $.each(sections2, function (index, clipID){
     event.preventDefault();
   }
 
-// This updates the current jobreel with the selectedVideos for the appropriate section.
+// This builds a hash of clipIDs and durations then updates the current jobreel with the selectedVideos and sectionDuration for the appropriate section.
   function pushVideos(){
 
     var sections2 = [];
