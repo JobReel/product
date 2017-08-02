@@ -35,7 +35,7 @@ class JobreelsController < ApplicationController
   end
 
   def jobreel_params
-    params.require(:jobreel).permit(:user_id, {:section1_videos=>[]}, {:section2_videos=>[]}, {:section3_videos=>[]}, {:section4_videos=>[]}, {:section5_videos=>[]})
+    params.require(:jobreel).permit(:user_id, :section1_duration, :section2_duration, :section3_duration, :section4_duration, :section5_duration, {:section1_videos=>[]}, {:section2_videos=>[]}, {:section3_videos=>[]}, {:section4_videos=>[]}, {:section5_videos=>[]}, :section1)
   end
 
   def employer_jobreel_params
