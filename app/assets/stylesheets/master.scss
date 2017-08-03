@@ -1403,14 +1403,8 @@ video {
 
 }
 
-.custom-play {
- position: absolute;
- height: 30px;
- width: 30px;
-}
-
-.custom-pause {
-
+.js #container {
+    /* this styling only renders if JS is enabled */
 }
 
 .custom-section2 {
