@@ -98,7 +98,7 @@ $(document).on('turbolinks:load', function(){
       trackPlayProgress : function(){
         (function progressTrack() {
            videoPlayer.updatePlayProgress();
-           playProgressInterval = setTimeout(progressTrack, 50);
+           playProgressInterval = setTimeout(progressTrack, 10);
          })();
       },
 

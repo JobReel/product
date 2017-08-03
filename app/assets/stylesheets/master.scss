@@ -1407,6 +1407,23 @@ video {
     /* this styling only renders if JS is enabled */
 }
 
+.progress-box {
+  background-color: #C2C2C2;
+  height: 20px;
+}
+
+.progress-bar {
+  background-color: #000;
+  height: 15px;
+}
+
+.moving-bar {
+  display: inline-block;
+  background-color: #51a6d5;
+  height: 10px;
+  line-height: 1.5em;
+}
+
 .custom-section2 {
 
 }
