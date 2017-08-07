@@ -1,6 +1,5 @@
 // Adapted from: https://code.tutsplus.com/tutorials/build-a-custom-html5-video-player--pre-8905
 $(document).on('turbolinks:load', function(){
-  (function( window, document) {
     // Boolean that allows us to "remember" the current size of the video player.
     var video = document.getElementsByTagName('video')[0],
     videoControls = document.getElementById('videoControls'),
@@ -92,6 +91,26 @@ $(document).on('turbolinks:load', function(){
     			this.currentTime = 0;
     			this.pause();
     		}, false);
+
+        // Video Scrubing function
+        progressHolder.addEventListener("mousedown", function(){
+          videoPlayer.stopTrackingPlayProgress();
+
+          videoPlayer.playPause();
+
+          document.onmousemove = function(e) {
+            videoPlayer.setPlayProgress( e.pageX );
+          }
+
+          progressHolder.onmouseup = function(e) {
+            document.onmouseup = null;
+            document.onmousemove = null;
+
+            video.play();
+            videoPlayer.setPlayProgress( e.pageX );
+            videoPlayer.trackPlayProgress();
+          }
+        }, true);
     	},
 
       // Every 50 milliseconds, update the play progress.
@@ -101,41 +120,6 @@ $(document).on('turbolinks:load', function(){
            playProgressInterval = setTimeout(progressTrack, 10);
          })();
       },
-
-      videoScrubbing : function() {
-    		progressHolder.addEventListener("mousedown", function(){
-    			videoPlayer.stopTrackingPlayProgress();
-
-    			videoPlayer.playPause();
-
-    			document.onmousemove = function(e) {
-    			  videoPlayer.setPlayProgress( e.pageX );
-    			}
-
-    			progressHolder.onmouseup = function(e) {
-    				document.onmouseup = null;
-    				document.onmousemove = null;
-
-    				video.play();
-    				videoPlayer.setPlayProgress( e.pageX );
-    				videoPlayer.trackPlayProgress();
-    			}
-    		}, true);
-    	},
-
-    	setPlayProgress : function( clickX ) {
-    		var newPercent = Math.max( 0, Math.min(1, (clickX - this.findPosX(progressHolder)) / progressHolder.offsetWidth) );
-    		video.currentTime = newPercent * video.duration;
-    		playProgressBar.style.width = newPercent * (progressHolder.offsetWidth)  + "px";
-    	},
-
-    	findPosX : function(progressHolder) {
-    		var curleft = progressHolder.offsetLeft;
-    		while( progressHolder = progressHolder.offsetParent ) {
-    			curleft += progressHolder.offsetLeft;
-    		}
-    		return curleft;
-    	},
 
       updatePlayProgress : function(){
     		playProgressBar.style.width = ( (video.currentTime / video.duration) * (progressHolder.offsetWidth) ) + "px";
@@ -183,11 +167,24 @@ $(document).on('turbolinks:load', function(){
       // Video was stopped, so stop updating progress.
     	stopTrackingPlayProgress : function(){
     		clearTimeout( playProgressInterval );
-    	}
+    	},
+
+      setPlayProgress : function( clickX ) {
+        var newPercent = Math.max( 0, Math.min(1, (clickX - this.findPosX(progressHolder)) / progressHolder.offsetWidth) );
+        video.currentTime = newPercent * video.duration;
+        playProgressBar.style.width = newPercent * (progressHolder.offsetWidth)  + "px";
+      },
+
+      findPosX : function(progressHolder) {
+        var curleft = progressHolder.offsetLeft;
+        while( progressHolder = progressHolder.offsetParent ) {
+          curleft += progressHolder.offsetLeft;
+        }
+        return curleft;
+      }
 
     };
 
     videoPlayer.init();
 
-	}( this, document ))
 });
