@@ -106,7 +106,7 @@ $(document).on('turbolinks:load', function(){
             document.onmouseup = null;
             document.onmousemove = null;
 
-            video.play();
+
             videoPlayer.setPlayProgress( e.pageX );
             videoPlayer.trackPlayProgress();
           }
