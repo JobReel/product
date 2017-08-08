@@ -1,5 +1,6 @@
+
 <div class="container-fluid">
-  <div class="row studio-bar">
+  <div class="row is-flex studio-bar justify-content-center">
     <div class="col-1 offset-1 jobposting-top">
       <div>LOGO</div>
     </div>
@@ -25,9 +26,9 @@
     </div>
   </div>
 </div>
-<div class="row studio-body">
-<div class="col-5 offset-1">
-  <div class="card studio-player nopadding">
+<div class="row is-flex studio-body justify-content-center">
+<div class="col-5 no-pad-left">
+  <div class="card job-box nopadding">
     <div class="card-block studio-blend nopadding">
       <% if @intro_videos.present? %>
         <%= default_intro(@intro_videos.first) %>
@@ -36,28 +37,212 @@
   </div>
 </div>
 
-  <div class="col-4 noborder">
-    <div class="card job-requirements-title">
+<div class="col-3 noborder">
+  <div class="card job-box nopadding">
+    <div class="card-block job-requirements-title">
       APPLICATION REQUIREMENTS
     </div>
-    <div class="card-block">
+    <div class="card-block ">
       <div class="row nomargin text-center">
         <div class="col-6 job-requirements-icons vert-align">
           CardBlock1
         </div>
-      <div class="col-6 job-requirements-icons vert-align">
-        CardBlock2
+        <div class="col-6 job-requirements-icons vert-align">
+          CardBlock2
+        </div>
+        <div class="col-6 job-requirements-icons vert-align">
+          CardBlockB1
+        </div>
+        <div class="col-6 job-requirements-icons vert-align">
+          CardBlockB2
+        </div>
       </div>
-      <div class="col-6 job-requirements-icons vert-align">
-        CardBlockB1
-      </div>
-    <div class="col-6 job-requirements-icons vert-align">
-      CardBlockB2
     </div>
-    </div>
-  </div>
     <div class="card-block apply-box text-center">
-    APPLY FOR THIS JOB
+      APPLY FOR THIS JOB
+    </div>
   </div>
+</div>
+
+<div class="col-5 no-pad-left newcard">
+    <div class="card nopadding">
+      <div class="card-block job-description white">
+        <div class="row">
+          <div class="col-9">
+            <h1>Job Description</h1>
+          </div>
+          <div class="col-3 social-media">
+            <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>&nbsp
+            <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>&nbsp
+            <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>&nbsp
+            <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+          </div>
+      </div>
+    </div>
+    <div class="card-block job-description-full white" id="full-description">
+      <b>The Challenge</b>
+      <br></br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mattis non augue ut lobortis. Mauris congue luctus augue. Mauris rutrum erat ac est luctus, non lobortis lorem molestie. Suspendisse consequat tempus risus ac convallis. Phasellus vitae gravida lectus. Nunc vulputate suscipit posuere. Donec lobortis nisl vel ante pharetra, sit amet aliquam neque commodo. In congue, dolor a finibus facilisis, turpis sapien tristique sapien, id consequat ex neque id magna. Proin mauris eros, varius eu convallis at, congue non quam. Mauris pretium imperdiet est at rhoncus. Sed malesuada pulvinar tempus. Ut nunc quam, malesuada sed justo laoreet, posuere viverra lacus. Aenean ac dui dolor.</p>
+      <br>
+      <p>Maecenas mattis est quis egestas lobortis. Etiam consequat aliquam lorem, nec hendrerit leo venenatis sit amet. Morbi eu scelerisque orci. Integer ornare tincidunt arcu id mollis. Maecenas ut neque et ante tempus sodales. Suspendisse at mi elit. Donec felis dui, pharetra quis libero sit amet, vulputate sagittis justo. Maecenas tempus dapibus laoreet. Phasellus eleifend justo at cursus cursus. Donec vitae blandit orci. Nam in leo ut justo hendrerit aliquam. Aenean vitae ligula eget metus mattis malesuada nec et velit.</p>
+    </div>
+    <div class="card-block job-collapse white text-center" id="collapseme">
+      Read full job description <button><i class="fa fa-caret-down"></i></button>
+    </div>
+  </div>
+</div>
+
+<div class="col-3 noborder newcard">
+  <div class="card nopadding">
+    <div class="card-block job-requirements-title">
+      PEOPLE ALSO VIEWED
+    </div>
+    <div class="card-block white">
+      <div class="row nomargin">
+        <div class="col-3 jobposting-top">
+          <div>LOGO</div>
+        </div>
+        <div class="col-7 jobposting-sidebar">
+          <div class = "row">
+            Similar Job 1
+          </div>
+          <div class="row">
+            Similar Company 1
+          </div>
+          <div class="row">
+            Anytown, Anystate
+          </div>
+        </div>
+        <div class="col-1 vert-align">
+          8d
+        </div>
+      </div>
+    </div>
+    <div class="jobposting-divider">&nbsp;
+    </div>
+    <div class="card-block white">
+      <div class="row nomargin">
+        <div class="col-3 jobposting-top">
+          <div>LOGO</div>
+        </div>
+        <div class="col-7 jobposting-sidebar">
+          <div class = "row">
+            Similar Job 1
+          </div>
+          <div class="row">
+            Similar Company 1
+          </div>
+          <div class="row">
+            Anytown, Anystate
+          </div>
+        </div>
+        <div class="col-1 vert-align">
+          8d
+        </div>
+      </div>
+    </div>
+    <div class="jobposting-divider">&nbsp;
+    </div>
+    <div class="card-block white">
+      <div class="row nomargin">
+        <div class="col-3 jobposting-top">
+          <div>LOGO</div>
+        </div>
+        <div class="col-7 jobposting-sidebar">
+          <div class = "row">
+            Similar Job 1
+          </div>
+          <div class="row">
+            Similar Company 1
+          </div>
+          <div class="row">
+            Anytown, Anystate
+          </div>
+        </div>
+        <div class="col-1 vert-align">
+          8d
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div> <!--end of similar jobs -->
+
+<div class="col-5 no-pad-left newcard">
+  <div class="card nopadding">
+    <div class="card-block job-description white">
+      <div class="row">
+        <div class="col-11">
+          Applicant Competitive Intelligence
+        </div>
+        <div class="col-1">
+          <i class="fa fa-question-circle" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <div class="card-block job-description white">
+      <i class="fa fa-user" aria-hidden="true"></i> &nbsp APPLICANTS
+    </div>
+    <div class="card-block job-description white">
+      <div class="row text-center">
+        <div class="col">
+          65
+          <br>
+          Applicants
+        </div>
+        <div class="vert-divide">
+        </div>
+        <div class="col">
+          15
+          <br>
+          Past Day
+        </div>
+        <div class="vert-divide">
+        </div>
+        <div class="col">
+          45
+          <br>
+          Responses to Optional Questions
+        </div>
+      </div>
+    </div>
+    <div class="card-block job-description white">
+      <i class="fa fa-graduation-cap" aria-hidden="true"></i> &nbsp EDUCATION
+    </div>
+    <div class="card-block job-description white">
+      <div class="row text-center">
+        <div class = "col-4">
+          42
+          <br>
+          Have a Bachelor's degree
+        </div>
+        <div class = "col-4">
+          25
+          <br>
+          Have a Master's degree
+        </div>
+        <div class = "col-4">
+          7
+          <br>
+          Have an MBA degree
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-3 noborder newcard">
+  <div class="card nopadding">
+    <div class="card-block job-requirements-title">
+      PEOPLE ALSO VIEWED
+    </div>
+    <div class="card-block white jobposting-sidebar">
+      Engineering Jobs
+      <br>
+      Adobe Jobs
+    </div>
+  </div>
+</div>
 
 </div> <!--end of row studio body -->

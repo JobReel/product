@@ -11,4 +11,7 @@ class PagesController < ApplicationController
   def employer
   end
 
+  def vidtest
+  end
+
 end

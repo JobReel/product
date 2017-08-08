@@ -37,6 +37,13 @@ $sizes: (
     box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.35);
   }
 
+  .container-fluid-job {
+    width: 1000px;
+    background-color: #dbe5ee;
+    font-family: 'Montserrat', sans-serif;
+    margin: auto;
+  }
+
   .work-history .fa-briefcase {
     color: #ddd;
     font-size: 20px;
@@ -393,18 +400,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .job-requirements-title {
-  margin-top: 3%;
+  padding-top: 3%;
   background-color: #FFFFFF;
   padding: 5%;
-  border-bottom: 3px;
-  border-bottom-color: #D2D2D2;
+  border-bottom: 1px solid;
+  border-color: #E4E4E4;
 }
 
 .job-requirements-icons {
   background-color: #FFFFFF;
   padding: 5%;
-  border: 3px;
-  border-color: #C2C2C2;
+  border-right: 1px solid;
+  border-bottom:1px solid;
+  border-color: #E4E4E4;
 }
 
 .jobposting-top {
@@ -1316,6 +1324,124 @@ video {
   padding-bottom: 2%;
 }
 
-.dropdown a:hover {background-color: #f1f1f1}
+.row.is-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row.is-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+.job-box {
+  margin-top: 20px;
+  margin-bottom: 2%;
+}
+
+.job-description {
+  padding: 15px;
+  border-bottom: 1px solid;
+  border-color: #E4E4E4;
+}
+
+.job-description-full {
+  padding: 15px;
+}
+
+.job-description-full:before {
+  content:'';
+  width:100%;
+  height:80%;
+  position:absolute;
+  left:0;
+  top:0;
+  background:linear-gradient(transparent 100px, white);
+}
+
+.job-collapse {
+  background: #FFF;
+  padding: 15px;
+  border-bottom: 1px solid;
+  border-color: #E4E4E4;
+}
+
+.jobposting-sidebar {
+  padding: 15px;
+}
+
+.jobposting-divider {
+  width: 90%;
+  height: 1px;
+  margin: 0px auto;
+  border-bottom: 1px solid #E4E4E4;
+}
+
+.newcard {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.vert-divide {
+  width: 1px;
+  background-color: #E4E4E4;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.video-player {
+  z-index: 99;
+}
+
+.video-player-controls {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #4795fb;
+  width: 100%;
+  height: 20px;
+
+}
+
+.js #container {
+    /* this styling only renders if JS is enabled */
+}
+
+.progress-box {
+  background-color: #C2C2C2;
+  height: 20px;
+}
+
+.progress-bar {
+  background-color: #000;
+  height: 20px;
+}
+
+.moving-bar {
+  display: inline-block;
+  background-color: #51a6d5;
+  height: 10px;
+  line-height: 1.5em;
+}
+
+.custom-section2 {
+
+}
+
+.custom-section3 {
+
+}
+
+.custom-section4 {
+
+}
+
+.custom-section5 {
+
+}
+
+.dropdown a:hover {
+  background-color: #f1f1f1;
+}
 
 .show {display:block;}

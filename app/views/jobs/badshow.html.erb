@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div class="row studio-bar">
+    <div class="col-1 offset-1 jobposting-top">
+      <div>LOGO</div>
+    </div>
+    <div class="col-7 jobposting-top">
+      <div class = "row">
+        <h1><%= @job.job_title %></h1>
+      </div>
+      <div class="row">
+        <h3><%= @job.city %>, <%= @job.state %></h3> - Meet Adobe
+      </div>
+      <div class="row">
+        Posted 14 days ago - 263 views
+      </div>
+      <div class="row">
+        <div class="float-right">
+          <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary' %>
+          <%= link_to 'Destroy', job_path(@job), method: :delete, data: {confirm: 'Are you sure you want to delete this?'},class: 'btn btn-danger' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-2 jobposting-top">
+    JOB STATS W/ICONS
+    </div>
+  </div>
+</div>
+<div class="row is-flex studio-body justify-content-center">
+<div class="col-5 no-pad-left">
+  <div class="card job-box nopadding">
+    <div class="card-block studio-blend nopadding match">
+      <% if @intro_videos.present? %>
+        <%= default_intro(@intro_videos.first) %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+  <div class="col-3 noborder">
+    <div class="card job-box nopadding">
+      <div class="card-block job-requirements-title">
+      APPLICATION REQUIREMENTS
+      </div>
+    <div class="card-block match">
+      <div class="row nomargin text-center match">
+        <div class="col-6 job-requirements-icons vert-align">
+          CardBlock1
+        </div>
+      <div class="col-6 job-requirements-icons vert-align">
+        CardBlock2
+      </div>
+      <div class="col-6 job-requirements-icons vert-align">
+        CardBlockB1
+      </div>
+    <div class="col-6 job-requirements-icons vert-align">
+      CardBlockB2
+    </div>
+    </div>
+  </div>
+  <div class="card-block apply-box text-center">
+    APPLY FOR THIS JOB
+  </div>
+</div>
+
+</div> <!--end of row studio body -->

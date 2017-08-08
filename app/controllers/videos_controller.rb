@@ -47,6 +47,9 @@ class VideosController < ApplicationController
     @vid = Video.new(video_params)
     @vid.user_id = current_user.id
     @vid.private_id = generate_code(10)
+    meta = Cloudinary::Api.resource('Tim', :resource_type => "video", :image_metadata => true)
+    @vid.duration = meta['duration']
+    byebug
     @vid.save!
     redirect_to video_path(current_user.id)
   end
@@ -73,7 +76,7 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:cloud_video, :video_section, :user_id)
+    params.require(:video).permit(:cloud_video, :video_section, :user_id, :duration)
   end
 
   def display_default_video(user)

@@ -66,8 +66,10 @@ $.each(sections2, function (index, clipID){
     console.log(sectionThumbnails);
     console.log(activeSection);
     $('#workspace-section').html(e.target.textContent);
-    $('#videoStrip').html(sectionThumbnails)
+    $('#videoStrip').html(sectionThumbnails);
+    // sectionDuration = clipDurations.reduce((v, i) => (v + i));
   }
+
 // Builds the drop-down of Jobreels for that user.
 // This should also set the active jobreel to whichever is selected. Default profile?
   $(function() {
@@ -101,12 +103,25 @@ $.each(sections2, function (index, clipID){
     event.preventDefault();
   }
 
-// This updates the current jobreel with the selectedVideos for the appropriate section.
+// This builds a hash of clipIDs and durations then updates the current jobreel with the selectedVideos and sectionDuration for the appropriate section.
   function pushVideos(){
+
+    var sections2 = [];
+    var sections2 = gon[activeSaveSection];
+    var clipDurations = {};
+    $.each(sections2, function (index, clipID){
+      clipDurations[clipID.private_id] = (clipID.duration);
+    });
 
     alert('pushing next');
     var dataObj = {};
+    var sectionDuration = 0;
     dataObj[activeSaveSection] = selectedVideos;
+    $.each(selectedVideos, function (index, clipID) {
+      sectionDuration += clipDurations[clipID];
+    });
+    activeSaveSectionDuration = activeSaveSection.slice(0,9) + 'duration';
+    dataObj[activeSaveSectionDuration] = sectionDuration;
     $.ajax({
       'type' : 'POST',
       'method' : 'PATCH',
@@ -177,6 +192,7 @@ $.each(sections2, function (index, clipID){
         else {
           // Clears the selectedVideos
           selectedVideos = [];
+          sectionDuration = 0;
         }
       }
       else {
