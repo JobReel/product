@@ -57,7 +57,7 @@ $(document).on('turbolinks:load', function(){
       	// switch to the "Pause" symbol.
       	video.addEventListener('play', function() {
       		play.title = 'Pause';
-      		play.innerHTML = '<span id="pauseButton">&#x2590;&#x2590;</span>';
+          play.innerHTML = '<img src="/assets/pause.gif">';
 
       		// Begin tracking video's progress.
       		videoPlayer.trackPlayProgress();
@@ -68,7 +68,7 @@ $(document).on('turbolinks:load', function(){
     		// switch to the "Play" symbol and stop tracking progress.
         video.addEventListener('pause', function() {
       		play.title = 'Play';
-      		play.innerHTML = '&#x25BA;';
+          play.innerHTML = '<img src="/assets/play.gif">';
 
       		// Video was paused, stop tracking progress.
       		videoPlayer.stopTrackingPlayProgress();
