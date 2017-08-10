@@ -8,6 +8,7 @@ $(document).on('turbolinks:load', function(){
     progressContainer = document.getElementById("progress"),
     progressHolder = document.getElementById("progress_box"),
     playProgressBar = document.getElementById("play_progress"),
+  	volumeslider = document.getElementById("volumeslider"),
 
     fullScreenToggleButton = document.getElementById("fullScreen"),
     isVideoFullScreen = false;
@@ -29,34 +30,21 @@ $(document).on('turbolinks:load', function(){
         // When play or pause buttons are pressed.
         this.handleButtonPresses();
 
+        // Update the current time on timeupdate
+        video.addEventListener('timeupdate',this.videoTime,false);
+
+        // Adjust the volume with the slider
+        volumeslider.addEventListener('change',this.setvolume,false);
+
         // When the full screen button is pressed...
-      	fullScreenToggleButton.addEventListener("click", function(){
-      		isVideoFullScreen ? that.fullScreenOff() : that.fullScreenOn();
-      	}, true);
+      	// fullScreenToggleButton.addEventListener("click", function(){
+      	// 	isVideoFullScreen ? that.fullScreenOff() : that.fullScreenOn();
+      	// }, true);
       },
 
       initializeControls : function() {
     		// When all meta information has loaded, show controls & perform other initial procedures (like adding section break icons)
-    		videoPlayer.showHideControls();
-    	},
-
-      showHideControls : function() {
-    		// Shows and hides the video player.
-    		video.addEventListener('mouseover', function() {
-    			videoControls.style.opacity = 1;
-    		}, false);
-
-    		videoControls.addEventListener('mouseover', function() {
-    			videoControls.style.opacity = 1;
-    		}, false);
-
-    		video.addEventListener('mouseout', function() {
-    			videoControls.style.opacity = 0;
-    		}, false);
-
-    		videoControls.addEventListener('mouseout', function() {
-    			videoControls.style.opacity = 0;
-    		}, false);
+        videoControls.style.opacity = 1;
     	},
 
       handleButtonPresses : function() {
@@ -111,6 +99,8 @@ $(document).on('turbolinks:load', function(){
             videoPlayer.trackPlayProgress();
           }
         }, true);
+
+
     	},
 
       // Every 50 milliseconds, update the play progress.
@@ -125,7 +115,18 @@ $(document).on('turbolinks:load', function(){
     		playProgressBar.style.width = ( (video.currentTime / video.duration) * (progressHolder.offsetWidth) ) + "px";
     	},
 
-      playPause: function() {
+      videoTime : function(){
+        var curmins = Math.floor(video.currentTime / 60);
+        var cursecs = Math.floor(video.currentTime - curmins * 60);
+        var durmins = Math.floor(video.duration / 60);
+        var dursecs = Math.floor(video.duration - durmins * 60);
+        if(cursecs < 10){ cursecs = "0"+cursecs; }
+        if(dursecs < 10){ dursecs = "0"+dursecs; }
+        curtimetext.innerHTML = curmins+":"+cursecs;
+        durtimetext.innerHTML = durmins+":"+dursecs;
+      },
+
+      playPause : function() {
     		if ( video.paused || video.ended ) {
     			if ( video.ended ) { video.currentTime = 0; }
     			video.play();
@@ -133,36 +134,40 @@ $(document).on('turbolinks:load', function(){
     		else { video.pause(); }
     	},
 
-      fullScreenOn : function() {
-        isVideoFullScreen = true;
-
-        // Set new width according to window width
-        video.style.cssText = 'position: fixed; width:' + window.innerWidth + 'px; height: ' + window.innerHeight + 'px;';
-
-        // Apply a classname to the video and controls, if the designer needs it...
-        video.className = 'fullsizeVideo';
-        videoControls.className = 'fs-control';
-        fullScreenToggleButton.className = "fs-active control";
-
-        // Listen for escape key. If pressed, close fullscreen.
-        document.addEventListener('keydown', this.checkKeyCode, false);
+      setvolume : function(){
+      	video.volume = volumeslider.value / 100;
       },
 
-      fullScreenOff : function() {
-        isVideoFullScreen = false;
+      // fullScreenOn : function() {
+      //   isVideoFullScreen = true;
+      //
+      //   // Set new width according to window width
+      //   video.style.cssText = 'position: fixed; width:' + window.innerWidth + 'px; height: ' + window.innerHeight + 'px;';
+      //
+      //   // Apply a classname to the video and controls, if the designer needs it...
+      //   video.className = 'fullsizeVideo';
+      //   videoControls.className = 'fs-control';
+      //   fullScreenToggleButton.className = "fs-active control";
+      //
+      //   // Listen for escape key. If pressed, close fullscreen.
+      //   document.addEventListener('keydown', this.checkKeyCode, false);
+      // },
 
-        video.style.position = 'static';
-
-        video.className = '';
-        fullScreenToggleButton.className = "control";
-        videoControls.className = '';
-      },
+      // fullScreenOff : function() {
+      //   isVideoFullScreen = false;
+      //
+      //   video.style.position = 'static';
+      //
+      //   video.className = '';
+      //   fullScreenToggleButton.className = "control";
+      //   videoControls.className = '';
+      // },
 
       // Determines if the escape key was pressed.
-    	checkKeyCode : function( e ) {
-    		e = e || window.event;
-    		if ( (e.keyCode || e.which) === 27 ) videoPlayer.fullScreenOff();
-    	},
+    	// checkKeyCode : function( e ) {
+    	// 	e = e || window.event;
+    	// 	if ( (e.keyCode || e.which) === 27 ) videoPlayer.fullScreenOff();
+    	// },
 
       // Video was stopped, so stop updating progress.
     	stopTrackingPlayProgress : function(){
