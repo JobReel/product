@@ -1,12 +1,11 @@
 <div class = "js container is-flex nopadding">
- <div id = "video_container">
-   <video controls preload poster="http://res.cloudinary.com/jobreel/video/upload/default_intro.jpg">
-     <source src="http://res.cloudinary.com/jobreel/video/upload/default_intro.webm" type="video/webm">
-     <source src="http://res.cloudinary.com/jobreel/video/upload/default_intro.mp4" type="video/mp4">
-     <source src="http://res.cloudinary.com/jobreel/video/upload/default_intro.ogv" type="video/ogg">
+ <div id = "video_container" class = "video-player">
+   <video controls preload>
+     <source src="http://corrupt-system.de/assets/media/sintel/sintel-trailer.webm" type="video/webm">
+     <source src="http://corrupt-system.de/assets/media/sintel/sintel-trailer.m4v" type="video/mp4">
    </video>
  </div>
- <div id = "videoControls">
+ <div id = "videoControls" class = "video-player-controls is-flex">
    <button id = "play" title = "Play"> &#x25BA;</button>
 
    <div class = "progress-box vert-align" id = "progress">

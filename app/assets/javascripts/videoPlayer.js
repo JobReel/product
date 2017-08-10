@@ -35,6 +35,7 @@ $(document).on('turbolinks:load', function(){
 
         // Adjust the volume with the slider
         volumeslider.addEventListener('change',this.setvolume,false);
+        volumeslider.addEventListener('input',this.setvolume,false);
 
         // When the full screen button is pressed...
       	// fullScreenToggleButton.addEventListener("click", function(){
