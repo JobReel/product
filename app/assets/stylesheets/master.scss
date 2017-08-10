@@ -21,6 +21,10 @@ $sizes: (
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
 @media (min-width: 1200px) {
+.container-fluid {
+  background-color: #FFFFFF;
+}
+
   .container-fluid-profile {
     width: 1000px;
     margin: auto;
@@ -38,10 +42,8 @@ $sizes: (
   }
 
   .container-fluid-job {
-    width: 1000px;
     background-color: #dbe5ee;
     font-family: 'Montserrat', sans-serif;
-    margin: auto;
   }
 
   .work-history .fa-briefcase {
@@ -1333,6 +1335,27 @@ video {
     flex-direction: column;
 }
 
+.job-bar {
+  background-color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.job-stats {
+  flex-direction: row-reverse;
+  align-content: flex-end;
+}
+
+.job-body {
+  background-color: #dbe5ee;
+  font-family: 'Montserrat', sans-serif;
+  width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .job-box {
   margin-top: 20px;
   margin-bottom: 2%;
@@ -1404,6 +1427,7 @@ video {
 }
 
 .progress-box {
+  padding-top: 20px;
   width: 250px;
   background-color: #C2C2C2;
   height: 20px;
@@ -1424,6 +1448,20 @@ video {
 .vranger {
   margin-top: 60px;
    transform: rotateZ(270deg);
+}
+
+#seekback img {
+  padding-right: 10px;
+  padding-top: 20px;
+}
+
+#seekfwd img {
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+#play img {
+  padding-top: 5px;
 }
 
 .custom-section2 {
