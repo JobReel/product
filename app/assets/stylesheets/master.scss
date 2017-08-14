@@ -19,6 +19,7 @@ $sizes: (
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800');
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400i');
 
 @media (min-width: 1200px) {
 .container-fluid {
@@ -1416,34 +1417,41 @@ video {
   height: 375px;
 }
 
+.video-mask {
+  -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+  -webkit-transform: rotate(0.000001deg);
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  border-radius: 0.25em;
+  overflow: hidden;
+}
+
 .video-player-controls {
   display: flex;
   background-color: #FFFFFF;
-  height: 50px;
+  height: 85px;
   padding-left: 10px;
+  font-family: 'PT Serif', serif;
+  font-size: 14px;
+  color: #7c889c;
 }
 
 .js #container {
     /* this styling only renders if JS is enabled */
 }
 
-.progress-box {
-  padding-top: 20px;
-  width: 250px;
-  background-color: #C2C2C2;
-  height: 20px;
-}
-
 .progress-bar {
-  background-color: #000;
-  height: 20px;
+  margin-top: 38.5px;
+  width: 380px;
+  background-color: #dbe5ee;
+  height: 8px;
 }
 
 .moving-bar {
+  margin-bottom: 6px;
   display: inline-block;
-  background-color: #51a6d5;
-  height: 10px;
-  line-height: 1.5em;
+  background-color: #277cea;
+  height: 8px;
 }
 
 .vranger {
@@ -1452,17 +1460,32 @@ video {
 }
 
 #seekback img {
-  padding-right: 10px;
-  padding-top: 20px;
+  margin-right: 13px;
+  margin-top: 38.5px;
+  margin-left: 17px;
+  cursor: pointer;
 }
 
 #seekfwd img {
-  padding-left: 10px;
-  padding-top: 20px;
+  margin-right: 17px;
+  margin-left: 13px;
+  margin-top: 38.5px;
+  cursor: pointer;
 }
 
 #play img {
-  padding-top: 5px;
+  margin-top: 22.5px;
+  cursor: pointer;
+}
+
+#volumebtn {
+  margin-left: 10px;
+  margin-top: 31.5px;
+}
+
+.videotime {
+  padding-top: 31.5px;
+  padding-left: 17px;
 }
 
 .custom-section2 {
