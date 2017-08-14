@@ -28,13 +28,42 @@
 </div>
 <div class = "container-fluid-job">
 <div class="row is-flex job-body">
-<div class="col-7 no-pad-left">
-  <div class="card job-box nopadding">
-    <div class="card-block studio-blend nopadding" id="video_target">
+  <div class="col-7 no-pad-left">
+    <div class="card job-box nopadding">
+      <div class="card-block studio-blend nopadding video-mask">
+        <div id = "video_container" class = "video-player">
+          <% if @intro_videos.present? %>
+            <%= jobreel_default_intro(JSON.parse(@intro_videos).first) %>
+          <% end %>
+        </div>
+        <div id = "videoControls" class = "video-player-controls">
+          <div id = "seekback">
+            <%= image_tag 'skipback.gif' %>
+          </div>
+          <div id = "play">
+            <%= image_tag 'play.gif' %>
+          </div>
+          <div id = "seekfwd">
+            <%= image_tag 'skipforward.gif' %>
+          </div>
+
+          <!-- <div class = "progress-box" id = "progress"> -->
+            <div class = "progress-bar" id = "progress_box">
+              <div class = "moving-bar" id = "play_progress"></div>
+            </div>
+          <!-- </div> -->
+          <div class = "videotime">
+           <span id="curtimetext">0:00</span> &nbsp;/&nbsp; <span id="durtimetext">0:00</span>
+          </div>
+           <!-- <input id="volumeslider" type="range" min="0" max="100" value="100" step="1" class="vranger"> -->
+          <div id = "volumebtn">
+           <%= image_tag 'volumebtn.gif' %>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
-</div>
 
 <div class="col-5 noborder">
   <div class="card job-box nopadding">
