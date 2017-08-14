@@ -37,6 +37,8 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
     @team_videos = @jobreel.section4_videos
     @benefit_videos = @jobreel.section5_videos
 
+    gon.intro_videos = JSON.parse(@intro_videos)
+
   end
 
   def edit
