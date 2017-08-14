@@ -54,14 +54,14 @@ function setDefaultJobreel() {
     activeSaveSection = e.target.parentElement.id;
     activeSection = e.target.textContent;
 
-//Rewrites the video Selection Modal with videos from the library
-var sections2 = [];
-var sections2 = gon[activeSaveSection];
-$.each(sections2, function (index, clipID){
-  var singleID = '<a href="#" onclick="selectVideo(this)"><img src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_72,w_100/'+clipID.private_id+'.jpg" alt="'+clipID.private_id+'"></a>';
-  sectionThumbnails += singleID;
-  console.log(clipID);
-});
+    //Rewrites the video Selection Modal with videos from the library
+    var sections2 = [];
+    var sections2 = gon[activeSaveSection];
+    $.each(sections2, function (index, clipID){
+      var singleID = '<a href="#" onclick="selectVideo(this)"><img src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_72,w_100/'+clipID.private_id+'.jpg" alt="'+clipID.private_id+'"></a>';
+      sectionThumbnails += singleID;
+      console.log(clipID);
+    });
 
     console.log(sectionThumbnails);
     console.log(activeSection);

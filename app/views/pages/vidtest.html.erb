@@ -1,29 +1,68 @@
-<div class = "container nopadding">
- <div id = "video_container" class = "video-player">
-   <video controls preload>
-     <source src="http://corrupt-system.de/assets/media/sintel/sintel-trailer.webm" type="video/webm">
-     <source src="http://corrupt-system.de/assets/media/sintel/sintel-trailer.m4v" type="video/mp4">
-   </video>
- </div>
- <div id = "videoControls" class = "video-player-controls">
-   <div id = "seekback">
-     <%= image_tag 'skipback.gif' %>
-   </div>
-   <div id = "play">
-     <%= image_tag 'play.gif' %>
-   </div>
-   <div id = "seekfwd">
-     <%= image_tag 'skipforward.gif' %>
-   </div>
+<div class = "container-fluid-job nopadding">
 
-   <div class = "progress-box" id = "progress">
-     <div class = "progress-bar" id = "progress_box">
-       <span class = "moving-bar" id = "play_progress"></span>
-     </div>
-   </div>
+<div class = "row is-flex job-body">
 
-    <span id="curtimetext">0:00</span> / <span id="durtimetext">0:00</span>
-    <input id="volumeslider" type="range" min="0" max="100" value="100" step="1" class="vranger">
- </div>
+  <div class="col-7 no-pad-left">
+    <div class="card job-box nopadding">
+      <div class="card-block studio-blend nopadding">
+        <div id = "video_container" class = "video-player">
+          <video controls preload>
+            <source src="http://corrupt-system.de/assets/media/sintel/sintel-trailer.webm" type="video/webm">
+            <source src="http://corrupt-system.de/assets/media/sintel/sintel-trailer.m4v" type="video/mp4">
+          </video>
+        </div>
+        <div id = "videoControls" class = "video-player-controls">
+          <div id = "seekback">
+            <%= image_tag 'skipback.gif' %>
+          </div>
+          <div id = "play">
+            <%= image_tag 'play.gif' %>
+          </div>
+          <div id = "seekfwd">
+            <%= image_tag 'skipforward.gif' %>
+          </div>
 
+          <div class = "progress-box" id = "progress">
+            <div class = "progress-bar" id = "progress_box">
+              <span class = "moving-bar" id = "play_progress"></span>
+            </div>
+          </div>
+
+           <span id="curtimetext">0:00</span> / <span id="durtimetext">0:00</span>
+           <input id="volumeslider" type="range" min="0" max="100" value="100" step="1" class="vranger">
+           <div id = "volumebtn">
+            <%= image_tag 'volumebtn.gif' %> 
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-5 noborder">
+    <div class="card job-box nopadding">
+      <div class="card-block job-requirements-title">
+        APPLICATION REQUIREMENTS
+      </div>
+      <div class="card-block ">
+        <div class="row nomargin text-center">
+          <div class="col-6 job-requirements-icons vert-align">
+            CardBlock1
+          </div>
+          <div class="col-6 job-requirements-icons vert-align">
+            CardBlock2
+          </div>
+          <div class="col-6 job-requirements-icons vert-align">
+            CardBlockB1
+          </div>
+          <div class="col-6 job-requirements-icons vert-align">
+            CardBlockB2
+          </div>
+        </div>
+      </div>
+      <div class="card-block apply-box text-center">
+        APPLY FOR THIS JOB
+      </div>
+    </div>
+  </div>
+</div>
 </div>

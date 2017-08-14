@@ -36,7 +36,10 @@
           <% end %>
         </div>
         <div>
+        <% if @intro_videos.present? %>
           <%= cl_video_tag(@intro_videos.first.private_id, controls: true, transformation: @overlays) %>
+        <% else %>
+        <% end %>
         </div>
       </div>
     </div>
