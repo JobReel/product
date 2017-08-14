@@ -30,10 +30,8 @@
 <div class="row is-flex job-body">
 <div class="col-7 no-pad-left">
   <div class="card job-box nopadding">
-    <div class="card-block studio-blend nopadding">
-      <% if @intro_videos.present? %>
-        <%= jobreel_default_intro(JSON.parse(@intro_videos).first) %>
-      <% end %>
+    <div class="card-block studio-blend nopadding" id="video_target">
+
     </div>
   </div>
 </div>
@@ -248,3 +246,6 @@
 
 </div> <!--end of row studio body -->
 </div>
+<script>
+  $(document).on('turbolinks:load', buildVideoHTML(gon.intro_videos));
+</script>
