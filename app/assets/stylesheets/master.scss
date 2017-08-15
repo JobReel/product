@@ -1455,17 +1455,21 @@ video {
 }
 
 .volume-slider-bar {
- position: relative;
- background-color: #000000;
+ position: absolute;
+ right: 32px;
+ bottom: 55px;
+ background-color: rgba(0,0,0,.5);
  height: 120px;
- width: 20px;
+ width: 21px;
+ visibility: hidden;
 }
 
 .vranger {
   position: relative;
   transform: rotateZ(270deg);
-  margin-left: -54px;
-  margin-top: -70px;
+  margin-left: -40px;
+  margin-top: 50px;
+  width: 100px;
 }
 
 #seekback img {
@@ -1490,6 +1494,7 @@ video {
 #volumebtn {
   margin-left: 10px;
   margin-top: 31.5px;
+  margin-bottom: 31.5px;
 }
 
 .videotime {

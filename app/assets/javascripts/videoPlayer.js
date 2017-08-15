@@ -7,7 +7,8 @@ $(document).on('turbolinks:load', function(){
 
     progressHolder = document.getElementById("progress_box"),
     playProgressBar = document.getElementById("play_progress"),
-    volumebtn = document.getElementById("volumebtn")
+    volumebtn = document.getElementById("volumebtn"),
+    volumebar = document.getElementById("volumebar"),
   	volumeslider = document.getElementById("volumeslider"),
 
     fullScreenToggleButton = document.getElementById("fullScreen"),
@@ -31,14 +32,15 @@ $(document).on('turbolinks:load', function(){
         this.handleButtonPresses();
 
         // Update the current time on timeupdate
-        video.addEventListener('timeupdate',this.videoTime,false);
+        video.addEventListener('timeupdate', this.videoTime,false);
 
         // Show slider on volume mouseover
-        volumebtn.addEventListener('mouseover',this.showVolume,false);
+        volumebtn.addEventListener('mouseover', this.showVolume,false);
+        volumebar.addEventListener('mouseout', this.hideVolume,false);
 
         // Adjust the volume with the slider
-        volumeslider.addEventListener('change',this.setvolume,false);
-        volumeslider.addEventListener('input',this.setvolume,false);
+        volumeslider.addEventListener('change', this.setvolume,false);
+        volumeslider.addEventListener('input', this.setvolume,false);
 
         // When the full screen button is pressed...
       	// fullScreenToggleButton.addEventListener("click", function(){
@@ -139,7 +141,11 @@ $(document).on('turbolinks:load', function(){
     	},
 
       showVolume : function() {
+        volumebar.style.visibility = 'visible';
+      },
 
+      hideVolume : function() {
+        volumebar.style.visibility = 'hidden';
       },
 
       setvolume : function(){
