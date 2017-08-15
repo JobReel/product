@@ -5,9 +5,9 @@ $(document).on('turbolinks:load', function(){
     videoControls = document.getElementById('videoControls'),
     play = document.getElementById('play'),
 
-    progressContainer = document.getElementById("progress"),
     progressHolder = document.getElementById("progress_box"),
     playProgressBar = document.getElementById("play_progress"),
+    volumebtn = document.getElementById("volumebtn")
   	volumeslider = document.getElementById("volumeslider"),
 
     fullScreenToggleButton = document.getElementById("fullScreen"),
@@ -33,6 +33,9 @@ $(document).on('turbolinks:load', function(){
         // Update the current time on timeupdate
         video.addEventListener('timeupdate',this.videoTime,false);
 
+        // Show slider on volume mouseover
+        volumebtn.addEventListener('mouseover',this.showVolume,false);
+
         // Adjust the volume with the slider
         volumeslider.addEventListener('change',this.setvolume,false);
         volumeslider.addEventListener('input',this.setvolume,false);
@@ -57,7 +60,7 @@ $(document).on('turbolinks:load', function(){
       	// switch to the "Pause" symbol.
       	video.addEventListener('play', function() {
       		play.title = 'Pause';
-          play.innerHTML = '<img src="/assets/pause.gif">';
+          play.firstElementChild.src = "/assets/pause.gif";
 
       		// Begin tracking video's progress.
       		videoPlayer.trackPlayProgress();
@@ -68,7 +71,7 @@ $(document).on('turbolinks:load', function(){
     		// switch to the "Play" symbol and stop tracking progress.
         video.addEventListener('pause', function() {
       		play.title = 'Play';
-          play.innerHTML = '<img src="/assets/play.gif">';
+          play.firstElementChild.src = "/assets/play.gif";
 
       		// Video was paused, stop tracking progress.
       		videoPlayer.stopTrackingPlayProgress();
@@ -134,6 +137,10 @@ $(document).on('turbolinks:load', function(){
     		}
     		else { video.pause(); }
     	},
+
+      showVolume : function() {
+
+      },
 
       setvolume : function(){
       	video.volume = volumeslider.value / 100;

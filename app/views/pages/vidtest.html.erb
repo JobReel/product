@@ -22,16 +22,17 @@
             <%= image_tag 'skipforward.gif' %>
           </div>
 
-          <div class = "progress-box" id = "progress">
             <div class = "progress-bar" id = "progress_box">
               <span class = "moving-bar" id = "play_progress"></span>
             </div>
-          </div>
+
 
            <span id="curtimetext">0:00</span> / <span id="durtimetext">0:00</span>
-           <input id="volumeslider" type="range" min="0" max="100" value="100" step="1" class="vranger">
            <div id = "volumebtn">
             <%= image_tag 'volumebtn.gif' %>
+           </div>
+           <div class = "volume-slider-bar" id = "volumebar">
+             <input id="volumeslider" type="range" min="0" max="100" value="100" step="1" class="vranger">
            </div>
         </div>
       </div>
