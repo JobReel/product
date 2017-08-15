@@ -10,7 +10,6 @@ $(document).on('turbolinks:load', function(){
     volumebtn = document.getElementById("volumebtn"),
     volumebar = document.getElementById("volumebar"),
   	volumeslider = document.getElementById("volumeslider"),
-
     fullScreenToggleButton = document.getElementById("fullScreen"),
     isVideoFullScreen = false;
 
@@ -37,6 +36,9 @@ $(document).on('turbolinks:load', function(){
         // Show slider on volume mouseover
         volumebtn.addEventListener('mouseover', this.showVolume,false);
         volumebar.addEventListener('mouseout', this.hideVolume,false);
+
+        // Mute cache volume
+        volumebtn.addEventListener('click', this.muteVideo,false);
 
         // Adjust the volume with the slider
         volumeslider.addEventListener('change', this.setvolume,false);
@@ -148,9 +150,35 @@ $(document).on('turbolinks:load', function(){
         volumebar.style.visibility = 'hidden';
       },
 
-      setvolume : function(){
-      	video.volume = volumeslider.value / 100;
+      setvolume : function() {
+        video.volume = volumeslider.value / 100;
+        if (video.volume < 0.002) {
+          video.muted = true;
+          volumebtn.firstElementChild.src = "/assets/mutebtn.gif";
+        }
+        else {
+          video.muted = false;
+          volumebtn.firstElementChild.src = "/assets/volumebtn.gif";
+        }
       },
+
+      muteVideo : function() {
+
+          if(video.muted) {                     // User clicked 'Unmute'
+              volumeslider.value = cachedVolume; // set volume to previous value
+              video.muted = false;
+              volumebtn.firstElementChild.src = "/assets/volumebtn.gif";
+          }
+          else { // User clicked 'Mute'
+            cachedVolume = volumeslider.value;  // store value of volume in another variable
+            video.muted = true;
+            volumebtn.firstElementChild.src = "/assets/mutebtn.gif";
+            volumeslider.value= 0;
+          }
+      },
+
+
+
 
       // fullScreenOn : function() {
       //   isVideoFullScreen = true;
