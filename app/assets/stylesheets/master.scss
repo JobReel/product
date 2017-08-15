@@ -1457,17 +1457,18 @@ video {
 .volume-slider-bar {
  position: absolute;
  right: 32px;
- bottom: 55px;
+ bottom: 54.5px;
  background-color: rgba(0,0,0,.5);
  height: 120px;
  width: 21px;
  visibility: hidden;
+ cursor: pointer;
 }
 
 .vranger {
   position: relative;
   transform: rotateZ(270deg);
-  margin-left: -40px;
+  margin-left: -39px;
   margin-top: 50px;
   width: 100px;
 }

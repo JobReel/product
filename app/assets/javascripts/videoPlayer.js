@@ -35,6 +35,8 @@ $(document).on('turbolinks:load', function(){
 
         // Show slider on volume mouseover
         volumebtn.addEventListener('mouseover', this.showVolume,false);
+        volumebtn.addEventListener('mouseout', this.hideVolume,false);
+        volumebar.addEventListener('mouseover', this.showVolume,false);
         volumebar.addEventListener('mouseout', this.hideVolume,false);
 
         // Mute cache volume
@@ -163,7 +165,6 @@ $(document).on('turbolinks:load', function(){
       },
 
       muteVideo : function() {
-
           if(video.muted) {                     // User clicked 'Unmute'
               volumeslider.value = cachedVolume; // set volume to previous value
               video.muted = false;
