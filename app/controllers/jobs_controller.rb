@@ -39,6 +39,8 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
 
     gon.intro_videos = JSON.parse(@intro_videos)
 
+    gon.section1Duration = @jobreel.section1_duration
+
   end
 
   def edit
