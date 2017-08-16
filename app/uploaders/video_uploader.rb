@@ -1,5 +1,7 @@
 class VideoUploader < CarrierWave::Uploader::Base
 
+after :store, :add_duration
+
     include Cloudinary::CarrierWave
 
     def generate_code(number)
@@ -9,6 +11,14 @@ class VideoUploader < CarrierWave::Uploader::Base
 
     def public_id
       return model.private_id
+    end
+
+    def add_duration file
+      @vid = Video.last
+      byebug
+      meta = Cloudinary::Api.resource("#{@vid.private_id}", :resource_type => "video", :image_metadata => true)
+      @vid.duration = meta['duration']
+      @vid.save!
     end
 
   # Include RMagick or MiniMagick support:
