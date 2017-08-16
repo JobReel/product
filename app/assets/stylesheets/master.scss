@@ -47,6 +47,11 @@ $sizes: (
     font-family: 'Montserrat', sans-serif;
   }
 
+  .container-fluid-navbar {
+    background-color: #1b3257;
+    font-family: 'Montserrat', sans-serif;
+  }
+
   .work-history .fa-briefcase {
     color: #ddd;
     font-size: 20px;
@@ -603,7 +608,8 @@ hr {
   font-weight: 500;
   box-shadow: 0px 1px 3px #2a2a2a;
   background-color: #1b3257;
-  padding: 0.5% 7% 0.5% 7%;
+  padding: 17px 15px 17px 0px;
+  margin-left: -16px;
 }
 
 .nav-item {
@@ -1350,6 +1356,14 @@ video {
 }
 
 .job-body {
+  background-color: #dbe5ee;
+  font-family: 'Montserrat', sans-serif;
+  width: 1166px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar-body {
   background-color: #dbe5ee;
   font-family: 'Montserrat', sans-serif;
   width: 1166px;

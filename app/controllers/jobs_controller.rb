@@ -1,8 +1,12 @@
 class JobsController < ApplicationController
-before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy]
 
   def index
     @jobs = Job.all
+
+    @user = current_user
+    @avatar = display_avatar(@user)
+    @avatarlg = display_avatar_lg(@user)
   end
 
   def new
@@ -31,6 +35,10 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
     @job = Job.find(params[:id])
     @jobreel = Jobreel.find_by(job_id: params[:id])
 
+    @user = current_user
+    @avatar = display_avatar(@user)
+    @avatarlg = display_avatar_lg(@user)
+
     @intro_videos = @jobreel.section1_videos
     @challenge_videos = @jobreel.section2_videos
     @expectation_videos = @jobreel.section3_videos
@@ -44,6 +52,10 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   end
 
   def edit
+    @user = current_user
+    @avatar = display_avatar(@user)
+    @avatarlg = display_avatar_lg(@user)
+    
     @job = Job.find(params[:id])
   end
 
