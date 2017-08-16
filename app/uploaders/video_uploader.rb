@@ -15,7 +15,6 @@ after :store, :add_duration
 
     def add_duration file
       @vid = Video.last
-      byebug
       meta = Cloudinary::Api.resource("#{@vid.private_id}", :resource_type => "video", :image_metadata => true)
       @vid.duration = meta['duration']
       @vid.save!
