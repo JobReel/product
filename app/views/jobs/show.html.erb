@@ -33,7 +33,7 @@
       <div class="card-block studio-blend nopadding video-mask">
         <div id = "video_container" class = "video-player">
           <% if @intro_videos.present? %>
-            <%= jobreel_default_intro(JSON.parse(@intro_videos).first) %>
+            <%= jobreel_default_intro(@intro_videos) %>
           <% end %>
         </div>
         <div id = "videoControls" class = "video-player-controls">
