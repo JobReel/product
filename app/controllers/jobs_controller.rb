@@ -83,7 +83,6 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
       gon.section5Duration = @jobreel.section5_duration
       gon.totalduration = gon.totalduration + gon.section5Duration
     end
-byebug
 
   end
 
