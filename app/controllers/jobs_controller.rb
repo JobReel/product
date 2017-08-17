@@ -11,6 +11,9 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
 
   def new
     @job = Job.new
+    @user = current_user
+    @avatar = display_avatar(@user)
+    @avatarlg = display_avatar_lg(@user)
   end
 
   def create
@@ -49,9 +52,11 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
     @expectation_videos = @jobreel.section3_videos
     @team_videos = @jobreel.section4_videos
     @perks_videos = @jobreel.section5_videos
+    @all_videos = "[\"default_intro\"]"
 
-    @all_videos = JSON.parse(@intro_videos) + JSON.parse(@challenge_videos) + JSON.parse(@expectation_videos) + JSON.parse(@team_videos) + JSON.parse(@perks_videos)
-
+    unless (@intro_videos.nil? || @challenge_videos.nil? || @expectation_videos.nil? || @team_videos.nil? || @expectation_videos.nil?)
+      @all_videos = JSON.parse(@intro_videos) + JSON.parse(@challenge_videos) + JSON.parse(@expectation_videos) + JSON.parse(@team_videos) + JSON.parse(@perks_videos)
+    end
     gon.totalduration = 0
 
     unless @intro_videos.nil?
@@ -82,6 +87,10 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
       gon.intro_videos = JSON.parse(@perks_videos)
       gon.section5Duration = @jobreel.section5_duration
       gon.totalduration = gon.totalduration + gon.section5Duration
+    end
+
+    if (@intro_videos.nil? || @challenge_videos.nil? || @expectation_videos.nil? || @team_videos.nil? || @expectation_videos.nil?)
+      gon.totalduration = 10
     end
 
   end
