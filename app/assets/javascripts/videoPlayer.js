@@ -54,6 +54,10 @@ $(document).on('turbolinks:load', function(){
 
       initializeControls : function() {
     		// When all meta information has loaded, show controls & perform other initial procedures (like adding section break icons)
+        var durmins = Math.floor(gon.totalduration / 60);
+        var dursecs = Math.floor(gon.totalduration - durmins * 60);
+        if(dursecs < 10){ dursecs = "0"+dursecs; }
+        durtimetext.innerHTML = durmins+":"+dursecs;
         videoControls.style.opacity = 1;
     	},
 
@@ -122,14 +126,14 @@ $(document).on('turbolinks:load', function(){
       },
 
       updatePlayProgress : function(){
-    		playProgressBar.style.width = ( (video.currentTime / video.duration) * (progressHolder.offsetWidth) ) + "px";
+    		playProgressBar.style.width = ( (video.currentTime / gon.totalduration) * (progressHolder.offsetWidth) ) + "px";
     	},
 
       videoTime : function(){
         var curmins = Math.floor(video.currentTime / 60);
         var cursecs = Math.floor(video.currentTime - curmins * 60);
-        var durmins = Math.floor(video.duration / 60);
-        var dursecs = Math.floor(video.duration - durmins * 60);
+        var durmins = Math.floor(gon.totalduration / 60);
+        var dursecs = Math.floor(gon.totalduration - durmins * 60);
         if(cursecs < 10){ cursecs = "0"+cursecs; }
         if(dursecs < 10){ dursecs = "0"+dursecs; }
         curtimetext.innerHTML = curmins+":"+cursecs;
@@ -219,7 +223,7 @@ $(document).on('turbolinks:load', function(){
 
       setPlayProgress : function( clickX ) {
         var newPercent = Math.max( 0, Math.min(1, (clickX - this.findPosX(progressHolder)) / progressHolder.offsetWidth) );
-        video.currentTime = newPercent * video.duration;
+        video.currentTime = newPercent * gon.totalduration;
         playProgressBar.style.width = newPercent * (progressHolder.offsetWidth)  + "px";
       },
 

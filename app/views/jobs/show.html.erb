@@ -33,7 +33,7 @@
       <div class="card-block studio-blend nopadding video-mask">
         <div id = "video_container" class = "video-player">
           <% if @intro_videos.present? %>
-            <%= jobreel_default_intro(@intro_videos) %>
+            <%= jobreel_default_intro(@all_videos.to_s) %>
           <% end %>
         </div>
         <div id = "videoControls" class = "video-player-controls">
@@ -50,7 +50,7 @@
             <div class = "moving-bar" id = "play_progress"></div>
           </div>
           <div class = "videotime">
-           <span id="curtimetext">0:00</span> &nbsp;/&nbsp; <span id="durtimetext">0:00</span>
+           <span id="curtimetext">0:00</span> &nbsp;/&nbsp; <span id="durtimetext"></span>
           </div>
           <div id = "volumebtn">
            <%= image_tag 'volumebtn.gif' %>
@@ -69,7 +69,7 @@
     <div class="card-block job-requirements-title">
       APPLICATION REQUIREMENTS
     </div>
-    <div class="card-block ">
+    <div class="card-block">
       <div class="row nomargin text-center">
         <div class="col-6 job-requirements-icons vert-align">
           CardBlock1
