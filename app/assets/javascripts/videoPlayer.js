@@ -10,7 +10,11 @@ $(document).on('turbolinks:load', function(){
     volumebtn = document.getElementById("volumebtn"),
     volumebar = document.getElementById("volumebar"),
   	volumeslider = document.getElementById("volumeslider"),
-    fullScreenToggleButton = document.getElementById("fullScreen"),
+  	section1Icon = document.getElementById("section1-icon"),
+  	section2Icon = document.getElementById("section2-icon"),
+  	section3Icon = document.getElementById("section3-icon"),
+  	section4Icon = document.getElementById("section4-icon"),
+  	section5Icon = document.getElementById("section5-icon"),
     isVideoFullScreen = false;
 
     var videoPlayer = {
@@ -58,7 +62,16 @@ $(document).on('turbolinks:load', function(){
         var dursecs = Math.floor(gon.totalduration - durmins * 60);
         if(dursecs < 10){ dursecs = "0"+dursecs; }
         durtimetext.innerHTML = durmins+":"+dursecs;
+        section2Icon.style.left = 125 + 12 + (3.627 * gon.section1Duration) +"px";
+        section2Icon.style.visibility = 'visible';
+        section3Icon.style.left = section2Icon.offsetLeft + (3.627 * gon.section2Duration) +"px";
+        section3Icon.style.visibility = 'visible';
+        section4Icon.style.left = section3Icon.offsetLeft + 12 + (3.627 * gon.section3Duration) +"px";
+        section4Icon.style.visibility = 'visible';
+        section5Icon.style.left = section4Icon.offsetLeft + 12 + (3.627 * gon.section4Duration) +"px";
+        section5Icon.style.visibility = 'visible';
         videoControls.style.opacity = 1;
+
     	},
 
       handleButtonPresses : function() {
