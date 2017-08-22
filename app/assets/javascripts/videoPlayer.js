@@ -59,7 +59,7 @@ $(document).on('turbolinks:load', function(){
       initializeControls : function() {
     		// When all meta information has loaded, show controls & perform other initial procedures (like adding section break icons)
         var durmins = Math.floor(gon.totalduration / 60);
-        var dursecs = Math.floor(gon.totalduration - durmins * 60);
+        var dursecs = Math.round(gon.totalduration - durmins * 60);
         if(dursecs < 10){ dursecs = "0"+dursecs; }
         durtimetext.innerHTML = durmins+":"+dursecs;
         section2Icon.style.left = 125 + 12 + (3.627 * gon.section1Duration) +"px";
@@ -208,7 +208,7 @@ $(document).on('turbolinks:load', function(){
         var curmins = Math.floor(video.currentTime / 60);
         var cursecs = Math.floor(video.currentTime - curmins * 60);
         var durmins = Math.floor(gon.totalduration / 60);
-        var dursecs = Math.floor(gon.totalduration - durmins * 60);
+        var dursecs = Math.round(gon.totalduration - durmins * 60);
         if(cursecs < 10){ cursecs = "0"+cursecs; }
         if(dursecs < 10){ dursecs = "0"+dursecs; }
         curtimetext.innerHTML = curmins+":"+cursecs;
