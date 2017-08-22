@@ -163,19 +163,19 @@ $(document).on('turbolinks:load', function(){
       updatePlayProgress : function(){
     		playProgressBar.style.width = ( (video.currentTime / gon.totalduration) * (progressHolder.offsetWidth) ) + "px";
         if (playProgressBar.offsetWidth < section2Icon.offsetLeft - 125 - 13 & playProgressBar.offsetWidth > 0) {
-          section1Icon.firstElementChild.src = "/assets/about-active.gif";
+          section1Icon.firstElementChild.src = "/assets/about-active-sm.gif";
         }
         if (playProgressBar.offsetWidth < section3Icon.offsetLeft - 125 - 13 & playProgressBar.offsetWidth > section2Icon.offsetLeft - 125 - 13) {
-          section2Icon.firstElementChild.src = "/assets/challenge-active.gif";
+          section2Icon.firstElementChild.src = "/assets/challenge-active-sm.gif";
         }
         if (playProgressBar.offsetWidth < section4Icon.offsetLeft - 125 - 13 & playProgressBar.offsetWidth > section3Icon.offsetLeft - 125 - 13) {
-          section3Icon.firstElementChild.src = "/assets/expectations-active.gif";
+          section3Icon.firstElementChild.src = "/assets/expectations-active-sm.gif";
         }
         if (playProgressBar.offsetWidth < section5Icon.offsetLeft - 125 - 13 & playProgressBar.offsetWidth > section4Icon.offsetLeft - 125 - 13) {
-          section4Icon.firstElementChild.src = "/assets/team-active.gif";
+          section4Icon.firstElementChild.src = "/assets/team-active-sm.gif";
         }
         if (playProgressBar.offsetWidth > section5Icon.offsetLeft - 125 - 13) {
-          section5Icon.firstElementChild.src = "/assets/perks-active.gif";
+          section5Icon.firstElementChild.src = "/assets/perks-active-sm.gif";
         }
       },
 
