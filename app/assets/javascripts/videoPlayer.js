@@ -66,9 +66,9 @@ $(document).on('turbolinks:load', function(){
         section2Icon.style.visibility = 'visible';
         section3Icon.style.left = section2Icon.offsetLeft + (3.627 * gon.section2Duration) +"px";
         section3Icon.style.visibility = 'visible';
-        section4Icon.style.left = section3Icon.offsetLeft + 12 + (3.627 * gon.section3Duration) +"px";
+        section4Icon.style.left = section3Icon.offsetLeft + (3.627 * gon.section3Duration) +"px";
         section4Icon.style.visibility = 'visible';
-        section5Icon.style.left = section4Icon.offsetLeft + 12 + (3.627 * gon.section4Duration) +"px";
+        section5Icon.style.left = section4Icon.offsetLeft + (3.627 * gon.section4Duration) +"px";
         section5Icon.style.visibility = 'visible';
         videoControls.style.opacity = 1;
 
@@ -107,6 +107,28 @@ $(document).on('turbolinks:load', function(){
     			this.pause();
     		}, false);
 
+        //Seek to the section when icon is clicked.
+        section1Icon.addEventListener('click', function() {
+          video.currentTime = 0;
+          videoPlayer.updatePlayProgress();
+        }, false);
+        section2Icon.addEventListener('click', function() {
+          video.currentTime = .30 + gon.section1Duration;
+          videoPlayer.updatePlayProgress();
+        }, false);
+        section3Icon.addEventListener('click', function() {
+          video.currentTime = video.currentTime = .30 + gon.section1Duration + gon.section2Duration;
+          videoPlayer.updatePlayProgress();
+        }, false);
+        section4Icon.addEventListener('click', function() {
+          video.currentTime = video.currentTime = .30 + gon.section1Duration + gon.section2Duration + gon.section3Duration;
+          videoPlayer.updatePlayProgress();
+        }, false);
+        section5Icon.addEventListener('click', function() {
+          video.currentTime = video.currentTime = .30 + gon.section1Duration + gon.section2Duration + gon.section3Duration + gon.section4Duration;
+          videoPlayer.updatePlayProgress();
+        }, false);
+
         // Video Scrubing function
         progressHolder.addEventListener("mousedown", function(){
           videoPlayer.stopTrackingPlayProgress();
@@ -130,7 +152,7 @@ $(document).on('turbolinks:load', function(){
 
     	},
 
-      // Every 50 milliseconds, update the play progress.
+      // Every 10 milliseconds, update the play progress.
       trackPlayProgress : function(){
         (function progressTrack() {
            videoPlayer.updatePlayProgress();
@@ -140,7 +162,22 @@ $(document).on('turbolinks:load', function(){
 
       updatePlayProgress : function(){
     		playProgressBar.style.width = ( (video.currentTime / gon.totalduration) * (progressHolder.offsetWidth) ) + "px";
-    	},
+        if (playProgressBar.offsetWidth < section2Icon.offsetLeft - 125 - 13 & playProgressBar.offsetWidth > 0) {
+          section1Icon.firstElementChild.src = "/assets/about-active.gif";
+        }
+        if (playProgressBar.offsetWidth < section3Icon.offsetLeft - 125 - 13 & playProgressBar.offsetWidth > section2Icon.offsetLeft - 125 - 13) {
+          section2Icon.firstElementChild.src = "/assets/challenge-active.gif";
+        }
+        if (playProgressBar.offsetWidth < section4Icon.offsetLeft - 125 - 13 & playProgressBar.offsetWidth > section3Icon.offsetLeft - 125 - 13) {
+          section3Icon.firstElementChild.src = "/assets/expectations-active.gif";
+        }
+        if (playProgressBar.offsetWidth < section5Icon.offsetLeft - 125 - 13 & playProgressBar.offsetWidth > section4Icon.offsetLeft - 125 - 13) {
+          section4Icon.firstElementChild.src = "/assets/team-active.gif";
+        }
+        if (playProgressBar.offsetWidth > section5Icon.offsetLeft - 125 - 13) {
+          section5Icon.firstElementChild.src = "/assets/perks-active.gif";
+        }
+      },
 
       videoTime : function(){
         var curmins = Math.floor(video.currentTime / 60);
@@ -194,8 +231,6 @@ $(document).on('turbolinks:load', function(){
             volumeslider.value= 0;
           }
       },
-
-
 
 
       // fullScreenOn : function() {
