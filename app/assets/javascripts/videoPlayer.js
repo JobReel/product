@@ -103,7 +103,6 @@ $(document).on('turbolinks:load', function(){
 
     		// When the video has concluded, pause it.
     		video.addEventListener('ended', function() {
-    			this.currentTime = 0;
     			this.pause();
     		}, false);
 
@@ -162,6 +161,16 @@ $(document).on('turbolinks:load', function(){
 
       updatePlayProgress : function(){
     		playProgressBar.style.width = ( (video.currentTime / gon.totalduration) * (progressHolder.offsetWidth) ) + "px";
+
+        if (playProgressBar.offsetWidth <= 5) {
+          section1Icon.firstElementChild.src = "/assets/about-sm.gif";
+          section2Icon.firstElementChild.src = "/assets/challenge-sm.gif";
+          section3Icon.firstElementChild.src = "/assets/expectations-sm.gif";
+          section4Icon.firstElementChild.src = "/assets/team-sm.gif";
+          section5Icon.firstElementChild.src = "/assets/perks-sm.gif";
+        }
+
+        //Logic below handles the icon status (active/viewed/unviewed)
         if (playProgressBar.offsetWidth < section2Icon.offsetLeft - 125 - 13 & playProgressBar.offsetWidth > 0) {
           section1Icon.firstElementChild.src = "/assets/about-active-sm.gif";
         }
@@ -174,8 +183,24 @@ $(document).on('turbolinks:load', function(){
         if (playProgressBar.offsetWidth < section5Icon.offsetLeft - 125 - 13 & playProgressBar.offsetWidth > section4Icon.offsetLeft - 125 - 13) {
           section4Icon.firstElementChild.src = "/assets/team-active-sm.gif";
         }
-        if (playProgressBar.offsetWidth > section5Icon.offsetLeft - 125 - 13) {
+        if (playProgressBar.offsetWidth > section5Icon.offsetLeft - 125 - 13 & playProgressBar.offsetWidth < playProgressBar.parentElement.offsetWidth) {
           section5Icon.firstElementChild.src = "/assets/perks-active-sm.gif";
+        }
+
+        if (playProgressBar.offsetWidth > section2Icon.offsetLeft - 125 - 13) {
+          section1Icon.firstElementChild.src = "/assets/about-viewed-sm.gif";
+        }
+        if (playProgressBar.offsetWidth > section3Icon.offsetLeft - 125 - 13) {
+          section2Icon.firstElementChild.src = "/assets/challenge-viewed-sm.gif";
+        }
+        if (playProgressBar.offsetWidth > section4Icon.offsetLeft - 125 - 13) {
+          section3Icon.firstElementChild.src = "/assets/expectations-viewed-sm.gif";
+        }
+        if (playProgressBar.offsetWidth > section5Icon.offsetLeft - 125 - 13) {
+          section4Icon.firstElementChild.src = "/assets/team-viewed-sm.gif";
+        }
+        if (playProgressBar.offsetWidth > 1 & playProgressBar.offsetWidth >= playProgressBar.parentElement.offsetWidth) {
+          section5Icon.firstElementChild.src = "/assets/perks-viewed-sm.gif";
         }
       },
 
@@ -191,8 +216,7 @@ $(document).on('turbolinks:load', function(){
       },
 
       playPause : function() {
-    		if ( video.paused || video.ended ) {
-    			if ( video.ended ) { video.currentTime = 0; }
+    		if ( video.paused ) {
     			video.play();
     		}
     		else { video.pause(); }
