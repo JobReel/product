@@ -90,6 +90,7 @@ $(document).on('turbolinks:load', function(){
       	}, false);
 
 
+
     		// When the video is paused,
     		// switch to the "Play" symbol and stop tracking progress.
         video.addEventListener('pause', function() {
