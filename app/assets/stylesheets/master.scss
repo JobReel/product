@@ -17,7 +17,7 @@ $sizes: (
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800');
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 @import url('https://fonts.googleapis.com/css?family=PT+Serif:400i');
 
@@ -1378,13 +1378,21 @@ video {
 }
 
 .job-description {
-  padding: 15px;
+  padding: 15px 25px;
   border-bottom: 1px solid;
   border-color: #E4E4E4;
 }
 
+.job-description h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #3a475c;
+
+}
+
 .job-description-full {
   padding: 15px;
+  color: #8a9dab;
 }
 
 .job-description-full:before {
@@ -1551,21 +1559,6 @@ video {
   padding-left: 17px;
 }
 
-.custom-section2 {
-
-}
-
-.custom-section3 {
-
-}
-
-.custom-section4 {
-
-}
-
-.custom-section5 {
-
-}
 
 .dropdown a:hover {
   background-color: #f1f1f1;
