@@ -1,10 +1,10 @@
 
 <div class="container-fluid">
-  <div class="row is-flex studio-bar justify-content-center">
-    <div class="col-1 offset-1 jobposting-top">
+  <div class="row is-flex job-bar justify-content-center">
+    <div class="col-1 jobposting-top">
       <div>LOGO</div>
     </div>
-    <div class="col-7 jobposting-top">
+    <div class="col-8 jobposting-top">
       <div class = "row">
         <h1><%= @job.job_title %></h1>
       </div>
@@ -21,28 +21,70 @@
         </div>
       </div>
     </div>
-    <div class="col-2 jobposting-top">
+    <div class="col-3 jobposting-top job-stats text-right">
     JOB STATS W/ICONS
     </div>
   </div>
 </div>
-<div class="row is-flex studio-body justify-content-center">
-<div class="col-5 no-pad-left">
-  <div class="card job-box nopadding">
-    <div class="card-block studio-blend nopadding">
-      <% if @intro_videos.present? %>
-        <%= default_intro(@intro_videos.first) %>
-      <% end %>
+<div class = "container-fluid-job">
+<div class="row is-flex job-body">
+  <div class="col-7 no-pad-left">
+    <div class="card job-box nopadding">
+      <div class="card-block studio-blend nopadding video-mask">
+        <div id = "video_container" class = "video-player">
+          <% if @intro_videos.present? %>
+            <%= jobreel_default_intro(@all_videos.to_s) %>
+          <% end %>
+        </div>
+        <div id = "videoControls" class = "video-player-controls">
+          <div id = "seekback">
+            <%= image_tag 'skipback.gif' %>
+          </div>
+          <div id = "play">
+            <%= image_tag 'play.gif' %>
+          </div>
+          <div id = "seekfwd">
+            <%= image_tag 'skipforward.gif' %>
+          </div>
+          <div class = "progress-bar" id = "progress_box">
+            <div class = "moving-bar" id = "play_progress"></div>
+          </div>
+          <div class = "videotime">
+           <span id="curtimetext">0:00</span> &nbsp;/&nbsp; <span id="durtimetext"></span>
+          </div>
+          <div id = "volumebtn">
+           <%= image_tag 'volumebtn.gif' %>
+         </div>
+         <div class = "volume-slider-bar" id = "volumebar">
+           <input id="volumeslider" type="range" min="0" max="100" value="75" step="1" class="vranger">
+         </div>
+           <div class = "section1-icon" id="section1-icon">
+             <%= image_tag("about-sm.gif") %>
+           </div>
+           <div class = "section2-icon" id="section2-icon">
+             <%= image_tag("challenge-sm.gif") %>
+           </div>
+           <div class = "section3-icon" id="section3-icon">
+             <%= image_tag("expectations-sm.gif") %>
+           </div>
+           <div class = "section4-icon" id="section4-icon">
+             <%= image_tag("team-sm.gif") %>
+           </div>
+           <div class = "section5-icon" id="section5-icon">
+             <%= image_tag("perks-sm.gif") %>
+           </div>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
 
-<div class="col-3 noborder">
+<div class="col-5 noborder">
   <div class="card job-box nopadding">
     <div class="card-block job-requirements-title">
       APPLICATION REQUIREMENTS
     </div>
-    <div class="card-block ">
+    <div class="card-block">
       <div class="row nomargin text-center">
         <div class="col-6 job-requirements-icons vert-align">
           CardBlock1
@@ -64,7 +106,7 @@
   </div>
 </div>
 
-<div class="col-5 no-pad-left newcard">
+<div class="col-7 no-pad-left newcard">
     <div class="card nopadding">
       <div class="card-block job-description white">
         <div class="row">
@@ -92,7 +134,7 @@
   </div>
 </div>
 
-<div class="col-3 noborder newcard">
+<div class="col-5 noborder newcard">
   <div class="card nopadding">
     <div class="card-block job-requirements-title">
       PEOPLE ALSO VIEWED
@@ -168,7 +210,7 @@
   </div>
 </div> <!--end of similar jobs -->
 
-<div class="col-5 no-pad-left newcard">
+<div class="col-7 no-pad-left newcard">
   <div class="card nopadding">
     <div class="card-block job-description white">
       <div class="row">
@@ -232,7 +274,7 @@
 </div>
 
 
-<div class="col-3 noborder newcard">
+<div class="col-5 noborder newcard">
   <div class="card nopadding">
     <div class="card-block job-requirements-title">
       PEOPLE ALSO VIEWED
@@ -246,3 +288,7 @@
 </div>
 
 </div> <!--end of row studio body -->
+</div>
+<script>
+  $(document).on('turbolinks:load', buildVideoHTML(gon.intro_videos));
+</script>

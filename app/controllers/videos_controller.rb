@@ -9,11 +9,15 @@ class VideosController < ApplicationController
 
     @jobreel = Jobreel.where(user_id: current_user.id, job_id: nil).first
 
+    @all_videos = Video.where(user_id: current_user.id)
+
+
     @intro_videos = Video.where(video_section: "Introduction", user_id: current_user.id)
     @education_videos = Video.where(video_section: "Education", user_id: current_user.id)
     @work_videos = Video.where(video_section: "Work Experience", user_id: current_user.id)
     @hobby_videos = Video.where(video_section: "Hobbies", user_id: current_user.id)
     @rec_videos = Video.where(video_section: "Recommendations", user_id: current_user.id)
+
 
     gon.section1_videos = @intro_videos
     gon.section2_videos = @education_videos
@@ -47,9 +51,6 @@ class VideosController < ApplicationController
     @vid = Video.new(video_params)
     @vid.user_id = current_user.id
     @vid.private_id = generate_code(10)
-    meta = Cloudinary::Api.resource('Tim', :resource_type => "video", :image_metadata => true)
-    @vid.duration = meta['duration']
-    byebug
     @vid.save!
     redirect_to video_path(current_user.id)
   end

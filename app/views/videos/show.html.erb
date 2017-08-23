@@ -36,7 +36,10 @@
           <% end %>
         </div>
         <div>
+        <% if @intro_videos.present? %>
           <%= cl_video_tag(@intro_videos.first.private_id, controls: true, transformation: @overlays) %>
+        <% else %>
+        <% end %>
         </div>
       </div>
     </div>
@@ -201,7 +204,7 @@
 <div class="card studio-player nopadding">
     <div class="card-block studio-blend nopadding">
       <% if current_user.video.present? %>
-        <%= default_intro(@intro_videos.first) %>
+        <%= default_intro(@all_videos.first) %>
       <% end %>
     </div>
 </div>
@@ -209,7 +212,7 @@
   <div class="card-block white timeline-bot-bar">
     <div class="row justify-content-between">
     <h1 class="vert-align">Active Section: <span id ="workspace-section"></span></h1>
-    <button class="add-button" onClick="previewVideoHTML()" data-toggle="modal" data-target="#previewModal">Preview</button>
+    <button class="add-button" onClick="previewVideoHTML(selectedVideos)" data-toggle="modal" data-target="#previewModal">Preview</button>
     <!-- This needs to update the current jobreel with the selectedVideos as params -->
     <%= link_to 'Save', '#', id: "push-button", class: "add-button" %>
   </div>

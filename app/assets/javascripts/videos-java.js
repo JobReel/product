@@ -54,14 +54,14 @@ function setDefaultJobreel() {
     activeSaveSection = e.target.parentElement.id;
     activeSection = e.target.textContent;
 
-//Rewrites the video Selection Modal with videos from the library
-var sections2 = [];
-var sections2 = gon[activeSaveSection];
-$.each(sections2, function (index, clipID){
-  var singleID = '<a href="#" onclick="selectVideo(this)"><img src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_72,w_100/'+clipID.private_id+'.jpg" alt="'+clipID.private_id+'"></a>';
-  sectionThumbnails += singleID;
-  console.log(clipID);
-});
+    //Rewrites the video Selection Modal with videos from the library
+    var sections2 = [];
+    var sections2 = gon[activeSaveSection];
+    $.each(sections2, function (index, clipID){
+      var singleID = '<a href="#" onclick="selectVideo(this)"><img src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_72,w_100/'+clipID.private_id+'.jpg" alt="'+clipID.private_id+'"></a>';
+      sectionThumbnails += singleID;
+      console.log(clipID);
+    });
 
     console.log(sectionThumbnails);
     console.log(activeSection);
@@ -261,45 +261,86 @@ function initializePage(){
 
   // This creates the html for the concatentated video from selectedVideos
 
-  function previewVideoHTML() {
+  function previewVideoHTML(selectedVideos2) {
     var videoHTML = '<video controls="controls" poster="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_400,w_600/';
-
-    $.each(selectedVideos, function(index, clipID){
-      if (index > 0) {
-        var singleClip = "c_fill,fl_splice,h_400,l_video:"+ clipID +",w_600/";
-        videoHTML += singleClip;
-      };
-    });
-    videoHTML += selectedVideos[0] + '.jpg">';
+    videoHTML += selectedVideos2[0] + '.jpg">';
 
     var videoWebmHTML = '<source src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_400,w_600/';
 
-    $.each(selectedVideos, function(clipID){
-      var singleID = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos[clipID] +",w_600/";
-      videoWebmHTML += singleID;
+    $.each(selectedVideos2, function(index, clipID){
+      if (index > 0) {
+        var singleID = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos2[index] +",w_600/";
+        videoWebmHTML += singleID;
+      };
     });
-    videoWebmHTML += selectedVideos[0] + '.webm" type="video/webm">';
+    videoWebmHTML += selectedVideos2[0] + '.webm" type="video/webm">';
     videoHTML += videoWebmHTML;
 
     var videoMp4HTML = '<source src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_400,w_600/';
 
-    $.each(selectedVideos, function(clipID){
-      var singleID = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos[clipID] +",w_600/";
-      videoMp4HTML += singleID;
+    $.each(selectedVideos2, function(index, clipID){
+      if (index > 0) {
+        var singleID = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos2[index] +",w_600/";
+        videoMp4HTML += singleID;
+      };
     });
-    videoMp4HTML += selectedVideos[0] + '.mp4" type="video/mp4">';
+    videoMp4HTML += selectedVideos2[0] + '.mp4" type="video/mp4">';
     videoHTML += videoMp4HTML;
 
     var videoOggHTML = '<source src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_400,w_600/';
 
-    $.each(selectedVideos, function(clipID){
-      var singleID = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos[clipID] +",w_600/";
-      videoOggHTML += singleID;
+    $.each(selectedVideos2, function(index, clipID){
+      if (index > 0) {
+        var singleID = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos2[index] +",w_600/";
+        videoOggHTML += singleID;
+      };
     });
-    videoOggHTML += selectedVideos[0] + '.ogg" type="video/ogg"></video>';
+    videoOggHTML += selectedVideos2[0] + '.ogg" type="video/ogg"></video>';
     videoHTML += videoOggHTML;
 
     console.log(videoHTML);
     var previewPlayer = $('#previewModalPlayer');
     previewPlayer.html(videoHTML);
+  };
+
+  function buildVideoHTML(selectedVideos3) {
+    var videoHTML = '<video controls="controls" poster="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_400,w_600/';
+    videoHTML += selectedVideos3[0] + '.jpg">';
+
+    var videoWebmHTML = '<source src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_400,w_600/';
+
+    $.each(selectedVideos3, function(index, clipID){
+      if (index > 0) {
+        var singleID = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos3[index] +",w_600/";
+        videoWebmHTML += singleID;
+      };
+    });
+    videoWebmHTML += selectedVideos3[0] + '.webm" type="video/webm">';
+    videoHTML += videoWebmHTML;
+
+    var videoMp4HTML = '<source src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_400,w_600/';
+
+    $.each(selectedVideos3, function(index, clipID){
+      if (index > 0) {
+        var singleID = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos3[index] +",w_600/";
+        videoMp4HTML += singleID;
+      };
+    });
+    videoMp4HTML += selectedVideos3[0] + '.mp4" type="video/mp4">';
+    videoHTML += videoMp4HTML;
+
+    var videoOggHTML = '<source src="http://res.cloudinary.com/jobreel/video/upload/c_fill,h_400,w_600/';
+
+    $.each(selectedVideos3, function(index, clipID){
+      if (index > 0) {
+        var singleID = "c_fill,fl_splice,h_400,l_video:"+ selectedVideos3[index] +",w_600/";
+        videoOggHTML += singleID;
+      };
+    });
+    videoOggHTML += selectedVideos3[0] + '.ogg" type="video/ogg"></video>';
+    videoHTML += videoOggHTML;
+
+    console.log(videoHTML);
+    var jobreelPlayer = $('#video_target');
+    jobreelPlayer.html(videoHTML);
   };

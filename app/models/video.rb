@@ -5,4 +5,5 @@ class Video < ApplicationRecord
   belongs_to :work_history, optional: true
   belongs_to :jobreel, optional: true
 
+
 end

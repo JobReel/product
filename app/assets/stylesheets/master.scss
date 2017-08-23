@@ -19,8 +19,13 @@ $sizes: (
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800');
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400i');
 
 @media (min-width: 1200px) {
+.container-fluid {
+  background-color: #FFFFFF;
+}
+
   .container-fluid-profile {
     width: 1000px;
     margin: auto;
@@ -38,10 +43,13 @@ $sizes: (
   }
 
   .container-fluid-job {
-    width: 1000px;
     background-color: #dbe5ee;
     font-family: 'Montserrat', sans-serif;
-    margin: auto;
+  }
+
+  .container-fluid-navbar {
+    background-color: #1b3257;
+    font-family: 'Montserrat', sans-serif;
   }
 
   .work-history .fa-briefcase {
@@ -600,7 +608,8 @@ hr {
   font-weight: 500;
   box-shadow: 0px 1px 3px #2a2a2a;
   background-color: #1b3257;
-  padding: 0.5% 7% 0.5% 7%;
+  padding: 17px 15px 17px 0px;
+  margin-left: -16px;
 }
 
 .nav-item {
@@ -1333,9 +1342,39 @@ video {
     flex-direction: column;
 }
 
+.job-bar {
+  background-color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  width: 1166px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.job-stats {
+  flex-direction: row-reverse;
+  align-content: flex-end;
+}
+
+.job-body {
+  background-color: #dbe5ee;
+  font-family: 'Montserrat', sans-serif;
+  width: 1166px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar-body {
+  background-color: #dbe5ee;
+  font-family: 'Montserrat', sans-serif;
+  width: 1166px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .job-box {
   margin-top: 20px;
   margin-bottom: 2%;
+  box-shadow: 0px 1px 1px rgba(10,10,10,0.1);
 }
 
 .job-description {
@@ -1351,11 +1390,11 @@ video {
 .job-description-full:before {
   content:'';
   width:100%;
-  height:80%;
+  height:85%;
   position:absolute;
   left:0;
   top:0;
-  background:linear-gradient(transparent 100px, white);
+  background:linear-gradient(transparent 200px, white);
 }
 
 .job-collapse {
@@ -1389,39 +1428,127 @@ video {
 }
 
 .video-player {
-  z-index: 99;
+  width: 665px;
+  height: 375px;
+}
+
+.video-mask {
+  -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+  -webkit-transform: rotate(0.000001deg);
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  border-radius: 0.25em;
 }
 
 .video-player-controls {
-  z-index: 1;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-color: #4795fb;
-  width: 100%;
-  height: 20px;
-
+  display: flex;
+  background-color: #FFFFFF;
+  height: 85px;
+  padding-left: 10px;
+  font-family: 'PT Serif', serif;
+  font-size: 14px;
+  color: #7c889c;
 }
 
 .js #container {
     /* this styling only renders if JS is enabled */
 }
 
-.progress-box {
-  background-color: #C2C2C2;
-  height: 20px;
-}
-
 .progress-bar {
-  background-color: #000;
-  height: 20px;
+  margin-top: 38.5px;
+  width: 380px;
+  background-color: #dbe5ee;
+  height: 8px;
+  cursor: pointer;
 }
 
 .moving-bar {
+  margin-bottom: 6px;
   display: inline-block;
-  background-color: #51a6d5;
-  height: 10px;
-  line-height: 1.5em;
+  background-color: #277cea;
+  height: 8px;
+}
+
+.volume-slider-bar {
+ position: absolute;
+ right: 32px;
+ bottom: 54.5px;
+ background-color: rgba(0,0,0,.5);
+ height: 120px;
+ width: 21px;
+ visibility: hidden;
+ cursor: pointer;
+}
+
+.vranger {
+  position: relative;
+  transform: rotateZ(270deg);
+  margin-left: -39px;
+  margin-top: 50px;
+  width: 100px;
+  cursor: pointer;
+}
+
+#seekback img {
+  margin-right: 13px;
+  margin-top: 38.5px;
+  margin-left: 17px;
+  cursor: pointer;
+}
+
+#seekfwd img {
+  margin-right: 17px;
+  margin-left: 13px;
+  margin-top: 38.5px;
+  cursor: pointer;
+}
+
+#play img {
+  margin-top: 22.5px;
+  cursor: pointer;
+}
+
+#volumebtn {
+  margin-left: 10px;
+  margin-top: 31.5px;
+  margin-bottom: 31.5px;
+  cursor: pointer;
+}
+
+
+.section1-icon {
+  position: absolute;
+  bottom: 26px;
+  left: 125px;
+}
+
+.section2-icon {
+  visibility: hidden;
+  position: absolute;
+  bottom: 26px;
+}
+
+.section3-icon {
+  visibility: hidden;
+  position: absolute;
+  bottom: 26px;
+}
+
+.section4-icon {
+  visibility: hidden;
+  position: absolute;
+  bottom: 26px;
+}
+
+.section5-icon {
+  visibility: hidden;
+  position: absolute;
+  bottom: 26px;
+}
+
+.videotime {
+  padding-top: 31.5px;
+  padding-left: 17px;
 }
 
 .custom-section2 {

@@ -14,4 +14,7 @@ class PagesController < ApplicationController
   def vidtest
   end
 
+  def customplayer
+  end
+
 end
