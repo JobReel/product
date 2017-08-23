@@ -407,20 +407,50 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+.job-requirements-apply-box {
+  background-color: #458afa;
+  color: #FFF;
+  padding: 24px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
 .job-requirements-title {
-  padding-top: 3%;
   background-color: #FFFFFF;
-  padding: 5%;
+  padding: 27px;
+  border-right: 1px solid;
   border-bottom: 1px solid;
   border-color: #E4E4E4;
+  text-align: center;
+  font-weight: 600;
+  color: #3a475c;
+  font-size: 15px;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+.job-requirements-text {
+  padding-top: 13px;
+  text-transform: uppercase;
+  color: #3a475c;
+  font-weight: 600;
+  font-size: 13px;
 }
 
 .job-requirements-icons {
   background-color: #FFFFFF;
-  padding: 5%;
+  padding: 37px;
   border-right: 1px solid;
   border-bottom:1px solid;
   border-color: #E4E4E4;
+}
+
+.job-requirements-icons img {
+  height: 48px;
+  width: 48px;
 }
 
 .jobposting-top {
@@ -1326,13 +1356,6 @@ video {
     display: block;
 }
 
-.apply-box {
-  background-color: #458afa;
-  color: #FFF;
-  padding-top: 2%;
-  padding-bottom: 2%;
-}
-
 .row.is-flex {
     display: flex;
     flex-wrap: wrap;
@@ -1373,7 +1396,7 @@ video {
 
 .job-box {
   margin-top: 20px;
-  margin-bottom: 2%;
+  margin-bottom: 10px;
   box-shadow: 0px 1px 1px rgba(10,10,10,0.1);
 }
 
