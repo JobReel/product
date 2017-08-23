@@ -1391,8 +1391,21 @@ video {
 }
 
 .job-description-full {
-  padding: 15px;
+  padding: 25px 25px 15px 25px;
   color: #8a9dab;
+}
+
+.job-description-full h3 {
+  font-size: .9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: #3a475c;
+}
+
+.job-description-full p {
+  margin: 10px 0px;
+  line-height: 1.4rem;
 }
 
 .job-description-full:before {
