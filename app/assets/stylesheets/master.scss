@@ -1404,6 +1404,20 @@ video {
   padding: 15px 25px;
   border-bottom: 1px solid;
   border-color: #E4E4E4;
+  padding: 25px 25px 15px 25px;
+  color: #8a9dab;
+}
+
+.job-description h3 {
+  font-size: .9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: #3a475c;
+}
+.job-description p {
+  margin: 10px 0px;
+  line-height: 1.4rem;
 }
 
 .job-description h1 {
