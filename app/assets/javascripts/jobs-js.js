@@ -4,16 +4,16 @@ $(document).on('turbolinks:load', function(){
   $('#collapseme').on('click', function() {
     var duration = 1000,
     easing = 'swing';
-              if (160 == $('#full-description').height()) {
+              if (140 == $('#full-description').height()) {
                   $('#full-description').animate(
                       {
-                          'height' : fullH + 60
+                          'height' : fullH + 40
                       }, duration, easing);
               }
               else {
                   $('#full-description').animate(
                       {
-                          'height' : 200
+                          'height' : 180
                       }, duration, easing);
               }
   });
