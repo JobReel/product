@@ -7,14 +7,16 @@ $(document).on('turbolinks:load', function(){
               if (140 == $('#full-description').height()) {
                   $('#full-description').animate(
                       {
-                          'height' : fullH + 40
+                          'height' : fullH + 80
                       }, duration, easing);
+                  $('#collapseme').html("Hide full job description <i class='fa fa-chevron-up'></i>");
               }
               else {
                   $('#full-description').animate(
                       {
                           'height' : 180
                       }, duration, easing);
+                    $('#collapseme').html("Read full job description <i class='fa fa-chevron-down'></i>");
               }
   });
 });

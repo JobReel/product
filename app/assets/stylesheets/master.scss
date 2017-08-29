@@ -1476,6 +1476,13 @@ video {
   padding: 15px;
   border-bottom: 1px solid;
   border-color: #E4E4E4;
+  color: #277cea;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.job-collapse i {
+  font-size: 10px;
 }
 
 .jobposting-sidebar {
@@ -1623,6 +1630,50 @@ video {
 .videotime {
   padding-top: 31.5px;
   padding-left: 17px;
+}
+
+#help-icon {
+  color: #8a9dab;
+}
+
+#user-icon {
+  color: #3a475c;
+  font-size:  13px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+#education-icon {
+  color: #3a475c;
+  font-size:  13px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.applicant-intel-top {
+ color: #277cea;
+ font-size:  38px;
+ font-weight: 500;
+}
+
+.applicant-intel-bot {
+  color: #3a475c;
+  font-size: 38px;
+  font-weight: 500;
+}
+
+#intel-top-text {
+  font-size: 11px;
+  color: #3a475c;
+  font-weight: 500;
+  text-transform:  uppercase;
+}
+
+#intel-bot-text {
+  font-size: 12px;
+  text-transform: capitalize;
+  color: #3a475c;
+  font-weight: 500;
 }
 
 
