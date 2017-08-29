@@ -453,9 +453,57 @@ h1, h2, h3, h4, h5, h6 {
   width: 48px;
 }
 
+.jobposting-top h1 {
+  font-size: 32px;
+  font-weight: 400;
+  padding-bottom: 6px;
+  color: #3a475c;
+}
+
+.jobposting-top h3 {
+  font-size: 15px;
+  font-weight: 400;
+  padding-bottom: 6px;
+  color: #7b8f9e;
+}
+
+.jobposting-top a {
+  font-size: 16px;
+  font-weight: 500;
+  color: #458afa;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+}
+
+.check-img {
+  margin-top: -13px;
+  padding-left: 7px;
+}
+
+.jobposting-top a:hover {
+  color: blue;
+}
+
+
+.jobposting-top img {
+  vertical-align: middle;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .jobposting-top {
-  padding-top: 2%;
-  padding-bottom: 2%;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.vert-helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
 
 .jobposting-bar {
