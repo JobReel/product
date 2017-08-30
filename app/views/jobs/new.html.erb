@@ -6,6 +6,7 @@
     <%= f.input :state %>
     <%= f.input :job_description %>
     <br />
+    <%= f.input :requirements, collection: ["Technical Skills", "Creative Problem Solving", "Trust Building", "Leadership", "Cultural Sensitivity"], label: "Job Requirements", input_html: { multiple: true } %>
     <br />
     <!-- This button should also create a new jobreel -->
     <%= f.submit 'Create', class: 'btn btn-primary' %>
