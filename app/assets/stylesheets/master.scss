@@ -1378,6 +1378,71 @@ video {
      color: #FFFFFF;
  }
 
+ .dashboard-bar {
+   background-color: #FFFFFF;
+   font-family: 'Montserrat', sans-serif;
+   width: 1166px;
+   margin-left: auto;
+   margin-right: auto;
+   overflow: hidden;
+ }
+
+ .dashboard-avatar img {
+   width: 100%;
+   height: auto;
+}
+
+.dashboard-first {
+  line-height: 30px;
+}
+
+.dashboard-create {
+  height: 60px;
+  background-color: #1b3257;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+ul.dashboard-menu-items {
+  padding: 0px;
+}
+
+li.dashboard-menu-items {
+  list-style-type: none;
+  margin: 0;
+  padding: 20px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-color: #E4E4E4;
+}
+
+.dashboard-menu-items img {
+  padding-left: 15px;
+  padding-right: 12px;
+}
+
+.dashboard-name {
+  background-color: #FFFFFF;
+  padding: 15px 0 15px 50px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-color: #E4E4E4;
+  font-weight: 500;
+  color: #3a475c;
+  font-size: 26px;
+}
+
+.dashboard-location {
+  font-weight: 500;
+  color: #3a475c;
+  font-size: 15px;
+  padding-top: 5px;
+}
+
  .dropbtn {
     background-color: #4795fb;
     color: white;
