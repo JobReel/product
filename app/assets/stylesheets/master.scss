@@ -1504,8 +1504,6 @@ video {
 .vert-divide {
   width: 1px;
   background-color: #E4E4E4;
-  margin-top: 2px;
-  margin-bottom: 2px;
 }
 
 .video-player {
@@ -1650,6 +1648,10 @@ video {
   text-transform: uppercase;
 }
 
+.intel-panel {
+  background-color:  #f9fbfd
+}
+
 .applicant-intel-top {
  color: #277cea;
  font-size:  38px;
@@ -1674,6 +1676,21 @@ video {
   text-transform: capitalize;
   color: #3a475c;
   font-weight: 500;
+  text-align: center;
+}
+
+.intel-end {
+  padding-top: 20px;
+  color:  #8a9dab;
+  text-transform: none;
+  font-size:  11px;
+  font-weight:  normal;
+}
+
+.intel-header {
+  padding: 15px 25px;
+  border-bottom: 1px solid;
+  border-color: #E4E4E4;
 }
 
 
