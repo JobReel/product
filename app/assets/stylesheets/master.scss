@@ -47,6 +47,11 @@ $sizes: (
     font-family: 'Montserrat', sans-serif;
   }
 
+  .container-fluid-dashboard {
+    background-color: #dbe5ee;
+    font-family: 'Montserrat', sans-serif;
+  }
+
   .container-fluid-navbar {
     background-color: #1b3257;
     font-family: 'Montserrat', sans-serif;
@@ -1387,6 +1392,23 @@ video {
    overflow: hidden;
  }
 
+ .dashboard-divider {
+   width: 90%;
+   height: 1px;
+   margin: 0px auto;
+   border-bottom: 1px solid #E4E4E4;
+ }
+
+ .dashboard-top {
+   text-align: center;
+   padding-top: 15px;
+   padding-bottom: 15px;
+ }
+
+ .dashboard-sidebar {
+   padding: 15px;
+ }
+
  .dashboard-avatar img {
    width: 100%;
    height: auto;
@@ -1403,6 +1425,22 @@ video {
   text-transform: uppercase;
   font-weight: 500;
   font-size: 14px;
+}
+
+.dashboard-title {
+  background-color: #FFFFFF;
+  padding: 27px 27px 27px 27px;
+  border-bottom: 1px solid;
+  border-color: #E4E4E4;
+  text-align: center;
+  font-weight: 500;
+  color: #3a475c;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.dashboard-menu {
+  background-color: #ffffff;
 }
 
 ul.dashboard-menu-items {
