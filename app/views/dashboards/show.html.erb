@@ -6,16 +6,18 @@
       </div>
       <div class="dashboard-menu">
         <div class="dashboard-name">
-          <span class="dashboard-first">James</span><br/>
-          <span>McJameson</span><br/>
+          <span class="dashboard-first"><%= @user.first_name %></span><br/>
+          <span><%= @user.last_name %></span><br/>
           <div class="dashboard-location">
             <i class="fa fa-map-marker" aria-hidden="true"></i>
-            <span>Best Town, NA</span>
+            <span><%= @user.city %>, <%= @user.state %></span>
           </div>
         </div>
-        <div class="dashboard-create vert-align text-center">
-          Start Job Posting
-        </div>
+        <%= link_to new_job_path do %>
+          <div class="dashboard-create vert-align text-center">
+            Start Job Posting
+          </div>
+        <% end %>
 
         <ul class="dashboard-menu-items">
           <li class="dashboard-menu-items"><%= image_tag('play.gif') %>Option One</li>
@@ -32,56 +34,36 @@
         <div class="dashboard-title">
           Open Job Postings
         </div>
-        <div class="row nomargin">
-          <div class="col-3 dashboard-top vert-align">
-            <div><%= image_tag('collaborators.gif') %></div>
-          </div>
-          <div class="col-7 dashboard-sidebar vert-align">
-            <div class = "row">
-              Position Title
+
+        <% @jobs.each do |job| %>
+          <div class="row nomargin dashboard-edit-icons">
+            <div class="col-3 dashboard-top vert-align">
+              <div><%= image_tag('collaborators.gif') %></div>
             </div>
-            <div class="row">
-              Unread Applications? 99
+            <div class="col-4 dashboard-sidebar vert-align">
+              <div class = "row">
+                <%= link_to job.job_title, job_path(job) %>
+              </div>
+              <div class="row">
+                Unread Applications? 99
+              </div>
             </div>
-          </div>
-          <div class="col-1 vert-align">
-            Time remaining?
-          </div>
-        </div>
-        <div class="dashboard-divider">&nbsp;</div>
-        <div class="row nomargin">
-          <div class="col-3 dashboard-top vert-align">
-            <div><%= image_tag('collaborators.gif') %></div>
-          </div>
-          <div class="col-7 dashboard-sidebar vert-align">
-            <div class = "row">
-              Position Title
+            <div class="col-3">
+              <span class="vert-helper"></span>
+              <%= link_to job_path(job), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} do %>
+                <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp
+              <% end %>
+              <%= link_to edit_job_path(job) do %>
+                <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp
+              <% end %>
+                <i class="fa fa-pause" aria-hidden="true"></i>
             </div>
-            <div class="row">
-              Unread Applications? 99
-            </div>
-          </div>
-          <div class="col-1 vert-align">
-            Time remaining?
-          </div>
-        </div>
-        <div class="dashboard-divider">&nbsp;</div>
-        <div class="row nomargin">
-          <div class="col-3 dashboard-top vert-align">
-            <div><%= image_tag('collaborators.gif') %></div>
-          </div>
-          <div class="col-7 dashboard-sidebar vert-align">
-            <div class = "row">
-              Position Title
-            </div>
-            <div class="row">
-              Unread Applications? 99
+            <div class="col-1 vert-align">
+              Time remaining?
             </div>
           </div>
-          <div class="col-1 vert-align">
-            Time remaining?
-          </div>
-        </div>
+          <div class="dashboard-divider">&nbsp;</div>
+        <% end %>
       </div>
     </div>
   </div>

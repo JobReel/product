@@ -1405,6 +1405,22 @@ video {
    padding-bottom: 15px;
  }
 
+ .dashboard-edit-icons a:link {
+   text-decoration: none;
+   font-weight: 500;
+ }
+
+ .dashboard-edit-icons a:visited {
+   color: #1b3257;
+   text-decoration: none;
+ }
+
+.dashboard-edit-icons a:hover {
+  color: #3f81f3;
+  text-decoration: none;
+  transition: .5s;
+}
+
  .dashboard-sidebar {
    padding: 15px;
  }
