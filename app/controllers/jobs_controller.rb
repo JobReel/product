@@ -19,6 +19,7 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
   def create
     @job = Job.create(job_params)
     @job.user_id = current_user.id
+    @job.requirements = @job.requirements.reject(&:empty?)
     @job.save!
 
     @jobreel = Jobreel.new()
@@ -107,19 +108,23 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
     @job = Job.find(params[:id])
     @job.user_id = current_user.id
     @job.update_attributes(job_params)
+    @job.requirements = @job.requirements.reject(&:empty?)
+    @job.save!
     redirect_to jobs_path(:id)
   end
 
   def destroy
     @job = Job.find(params[:id])
+    @jobreel = Jobreel.find_by(job_id: params[:id])
     @job.destroy
+    @jobreel.destroy
     redirect_to jobs_path
   end
 
 private
 
 def job_params
-  params.require(:job).permit(:user_id, :job_title, :city, :state, :job_description, :requirements)
+  params.require(:job).permit(:user_id, :job_title, :city, :state, :job_description, {:requirements => []})
 end
 
 

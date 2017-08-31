@@ -39,9 +39,14 @@
       <%= yield %>
     </main>
 
-    <footer class="Site-footer text-center">
+    <footer class="Site-footer">
       <% if params[:controller] == 'users' && params[:action] == 'show' %>
         <%= render "layouts/profile-footer" %>
+      <% elsif !user_signed_in? %>
+        <%= render "layouts/index-footer" %>
+        <% end %>
+      <% if params[:controller] == 'jobs' && params[:action] == 'show' %>
+        <%= render "layouts/footer" %>
       <% elsif !user_signed_in? %>
           <%= render "layouts/index-footer" %>
       <% else %>

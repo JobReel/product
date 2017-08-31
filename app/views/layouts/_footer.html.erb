@@ -1,14 +1,13 @@
 <!-- use https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/ -->
   <!-- Universal page footer -->
   <footer class="footer-private-view">
-    <div class="container-fluid">
-      <div class="row row-footer-private">
+    <div class="container-fluid-footer-private">
+      <div class="row footer-flex">
 
-        <div class="footer-logo-box col-2 offset-1">
+        <div class="footer-logo-box col-2 vert-align">
           <%= link_to (image_tag ("logo-new.png"), class: 'nav-image'), root_path %>
-          <br /><br />
-          © 2017 JobReel, Inc.<br />
-          All rights reserved.
+          <span class = "footer-logo-text">© 2017 JobReel, Inc.<br>
+          All rights reserved.</span>
         </div>
 
         <div class="verticalLine "></div>
@@ -49,20 +48,20 @@
 
         <div class="social-footer col-2">
           <h1>Follow Us</h1>
-          <div class="row social-footer-list">
-            <%= image_tag 'facebook-footer-icon.png' %><h3>&nbsp&nbsp&nbsp<a href="#">Facebook</a></h3>
+          <div class="row social-footer-list" id="footer-facebook">
+            <%= image_tag 'facebook-footer-icon.png' %><h3>&nbsp&nbsp&nbsp&nbsp<a href="#">Facebook</a></h3>
           </div>
-          <div class="row social-footer-list">
+          <div class="row social-footer-list" id="footer-twitter">
             <%= image_tag 'twitter-footer-icon.png' %><h3>&nbsp&nbsp&nbsp<a href="#">Twitter</a></h3>
           </div>
-          <div class="row social-footer-list">
-            <%= image_tag 'rss-icon.png' %><h3>&nbsp&nbsp&nbsp<a href="#">RSS</a></h3>
+          <div class="row social-footer-list" id="footer-rss">
+            <%= image_tag 'rss-icon.png' %><h3>&nbsp&nbsp&nbsp&nbsp<a href="#">RSS</a></h3>
           </div>
         </div>
 
         <div class="verticalLine"></div>
 
-        <div class="newsletter-footer col-3">
+        <div class="newsletter-footer col-4">
           <h1>Subscribe To Our News</h1>
           <div class="row newsletter-bar-footer ">
             <input type="text" name="search" placeholder="Enter Your Email" class="newsletter-bar">

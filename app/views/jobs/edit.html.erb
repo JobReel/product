@@ -5,6 +5,7 @@
     <%= f.input :city %>
     <%= f.input :state %>
     <%= f.input :job_description %>
+    <%= f.input :requirements, as: :check_boxes, collection: ["Technical Skills", "Creative Problem Solving", "Trust Building", "Leadership", "Cultural Sensitivity"], label: "Job Requirements: ", input_html: { multiple: true } %>
     <br />
     <%= f.submit 'Update', class: 'btn btn-primary' %>
   <% end %>

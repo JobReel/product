@@ -3,5 +3,5 @@ class Job < ApplicationRecord
 
   has_many :jobreels
   has_many :videos
-  
+
 end
