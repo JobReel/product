@@ -1,36 +1,88 @@
-<h1> Future home of the new User Dashboard </h1>
-<br />
-<div>
-<h2>User's Work History</h2>
-<% @workhistory.each do |w| %>
- <%= w.company_name %> - <%= w.job_title %><br />
- <%= w.job_start_date.strftime("%B %Y") %> to <%= w.job_end_date.strftime("%B %Y") %><br />
- <%= w.job_description %>
- <% end %>
-</div>
+<div class="container-fluid-dashboard">
+  <div class="row dashboard-bar justify-content-center">
+    <div class="col-3 nopadding">
+      <div class="dashboard-avatar">
+        <%= image_tag('dashavatar.jpg') %>
+      </div>
+      <div class="dashboard-menu">
+        <div class="dashboard-name">
+          <span class="dashboard-first">James</span><br/>
+          <span>McJameson</span><br/>
+          <div class="dashboard-location">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <span>Best Town, NA</span>
+          </div>
+        </div>
+        <div class="dashboard-create vert-align text-center">
+          Start Job Posting
+        </div>
 
-<div>
-<h2>User's Videos</h2>
-<div class = "row">
-<% @videos.each do |v| %>
-  <div>
-    <%= cl_video_tag(v.private_id, controls: true, transformation: {:width=>300, :height=>200, :crop=>"fill"}) %><br />
-    <%= v.video_section %> - <%= v.private_id %>
+        <ul class="dashboard-menu-items">
+          <li class="dashboard-menu-items"><%= image_tag('play.gif') %>Option One</li>
+          <li class="dashboard-menu-items"><%= image_tag('play.gif') %>Option Two</li>
+          <li class="dashboard-menu-items"><%= image_tag('play.gif') %>Option Three</li>
+          <li class="dashboard-menu-items"><%= image_tag('play.gif') %>Option Four</li>
+        </ul>
+      </div>
+      <div class="jobposting-divider">&nbsp;</div>
+    </div>
+
+    <div class="col-9 nopadding">
+      <div>
+        <div class="dashboard-title">
+          Open Job Postings
+        </div>
+        <div class="row nomargin">
+          <div class="col-3 dashboard-top vert-align">
+            <div><%= image_tag('collaborators.gif') %></div>
+          </div>
+          <div class="col-7 dashboard-sidebar vert-align">
+            <div class = "row">
+              Position Title
+            </div>
+            <div class="row">
+              Unread Applications? 99
+            </div>
+          </div>
+          <div class="col-1 vert-align">
+            Time remaining?
+          </div>
+        </div>
+        <div class="dashboard-divider">&nbsp;</div>
+        <div class="row nomargin">
+          <div class="col-3 dashboard-top vert-align">
+            <div><%= image_tag('collaborators.gif') %></div>
+          </div>
+          <div class="col-7 dashboard-sidebar vert-align">
+            <div class = "row">
+              Position Title
+            </div>
+            <div class="row">
+              Unread Applications? 99
+            </div>
+          </div>
+          <div class="col-1 vert-align">
+            Time remaining?
+          </div>
+        </div>
+        <div class="dashboard-divider">&nbsp;</div>
+        <div class="row nomargin">
+          <div class="col-3 dashboard-top vert-align">
+            <div><%= image_tag('collaborators.gif') %></div>
+          </div>
+          <div class="col-7 dashboard-sidebar vert-align">
+            <div class = "row">
+              Position Title
+            </div>
+            <div class="row">
+              Unread Applications? 99
+            </div>
+          </div>
+          <div class="col-1 vert-align">
+            Time remaining?
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <% end %>
-</div>
-
-<div>
-<h2>User's JobReels</h2>
-<% @jobreels.each do |j| %>
-  JobReel for Job ID <%= j.job_id %>
-    <% end %>
-</div>
-
-<div>
-<h2>User's Jobs</h2>
-<% @jobs.each do |p| %>
-  <%= p.company_name %> - <%= p.job_title %>
-  Last Updated: <%= p.updated_at.strftime("%A %B %d") %>
-    <% end %>
 </div>
