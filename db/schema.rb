@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802210933) do
+ActiveRecord::Schema.define(version: 20170905174451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 20170802210933) do
   create_table "jobreels", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "overall_rating"
-    t.integer  "competency_ratings", default: [],              array: true
-    t.string   "video_list",         default: [],              array: true
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.integer  "competency_ratings", default: [],                 array: true
+    t.string   "video_list",         default: [],                 array: true
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "job_id"
     t.string   "section1_title"
     t.string   "section2_title"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170802210933) do
     t.float    "section3_duration"
     t.float    "section4_duration"
     t.float    "section5_duration"
+    t.boolean  "submit_status",      default: false
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -61,9 +62,10 @@ ActiveRecord::Schema.define(version: 20170802210933) do
     t.string   "city"
     t.string   "state"
     t.text     "job_description"
-    t.string   "requirements",    default: [],              array: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "requirements",    default: [],                 array: true
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "published",       default: false
   end
 
   create_table "recommendations", force: :cascade do |t|
