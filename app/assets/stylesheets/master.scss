@@ -442,6 +442,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 16px;
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
+  text-transform: uppercase;
 }
 
 .job-requirements-title {
@@ -1882,6 +1883,57 @@ li.dashboard-menu-items {
   padding: 15px 25px;
   border-bottom: 1px solid;
   border-color: #E4E4E4;
+}
+
+.job-bar input {
+    font-family: 'Montserrat', sans-serif;
+    padding: 7px 0px 5px 10px;
+    color: #3a475c;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+.job-bar input:focus{
+  outline: none;
+  background-color: rgba(219, 229, 238, .3);
+}
+
+.job-bar select {
+    font-family: 'Montserrat', sans-serif;
+    padding: 7px 0px 5px 10px;
+    color: #3a475c;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+#save-job {
+  margin-bottom: 15px;
+}
+
+.input, #job-title  {
+  margin-bottom: 15px;
+  width: 600px;
+}
+
+.input, #city {
+ margin-right: 25px; 
+}
+
+.select, #state {
+  width: 175px;
+}
+
+.job-requirements-summary-box {
+  background-color: #458afa;
+  color: #FFF;
+  padding: 24px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 1.15px;
 }
 
 

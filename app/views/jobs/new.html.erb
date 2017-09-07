@@ -1,15 +1,15 @@
 <div class="container-fluid">
   <div class="row job-bar justify-content-center">
     <div class="col-1 jobposting-top">
-      <span class="vert-helper"></span><%= image_tag 'add-logo.gif' %>
+      <span class="vert-helper"></span><%= image_tag('adobe-logo.gif') %>
     </div>
     <div class="col-8 jobposting-top vert-align">
-      <div class = "row">
-        <input type="text" id="job_title" placeholder="Job Title">
+      <div class = "row nomargin">
+        <input type="text" id="job-title" placeholder="Job Title">
       </div>
-      <div class="row">
-        <input type="text" id="city" placeholder="City">, 
-        <select>
+      <div class="row nomargin">
+        <input type="text" id="city" placeholder="City"> 
+        <select id="state">
           <option value="" disabled selected>State</option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
@@ -65,46 +65,57 @@
         </select>
       </div>
     </div>
+    <div class="col-3 vert-align">
+    <button id="save-job">Save</button>
+    <button>Publish</button>
+    </div>
   </div>
 </div>
 <div class = "container-fluid-job">
   <div class="row is-flex job-body">
-    <div class="col-7 no-pad-left">
-      <div class="card job-box nopadding">
-        <div class="card-block studio-blend nopadding video-mask">
-          <div id = "video_container" class = "video-player">
-              <%= image_tag('video_placeholder.png')%>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-5 noborder">
+    <div class="col-12 noborder">
       <div class="card job-box nopadding">
         <div class="card-block job-requirements-title">
-          APPLICATION REQUIREMENTS
+          SELECT UP TO 4 REQUIRED RESPONSE CATEGORIES
         </div>
         <div class="card-block">
           <div class="row nomargin text-center">
-          <div class="col-6 job-requirements-icons">
+          <div class="col-3 job-requirements-icons">
             <%= image_tag("insight.gif") %>
-            <p class="job-requirements-text">Introduction</p>
+            <p class="job-requirements-text">Ambition</p>
           </div>
-          <div class="col-6 job-requirements-icons">
+          <div class="col-3 job-requirements-icons">
             <%= image_tag("briefcase.gif") %>
             <p class="job-requirements-text">Technical Skills</p>
           </div>
-          <div class="col-6 job-requirements-icons">
+          <div class="col-3 job-requirements-icons">
             <%= image_tag("brush.gif") %>
             <p class="job-requirements-text">Creative Problem Solving</p>
           </div>
-          <div class="col-6 job-requirements-icons">
+          <div class="col-3 job-requirements-icons">
             <%= image_tag("lightbulb.gif") %>
-            <p class="job-requirements-text">Question From Adobe</p>
+            <p class="job-requirements-text">Cultural Sensitivity</p>
+          </div>
+                    <div class="col-3 job-requirements-icons">
+            <%= image_tag("insight.gif") %>
+            <p class="job-requirements-text">Leadership</p>
+          </div>
+          <div class="col-3 job-requirements-icons">
+            <%= image_tag("briefcase.gif") %>
+            <p class="job-requirements-text">Emotional Intelligence</p>
+          </div>
+          <div class="col-3 job-requirements-icons">
+            <%= image_tag("brush.gif") %>
+            <p class="job-requirements-text">Hobbies & Interests</p>
+          </div>
+          <div class="col-3 job-requirements-icons">
+            <%= image_tag("lightbulb.gif") %>
+            <p class="job-requirements-text">Custom Question</p>
           </div>
         </div>
       </div>
-      <div class="card-block job-requirements-apply-box">
-      APPLY FOR THIS JOB &rarr;
+      <div class="card-block job-requirements-summary-box">
+      When user clicks/hovers over a category, this area displays a short overview of what the category covers. Includes a short list of sample questions that fit into this category.
       </div>
     </div>
   </div>
@@ -148,7 +159,7 @@
     <div class="noborder newcard">
       <div class="card nopadding">
         <div class="card-block job-requirements-title">
-          PEOPLE ALSO VIEWED
+          Progress Tracker?
         </div>
         <div class="card-block white">
           <div class="row nomargin">
