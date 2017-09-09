@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905174451) do
+ActiveRecord::Schema.define(version: 20170909051525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "competencies", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "job_id"
+    t.integer  "jobreel_id"
+    t.text     "summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "educations", force: :cascade do |t|
     t.integer  "user_id"
@@ -66,6 +75,16 @@ ActiveRecord::Schema.define(version: 20170905174451) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.boolean  "published",       default: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "job_id"
+    t.integer  "jobreel_id"
+    t.integer  "rating"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "competency_id"
   end
 
   create_table "recommendations", force: :cascade do |t|
