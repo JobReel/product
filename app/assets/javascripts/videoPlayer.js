@@ -1,5 +1,6 @@
 // Adapted from: https://code.tutsplus.com/tutorials/build-a-custom-html5-video-player--pre-8905
 $(document).on('turbolinks:load', function(){
+  if ($('#video_container').length > 0) {
     // Boolean that allows us to "remember" the current size of the video player.
     var video = document.getElementsByTagName('video')[0],
     videoControls = document.getElementById('videoControls'),
@@ -316,4 +317,6 @@ $(document).on('turbolinks:load', function(){
 
     videoPlayer.init();
 
+};
 });
+
