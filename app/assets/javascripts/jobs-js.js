@@ -1,5 +1,6 @@
 
 $(document).on('turbolinks:load', function(){
+  var timeoutId;
   $('#collapseme').on('click', function() {
     fullH = document.getElementById("full-description").scrollHeight;
     var duration = 1000,
@@ -29,6 +30,25 @@ $(document).on('turbolinks:load', function(){
       $('#competency-summary').html(newtext);
     });
   });
+
+    $("#ambition").hover(function() {
+        if (!timeoutId) {
+            timeoutId = window.setTimeout(function() {
+                timeoutId = null;
+                newtext = "Ambition Summary: <br>" + gon.competencies[0].summary;
+                $('#competency-summary').html(newtext);
+           }, 900);
+        }
+    },
+    function () {
+        if (timeoutId) {
+            window.clearTimeout(timeoutId);
+            timeoutId = null;
+        }
+        else {
+        }
+    });
+
 
   $('#technical').on('click', function() {
     newtext = "Select a Question: <br>";
