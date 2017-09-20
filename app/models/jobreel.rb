@@ -3,6 +3,8 @@ class Jobreel < ApplicationRecord
   belongs_to :job, optional: true
 
   has_many :videos
+  has_many :competencies
+  has_many :questions
 
   def job_title
     job ? job.job_title : "Profile Jobreel"

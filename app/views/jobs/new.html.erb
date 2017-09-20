@@ -1,14 +1,234 @@
-<div class="booyah-box col-10 offset-1">
-  <h1>Enter New Job Posting Information</h1>
-  <%= simple_form_for @job do |f| %>
-    <%= f.input :job_title %>
-    <%= f.input :city %>
-    <%= f.input :state %>
-    <%= f.input :job_description %>
-    <br />
-    <%= f.input :requirements, as: :check_boxes, collection: ["Technical Skills", "Creative Problem Solving", "Trust Building", "Leadership", "Cultural Sensitivity"], label: "Job Requirements", input_html: { multiple: true } %>
-    <br />
-    <!-- This button should also create a new jobreel -->
-    <%= f.submit 'Create', class: 'btn btn-primary' %>
-  <% end %>
+<div class="container-fluid">
+  <div class="row job-bar justify-content-center">
+    <div class="col-1 jobposting-top">
+      <span class="vert-helper"></span><%= image_tag('adobe-logo.gif') %>
+    </div>
+    <div class="col-8 jobposting-top vert-align">
+      <div class = "row nomargin">
+        <input type="text" id="job-title" placeholder="Job Title">
+      </div>
+      <div class="row nomargin">
+        <input type="text" id="city" placeholder="City"> 
+        <select id="state">
+          <option value="" disabled selected>State</option>
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="DC">District Of Columbia</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-3 vert-align">
+    <button id="save-job">Next</button>
+    </div>
+  </div>
 </div>
+<div class = "container-fluid-job">
+  <div class="row is-flex job-body">
+    <div class="col-12 noborder no-pad-left">
+      <div class="card job-box nopadding">
+        <div class="card-block job-requirements-title">
+          SELECT UP TO 4 REQUIRED COMPETENCY CATEGORIES
+        </div>
+        <div class="card-block">
+          <div class="row nomargin text-center">
+          <div class="col-3 job-requirements-icons" id="ambition">
+            <%= image_tag("insight.gif") %>
+            <p class="job-requirements-text">Ambition</p>
+          </div>
+          <div class="col-3 job-requirements-icons" id="technical">
+            <%= image_tag("briefcase.gif") %>
+            <p class="job-requirements-text">Technical Skills</p>
+          </div>
+          <div class="col-3 job-requirements-icons" id="creative">
+            <%= image_tag("brush.gif") %>
+            <p class="job-requirements-text">Creative Problem Solving</p>
+          </div>
+          <div class="col-3 job-requirements-icons" id="cultural">
+            <%= image_tag("lightbulb.gif") %>
+            <p class="job-requirements-text">Cultural Sensitivity</p>
+          </div>
+                    <div class="col-3 job-requirements-icons" id="leadership">
+            <%= image_tag("insight.gif") %>
+            <p class="job-requirements-text">Leadership</p>
+          </div>
+          <div class="col-3 job-requirements-icons" id="emotional">
+            <%= image_tag("briefcase.gif") %>
+            <p class="job-requirements-text">Emotional Intelligence</p>
+          </div>
+          <div class="col-3 job-requirements-icons" id="hobbies">
+            <%= image_tag("brush.gif") %>
+            <p class="job-requirements-text">Hobbies & Interests</p>
+          </div>
+          <div class="col-3 job-requirements-icons" id="custom">
+            <%= image_tag("lightbulb.gif") %>
+            <p class="job-requirements-text">Custom Question</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-block job-requirements-summary-box" id ="summary-box">
+      When user clicks/hovers over a category, this area displays a short overview of what the category covers. Includes a short list of sample questions that fit into this category.
+      </div>
+    </div>
+  </div>
+
+  <div class="left-wrapper">
+    <div class="no-pad-left newcard">  <!-- job description -->
+      <div class="card nopadding">
+        <div class="card-block job-description white">
+          <div class="row">
+            <div class="col-8 vert-align">
+              <h1>Selected Questions</h1>
+            </div>
+          </div>
+        </div>
+        <div class="card-block selected-questions white" id="full-description">
+          <div class="row nomargin dashboard-edit-icons">
+            <div class="col-3 dashboard-top vert-align">
+              <div><%= image_tag('collaborators.gif') %></div>
+            </div>
+            <div class="col-6 dashboard-sidebar vert-align">
+              <div class = "row">
+                Selected Question 1
+              </div>
+            </div>
+            <div class="col-3 text-center">
+              <span class="vert-helper"></span>
+                <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp
+                <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp
+                <i class="fa fa-pause" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="sentence-divider">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end of left wrapper -->
+
+  <div class="right-wrapper">
+    <div class="noborder newcard">
+      <div class="card nopadding">
+        <div class="card-block job-requirements-title">
+          Progress Tracker?
+        </div>
+        <div class="card-block white">
+          <div class="row nomargin">
+            <div class="col-3 jobposting-top">
+              <div>LOGO</div>
+            </div>
+            <div class="col-7 jobposting-sidebar">
+              <div class = "row">
+                Similar Job 1
+              </div>
+              <div class="row">
+                Similar Company 1
+              </div>
+              <div class="row">
+                Anytown, Anystate
+              </div>
+            </div>
+            <div class="col-1 vert-align">
+              8d
+            </div>
+          </div>
+        </div>
+        <div class="jobposting-divider">&nbsp;
+        </div>
+        <div class="card-block white">
+          <div class="row nomargin">
+            <div class="col-3 jobposting-top">
+              <div>LOGO</div>
+            </div>
+            <div class="col-7 jobposting-sidebar">
+              <div class = "row">
+                Similar Job 1
+              </div>
+              <div class="row">
+                Similar Company 1
+              </div>
+              <div class="row">
+                Anytown, Anystate
+              </div>
+            </div>
+            <div class="col-1 vert-align">
+              8d
+            </div>
+          </div>
+        </div>
+        <div class="jobposting-divider">&nbsp;
+        </div>
+        <div class="card-block white">
+          <div class="row nomargin">
+            <div class="col-3 jobposting-top">
+              <div>LOGO</div>
+              </div>
+              <div class="col-7 jobposting-sidebar">
+              <div class = "row">
+                Similar Job 1
+              </div>
+              <div class="row">
+                Similar Company 1
+              </div>
+              <div class="row">
+                Anytown, Anystate
+              </div>
+            </div>
+            <div class="col-1 vert-align">
+            8d
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!--end of similar jobs -->
+  </div> <!--end of row studio body -->
+</div>
+<script>
+  $(document).on('turbolinks:load', buildVideoHTML(gon.intro_videos));
+</script>
