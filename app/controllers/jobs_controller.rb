@@ -14,6 +14,13 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
     @user = current_user
     @avatar = display_avatar(@user)
     @avatarlg = display_avatar_lg(@user)
+
+    @competencies = Competency.all
+    gon.competencies = @competencies
+
+    @questions = Question.all
+    gon.questions = @questions
+
   end
 
   def create
