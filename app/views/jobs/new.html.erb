@@ -78,38 +78,38 @@
           SELECT UP TO 4 REQUIRED COMPETENCY CATEGORIES
         </div>
         <div class="card-block">
-          <div class="row nomargin text-center">
-          <div class="col-3 job-requirements-icons" id="ambition">
-            <%= image_tag("insight.gif") %>
-            <p class="job-requirements-text">Ambition</p>
+          <div class="row nomargin text-center" id="selection-box">
+          <div class="col-3 job-requirements-icons" data-title="ambition" id="ambition">
+            <%= image_tag("insight.gif", data: {title: "ambition"}) %>
+            <p class="job-requirements-text" data-title="ambition">Ambition</p>
           </div>
-          <div class="col-3 job-requirements-icons" id="technical">
-            <%= image_tag("briefcase.gif") %>
-            <p class="job-requirements-text">Technical Skills</p>
+          <div class="col-3 job-requirements-icons" data-title="technical" id="technical">
+            <%= image_tag("briefcase.gif", data: {title: "technical"}) %>
+            <p class="job-requirements-text" data-title="technical">Technical Skills</p>
           </div>
-          <div class="col-3 job-requirements-icons" id="creative">
-            <%= image_tag("brush.gif") %>
-            <p class="job-requirements-text">Creative Problem Solving</p>
+          <div class="col-3 job-requirements-icons" data-title="creative" id="creative">
+            <%= image_tag("brush.gif", data: {title: "creative"}) %>
+            <p class="job-requirements-text" data-title="creative">Creative Problem Solving</p>
           </div>
-          <div class="col-3 job-requirements-icons" id="cultural">
-            <%= image_tag("lightbulb.gif") %>
-            <p class="job-requirements-text">Cultural Sensitivity</p>
+          <div class="col-3 job-requirements-icons" data-title="cultural" id="cultural">
+            <%= image_tag("lightbulb.gif", data: {title: "cultural"}) %>
+            <p class="job-requirements-text" data-title="cultural" >Cultural Sensitivity</p>
           </div>
-                    <div class="col-3 job-requirements-icons" id="leadership">
-            <%= image_tag("insight.gif") %>
-            <p class="job-requirements-text">Leadership</p>
+          <div class="col-3 job-requirements-icons" data-title="leadership" id="leadership">
+            <%= image_tag("insight.gif", data: {title: "leadership"}) %>
+            <p class="job-requirements-text" data-title="leadership">Leadership</p>
           </div>
-          <div class="col-3 job-requirements-icons" id="emotional">
-            <%= image_tag("briefcase.gif") %>
-            <p class="job-requirements-text">Emotional Intelligence</p>
+          <div class="col-3 job-requirements-icons" data-title="emotional" id="emotional">
+            <%= image_tag("briefcase.gif", data: {title: "emotional"}) %>
+            <p class="job-requirements-text" data-title="emotional">Emotional Intelligence</p>
           </div>
-          <div class="col-3 job-requirements-icons" id="hobbies">
-            <%= image_tag("brush.gif") %>
-            <p class="job-requirements-text">Hobbies & Interests</p>
+          <div class="col-3 job-requirements-icons" data-title="hobbies" id="hobbies">
+            <%= image_tag("brush.gif", data: {title: "hobbies"}) %>
+            <p class="job-requirements-text" data-title="hobbies">Hobbies & Interests</p>
           </div>
-          <div class="col-3 job-requirements-icons" id="custom">
-            <%= image_tag("lightbulb.gif") %>
-            <p class="job-requirements-text">Custom Question</p>
+          <div class="col-3 job-requirements-icons" data-title="custom" id="custom">
+            <%= image_tag("lightbulb.gif", data: {title: "custom"}) %>
+            <p class="job-requirements-text" data-title="custom">Custom Question</p>
           </div>
         </div>
       </div>
