@@ -30,6 +30,8 @@ $(document).on('turbolinks:load', function(){
     },
 
     selectCompetency : function(e) {
+      window.clearTimeout(timeoutId);
+      timeoutId = null;
       var compId = competencyHash[e.target.dataset.title];
       newtext = "Select a Question: <br>";
       $.each(gon.questions, function (index, val){
@@ -37,7 +39,6 @@ $(document).on('turbolinks:load', function(){
           newtext += val.text + "<br>";
         }
         $('#competency-summary').html(newtext);
-        timeoutId = null;
       });
     },
 
