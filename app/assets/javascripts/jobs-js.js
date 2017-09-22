@@ -43,6 +43,8 @@ $(document).on('turbolinks:load', function(){
     },
 
     showSummary : function(e) {
+      window.clearTimeout(timeoutId);
+      timeoutId = null;
       var compName = e.target.dataset.title;
       var compTitle = e.target.innerText;
       var compId = competencyHash[compName] - 1;
