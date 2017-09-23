@@ -1,7 +1,7 @@
 
 $(document).on('turbolinks:load', function(){
   var timeoutId;
-  var selectedCompetencies = [];
+  var selectedQuestions = [];
   var competencyBox = document.getElementById("selection-box"),
   ambitionBox = document.getElementById("ambition"),
   technicalBox = document.getElementById("technical"),
@@ -26,6 +26,9 @@ $(document).on('turbolinks:load', function(){
       emotionalBox.addEventListener('mouseenter', this.showSummary, false);
       hobbiesBox.addEventListener('mouseenter', this.showSummary, false);
       customBox.addEventListener('mouseenter', this.showSummary, false);
+      competencyBox.addEventListener('mouseout', this.resetTimeout(), false);
+
+      this.handleQuestions();
 
     },
 
@@ -36,10 +39,15 @@ $(document).on('turbolinks:load', function(){
       newtext = "Select a Question: <br>";
       $.each(gon.questions, function (index, val){
         if (val.competency_id == compId) {
-          newtext += val.text + "<br>";
+          newtext += "<span data-questionId='" + val.id + "'>" + val.text + "</span> <br>";
         }
         $('#competency-summary').html(newtext);
       });
+    },
+
+    resetTimeout : function() {
+      window.clearTimeout(timeoutId);
+      timeoutId = null;
     },
 
     showSummary : function(e) {
@@ -57,6 +65,10 @@ $(document).on('turbolinks:load', function(){
            }, 1500);
         }
       },
+
+    handleQuestions : function() {
+
+    },
 
     function () {
       if (timeoutId) {
