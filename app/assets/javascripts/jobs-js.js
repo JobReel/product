@@ -1,5 +1,6 @@
 
 $(document).on('turbolinks:load', function(){
+  if ($('#selection-box').length > 0) {
   var timeoutId;
   var selectedQuestions = [];
   var competencyBox = document.getElementById("selection-box"),
@@ -11,6 +12,7 @@ $(document).on('turbolinks:load', function(){
   emotionalBox = document.getElementById("emotional"),
   hobbiesBox = document.getElementById("hobbies"),
   customBox = document.getElementById("custom"),
+  questionSpan = document.getElementById("competency-summary"),
   competencyHash = {"ambition": 1, "technical": 2, "creative": 3, "cultural": 4, "leadership": 5, "emotional": 6, "hobbies": 7, "custom": 8};
 
   var selectTool = {
@@ -19,14 +21,22 @@ $(document).on('turbolinks:load', function(){
 
       competencyBox.addEventListener('click', this.selectCompetency, false);
       ambitionBox.addEventListener('mouseenter', this.showSummary, false);
+      ambitionBox.addEventListener('mouseout', this.resetTimeout, false);
       technicalBox.addEventListener('mouseenter', this.showSummary, false);
+      technicalBox.addEventListener('mouseout', this.resetTimeout, false);
       creativeBox.addEventListener('mouseenter', this.showSummary, false);
+      creativeBox.addEventListener('mouseout', this.resetTimeout, false);
       culturalBox.addEventListener('mouseenter', this.showSummary, false);
+      culturalBox.addEventListener('mouseout', this.resetTimeout, false);
       leadershipBox.addEventListener('mouseenter', this.showSummary, false);
+      leadershipBox.addEventListener('mouseout', this.resetTimeout, false);
       emotionalBox.addEventListener('mouseenter', this.showSummary, false);
+      emotionalBox.addEventListener('mouseout', this.resetTimeout, false);
       hobbiesBox.addEventListener('mouseenter', this.showSummary, false);
+      hobbiesBox.addEventListener('mouseout', this.resetTimeout, false);
       customBox.addEventListener('mouseenter', this.showSummary, false);
-      competencyBox.addEventListener('mouseout', this.resetTimeout(), false);
+      customBox.addEventListener('mouseout', this.resetTimeout, false);
+      competencyBox.addEventListener('mouseout', this.resetTimeout, false);
 
       this.handleQuestions();
 
@@ -43,11 +53,6 @@ $(document).on('turbolinks:load', function(){
         }
         $('#competency-summary').html(newtext);
       });
-    },
-
-    resetTimeout : function() {
-      window.clearTimeout(timeoutId);
-      timeoutId = null;
     },
 
     showSummary : function(e) {
@@ -67,39 +72,24 @@ $(document).on('turbolinks:load', function(){
       },
 
     handleQuestions : function() {
+      questionSpan.addEventListener('click', grabId, false)
 
+      function grabId(e) {
+        console.log(e);
+        var questionId = e.target.dataset.questionid;
+        selectedQuestions.push(questionId);
+        console.log(selectedQuestions);
+      }
     },
 
-    function () {
-      if (timeoutId) {
+    resetTimeout : function () {
         window.clearTimeout(timeoutId);
         timeoutId = null;
-      }
-    else {
-      }
     }
   };
 
-    $("#ambition").hover(function() {
-        if (!timeoutId) {
-            timeoutId = window.setTimeout(function() {
-                timeoutId = null;
-                newtext = "Ambition Summary: <br>" + gon.competencies[0].summary;
-                $('#competency-summary').html(newtext);
-           }, 900);
-        }
-    },
-    function () {
-        if (timeoutId) {
-            window.clearTimeout(timeoutId);
-            timeoutId = null;
-        }
-        else {
-        }
-    });
-
-
   selectTool.init();
+
 
   $('#collapseme').on('click', function() {
     fullH = document.getElementById("full-description").scrollHeight;
@@ -120,87 +110,5 @@ $(document).on('turbolinks:load', function(){
                     $('#collapseme').html("Read full job description <i class='fa fa-chevron-down'></i>");
               }
   });
-
-  // $('#ambition').on('click', function() {
-  //   newtext = "Select a Question: <br>";
-  //   $.each(gon.questions, function (index, val){
-  //     if (val.competency_id == 1) {
-  //       newtext += val.text + "<br>";
-  //     }
-  //     $('#competency-summary').html(newtext);
-  //   });
-  // });
-
-
-
-
-  // $('#technical').on('click', function() {
-  //   newtext = "Select a Question: <br>";
-  //   $.each(gon.questions, function (index, val){
-  //     if (val.competency_id == 2) {
-  //       newtext += val.text + "<br>";
-  //     }
-  //     $('#competency-summary').html(newtext);
-  //   });
-  // });
-
-  // $('#creative').on('click', function() {
-  //   newtext = "Select a Question: <br>";
-  //   $.each(gon.questions, function (index, val){
-  //     if (val.competency_id == 3) {
-  //       newtext += val.text + "<br>";
-  //     }
-  //     $('#competency-summary').html(newtext);
-  //   });
-  // });
-
-  // $('#cultural').on('click', function() {
-  //   newtext = "Select a Question: <br>";
-  //   $.each(gon.questions, function (index, val){
-  //     if (val.competency_id == 4) {
-  //       newtext += val.text + "<br>";
-  //     }
-  //     $('#competency-summary').html(newtext);
-  //   });
-  // });
-
-  // $('#leadership').on('click', function() {
-  //   newtext = "Select a Question: <br>";
-  //   $.each(gon.questions, function (index, val){
-  //     if (val.competency_id == 5) {
-  //       newtext += val.text + "<br>";
-  //     }
-  //     $('#competency-summary').html(newtext);
-  //   });
-  // });
-
-  // $('#emotional').on('click', function() {
-  //   newtext = "Select a Question: <br>";
-  //   $.each(gon.questions, function (index, val){
-  //     if (val.competency_id == 6) {
-  //       newtext += val.text + "<br>";
-  //     }
-  //     $('#competency-summary').html(newtext);
-  //   });
-  // });
-
-  // $('#hobbies').on('click', function() {
-  //   newtext = "Select a Question: <br>";
-  //   $.each(gon.questions, function (index, val){
-  //     if (val.competency_id == 7) {
-  //       newtext += val.text + "<br>";
-  //     }
-  //     $('#competency-summary').html(newtext);
-  //   });
-  // });
-
-  // $('#custom').on('click', function() {
-  //   newtext = "Select a Question: <br>";
-  //   $.each(gon.questions, function (index, val){
-  //     if (val.competency_id == 8) {
-  //       newtext += val.text + "<br>";
-  //     }
-  //     $('#competency-summary').html(newtext);
-  //   });
-  // });
+};
 });
