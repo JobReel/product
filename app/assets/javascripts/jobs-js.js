@@ -13,6 +13,7 @@ $(document).on('turbolinks:load', function(){
   hobbiesBox = document.getElementById("hobbies"),
   customBox = document.getElementById("custom"),
   questionSpan = document.getElementById("competency-summary"),
+  createButton = document.getElementById("save-job"),
   competencyHash = {"ambition": 1, "technical": 2, "creative": 3, "cultural": 4, "leadership": 5, "emotional": 6, "hobbies": 7, "custom": 8};
 
   var selectTool = {
@@ -37,6 +38,8 @@ $(document).on('turbolinks:load', function(){
       customBox.addEventListener('mouseenter', this.showSummary, false);
       customBox.addEventListener('mouseout', this.resetTimeout, false);
       competencyBox.addEventListener('mouseout', this.resetTimeout, false);
+
+      createJob.addEventListener('click', this.pushPayload, false);
 
       this.handleQuestions();
 
@@ -72,12 +75,17 @@ $(document).on('turbolinks:load', function(){
       },
 
     handleQuestions : function() {
-      questionSpan.addEventListener('click', grabId, false)
+      questionSpan.addEventListener('click', grabId, false);
 
       function grabId(e) {
         console.log(e);
         var questionId = e.target.dataset.questionid;
-        selectedQuestions.push(questionId);
+        if (selectedQuestions.includes(questionId)) {
+          selectedQuestions.splice(selectedQuestions.indexOf(questionId), 1);
+        }
+        else {
+          selectedQuestions.push(questionId);
+        }
         console.log(selectedQuestions);
       }
     },
@@ -85,6 +93,10 @@ $(document).on('turbolinks:load', function(){
     resetTimeout : function () {
         window.clearTimeout(timeoutId);
         timeoutId = null;
+    },
+
+    createJob : function () {
+
     }
   };
 
