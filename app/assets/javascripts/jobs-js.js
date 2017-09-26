@@ -39,7 +39,7 @@ $(document).on('turbolinks:load', function(){
       customBox.addEventListener('mouseout', this.resetTimeout, false);
       competencyBox.addEventListener('mouseout', this.resetTimeout, false);
 
-      createJob.addEventListener('click', this.pushPayload, false);
+      createButton.addEventListener('click', this.pushPayload, false);
 
       this.handleQuestions();
 
@@ -52,7 +52,7 @@ $(document).on('turbolinks:load', function(){
       newtext = "Select a Question: <br>";
       $.each(gon.questions, function (index, val){
         if (val.competency_id == compId) {
-          newtext += "<span data-questionId='" + val.id + "'>" + val.text + "</span> <br>";
+          newtext += "<span data-questionId='" + val.id + "' data-competency= '" + e.target.dataset.title + "'>" + val.text + "</span> <br>";
         }
         $('#competency-summary').html(newtext);
       });
@@ -80,11 +80,20 @@ $(document).on('turbolinks:load', function(){
       function grabId(e) {
         console.log(e);
         var questionId = e.target.dataset.questionid;
+        var questionComp = e.target.dataset.competency;
+        var newHTML ='';
         if (selectedQuestions.includes(questionId)) {
           selectedQuestions.splice(selectedQuestions.indexOf(questionId), 1);
         }
         else {
           selectedQuestions.push(questionId);
+          newHTML +='<div class="row nomargin dashboard-edit-icons" id="selected-questions"><div class="col-3 dashboard-top vert-align"><div><img src="/assets/'+
+          questionComp +
+          '.gif" alt="'+ questionComp +'"></div></div><div class="col-6 dashboard-sidebar vert-align"><div class = "row">' +
+                e.target.innerText +
+              '</div></div><div class="col-3 text-center"><span class="vert-helper"></span><i class="fa fa-trash-o" aria-hidden="true"></i></i></div></div><div class="sentence-divider">&nbsp;</div>';
+          $('#selected-questions').prepend(newHTML);
+          newHTML = '';
         }
         console.log(selectedQuestions);
       }
@@ -95,7 +104,7 @@ $(document).on('turbolinks:load', function(){
         timeoutId = null;
     },
 
-    createJob : function () {
+    pushPayload : function () {
 
     }
   };
