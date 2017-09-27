@@ -64,7 +64,6 @@ $(document).on('turbolinks:load', function(){
       var compName = e.target.dataset.title;
       var compTitle = e.target.innerText;
       var compId = competencyHash[compName] - 1;
-      console.log(e);
         if (!timeoutId) {
           timeoutId = window.setTimeout(function() {
             timeoutId = null;
@@ -78,7 +77,7 @@ $(document).on('turbolinks:load', function(){
       questionSpan.addEventListener('click', grabId, false);
 
       function grabId(e) {
-        console.log(e);
+        if (e.target.dataset.questionid.length > 0) {
         var questionId = e.target.dataset.questionid;
         var questionComp = e.target.dataset.competency;
         var newHTML ='';
@@ -87,11 +86,12 @@ $(document).on('turbolinks:load', function(){
         }
         else {
           selectedQuestions.push(questionId);
-          newHTML +='<div id="question-'+questionId+'"><div class="row"><div class="col-3 dashboard-top vert-align"><div><img src="/assets/'+
+          newHTML +='<div id="question-'+questionId+'"><div class="row nomargin"><div class="col-3 dashboard-top vert-align"><div><img src="/assets/'+
           questionComp +
-          '.gif" alt="'+ questionComp +'"></div></div><div class="col-6 dashboard-sidebar vert-align"><div class = "row">' +
-                e.target.innerText +
-              '</div></div><div class="col-3 text-center"><span class="vert-helper"></span><i class="fa fa-trash-o" aria-hidden="true" data-questionId="'+questionId+'"></i></i></div></div><div class="sentence-divider">&nbsp;</div></div>';
+          '.gif" alt="'+ questionComp +'"></div></div><div class="col-7 dashboard-sidebar vert-align"><div class = "row nomargin question-text">' +
+                e.target.innerHTML +
+              '</div></div><div class="col-2 text-center"><span class="vert-helper"></span><i class="fa fa-trash-o" aria-hidden="true" data-questionId="'+questionId+'"></i></div></div><div class="sentence-divider">&nbsp;</div></div>';
+              console.log(newHTML);
           $('#selected-questions').prepend(newHTML);
           newHTML = '';
 
@@ -105,6 +105,7 @@ $(document).on('turbolinks:load', function(){
         }
         console.log(selectedQuestions);
       }
+    }
     },
 
     resetTimeout : function () {
