@@ -86,11 +86,11 @@ $(document).on('turbolinks:load', function(){
         }
         else {
           selectedQuestions.push(questionId);
-          newHTML +='<div id="question-'+questionId+'"><div class="row nomargin"><div class="col-3 dashboard-top vert-align"><div><img src="/assets/'+
+          newHTML +='<div class="col-12 nopadding" id="question-'+questionId+'"><div class="row nomargin"><div class="col-1 dashboard-top vert-align"><div><img src="/assets/'+
           questionComp +
-          '.gif" alt="'+ questionComp +'"></div></div><div class="col-7 dashboard-sidebar vert-align"><div class = "row nomargin question-text">' +
+          '.gif" alt="'+ questionComp +'"></div></div><div class="col-10 dashboard-sidebar vert-align">' +
                 e.target.innerHTML +
-              '</div></div><div class="col-2 text-center"><span class="vert-helper"></span><i class="fa fa-trash-o" aria-hidden="true" data-questionId="'+questionId+'"></i></div></div><div class="sentence-divider">&nbsp;</div></div>';
+              '</div><div class="col-1 text-center"><span class="vert-helper"></span><i class="fa fa-trash-o" aria-hidden="true" data-questionId="'+questionId+'"></i></div></div><div class="sentence-divider">&nbsp;</div></div>';
               console.log(newHTML);
           $('#selected-questions').prepend(newHTML);
           newHTML = '';
