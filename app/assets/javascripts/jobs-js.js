@@ -3,6 +3,7 @@ $(document).on('turbolinks:load', function(){
   if ($('#selection-box').length > 0) {
   var timeoutId;
   var selectedQuestions = [];
+  var selectedComps = [];
   var competencyBox = document.getElementById("selection-box"),
   ambitionBox = document.getElementById("ambition"),
   technicalBox = document.getElementById("technical"),
@@ -83,29 +84,40 @@ $(document).on('turbolinks:load', function(){
         var newHTML ='';
         if (selectedQuestions.includes(questionId)) {
           selectedQuestions.splice(selectedQuestions.indexOf(questionId), 1);
+          $('#question-'+questionId).remove();
+          var index = selectedComps.indexOf(questionComp);
+          if (index >= 0) {
+            selectedComps.splice( index, 1 );
+          }
         }
         else {
+          selectedComps.push(questionComp);
           selectedQuestions.push(questionId);
           newHTML +='<div class="col-12 nopadding" id="question-'+questionId+'"><div class="row nomargin"><div class="col-1 dashboard-top vert-align"><div><img src="/assets/'+
           questionComp +
           '.gif" alt="'+ questionComp +'"></div></div><div class="col-10 dashboard-sidebar vert-align">' +
-                e.target.innerHTML +
-              '</div><div class="col-1 text-center"><span class="vert-helper"></span><i class="fa fa-trash-o" aria-hidden="true" data-questionId="'+questionId+'"></i></div></div><div class="sentence-divider">&nbsp;</div></div>';
-              console.log(newHTML);
+                e.target.outerHTML +
+              '</div><div class="col-1 text-center"><span class="vert-helper"></span><i class="fa fa-trash-o" aria-hidden="true" data-questionId="'+questionId+'" data-competency="'+questionComp+'"></i></div></div><div class="sentence-divider">&nbsp;</div></div>';
           $('#selected-questions').prepend(newHTML);
           newHTML = '';
 
           document.getElementsByClassName('fa-trash-o')[0].addEventListener('click', removeQuestion, false);
+          }
+        console.log(selectedQuestions);
+        console.log(selectedComps);
+        }
+      };
 
-          function removeQuestion(e){
-            thisId = e.target.dataset.questionid;
-            selectedQuestions.splice(selectedQuestions.indexOf(thisId), 1);
-            $('#question-'+thisId).remove();
+        function removeQuestion(e){
+          thisId = e.target.dataset.questionid;
+          questionComp = e.target.dataset.competency;
+          index = selectedComps.indexOf(questionComp);
+          selectedQuestions.splice(selectedQuestions.indexOf(thisId), 1);
+          $('#question-'+thisId).remove();
+          if (index >= 0) {
+            selectedComps.splice( index, 1 );
           }
         }
-        console.log(selectedQuestions);
-      }
-    }
     },
 
     resetTimeout : function () {
@@ -114,7 +126,31 @@ $(document).on('turbolinks:load', function(){
     },
 
     pushPayload : function () {
+      var payload = {};
+      // user_id, company_name, job_title, city, state, job_description, requirements, question_id
+      jobTitle = document.getElementById('job-title').value;
+      jobCity = document.getElementById('city').value;
+      jobState = document.getElementById('state').value;
+      jobReqs = selectedComps;
+      jobQuestions = selectedQuestions;
+      userID = gon.user_id;
 
+      payload["user_id"] = userID;
+      payload["job_title"] = jobTitle;
+      payload["city"] = jobCity;
+      payload["state"] = jobState;
+      payload["requirements"] = jobReqs;
+      payload["question_id"] = jobQuestions;
+
+      $.ajax({
+      'type' : 'POST',
+      'url': "/jobs/",
+      'dataType' : 'JSON',
+      'data': {job: payload},
+      'success': function(response){
+      alert('job creation successful')
+      }
+    });
     }
   };
 

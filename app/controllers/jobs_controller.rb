@@ -12,6 +12,8 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
   def new
     @job = Job.new
     @user = current_user
+    gon.user_id = @user.id
+
     @avatar = display_avatar(@user)
     @avatarlg = display_avatar_lg(@user)
 
@@ -25,9 +27,8 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
 
   def create
     @job = Job.create(job_params)
-    @job.user_id = current_user.id
-    @job.requirements = @job.requirements.reject(&:empty?)
     @job.save!
+    render json: @job
 
     @jobreel = Jobreel.new()
     @jobreel.user_id = current_user.id
@@ -43,6 +44,7 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
     @jobreel.section4_duration = 0
     @jobreel.section5_duration = 0
     @jobreel.save!
+
 
     redirect_to jobs_path
   end
