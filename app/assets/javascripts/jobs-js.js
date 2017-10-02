@@ -147,10 +147,21 @@ $(document).on('turbolinks:load', function(){
       'url': "/jobs/",
       'dataType' : 'JSON',
       'data': {job: payload},
-      'success': function(response){
-      alert('job creation successful')
+      statusCode: {
+               200: function (response) {
+                      console.log(response);
+                      alert('job creation successful');
+                      gotoStep2(response);
+                    },
+               500: function (response) {
+                alert('something went wrong :(');
+               }
       }
     });
+    },
+
+    gotoStep2 : function (response);{
+      console.log(response);
     }
   };
 

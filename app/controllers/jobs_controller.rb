@@ -28,7 +28,6 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
   def create
     @job = Job.create(job_params)
     @job.save!
-    render json: @job
 
     @jobreel = Jobreel.new()
     @jobreel.user_id = current_user.id
@@ -45,8 +44,8 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
     @jobreel.section5_duration = 0
     @jobreel.save!
 
+    render json: @job
 
-    redirect_to jobs_path
   end
 
   def show
