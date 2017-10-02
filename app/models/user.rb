@@ -34,9 +34,17 @@ class User < ApplicationRecord
     self.degree_type = "Type of Degree"
     self.degree_field = "Degree Field"
     self.save!
-    self.image = ImageUploader.new
     self.video = ImageUploader.new
     self.first_name ||= "First Name"
+    if self.first_name == "First Name"
+      img = Avatarly.generate_avatar(self.email, {size: 128})
+    else
+      img = Avatarly.generate_avatar(self.first_name + " " + self.last_name, {size: 128})
+    end
+    File.open('app/assets/images/avatar/' + self.email + '.png', 'wb') do |f|
+      f.write img
+    end
+    self.image = Rails.root.join('app/assets/images/avatar/' + self.email + '.png').open
     self.save!
     set_default_jobreel(self)
   end
