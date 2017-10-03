@@ -2002,6 +2002,19 @@ li.dashboard-menu-items-bold {
    border-bottom: 1px solid #E4E4E4;
  }
 
+ #question-* {
+  width: 100%;
+ }
+
+.selected-questions img {
+  width: 36px;
+  height: 36px;
+}
+
+ .sentence-text {
+  display: block;
+ }
+
 
 .dropdown a:hover {
   background-color: #f1f1f1;

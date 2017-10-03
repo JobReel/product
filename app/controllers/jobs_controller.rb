@@ -12,14 +12,21 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
   def new
     @job = Job.new
     @user = current_user
+    gon.user_id = @user.id
+
     @avatar = display_avatar(@user)
     @avatarlg = display_avatar_lg(@user)
+
+    @competencies = Competency.all
+    gon.competencies = @competencies
+
+    @questions = Question.all
+    gon.questions = @questions
+
   end
 
   def create
     @job = Job.create(job_params)
-    @job.user_id = current_user.id
-    @job.requirements = @job.requirements.reject(&:empty?)
     @job.save!
 
     @jobreel = Jobreel.new()
@@ -37,8 +44,15 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
     @jobreel.section5_duration = 0
     @jobreel.save!
 
-    redirect_to jobs_path
+    render json: @job
+
   end
+
+  def step2
+    @job = Job.find(params[:id])
+
+  end
+
 
   def show
     @job = Job.find(params[:id])
@@ -124,7 +138,7 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
 private
 
 def job_params
-  params.require(:job).permit(:user_id, :job_title, :city, :state, :job_description, {:requirements => []})
+  params.require(:job).permit(:user_id, :job_title, :city, :state, :job_description, {:requirements => []}, {:question_id => []})
 end
 
 

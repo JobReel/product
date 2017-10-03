@@ -24,6 +24,7 @@ class User < ApplicationRecord
  validates :degree_field, presence: true, on: :update
 
   def set_defaults!
+    puts Dir.pwd
     self.first_name ||= "default_avatar"
     self.last_name ||= "Last Name"
     self.title = "Job Title"
