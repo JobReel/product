@@ -70,3 +70,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 # send data to js
 gem 'gon'
+# image manipulation
+gem 'rmagick'
+# for google"like" avatars
+gem 'avatarly'

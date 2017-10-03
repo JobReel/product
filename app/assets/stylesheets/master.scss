@@ -51,6 +51,7 @@ $sizes: (
   .container-fluid-dashboard {
     background-color: #dbe5ee;
     font-family: 'Montserrat', sans-serif;
+    padding-top: 15px;
   }
 
   .container-fluid-navbar {
@@ -711,7 +712,6 @@ hr {
   border-radius:0;
   font-family: 'Varela Round', sans-serif;
   font-weight: 500;
-  box-shadow: 0px 1px 3px #2a2a2a;
   background-color: #1b3257;
   padding: 17px 15px 17px 0px;
   margin-left: -16px;
@@ -1409,7 +1409,6 @@ video {
  }
 
  .dashboard-bar {
-   background-color: #FFFFFF;
    font-family: 'Montserrat', sans-serif;
    width: 1166px;
    margin-left: auto;
@@ -1450,15 +1449,6 @@ video {
    padding: 15px;
  }
 
- .dashboard-avatar img {
-   width: 100%;
-   height: auto;
-}
-
-.dashboard-first {
-  line-height: 30px;
-}
-
 .dashboard-create {
   height: 60px;
   background-color: #1b3257;
@@ -1471,6 +1461,7 @@ video {
 .dashboard-title {
   background-color: #FFFFFF;
   padding: 27px 27px 27px 27px;
+  margin-left: 15px;
   border-bottom: 1px solid;
   border-color: #E4E4E4;
   text-align: center;
@@ -1491,11 +1482,44 @@ ul.dashboard-menu-items {
 li.dashboard-menu-items {
   list-style-type: none;
   margin: 0;
-  padding: 20px;
+  padding: 30px 20px 30px 20px;
   border-right: 1px solid;
   border-bottom: 1px solid;
   border-left: 1px solid;
   border-color: #E4E4E4;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 25px;
+}
+
+.dashboard-menu-items i {
+  font-size: 25px;
+  padding-right: 12px;
+  padding-left: 10px;
+}
+
+.dashboard-menu-items-bold i {
+  font-size: 25px;
+  padding-right: 12px;
+  padding-left: 10px;
+  padding-top: 6px;
+  margin-left: -23px;
+}
+
+li.dashboard-menu-items-bold {
+  list-style-type: none;
+  margin: 0;
+  padding: 30px 20px 30px 20px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-color: #E4E4E4;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 35px;
+  background-color: #1b3257;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
 .dashboard-menu-items img {
@@ -1503,16 +1527,39 @@ li.dashboard-menu-items {
   padding-right: 12px;
 }
 
-.dashboard-name {
+.dashboard-avatar-change {
+  position: absolute;
+  top: 99px;
+  left: 25px;
+}
+
+.dashboard-top-box {
   background-color: #FFFFFF;
-  padding: 15px 0 15px 50px;
+  padding: 15px 0 15px 30px;
   border-right: 1px solid;
   border-bottom: 1px solid;
   border-left: 1px solid;
   border-color: #E4E4E4;
   font-weight: 500;
   color: #3a475c;
-  font-size: 26px;
+  font-size: 16px;
+  margin-right: 0px;
+}
+
+.dashboard-top-box-text {
+  padding-top: 15px;
+  padding-left: 8px;
+  text-transform: capitalize;
+}
+
+.dashboard-top-box i {
+  font-size: 15px;
+  padding-right: 12px;
+  margin-left: -20px;
+}
+
+.dashboard-name {
+  font-size: 16px;
 }
 
 .dashboard-location {
@@ -1916,7 +1963,7 @@ li.dashboard-menu-items {
 }
 
 .input, #city {
- margin-right: 25px; 
+ margin-right: 25px;
 }
 
 .select, #state {
