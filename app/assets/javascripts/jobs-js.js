@@ -160,7 +160,7 @@ $(document).on('turbolinks:load', function(){
     });
     },
 
-    gotoStep2 : function (response);{
+    gotoStep2 : function (response){
       console.log(response);
     }
   };

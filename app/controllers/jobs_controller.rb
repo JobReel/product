@@ -48,6 +48,12 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
 
   end
 
+  def step2
+    @job = Job.find(params[:id])
+
+  end
+
+
   def show
     @job = Job.find(params[:id])
     @jobreel = Jobreel.find_by(job_id: params[:id])
