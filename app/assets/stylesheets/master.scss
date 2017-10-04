@@ -2015,6 +2015,21 @@ li.dashboard-menu-items-bold {
   display: block;
  }
 
+.job-description textarea {
+    font-family: 'Montserrat', sans-serif;
+    padding: 12px 20px;
+    color: #3a475c;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    width: 100%;
+    overflow-y: hidden; 
+}
+
+.job-description textarea:focus{
+  outline: none;
+  background-color: rgba(219, 229, 238, .3);
+}
 
 .dropdown a:hover {
   background-color: #f1f1f1;

@@ -10,13 +10,10 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
   end
 
   def new
-    @job = Job.new
     @user = current_user
     gon.user_id = @user.id
-
-    @avatar = display_avatar(@user)
-    @avatarlg = display_avatar_lg(@user)
-
+    @job = Job.new
+      
     @competencies = Competency.all
     gon.competencies = @competencies
 

@@ -151,19 +151,15 @@ $(document).on('turbolinks:load', function(){
                200: function (response) {
                       console.log(response);
                       alert('job creation successful');
-                      gotoStep2(response);
+                      window.location.replace("http://localhost:3030/step2/"+response.id);
                     },
                500: function (response) {
                 alert('something went wrong :(');
                }
       }
     });
-    },
-
-    gotoStep2 : function (response){
-      console.log(response);
     }
-  };
+  }
 
   selectTool.init();
 
