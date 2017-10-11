@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid nopadding">
   <div class="row job-bar justify-content-center">
     <div class="col-1 jobposting-top">
       <span class="vert-helper"></span><%= image_tag 'adobe-logo.gif' %>
@@ -18,7 +18,7 @@
   </div>
 </div>
 <div class = "container-fluid-job">
-  <div class="row is-flex job-body">
+  <div class="row is-flex job-create-2">
   <div class="col-12 no-pad-left">
     <div class="no-pad-left newcard">  <!-- job description -->
       <div class="card nopadding">
@@ -30,7 +30,22 @@
           </div>
         </div>
         <div class="card-block job-description white" id="description-input">
-          <textarea></textarea>
+          <textarea class="input-description" id ="job-responsibilities"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-pad-left newcard">  <!-- job description -->
+      <div class="card nopadding">
+        <div class="card-block job-description white">
+          <div class="row">
+            <div class="col-8 vert-align">
+              <h1>Enter Minumum Qualifications</h1>
+            </div>
+          </div>
+        </div>
+        <div class="card-block job-description white" id="qualifications-input">
+          <textarea class="input-qualifications" id ="job-qualifications"></textarea>
         </div>
       </div>
     </div>

@@ -3,7 +3,28 @@
     <div class="col-3 nopadding">
       <div class="dashboard-menu">
         <div class="row dashboard-top-box">
-          <div class="dashboard-avatar-change"><%= image_tag('change-1.png')%></div>
+          <div class="dashboard-avatar-change"><%= image_tag('change-1.png', :onclick => "sweet()")%></div>
+          <script>
+            function sweet() {
+                swal({
+                title: '<i>HTML</i> <u>example</u>',
+                type: 'info',
+                html:
+                  'You can use <b>bold text</b>, ' +
+                  '<a href="//github.com">links</a> ' +
+                  'and other HTML tags',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText:
+                  '<i class="fa fa-thumbs-up"></i> Great!',
+                confirmButtonAriaLabel: 'Thumbs up, great!',
+                cancelButtonText:
+                '<i class="fa fa-thumbs-down"></i>',
+                cancelButtonAriaLabel: 'Thumbs down',
+              });
+            }
+          </script>
           <%= cl_image_tag(@user.image, :width => 110, :height => 110,
              :crop => :thumb, :gravity => :face, :radius => :max) %>
             <span class="vert-helper"></span>

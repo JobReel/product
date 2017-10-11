@@ -22,6 +22,10 @@ $sizes: (
 @import url('https://fonts.googleapis.com/css?family=PT+Serif:400i');
 
 @media (min-width: 1200px) {
+
+  html {
+    height: 100%;
+  }
 .container-fluid {
   background-color: #FFFFFF;
 }
@@ -2029,6 +2033,15 @@ li.dashboard-menu-items-bold {
 .job-description textarea:focus{
   outline: none;
   background-color: rgba(219, 229, 238, .3);
+}
+
+.job-create-2 {
+  background-color: #dbe5ee;
+  font-family: 'Montserrat', sans-serif;
+  width: 1166px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
 }
 
 .dropdown a:hover {
