@@ -60,8 +60,6 @@ $(document).on('turbolinks:load', function(){
     },
 
     showSummary : function(e) {
-      window.clearTimeout(timeoutId);
-      timeoutId = null;
       var compName = e.target.dataset.title;
       var compTitle = e.target.innerText;
       var compId = competencyHash[compName] - 1;
@@ -162,8 +160,8 @@ $(document).on('turbolinks:load', function(){
   }
 
   selectTool.init();
-
-
+};
+  if ($('#collapseme').length > 0) {
   $('#collapseme').on('click', function() {
     fullH = document.getElementById("full-description").scrollHeight;
     var duration = 1000,
@@ -171,7 +169,7 @@ $(document).on('turbolinks:load', function(){
               if (140 == $('#full-description').height()) {
                   $('#full-description').animate(
                       {
-                          'height' : fullH + 80
+                          'height' : fullH + 40
                       }, duration, easing);
                   $('#collapseme').html("Hide full job description <i class='fa fa-chevron-up'></i>");
               }
@@ -183,5 +181,36 @@ $(document).on('turbolinks:load', function(){
                     $('#collapseme').html("Read full job description <i class='fa fa-chevron-down'></i>");
               }
   });
-};
+}
+
+    pushStep2Payload : function () {
+      var payload = {};
+      // user_id, company_name, job_title, city, state, job_description, requirements, question_id
+      jobDesc = document.getElementById('description-input').innerText;
+      jobQuals = document.getElementById('qualifications-input').innerText;
+      jobID = document.getElementById('publish').dataset.jobID;
+      userID = gon.user_id;
+
+      payload["user_id"] = userID;
+      payload["job_description"] = jobDesc;
+      payload["job_qualifications"] = jobQuals;
+
+      $.ajax({
+      'type' : 'POST',
+      'url': "/jobs/" + jobID,
+      'dataType' : 'JSON',
+      'data': {job: payload},
+      statusCode: {
+               200: function (response) {
+                      console.log(response);
+                      alert('job creation successful');
+                      window.location.replace("http://localhost:3030/jobs/"+response.id);
+                    },
+               500: function (response) {
+                alert('something went wrong :(');
+               }
+      }
+    });
+    }
+
 });
