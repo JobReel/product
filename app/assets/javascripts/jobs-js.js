@@ -1,6 +1,6 @@
 
 $(document).on('turbolinks:load', function(){
-  if ($('#selection-box').length > 0) {
+  if ($('body').hasClass("jobs-new")) {
   var timeoutId;
   var selectedQuestions = [];
   var selectedComps = [];
@@ -42,6 +42,7 @@ $(document).on('turbolinks:load', function(){
 
       createButton.addEventListener('click', this.pushPayload, false);
 
+
       this.handleQuestions();
 
     },
@@ -68,7 +69,7 @@ $(document).on('turbolinks:load', function(){
             timeoutId = null;
             newtext = compTitle + " Summary: <br>" + gon.competencies[compId].summary;
             $('#competency-summary').html(newtext);
-           }, 1500);
+           }, 1200);
         }
       },
 
@@ -182,35 +183,5 @@ $(document).on('turbolinks:load', function(){
               }
   });
 }
-
-    pushStep2Payload : function () {
-      var payload = {};
-      // user_id, company_name, job_title, city, state, job_description, requirements, question_id
-      jobDesc = document.getElementById('description-input').innerText;
-      jobQuals = document.getElementById('qualifications-input').innerText;
-      jobID = document.getElementById('publish').dataset.jobID;
-      userID = gon.user_id;
-
-      payload["user_id"] = userID;
-      payload["job_description"] = jobDesc;
-      payload["job_qualifications"] = jobQuals;
-
-      $.ajax({
-      'type' : 'POST',
-      'url': "/jobs/" + jobID,
-      'dataType' : 'JSON',
-      'data': {job: payload},
-      statusCode: {
-               200: function (response) {
-                      console.log(response);
-                      alert('job creation successful');
-                      window.location.replace("http://localhost:3030/jobs/"+response.id);
-                    },
-               500: function (response) {
-                alert('something went wrong :(');
-               }
-      }
-    });
-    }
 
 });

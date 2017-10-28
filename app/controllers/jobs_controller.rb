@@ -47,6 +47,8 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
 
   def step2
     @job = Job.find(params[:id])
+    @user = current_user
+    gon.user_id = @user.id
 
   end
 
@@ -121,7 +123,9 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
     @job.update_attributes(job_params)
     @job.requirements = @job.requirements.reject(&:empty?)
     @job.save!
-    redirect_to jobs_path(:id)
+    # redirect_to jobs_path(:id)
+
+    render json: @job
   end
 
   def destroy
@@ -135,7 +139,7 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
 private
 
 def job_params
-  params.require(:job).permit(:user_id, :job_title, :city, :state, :job_description, {:requirements => []}, {:question_id => []})
+  params.require(:job).permit(:user_id, :job_title, :city, :state, :job_description, {:requirements => []}, {:question_id => []}, :qualifications)
 end
 
 
