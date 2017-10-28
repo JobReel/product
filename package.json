@@ -1,0 +1,10 @@
+{
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jobreel/product.git"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "sweetalert2": "^6.10.2"
+  }
+}
