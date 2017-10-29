@@ -14,25 +14,6 @@
 //   )
 // })
 
-function sweet() {
-    swal({
-      html: $('<div>')
-      .addClass('some-class')
-      .text('jQuery is everywhere.'),
-      showCloseButton: false,
-      showCancelButton: false,
-      focusConfirm: false,
-      confirmButtonText:
-        '<i class="fa fa-thumbs-up"></i> Upload!',
-      confirmButtonAriaLabel: 'Thumbs up, great!',
-      cancelButtonText:
-      '<i class="fa fa-thumbs-down"></i> No!',
-      cancelButtonAriaLabel: 'Thumbs down',
-      customClass: 'swal-avatar-size',
-      background: '#fff url(/assets/avatar_background.png)',
-    });
-}
-
 function cloudAvatar() {
   cloudinary.openUploadWidget({ cloud_name: 'jobreel', upload_preset: 'chnxgah2', theme: 'minimal', sources: ['local'], client_allowed_formats: ["png", "gif", "jpeg", "jpg"], multiple: 'false', cropping: 'server'},
   function(error, result) { console.log(error, result) });
