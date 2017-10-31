@@ -106,7 +106,6 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
     if (@intro_videos.nil? || @challenge_videos.nil? || @expectation_videos.nil? || @team_videos.nil? || @expectation_videos.nil?)
       gon.totalduration = 10
     end
-
   end
 
   def edit
