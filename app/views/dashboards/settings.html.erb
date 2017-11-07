@@ -1,0 +1,120 @@
+<div class="container-fluid-dashboard">
+  <div class="row dashboard-bar justify-content-center">
+    <div class="col-3 nopadding">
+      <div class="dashboard-menu">
+        <div class="row dashboard-top-box">
+          <div class="dashboard-avatar-change"><%= image_tag('change-1.png', :onclick => "cloudAvatar()")%></div>
+          <% if @user.image_id? %>
+            <%= cl_image_tag(@user.image_id, :width => 110, :height => 110,
+             :crop => :thumb, :gravity => :face, :radius => :max) %>
+          <% else %>
+            <%= cl_image_tag(@user.image, :width => 110, :height => 110,
+               :crop => :thumb, :gravity => :face, :radius => :max) %>
+          <% end %>
+            <span class="vert-helper"></span>
+            <div class="dashboard-top-box-text">
+              <%= @user.first_name %> <%= @user.last_name %><br /><br />
+              <ul>
+                <li class="row"><i class="fa fa-building fa-2" aria-hidden="true"></i><%= @user.city %></li>
+                <li class="row"><i class="fa fa-map-marker fa-2" aria-hidden="true"></i><%= @user.state %></li>
+              </ul>
+            </div>
+          </div>
+        <ul class="dashboard-menu-items">
+          <%= link_to dashboards_path do %>
+            <li class="row dashboard-menu-items"><i class="fa fa-tachometer fa-3" aria-hidden="true"></i>Dashboard</li>
+          <% end %>
+          <%= link_to team_path do %>
+            <li class="row dashboard-menu-items"><i class="fa fa-users fa-3" aria-hidden="true"></i>Manage Team Members</li>
+          <% end %>
+          <%= link_to settings_path do %>
+            <li class="row dashboard-menu-items"><i class="fa fa-cogs fa-3" aria-hidden="true"></i>Account Settings</li>
+          <% end %>
+          <%= link_to new_job_path do %>
+            <li class="row dashboard-menu-items-bold justify-content-center">
+            <i class="fa fa-plus fa-3" aria-hidden="true"></i>
+            Start Job Posting
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="jobposting-divider">&nbsp;</div>
+    </div>
+
+    <div class="col-9 nopadding">
+      <div class="dashboard-box">
+        <div class="dashboard-settings">
+          <div class="dashboard-settings-title">Change Email</div>
+          <div class="dashboard-settings-form">
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+              <div class="dashboard-settings-form-content">
+                 <%= f.input :email, id: "", required: false, class: "form-control", placeholder: "Email Address", input_html: {value: @user.email}, label: "Current Email Address", autocomplete: false, disabled: true %>           
+              </div>
+
+              <div class="dashboard-settings-form-content">
+                 <%= f.input :email, id: "", required: true, class: "form-control", placeholder: "Email address", input_html: {value: @user.email}, label: "New Email Address", autocomplete: false %>           
+              </div>
+
+              <div class="dashboard-settings-form-content">
+                <%= f.input :current_password, required: true, class: "form-control", id: "", value: "", placeholder: "Enter your password", autocomplete: false %>
+              </div>
+              <%= f.button :submit, "Update", :class => "btn-settings" %>
+            <% end %>
+          </div>
+        </div>
+      </div><br />
+
+
+      <div class="dashboard-box">
+        <div class="dashboard-settings">
+          <div class="dashboard-settings-title">Change Email</div>
+          <div class="dashboard-settings-form">
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, format: JSON, remote: true) do |f| %>
+
+              <div class="dashboard-settings-form-content">
+                 <%= f.input :email, id: "", required: false, class: "form-control", placeholder: "Email Address", input_html: {value: @user.email}, label: "Current Email Address", autocomplete: false, disabled: true %>           
+              </div>
+
+              <div class="dashboard-settings-form-content">
+                 <%= f.input :email, id: "", required: true, class: "form-control", placeholder: "Email address", input_html: {value: @user.email}, label: "New Email Address", autocomplete: false %>           
+              </div>
+
+              <div class="dashboard-settings-form-content">
+                <%= f.input :current_password, required: true, class: "form-control", id: "", value: "", placeholder: "Enter your password", autocomplete: false %>
+              </div>
+              <%= f.button :submit, "Update", :class => "btn-settings" %>
+            <% end %>
+          </div>
+        </div>
+      </div><br />
+
+      <div class="dashboard-box">
+        <div class="dashboard-settings">
+          <div class="dashboard-settings-title">Change Password</div>
+          <div class="dashboard-settings-form">
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+            <%= f.error_notification %>
+
+
+              <div class="dashboard-settings-form-content">
+                 <%= f.input :current_password, id: "", required: true, class: "form-control", placeholder: "Enter your existing password", label: "Old Password", autocomplete: false %>           
+              </div>
+
+              <div class="dashboard-settings-form-content">
+                 <%= f.input :password, id: "", required: true, class: "form-control", placeholder: "Enter your new password", label: "New Password", autocomplete: false %>       
+              </div>
+
+              <div class="dashboard-settings-form-content">
+                <%= f.input :password_confirmation, required: true, class: "form-control", id: "", value: "", placeholder: "Retype your new password", label: "Retype Password",autocomplete: false %>
+              </div>
+              <%= f.button :submit, "Update", :class => "btn-settings" %>
+            <% end %>
+          </div>
+        </div>
+      </div><br />
+    </div>    
+
+  </div>
+</div>

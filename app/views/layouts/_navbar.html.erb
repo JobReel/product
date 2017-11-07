@@ -24,14 +24,24 @@
             <%= link_to (image_tag ("notification-bell.png"), class: 'nav-image'), root_path %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= cl_image_tag(@user.image, :width => 35, :height => 35,
+                <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 35, :height => 35,
                    :crop => :thumb, :gravity => :face, :radius => :max) %>
+                <% else %>
+                  <%= cl_image_tag(@user.image, :width => 35, :height => 35,
+                     :crop => :thumb, :gravity => :face, :radius => :max) %>
+                <% end %>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                 <%= link_to user_path(current_user), action: 'show', class: "no-show" do %>
               <div class="dropdown-item dd-profile text-center">
-                <%= cl_image_tag(@user.image, :width => 50, :height => 50,
+                <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 50, :height => 50,
                    :crop => :thumb, :gravity => :face, :radius => :max) %>
+                <% else %>
+                  <%= cl_image_tag(@user.image, :width => 50, :height => 50,
+                     :crop => :thumb, :gravity => :face, :radius => :max) %>
+                <% end %>
                 <span class="dd-text"><%= current_user.first_name %>&nbsp<%= current_user.last_name %></span>
                 <br />
                 <span class="dd-link">View/Update Profile</span>

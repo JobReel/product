@@ -3,9 +3,14 @@
     <div class="col-3 nopadding">
       <div class="dashboard-menu">
         <div class="row dashboard-top-box">
-          <div class="dashboard-avatar-change"><%= image_tag('change-1.png')%></div>
-          <%= cl_image_tag(@user.image, :width => 110, :height => 110,
+          <div class="dashboard-avatar-change"><%= image_tag('change-1.png', :onclick => "cloudAvatar()")%></div>
+          <% if @user.image_id? %>
+          <%= cl_image_tag(@user.image_id, :width => 110, :height => 110,
              :crop => :thumb, :gravity => :face, :radius => :max) %>
+          <% else %>
+            <%= cl_image_tag(@user.image, :width => 110, :height => 110,
+               :crop => :thumb, :gravity => :face, :radius => :max) %>
+          <% end %>
             <span class="vert-helper"></span>
             <div class="dashboard-top-box-text">
               <%= @user.first_name %> <%= @user.last_name %><br /><br />
@@ -16,9 +21,15 @@
             </div>
           </div>
         <ul class="dashboard-menu-items">
-          <li class="row dashboard-menu-items"><i class="fa fa-tachometer fa-3" aria-hidden="true"></i>Dashboard</li>
-          <li class="row dashboard-menu-items"><i class="fa fa-users fa-3" aria-hidden="true"></i>Manage Team Members</li>
+          <%= link_to dashboards_path do %>
+            <li class="row dashboard-menu-items"><i class="fa fa-tachometer fa-3" aria-hidden="true"></i>Dashboard</li>
+          <% end %>
+          <%= link_to team_path do %>
+            <li class="row dashboard-menu-items"><i class="fa fa-users fa-3" aria-hidden="true"></i>Manage Team Members</li>
+          <% end %>
+          <%= link_to settings_path do %>
           <li class="row dashboard-menu-items"><i class="fa fa-cogs fa-3" aria-hidden="true"></i>Account Settings</li>
+          <% end %>
           <%= link_to new_job_path do %>
           <li class="row dashboard-menu-items-bold justify-content-center">
             <i class="fa fa-plus fa-3" aria-hidden="true"></i>
@@ -31,25 +42,27 @@
     </div>
 
     <div class="col-9 nopadding">
-      <div>
-        <div class="dashboard-title">
-          Open Job Postings
+      <div class="dashboard-box">
+        <div class="row dashboard-title nomargin">
+          <div class="col-6 dashboard-title-active-job">
+            <span>Active Jobs (<%= @jobs.count %>)</span>
+          </div>
+          <div class="col-6 dashboard-title-performance-trend">
+            <span>Performance Trends</span>
+          </div>
         </div>
+
 
         <% @jobs.each do |job| %>
           <div class="row nomargin dashboard-edit-icons">
-            <div class="col-3 dashboard-top vert-align">
-              <div><%= image_tag('collaborators.gif') %></div>
+            <div class="col-1 dashboard-top">
+              <%= image_tag 'adobe-logo.gif' %>
             </div>
-            <div class="col-4 dashboard-sidebar vert-align">
-              <div class = "row">
-                <%= link_to job.job_title, job_path(job) %>
-              </div>
-              <div class="row">
-                Unread Applications? 99
-              </div>
+            <div class="col-4 dashboard-sidebar">
+              <span><h3><%= link_to job.job_title, job_path(job) %></h3></span><br />
+              <span><i class="fa fa-map-marker" aria-hidden="true"></i> <%= job.city %>, <%= job.state %></span>
             </div>
-            <div class="col-3">
+            <div class="col-1">
               <span class="vert-helper"></span>
               <%= link_to job_path(job), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} do %>
                 <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp
@@ -57,13 +70,23 @@
               <%= link_to edit_job_path(job) do %>
                 <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp
               <% end %>
-                <i class="fa fa-pause" aria-hidden="true"></i>
             </div>
-            <div class="col-1 vert-align">
-              Time remaining?
+            <div class="col-6 dashboard-team-avatar text-center">
+              <% if @user.image_id? %>
+              <%= cl_image_tag(@user.image_id, :width => 40, :height => 40,
+                 :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 40, :height => 40,
+                   :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% end %>
+                 <i class="fa fa-plus" aria-hidden="true"></i>
+
             </div>
           </div>
           <div class="dashboard-divider">&nbsp;</div>
+          <div class="performance-trends-text">Recent Activity</div>
+
+
         <% end %>
       </div>
     </div>
