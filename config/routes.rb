@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/employerAPI' => 'jobreels#jobreel_by_job_id'
   get '/vidtest' => 'pages#vidtest'
   get '/customplayer' => 'pages#customplayer'
+  get '/step2/:id' => 'jobs#step2'
   get '/team' => 'dashboards#team'
   get '/settings' => 'dashboards#settings'
   # Going to need to use nested resources so that a work history is created for a specific user

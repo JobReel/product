@@ -85,24 +85,24 @@
         <div class="card-block">
           <div class="row nomargin text-center">
           <div class="col-6 job-requirements-icons">
-            <%= image_tag("insight.gif") %>
+            <%= image_tag("#{@job.requirements[0]}"+".gif") %>
             <p class="job-requirements-text">Introduction</p>
           </div>
           <div class="col-6 job-requirements-icons">
-            <%= image_tag("briefcase.gif") %>
+            <%= image_tag("#{@job.requirements[1]}"+".gif") %>
             <p class="job-requirements-text">Technical Skills</p>
           </div>
           <div class="col-6 job-requirements-icons">
-            <%= image_tag("brush.gif") %>
+            <%= image_tag("#{@job.requirements[2]}"+".gif") %>
             <p class="job-requirements-text">Creative Problem Solving</p>
           </div>
           <div class="col-6 job-requirements-icons">
-            <%= image_tag("lightbulb.gif") %>
+            <%= image_tag("#{@job.requirements[3]}"+".gif") %>
             <p class="job-requirements-text">Question From Adobe</p>
           </div>
         </div>
       </div>
-      <div class="card-block job-requirements-apply-box">
+      <div class="card-block job-requirements-apply-box" data-jobid="<%= @job.id %>">
       APPLY FOR THIS JOB &rarr;
       </div>
     </div>

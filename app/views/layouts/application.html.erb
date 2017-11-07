@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="<%= controller.controller_name%>-<%= controller.action_name%>">
     <header class="Site-header">
       <!-- from http://stackoverflow.com/questions/19036541/in-rails-4-how-can-i-change-the-text-in-the-nav-bar-based-on-the-current-page -->
       <% if ((params[:action] == 'index') && (params[:controller] == 'pages')) %>

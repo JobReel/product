@@ -10,13 +10,10 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
   end
 
   def new
-    @job = Job.new
     @user = current_user
     gon.user_id = @user.id
-
-    @avatar = display_avatar(@user)
-    @avatarlg = display_avatar_lg(@user)
-
+    @job = Job.new
+      
     @competencies = Competency.all
     gon.competencies = @competencies
 
@@ -50,6 +47,8 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
 
   def step2
     @job = Job.find(params[:id])
+    @user = current_user
+    gon.user_id = @user.id
 
   end
 
@@ -107,7 +106,6 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
     if (@intro_videos.nil? || @challenge_videos.nil? || @expectation_videos.nil? || @team_videos.nil? || @expectation_videos.nil?)
       gon.totalduration = 10
     end
-
   end
 
   def edit
@@ -124,7 +122,9 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
     @job.update_attributes(job_params)
     @job.requirements = @job.requirements.reject(&:empty?)
     @job.save!
-    redirect_to jobs_path(:id)
+    # redirect_to jobs_path(:id)
+
+    render json: @job
   end
 
   def destroy
@@ -138,7 +138,7 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
 private
 
 def job_params
-  params.require(:job).permit(:user_id, :job_title, :city, :state, :job_description, {:requirements => []}, {:question_id => []})
+  params.require(:job).permit(:user_id, :job_title, :city, :state, :job_description, {:requirements => []}, {:question_id => []}, :qualifications)
 end
 
 

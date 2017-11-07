@@ -1,6 +1,6 @@
 
 $(document).on('turbolinks:load', function(){
-  if ($('#selection-box').length > 0) {
+  if ($('body').hasClass("jobs-new")) {
   var timeoutId;
   var selectedQuestions = [];
   var selectedComps = [];
@@ -42,6 +42,7 @@ $(document).on('turbolinks:load', function(){
 
       createButton.addEventListener('click', this.pushPayload, false);
 
+
       this.handleQuestions();
 
     },
@@ -60,8 +61,6 @@ $(document).on('turbolinks:load', function(){
     },
 
     showSummary : function(e) {
-      window.clearTimeout(timeoutId);
-      timeoutId = null;
       var compName = e.target.dataset.title;
       var compTitle = e.target.innerText;
       var compId = competencyHash[compName] - 1;
@@ -70,7 +69,7 @@ $(document).on('turbolinks:load', function(){
             timeoutId = null;
             newtext = compTitle + " Summary: <br>" + gon.competencies[compId].summary;
             $('#competency-summary').html(newtext);
-           }, 1500);
+           }, 1200);
         }
       },
 
@@ -151,23 +150,19 @@ $(document).on('turbolinks:load', function(){
                200: function (response) {
                       console.log(response);
                       alert('job creation successful');
-                      gotoStep2(response);
+                      window.location.replace("http://localhost:3030/step2/"+response.id);
                     },
                500: function (response) {
                 alert('something went wrong :(');
                }
       }
     });
-    },
-
-    gotoStep2 : function (response){
-      console.log(response);
     }
-  };
+  }
 
   selectTool.init();
-
-
+};
+  if ($('#collapseme').length > 0) {
   $('#collapseme').on('click', function() {
     fullH = document.getElementById("full-description").scrollHeight;
     var duration = 1000,
@@ -175,7 +170,7 @@ $(document).on('turbolinks:load', function(){
               if (140 == $('#full-description').height()) {
                   $('#full-description').animate(
                       {
-                          'height' : fullH + 80
+                          'height' : fullH + 40
                       }, duration, easing);
                   $('#collapseme').html("Hide full job description <i class='fa fa-chevron-up'></i>");
               }
@@ -187,5 +182,6 @@ $(document).on('turbolinks:load', function(){
                     $('#collapseme').html("Read full job description <i class='fa fa-chevron-down'></i>");
               }
   });
-};
+}
+
 });

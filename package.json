@@ -5,6 +5,8 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
+    "blueimp-file-upload-node": "^2.1.0",
+    "cloudinary": "^1.9.0",
     "sweetalert2": "^6.10.2"
   }
 }
