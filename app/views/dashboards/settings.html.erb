@@ -65,11 +65,38 @@
         </div>
       </div><br />
 
+
+      <div class="dashboard-box">
+        <div class="dashboard-settings">
+          <div class="dashboard-settings-title">Change Email</div>
+          <div class="dashboard-settings-form">
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, format: JSON, remote: true) do |f| %>
+
+              <div class="dashboard-settings-form-content">
+                 <%= f.input :email, id: "", required: false, class: "form-control", placeholder: "Email Address", input_html: {value: @user.email}, label: "Current Email Address", autocomplete: false, disabled: true %>           
+              </div>
+
+              <div class="dashboard-settings-form-content">
+                 <%= f.input :email, id: "", required: true, class: "form-control", placeholder: "Email address", input_html: {value: @user.email}, label: "New Email Address", autocomplete: false %>           
+              </div>
+
+              <div class="dashboard-settings-form-content">
+                <%= f.input :current_password, required: true, class: "form-control", id: "", value: "", placeholder: "Enter your password", autocomplete: false %>
+              </div>
+              <%= f.button :submit, "Update", :class => "btn-settings" %>
+            <% end %>
+          </div>
+        </div>
+      </div><br />
+
       <div class="dashboard-box">
         <div class="dashboard-settings">
           <div class="dashboard-settings-title">Change Password</div>
           <div class="dashboard-settings-form">
             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+            <%= f.error_notification %>
+
 
               <div class="dashboard-settings-form-content">
                  <%= f.input :current_password, id: "", required: true, class: "form-control", placeholder: "Enter your existing password", label: "Old Password", autocomplete: false %>           
