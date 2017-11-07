@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171028150137) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -127,6 +128,7 @@ ActiveRecord::Schema.define(version: 20171028150137) do
     t.string   "image"
     t.string   "video"
     t.boolean  "employer_role",          default: false
+    t.string   "image_id"
     t.index ["city"], name: "index_users_on_city", using: :btree
     t.index ["degree_field"], name: "index_users_on_degree_field", using: :btree
     t.index ["degree_type"], name: "index_users_on_degree_type", using: :btree

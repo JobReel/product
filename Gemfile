@@ -74,3 +74,4 @@ gem 'gon'
 gem 'rmagick'
 # for google"like" avatars
 gem 'avatarly'
+gem 'sweetalert2'

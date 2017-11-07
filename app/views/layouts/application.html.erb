@@ -44,6 +44,8 @@
         <%= render "layouts/profile-footer" %>
       <% elsif params[:controller] == 'jobs' && params[:action] == 'show' %>
         <%= render "layouts/footer" %>
+      <% elsif params[:controller] == 'dashboards' %>
+        <%= render "layouts/footer" %>
       <% elsif !user_signed_in? %>
         <%= render "layouts/index-footer" %>
       <% else %>
