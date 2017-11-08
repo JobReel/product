@@ -13,7 +13,7 @@
 //     'success'
 //   )
 // })
-
+$(document).on('turbolinks:load', function(){
 function cloudAvatar() {
   cloudinary.openUploadWidget({ cloud_name: 'jobreel', upload_preset: 'chnxgah2', theme: 'minimal', sources: ['local'], client_allowed_formats: ["png", "gif", "jpeg", "jpg"], multiple: 'false', cropping: 'server'},
   function(error, result) { console.log(error, result) });
@@ -36,4 +36,22 @@ $(document).on('cloudinarywidgetsuccess', function(e, data) {
       }
     });
     location.reload();
+});
+
+$("form#test-email-form").bind ("ajax:success", function(e, data, status, xhr){
+  alert("OKAY!");
+  console.log(e);
+  console.log(data);
+  window.location.replace("http://localhost:3030/dashboards/");
+}
+);
+
+$("form#test-email-form").bind ("ajax:error", function(e, data, status, xhr){
+  alert("error");
+  console.log(e);
+  console.log(data);
+  console.log(status);
+  swal("Oops...", data.responseJSON.data[0], "error");
+}
+);
 });

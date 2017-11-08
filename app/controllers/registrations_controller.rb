@@ -40,11 +40,12 @@ class RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, flash_key
       end
       bypass_sign_in resource, scope: resource_name
-      respond_with resource, location: after_update_path_for(resource)
+      render :json => {:success => true, :resource => resource}
+      # respond_with resource, location: after_update_path_for(resource)
     else
       clean_up_passwords resource
       set_minimum_password_length
-      render :json => { :success => false, :data => resource.errors.full_messages }
+      render :json => { :status => 400, :data => resource.errors.full_messages }, :status => :bad_request
       # respond_with resource
       # respond_with(settings_path)
       # render json: resource.errors
