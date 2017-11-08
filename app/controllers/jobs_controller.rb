@@ -55,6 +55,14 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
 
   def show
     @job = Job.find(params[:id])
+    @competencies = {ambition: "Ambition",
+     technical: "Technical Skills",
+     creative: "Creative Problem Solving",
+     cultural: "Cultural Sensitivity",
+     leadership: "Leadership",
+     emotional: "Emotional Intelligence",
+     hobbies: "Hobbies & Interests",
+     custom: "Custom Question"}
     @jobreel = Jobreel.find_by(job_id: params[:id])
 
     @user = current_user

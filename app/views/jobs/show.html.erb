@@ -86,19 +86,19 @@
           <div class="row nomargin text-center">
           <div class="col-6 job-requirements-icons">
             <%= image_tag("#{@job.requirements[0]}"+".gif") %>
-            <p class="job-requirements-text">Introduction</p>
+            <p class="job-requirements-text"><%= @competencies[@job.requirements[0].to_sym] %></p>
           </div>
           <div class="col-6 job-requirements-icons">
             <%= image_tag("#{@job.requirements[1]}"+".gif") %>
-            <p class="job-requirements-text">Technical Skills</p>
+            <p class="job-requirements-text"><%= @competencies[@job.requirements[1].to_sym] %></p>
           </div>
           <div class="col-6 job-requirements-icons">
             <%= image_tag("#{@job.requirements[2]}"+".gif") %>
-            <p class="job-requirements-text">Creative Problem Solving</p>
+            <p class="job-requirements-text"><%= @competencies[@job.requirements[2].to_sym] %></p>
           </div>
           <div class="col-6 job-requirements-icons">
             <%= image_tag("#{@job.requirements[3]}"+".gif") %>
-            <p class="job-requirements-text">Question From Adobe</p>
+            <p class="job-requirements-text"><%= @competencies[@job.requirements[3].to_sym] %></p>
           </div>
         </div>
       </div>
@@ -127,14 +127,10 @@
         <div class="card-block job-description-full white" id="full-description">
           <h3>The Challenge</h3>
           <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mattis non augue ut lobortis. Mauris congue luctus augue. Mauris rutrum erat ac est luctus, non lobortis lorem molestie. Suspendisse consequat tempus risus ac convallis. Phasellus vitae gravida lectus. Nunc vulputate suscipit posuere. Mauris pretium imperdiet est at rhoncus. Sed malesuada pulvinar tempus. Ut nunc quam, malesuada sed justo laoreet, posuere viverra lacus. Aenean ac dui dolor.</p>
+            <%= @job.job_description %>
           </p>
-          <h3>Expectations</h3>
-          <p>Maecenas mattis est quis egestas lobortis. Etiam consequat aliquam lorem, nec hendrerit leo venenatis sit amet. Morbi eu scelerisque orci. Integer ornare tincidunt arcu id mollis. Maecenas ut neque et ante tempus sodales. Phasellus eleifend justo at cursus cursus. Donec vitae blandit orci. Nam in leo ut justo hendrerit aliquam. Aenean vitae ligula eget metus mattis malesuada nec et velit.</p>
-          <h3>Team</h3>
-          <p>Maecenas mattis est quis egestas lobortis. Etiam consequat aliquam lorem, nec hendrerit leo venenatis sit amet. Morbi eu scelerisque orci. Integer ornare tincidunt arcu id mollis. Maecenas ut neque et ante tempus sodales. Nam in leo ut justo hendrerit aliquam. Aenean vitae ligula eget metus mattis malesuada nec et velit.</p>
-          <h3>Perks</h3>
-          <p>Maecenas mattis est quis egestas lobortis. Etiam consequat aliquam lorem, nec hendrerit leo venenatis sit amet. Morbi eu scelerisque orci. Integer ornare tincidunt arcu id mollis. Maecenas ut neque et ante tempus sodales. Nam in leo ut justo hendrerit aliquam. Aenean vitae ligula eget metus mattis malesuada nec et velit.</p>
+          <h3>The Ideal Candidate</h3>
+          <p><%= @job.qualifications %></p>
         </div>
         <div class="card-block job-collapse white text-center" id="collapseme">
           Read full job description <i class="fa fa-chevron-down"></i>
