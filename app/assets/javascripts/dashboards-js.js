@@ -39,19 +39,33 @@ $(document).on('cloudinarywidgetsuccess', function(e, data) {
 });
 
 $("form#test-email-form").bind ("ajax:success", function(e, data, status, xhr){
-  alert("OKAY!");
   console.log(e);
   console.log(data);
-  window.location.replace("http://localhost:3030/dashboards/");
+  swal({
+    title: 'Your email has been updated!',
+    type: 'success',
+    showConfirmButton: false,
+    timer: 1500
+  });
+  window.location.reload();
 }
 );
 
 $("form#test-email-form").bind ("ajax:error", function(e, data, status, xhr){
-  alert("error");
   console.log(e);
   console.log(data);
   console.log(status);
-  swal("Oops...", data.responseJSON.data[0], "error");
+  
+  if (data.responseJSON.data.length > 1) {
+    errormessages = data.responseJSON.data[0] + " & " + data.responseJSON.data[1];
+  } else {
+   errormessages = data.responseJSON.data[0];
+  }
+
+  swal('Oops...', errormessages, "error");
+
+  document.getElementById('user_email').value = document.getElementById('user_email_placeholder').value;
+  document.getElementById('user_current_password').value = "";
 }
 );
 });
