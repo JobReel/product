@@ -60,14 +60,15 @@
                 <%= cl_image_tag(@user.image, :width => 60, :height => 60, :crop => :thumb) %>
               <% end %>
             </div>
-            <div class="col-4 dashboard-sidebar">
-              <span><h3>Senior Engineer</h3></span><br />
-              <span><i class="fa fa-map-marker" aria-hidden="true"></i> New York City, New York</span>
+            <div class="col-4 dashboard-sidebar team-title">
+              <h3>Senior Engineer</h3><br />
+              <div><i class="fa fa-map-marker team-title-icon" aria-hidden="true"></i><h4>New York City, New York</h4></div>
             </div>
-            <div class="col-1">
-              <span class="vert-helper"></span>
+            <div class="col-3 dashboard-sidebar team-title">
+              <h3>Published:</h3><br />
+              <h4>February 11th, 2017 08:50PM</h4>
             </div>
-            <div class="col-6 dashboard-team-avatar text-center">
+            <div class="col-4 dashboard-team-avatar text-center">
               <button class="btn-team">Add New Person</button>
             </div>
           </div>
