@@ -162,7 +162,7 @@ $(document).on('turbolinks:load', function(){
 
   selectTool.init();
 };
-  if ($('#collapseme').length > 0) {
+  if ($('body').hasClass("jobs-show")) {
   $('#collapseme').on('click', function() {
     fullH = document.getElementById("full-description").scrollHeight;
     var duration = 1000,
