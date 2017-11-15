@@ -13,12 +13,13 @@
 //     'success'
 //   )
 // })
-$(document).on('turbolinks:load', function(){
+  if ($('body').hasClass("dashboards-show")) {
 function cloudAvatar() {
   cloudinary.openUploadWidget({ cloud_name: 'jobreel', upload_preset: 'chnxgah2', theme: 'minimal', sources: ['local'], client_allowed_formats: ["png", "gif", "jpeg", "jpg"], multiple: 'false', cropping: 'server'},
   function(error, result) { console.log(error, result) });
 }
 
+$(document).on('turbolinks:load', function(){
 $(document).on('cloudinarywidgetsuccess', function(e, data) {
   console.log("Global success", e, data);
   activeUser = gon.user_id;
@@ -55,3 +56,4 @@ $("form#test-email-form").bind ("ajax:error", function(e, data, status, xhr){
 }
 );
 });
+}
