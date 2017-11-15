@@ -28,7 +28,7 @@
             <li class="row dashboard-menu-items"><i class="fa fa-users fa-3" aria-hidden="true"></i>Manage Team Members</li>
           <% end %>
           <%= link_to settings_path do %>
-            <li class="row dashboard-menu-items"><i class="fa fa-cogs fa-3" aria-hidden="true"></i>Account Settings</li>
+            <li class="row dashboard-menu-items dashboard-active"><i class="fa fa-cogs fa-3" aria-hidden="true"></i>Account Settings</li>
           <% end %>
           <%= link_to new_job_path do %>
             <li class="row dashboard-menu-items-bold justify-content-center">
@@ -46,57 +46,30 @@
         <div class="dashboard-settings">
           <div class="dashboard-settings-title">Change Email</div>
           <div class="dashboard-settings-form">
-            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "test-email-form" }, :format => :json, :remote => true ) do |f| %>
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "email-update-form" }, :format => :json, :remote => true ) do |f| %>
 
               <div class="dashboard-settings-form-content">
                  <%= f.input :email_placeholder, id: "current-email", required: false, class: "form-control", placeholder: "Email Address", input_html: {value: @user.email}, label: "Current Email Address", autocomplete: false, disabled: true %>           
               </div>
 
               <div class="dashboard-settings-form-content">
-                 <%= f.input :email, id: "new-email", required: true, class: "form-control", placeholder: "Email address", input_html: {value: @user.email}, label: "New Email Address", autocomplete: false %>           
+                 <%= f.input :email, id: "new-email", required: true, class: "form-control", placeholder: "Email address", input_html: {value: @user.email}, label: "New Email Address", autocomplete: false %>  
               </div>
 
               <div class="dashboard-settings-form-content">
                 <%= f.input :current_password, required: true, class: "form-control", id: "", value: "", placeholder: "Enter your password", autocomplete: false %>
               </div>
-              <%= f.button :submit, "Update", :class => "btn-settings" %>
+              <%= f.button :submit, "Update", disabled: true, :id => "email-update-button", :class => "btn-settings" %>
             <% end %>
           </div>
         </div>
       </div><br />
 
-
-<!--       <div class="dashboard-box">
-        <div class="dashboard-settings">
-          <div class="dashboard-settings-title">Change Email</div>
-          <div class="dashboard-settings-form">
-            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, format: JSON, remote: true) do |f| %>
-
-              <div class="dashboard-settings-form-content">
-                 <%= f.input :email, id: "", required: false, class: "form-control", placeholder: "Email Address", input_html: {value: @user.email}, label: "Current Email Address", autocomplete: false, disabled: true %>           
-              </div>
-
-              <div class="dashboard-settings-form-content">
-                 <%= f.input :email, id: "", required: true, class: "form-control", placeholder: "Email address", input_html: {value: @user.email}, label: "New Email Address", autocomplete: false %>           
-              </div>
-
-              <div class="dashboard-settings-form-content">
-                <%= f.input :current_password, required: true, class: "form-control", id: "", value: "", placeholder: "Enter your password", autocomplete: false %>
-              </div>
-              <%= f.button :submit, "Update", :class => "btn-settings" %>
-            <% end %>
-          </div>
-        </div>
-      </div><br /> -->
-
       <div class="dashboard-box">
         <div class="dashboard-settings">
           <div class="dashboard-settings-title">Change Password</div>
           <div class="dashboard-settings-form">
-            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-
-            <%= f.error_notification %>
-
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "password-update-form" }, :format => :json, :remote => true ) do |f| %>
 
               <div class="dashboard-settings-form-content">
                  <%= f.input :current_password, id: "", required: true, class: "form-control", placeholder: "Enter your existing password", label: "Old Password", autocomplete: false %>           
@@ -107,9 +80,9 @@
               </div>
 
               <div class="dashboard-settings-form-content">
-                <%= f.input :password_confirmation, required: true, class: "form-control", id: "", value: "", placeholder: "Retype your new password", label: "Retype Password",autocomplete: false %>
+                <%= f.input :password_confirmation, required: true, class: "form-control", id: "", value: "", placeholder: "Retype your new password", label: "Retype Password", autocomplete: false %>
               </div>
-              <%= f.button :submit, "Update", :class => "btn-settings" %>
+              <%= f.button :submit, "Update", disabled: true, :id => "password-update-button", :class => "btn-settings" %>
             <% end %>
           </div>
         </div>

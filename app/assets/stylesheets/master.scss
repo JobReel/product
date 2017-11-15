@@ -1519,6 +1519,64 @@ video {
   font-size: 12px;
 }
 
+.btn-team {
+  display: inline-block;
+  font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  padding: .8em 1.4em;
+  padding-right: 4.7em;
+  background: #31cd66;
+  border: none;
+  color: white;
+  transition: .2s;
+  min-width: 180px;
+  cursor: pointer;
+  &:before,
+  &:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: inherit;
+    padding-bottom: inherit;
+    width: 2.8em;
+    content: "\00a0";
+    font-family: 'FontAwesome', sans-serif;
+    font-size: 1.2em;
+    text-align: center; 
+    transition: .2s;
+    transform-origin: 50% 60%;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &:hover {
+    background: darken(#31cd66, 10%);
+  }
+  &:active,
+  &:focus {
+    background: darken(#31cd66, 20%);
+    outline: none;
+  }
+  &:after {
+    content: "\f067";
+  }
+  &:hover:after {
+    -webkit-animation: bounceright .3s alternate ease infinite;
+    animation: bounceright .3s alternate ease infinite;
+  }
+}
+
+@-webkit-keyframes bounceright {
+  from { -webkit-transform: translateY(-0.75px); }
+  to   { -webkit-transform: translateY(0.75px); }
+}
+
+@keyframes bounceright {
+  from { transform: translateY(-0.75px); }
+  to   { transform: translateY(0.75px); }
+}
+
 .btn-settings {
     border: 1px solid transparent;
     cursor: pointer;
@@ -1574,11 +1632,28 @@ li.dashboard-menu-items {
   padding: 30px 20px 30px 20px;
   border-right: 1px solid;
   border-bottom: 1px solid;
+  border-color: #E4E4E4;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 25px;
+}
+
+li.dashboard-menu-items-active {
+  list-style-type: none;
+  margin: 0;
+  padding: 30px 20px 30px 20px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
   border-left: 1px solid;
   border-color: #E4E4E4;
   font-weight: 500;
   font-size: 14px;
   line-height: 25px;
+}
+
+.dashboard-active {
+  border-left: 7px solid !important;
+  border-left-color: #458afa !important;
 }
 
 .dashboard-menu-items i {
