@@ -10,14 +10,14 @@ function setDefaultJobreel() {
     activeJobreel = item;
   });
 
-  $.ajax({
-  type: "GET",
-  url: "/jobreels/",
-  data: {"job_id": "activeJob.job_id"},
-  success: function( data ) {
-      //code that executes when the data is retrieved
-  },
-});
+//   $.ajax({
+//   type: "GET",
+//   url: "/jobreels/",
+//   data: {"job_id": "activeJob.job_id"},
+//   success: function( data ) {
+//       //code that executes when the data is retrieved
+//   },
+// });
 };
 
 // This sets the active jobreel to the selected jobreel from the dropdown. It updates all sections and the workspace

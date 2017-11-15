@@ -24,6 +24,7 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
 
   def create
     @job = Job.create(job_params)
+    @job.team_ids.push(current_user.id)
     @job.save!
 
     @jobreel = Jobreel.new()
