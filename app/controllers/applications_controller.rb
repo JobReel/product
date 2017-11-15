@@ -1,6 +1,11 @@
 class ApplicationsController < ApplicationController
 
   def create
+    @newapp = Application.new(application_params)
+    # @newapp.access_ids = Job.find_by_id(application_params.user_id).team_ids
+    @newapp.status = "incomplete"
+    @newapp.save!
+
   end
 
   def update
