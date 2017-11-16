@@ -1520,7 +1520,7 @@ video {
 }
 
 .team-title h3 {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: #3a475c;
 }
@@ -1533,6 +1533,73 @@ video {
 
 .team-title-icon {
   padding-right: 5px;
+}
+
+.team-image {
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-left: 0px;
+}
+
+.team-image-pending {
+  padding-top: 8px;
+  margin-left: -40px;
+}
+
+.team-button-spacing {
+   margin-right: -20px;
+   padding-top: 20px;
+ }
+
+.team-avatar-image {
+  padding-top: 3px;
+  padding-left: 20px;
+}
+
+.team-divider {
+ width: 100%;
+ height: 1px;
+ margin: 0px auto;
+ border-bottom: 1px solid #E4E4E4;
+}
+
+.team-title-main {
+  padding: 20px 15px 15px 15px;
+  line-height: 23px;
+}
+
+.team-title-sub h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #3a475c;
+}
+
+.team-background {
+  background: #F8F8F8;
+}
+
+.team-title-sub h4 {
+  font-size: 13px;
+  color: #3a475c;
+  display: inline;
+}
+
+.team-title-sub {
+  padding: 20px 15px 15px 15px;
+  line-height: 23px;
+}
+
+.team-icon-sub {
+  display: inline;
+  padding-top: 30px;
+  margin-left: -10px;
+}
+
+.team-icon-sub-sub {
+  display: inline;
+  padding-top: 30px;
+  margin-left: -70px;
 }
 
 .btn-team {
@@ -1577,20 +1644,6 @@ video {
   &:after {
     content: "\f067";
   }
-  &:hover:after {
-    -webkit-animation: bounceright .3s alternate ease infinite;
-    animation: bounceright .3s alternate ease infinite;
-  }
-}
-
-@-webkit-keyframes bounceright {
-  from { -webkit-transform: translateY(-0.75px); }
-  to   { -webkit-transform: translateY(0.75px); }
-}
-
-@keyframes bounceright {
-  from { transform: translateY(-0.75px); }
-  to   { transform: translateY(0.75px); }
 }
 
 .btn-settings {
