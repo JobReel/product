@@ -2,7 +2,7 @@ class ApplicationsController < ApplicationController
 
   def create
     @newapp = Application.new(application_params)
-    @jobapp = Job.find(application_params[:user_id])
+    @jobapp = Job.find(application_params[:job_id])
     @newapp.access_ids.push(@jobapp.team_ids)
     @newapp.status = "incomplete"
     @newapp.save!
