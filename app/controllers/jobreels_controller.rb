@@ -11,7 +11,10 @@ class JobreelsController < ApplicationController
   end
 
   def instant_apply
-    render json: Jobreel.where(section2_title: (params[:competency1]), section3_title:(params[:competency2]), section4_title:(params[:competency3]), section5_title:(params[:competency4]))
+
+    results = Jobreel.where(section2_title: (params[:competency1]), section3_title:(params[:competency2]), section4_title:(params[:competency3]), section5_title:(params[:competency4]))
+
+    render json: results
   end
 
   def create
