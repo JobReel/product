@@ -180,8 +180,17 @@ $(document).on('turbolinks:load', function(){
       jobID = e.target.dataset.jobid,
       userID = gon.user_id;
 
+      var jobComps = document.getElementsByClassName('job-requirements-text'),
+      requiredComps = []
+
+      for(var i=0; i<jobComps.length; i++){
+      requiredComps.push(jobComps[i].innerText)
+      
+    };
+
       appPayload["user_id"] = userID;
       appPayload["job_id"] = jobID;
+
 
       $.ajax({
       'type' : 'POST',
