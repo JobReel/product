@@ -65,6 +65,8 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
      hobbies: "Hobbies & Interests",
      custom: "Custom Question"}
     @jobreel = Jobreel.find_by(job_id: params[:id])
+    gon.user_id = current_user.id
+
 
     @user = current_user
     @avatar = display_avatar(@user)
@@ -76,6 +78,7 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
     @team_videos = @jobreel.section4_videos
     @perks_videos = @jobreel.section5_videos
     @all_videos = "[\"default_intro\"]"
+
 
     unless (@intro_videos.nil? || @challenge_videos.nil? || @expectation_videos.nil? || @team_videos.nil? || @expectation_videos.nil?)
       @all_videos = JSON.parse(@intro_videos) + JSON.parse(@challenge_videos) + JSON.parse(@expectation_videos) + JSON.parse(@team_videos) + JSON.parse(@perks_videos)

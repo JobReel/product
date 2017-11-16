@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :jobs
   resources :jobreels
   resource :dashboards, only: [:show]
+  resources :applications
 end

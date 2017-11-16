@@ -163,6 +163,50 @@ $(document).on('turbolinks:load', function(){
   selectTool.init();
 };
   if ($('body').hasClass("jobs-show")) {
+
+    var applyBox = document.getElementById("apply-box");
+
+    var applyTool = {
+    init : function() {
+      var that = this;
+
+      applyBox.addEventListener('click', this.createApp, false);
+
+    },
+
+    createApp : function(e) {
+      console.log(e);
+      var appPayload = {},
+      jobID = e.target.dataset.jobid,
+      userID = gon.user_id;
+
+      appPayload["user_id"] = userID;
+      appPayload["job_id"] = jobID;
+
+      $.ajax({
+      'type' : 'POST',
+      'url': "/applications/",
+      'dataType' : 'JSON',
+      'data': {application: appPayload},
+      statusCode: {
+               200: function (response) {
+                      console.log(response);
+                      alert('application creation successful');
+                      // window.location.replace("http://localhost:3030/step2/"+response.id);
+                    },
+               500: function (response) {
+                console.log(response);
+                alert('something went wrong :(');
+               }
+      }
+    });
+
+    }
+
+  }
+
+  applyTool.init();
+
   $('#collapseme').on('click', function() {
     fullH = document.getElementById("full-description").scrollHeight;
     var duration = 1000,
