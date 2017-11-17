@@ -11,10 +11,18 @@ class JobreelsController < ApplicationController
   end
 
   def instant_apply
+    @jobcomps = []
+    @jobcomps = instant_apply_params[:jobComps]
 
-    results = Jobreel.where(section2_title: (params[:competency1]), section3_title:(params[:competency2]), section4_title:(params[:competency3]), section5_title:(params[:competency4]))
+    # @results = Jobreel.where(:user_id => current_user.id)
 
-    render json: results
+    @results = Jobreel.where(:section2_title => @jobcomps).or(Jobreel.where(:section3_title => @jobcomps).or(Jobreel.where(:section4_title => @jobcomps).or(Jobreel.where(:section5_title => @jobcomps))))
+
+    # @jobcomps.each do |comp|
+    # @results = Jobreel.where(:section2_title || :section3_title || :section4_title || :section5_title => comp)
+    # end
+
+    render json: @results
   end
 
   def create
@@ -47,6 +55,10 @@ class JobreelsController < ApplicationController
 
   def employer_jobreel_params
     params.require(:jobreel).permit(:user_id, :job_id, {:section1_videos=>[]}, {:section2_videos=>[]}, {:section3_videos=>[]}, {:section4_videos=>[]}, {:section5_videos=>[]})
+  end
+
+  def instant_apply_params
+    params.require(:application).permit(:user_id, :job_id, {:jobComps => []})
   end
 
 end

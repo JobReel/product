@@ -170,7 +170,44 @@ $(document).on('turbolinks:load', function(){
     init : function() {
       var that = this;
 
-      applyBox.addEventListener('click', this.createApp, false);
+      // applyBox.addEventListener('click', this.createApp, false);
+      applyBox.addEventListener('click', this.instantApply, false);
+
+    },
+
+    instantApply : function() {
+      var instaPayload = {},
+      userID = gon.user_id;
+
+      var jobComps = document.getElementsByClassName('job-requirements-text'),
+      requiredComps = []
+
+      for(var i=0; i<jobComps.length; i++){
+      requiredComps.push(jobComps[i].innerText)
+      
+    };
+
+      instaPayload["user_id"] = userID;
+      instaPayload["jobComps"] = requiredComps;
+
+      $.ajax({
+      'type' : 'GET',
+      'url': "/applicationAPI/",
+      'dataType' : 'JSON',
+      'data': {application: instaPayload},
+      statusCode: {
+               200: function (response) {
+                      console.log(response);
+                      alert('omg it worked');
+                      // window.location.replace("http://localhost:3030/step2/"+response.id);
+                    },
+               500: function (response) {
+                console.log(response);
+                alert('something went wrong :(');
+               }
+      }
+    });
+
 
     },
 
@@ -190,6 +227,7 @@ $(document).on('turbolinks:load', function(){
 
       appPayload["user_id"] = userID;
       appPayload["job_id"] = jobID;
+      appPayload["jobComps"] = requiredComps;
 
 
       $.ajax({
