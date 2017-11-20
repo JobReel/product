@@ -42,38 +42,360 @@
     </div>
 
     <div class="col-9 nopadding">
-      <div class="dashboard-box">
-        <div class="row dashboard-title nomargin">
-          <div class="col-6 dashboard-title-active-job">
-            <span>Active Teams (#?)</span>
-          </div>
-          <div class="col-6 dashboard-title-performance-trend">
-            <span>Team Members (#?)</span>
-          </div>
+      <div class="row dashboard-title nomargin">
+        <div class="col-6 team-title-active" id="team-title-active" disabled="disabled">
+          <span>Active Teams (#?)</span>
         </div>
-
-          <div class="row nomargin dashboard-edit-icons">
-            <div class="col-1 dashboard-top">
+        <div class="col-6 team-title-inactive" id="team-title-inactive">
+          <span>Team Members (#?)</span>
+        </div>
+      </div>      
+      <div class="show" id="show">
+        <div class="dashboard-box">
+          <div class="row nomargin team-main-row">
+            <div class="col-1 team-image">
               <% if @user.image_id? %>
                 <%= cl_image_tag(@user.image_id, :width => 60, :height => 60, :crop => :thumb) %>
               <% else %>
                 <%= cl_image_tag(@user.image, :width => 60, :height => 60, :crop => :thumb) %>
               <% end %>
             </div>
-            <div class="col-4 dashboard-sidebar">
-              <span><h3>Senior Engineer</h3></span><br />
-              <span><i class="fa fa-map-marker" aria-hidden="true"></i> New York City, New York</span>
+            <div class="col-4 team-title-main team-title">
+              <h3>Senior Engineer</h3>
+              <div><i class="fa fa-map-marker team-title-icon" aria-hidden="true"></i><h4>New York City, New York</h4></div>
             </div>
-            <div class="col-1">
-              <span class="vert-helper"></span>
+            <div class="col-3 team-title-main team-title">
+              <h3>Published:</h3>
+              <h4>February 11th, 2017</h4>
             </div>
-            <div class="col-6 dashboard-team-avatar text-center">
-              <button class="btn-team">Add New Person</button>
+            <div class="col-4 team-button-spacing text-center">
+              <button class="btn-team" id="addToTeam">Add New Person</button>
             </div>
           </div>
-          <div class="dashboard-divider">&nbsp;</div>
-          
-      </div>
+          <div class="team-divider">&nbsp;</div>
+          <div class="row nomargin team-background">
+            <div class="col-1 team-avatar-image vert-align">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 50, :height => 50,
+                 :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 50, :height => 50,
+                   :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% end %>
+            </div>
+            <div class="col-2 team-title-sub team-title-sub">
+              <h3>Nancy Moreno</h3>
+              <h4>Manager</h4>
+            </div>
+            <div class="col-1 team-icon-sub">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp
+            </div>
+            <div class="col-1 team-avatar-image vert-align">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 50, :height => 50,
+                 :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 50, :height => 50,
+                   :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% end %>
+            </div>
+            <div class="col-2 team-title-sub team-title-sub">
+              <h3>Nancy Moreno</h3>
+              <h4>Manager</h4>
+            </div>
+            <div class="col-1 team-icon-sub">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp
+            </div>
+            <div class="col-1 team-avatar-image vert-align">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 50, :height => 50,
+                 :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 50, :height => 50,
+                   :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% end %>
+            </div>
+            <div class="col-2 team-title-sub team-title-sub">
+              <h3>Nancy Moreno</h3>
+              <h4>Manager</h4>
+            </div>
+            <div class="col-1 team-icon-sub ">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp
+            </div>
+            <div class="col-1 team-avatar-image vert-align">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 50, :height => 50,
+                 :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 50, :height => 50,
+                   :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% end %>
+            </div>
+            <div class="col-2 team-title-sub team-title-sub">
+              <h3>Nancy Moreno</h3>
+              <h4>Manager</h4>
+            </div>
+            <div class="col-1 team-icon-sub">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp
+            </div>
+          <div class="team-divider">&nbsp;</div> 
+        </div>
+        <div class="row nomargin team-main-row">
+          <div class="col-1 team-image">
+            <% if @user.image_id? %>
+              <%= cl_image_tag(@user.image_id, :width => 60, :height => 60, :crop => :thumb) %>
+            <% else %>
+              <%= cl_image_tag(@user.image, :width => 60, :height => 60, :crop => :thumb) %>
+            <% end %>
+          </div>
+          <div class="col-4 team-title-main team-title">
+            <h3>Senior Engineer</h3>
+            <div><i class="fa fa-map-marker team-title-icon" aria-hidden="true"></i><h4>New York City, New York</h4></div>
+          </div>
+          <div class="col-3 team-title-main team-title">
+            <h3>Published:</h3>
+            <h4>February 11th, 2017</h4>
+          </div>
+          <div class="col-4 team-button-spacing text-center">
+            <button class="btn-team">Add New Person</button>
+          </div>
+        </div>      
+      </div><br />
+      <div class="dashboard-box">
+        <div class="dashboard-settings">
+          <div class="dashboard-settings-title">Pending Team Invites</div>
+          <div class="row nomargin">
+            <div class="col-2 team-title-main team-title text-center vert-align">
+              <h3>Nancy Moreno</h3>
+            </div>
+            <div class="col-3 team-title-main team-title">
+              <h3>Invited:</h3>
+              <h4>February 11th, 2017</h4>
+            </div>
+            <div class="col-3 team-title-main team-title">
+              <h3>Email:</h3>
+              <h4>go@myjobreel.com</h4>
+            </div>
+            <div class="col-1 team-image-pending">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 60, :height => 60, :crop => :thumb) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 60, :height => 60, :crop => :thumb) %>
+              <% end %>
+            </div>
+            <div class="col-3 team-title-main team-title vert-align">
+              <h3>Senior Engineer</h3>
+            </div>            
+            <div class="col-1 team-icon-sub-sub text-center">
+              <i class="fa fa-repeat" aria-hidden="true"></i>
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="team-divider">&nbsp;</div> 
+          <div class="row nomargin">
+            <div class="col-2 team-title-main team-title text-center vert-align">
+              <h3>Nancy Moreno</h3>
+            </div>
+            <div class="col-3 team-title-main team-title">
+              <h3>Invited:</h3>
+              <h4>February 11th, 2017</h4>
+            </div>
+            <div class="col-3 team-title-main team-title">
+              <h3>Email:</h3>
+              <h4>go@myjobreel.com</h4>
+            </div>
+            <div class="col-1 team-image-pending">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 60, :height => 60, :crop => :thumb) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 60, :height => 60, :crop => :thumb) %>
+              <% end %>
+            </div>
+            <div class="col-3 team-title-main team-title vert-align">
+              <h3>Senior Engineer</h3>
+            </div>            
+            <div class="col-1 team-icon-sub-sub text-center">
+              <i class="fa fa-repeat" aria-hidden="true"></i>
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </div>
+          </div>        
+        </div>
+      </div><br />
     </div>
+<!-- End active view -->
+      <div class="hidden" id="hidden">
+        <div class="dashboard-box">
+          <div class="row nomargin team-main-row">
+            <div class="col-1 team-image">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 60, :height => 60, :crop => :thumb) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 60, :height => 60, :crop => :thumb) %>
+              <% end %>
+            </div>
+            <div class="col-4 team-title-main team-title">
+              <h3>Nancy Moreno</h3>
+              <h4>Manager</h4>
+            </div>
+            <div class="col-3 team-title-main team-title">
+              <h3>Joined:</h3>
+              <h4>February 11th, 2017</h4>
+            </div>
+            <div class="col-4 team-button-spacing text-center">
+              <button class="btn-team">Add To Team</button>
+            </div>
+          </div>
+          <div class="team-divider">&nbsp;</div>
+
+          <div class="row nomargin team-background">
+            <div class="col-1 team-avatar-image vert-align">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 50, :height => 50,
+                 :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 50, :height => 50,
+                   :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% end %>
+            </div>
+            <div class="col-2 team-title-sub team-title-sub">
+              <h3>Nancy Moreno</h3>
+              <h4>Manager</h4>
+            </div>
+            <div class="col-1 team-icon-sub">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp
+            </div>
+            <div class="col-1 team-avatar-image vert-align">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 50, :height => 50,
+                 :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 50, :height => 50,
+                   :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% end %>
+            </div>
+            <div class="col-2 team-title-sub team-title-sub">
+              <h3>Nancy Moreno</h3>
+              <h4>Manager</h4>
+            </div>
+            <div class="col-1 team-icon-sub">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp
+            </div>
+            <div class="col-1 team-avatar-image vert-align">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 50, :height => 50,
+                 :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 50, :height => 50,
+                   :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% end %>
+            </div>
+            <div class="col-2 team-title-sub team-title-sub">
+              <h3>Nancy Moreno</h3>
+              <h4>Manager</h4>
+            </div>
+            <div class="col-1 team-icon-sub ">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp
+            </div>
+            <div class="col-1 team-avatar-image vert-align">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 50, :height => 50,
+                 :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 50, :height => 50,
+                   :crop => :thumb, :gravity => :face, :radius => :max) %>
+              <% end %>
+            </div>
+            <div class="col-2 team-title-sub team-title-sub">
+              <h3>Nancy Moreno</h3>
+              <h4>Manager</h4>
+            </div>
+            <div class="col-1 team-icon-sub">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp
+            </div>
+          <div class="team-divider">&nbsp;</div> 
+        </div>
+        <div class="row nomargin team-main-row">
+          <div class="col-1 team-image">
+            <% if @user.image_id? %>
+              <%= cl_image_tag(@user.image_id, :width => 60, :height => 60, :crop => :thumb) %>
+            <% else %>
+              <%= cl_image_tag(@user.image, :width => 60, :height => 60, :crop => :thumb) %>
+            <% end %>
+          </div>
+          <div class="col-4 team-title-main team-title">
+            <h3>Senior Engineer</h3>
+            <div><i class="fa fa-map-marker team-title-icon" aria-hidden="true"></i><h4>New York City, New York</h4></div>
+          </div>
+          <div class="col-3 team-title-main team-title">
+            <h3>Published:</h3>
+            <h4>February 11th, 2017</h4>
+          </div>
+          <div class="col-4 team-button-spacing text-center">
+            <button class="btn-team">Add New Person</button>
+          </div>
+        </div>      
+      </div><br />
+      <div class="dashboard-box">
+        <div class="dashboard-settings">
+          <div class="dashboard-settings-title">Pending Team Invites</div>
+          <div class="row nomargin">
+            <div class="col-2 team-title-main team-title text-center vert-align">
+              <h3>Nancy Moreno</h3>
+            </div>
+            <div class="col-3 team-title-main team-title">
+              <h3>Invited:</h3>
+              <h4>February 11th, 2017</h4>
+            </div>
+            <div class="col-3 team-title-main team-title">
+              <h3>Email:</h3>
+              <h4>go@myjobreel.com</h4>
+            </div>
+            <div class="col-1 team-image-pending">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 60, :height => 60, :crop => :thumb) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 60, :height => 60, :crop => :thumb) %>
+              <% end %>
+            </div>
+            <div class="col-3 team-title-main team-title vert-align">
+              <h3>Senior Engineer</h3>
+            </div>            
+            <div class="col-1 team-icon-sub-sub text-center">
+              <i class="fa fa-repeat" aria-hidden="true"></i>
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="team-divider">&nbsp;</div> 
+          <div class="row nomargin">
+            <div class="col-2 team-title-main team-title text-center vert-align">
+              <h3>Nancy Moreno</h3>
+            </div>
+            <div class="col-3 team-title-main team-title">
+              <h3>Invited:</h3>
+              <h4>February 11th, 2017</h4>
+            </div>
+            <div class="col-3 team-title-main team-title">
+              <h3>Email:</h3>
+              <h4>go@myjobreel.com</h4>
+            </div>
+            <div class="col-1 team-image-pending">
+              <% if @user.image_id? %>
+                <%= cl_image_tag(@user.image_id, :width => 60, :height => 60, :crop => :thumb) %>
+              <% else %>
+                <%= cl_image_tag(@user.image, :width => 60, :height => 60, :crop => :thumb) %>
+              <% end %>
+            </div>
+            <div class="col-3 team-title-main team-title vert-align">
+              <h3>Senior Engineer</h3>
+            </div>            
+            <div class="col-1 team-icon-sub-sub text-center">
+              <i class="fa fa-repeat" aria-hidden="true"></i>
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </div>
+          </div>        
+        </div>
+      </div><br />
+    </div>
+<!-- End inactive view -->    
   </div>
-</div>
+</div><br /><br /><br /><br />

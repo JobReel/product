@@ -112,7 +112,55 @@ $(document).on('turbolinks:load', function(){
       document.getElementById("password-update-button").disabled = !allFilled;
     };
   }
+// End dashboard-settings
+
+  if ($('body').hasClass("dashboards-team")) {
+    $("#team-title-inactive").click(function() {
+      if ($('#team-title-inactive').prop("disabled")){
+      } else {
+        $(this).css('background-color', '#ffffff');
+        $(this).attr('disabled','disabled');
+        $("#team-title-active").css('background-color', '#eceeef');
+        $("#show").css('display', 'none');
+        $("#hidden").css('display', 'inline-block');
+      }
+    });
+    $("#team-title-active").click(function() {
+      if ($('#team-title-active').prop("disabled")){
+      } else {
+        $(this).css('background-color', '#ffffff');
+        $(this).attr('disabled','disabled');
+        $("#team-title-inactive").css('background-color', '#eceeef');
+        $("#hidden").css('display', 'none');
+        $("#show").css('display', 'inline-block');
+      }
+    });   
+
+    document.getElementById("addToTeam").onclick = function() {
+      $(this).blur()
+
+  
+
+swal({
+  title: 'How old are you?',
+  type: 'question',
+  input: 'range',
+  inputAttributes: {
+    min: 8,
+    max: 120,
+    step: 1
+  },
+  inputValue: 25
+})
+
+
+    };
+  }
+// End dashboard-team
+
 });
+// End turbo links
+
 
 function cloudAvatar() {
   cloudinary.openUploadWidget({ cloud_name: 'jobreel', upload_preset: 'chnxgah2', theme: 'minimal', sources: ['local'], client_allowed_formats: ["png", "gif", "jpeg", "jpg"], multiple: 'false', cropping: 'server'},
