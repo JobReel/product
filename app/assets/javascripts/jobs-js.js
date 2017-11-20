@@ -163,6 +163,97 @@ $(document).on('turbolinks:load', function(){
   selectTool.init();
 };
   if ($('body').hasClass("jobs-show")) {
+
+    var applyBox = document.getElementById("apply-box");
+
+    var applyTool = {
+    init : function() {
+      var that = this;
+
+      // applyBox.addEventListener('click', this.createApp, false);
+      applyBox.addEventListener('click', this.instantApply, false);
+
+    },
+
+    instantApply : function() {
+      var instaPayload = {},
+      userID = gon.user_id;
+
+      var jobComps = document.getElementsByClassName('job-requirements-text'),
+      requiredComps = []
+
+      for(var i=0; i<jobComps.length; i++){
+      requiredComps.push(jobComps[i].innerText)
+      
+    };
+
+      instaPayload["user_id"] = userID;
+      instaPayload["jobComps"] = requiredComps;
+
+      $.ajax({
+      'type' : 'GET',
+      'url': "/applicationAPI/",
+      'dataType' : 'JSON',
+      'data': {application: instaPayload},
+      statusCode: {
+               200: function (response) {
+                      console.log(response);
+                      alert('omg it worked');
+                      // window.location.replace("http://localhost:3030/step2/"+response.id);
+                    },
+               500: function (response) {
+                console.log(response);
+                alert('something went wrong :(');
+               }
+      }
+    });
+
+
+    },
+
+    createApp : function(e) {
+      console.log(e);
+      var appPayload = {},
+      jobID = e.target.dataset.jobid,
+      userID = gon.user_id;
+
+      var jobComps = document.getElementsByClassName('job-requirements-text'),
+      requiredComps = []
+
+      for(var i=0; i<jobComps.length; i++){
+      requiredComps.push(jobComps[i].innerText)
+      
+    };
+
+      appPayload["user_id"] = userID;
+      appPayload["job_id"] = jobID;
+      appPayload["jobComps"] = requiredComps;
+
+
+      $.ajax({
+      'type' : 'POST',
+      'url': "/applications/",
+      'dataType' : 'JSON',
+      'data': {application: appPayload},
+      statusCode: {
+               200: function (response) {
+                      console.log(response);
+                      alert('application creation successful');
+                      // window.location.replace("http://localhost:3030/step2/"+response.id);
+                    },
+               500: function (response) {
+                console.log(response);
+                alert('something went wrong :(');
+               }
+      }
+    });
+
+    }
+
+  }
+
+  applyTool.init();
+
   $('#collapseme').on('click', function() {
     fullH = document.getElementById("full-description").scrollHeight;
     var duration = 1000,
