@@ -1405,8 +1405,16 @@ video {
  }
 
  .add-button:hover {
-     background-color: #579df9;
-     color: #FFFFFF;
+   background-color: #579df9;
+   color: #FFFFFF;
+ }
+
+ .show {
+   display: inline-block;
+ }
+
+ .hidden {
+   display: none;
  }
 
  .dashboard-bar {
@@ -1478,6 +1486,7 @@ video {
   color: #3a475c;
   font-size: 18px;
   text-transform: uppercase;
+  margin-left: 15px;
 }
 
 .dashboard-settings {
@@ -1495,7 +1504,7 @@ video {
 
 .dashboard-settings-title {
   background: white;
-  padding: 20px 0 20px 20px;
+  padding: 12px 0 12px 20px;
   font-size: 15px;
   border-bottom: 1px solid;
   border-color: #E4E4E4;
@@ -1537,8 +1546,7 @@ video {
 
 .team-image {
   text-align: center;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 8px 65px 8px 0px;
   margin-left: 0px;
 }
 
@@ -1557,6 +1565,22 @@ video {
   padding-left: 20px;
 }
 
+.team-title-active {
+  background: white;
+  cursor: pointer;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid;
+  border-color: #E4E4E4;
+}
+
+.team-title-inactive {
+  background: #eceeef;
+  cursor: pointer;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid;
+  border-color: #E4E4E4;
+}
+
 .team-divider {
  width: 100%;
  height: 1px;
@@ -1566,6 +1590,11 @@ video {
 
 .team-title-main {
   padding: 20px 15px 15px 15px;
+  line-height: 23px;
+}
+
+.team-main-row {
+  padding: 10px 15px 15px 25px;
   line-height: 23px;
 }
 
@@ -1608,7 +1637,7 @@ video {
   font-size: 12px;
   -webkit-font-smoothing: antialiased;
   position: relative;
-  padding: .8em 1.4em;
+  padding: .5em 1.4em;
   padding-right: 4.7em;
   background: #31cd66;
   border: none;
