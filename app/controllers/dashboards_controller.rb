@@ -20,6 +20,7 @@ before_action :authenticate_user!
     @jobreels = Jobreel.where(user_id: current_user.id)
     @jobs = Job.where(user_id: current_user.id)
     @recs = Recommendation.where(user_id: current_user.id)
+    @teamcheck = User.all
   end
 
   def settings
