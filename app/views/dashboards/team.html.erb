@@ -78,27 +78,28 @@
           
             <div class="row nomargin team-background">
               <% job.team_ids.each do |teammember| %>
-                <div class="col-1 team-avatar-image vert-align">
-                  <% if @user.image_id? %>
-                    <%= cl_image_tag(@user.image_id, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max) %>
-                  <% else %>
-                    <%= cl_image_tag(@user.image, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max) %>
-                  <% end %>
-                </div>
-                <div class="col-2 team-title-sub team-title-sub">
-                  <% @teamcheck.each do |checking| %>
-                    <% if teammember == checking.id %>
+                <% @teamcheck.each do |checking| %>
+                  <% if teammember == checking.id %>
+                    <div class="col-1 team-avatar-image vert-align">
+                      <% if checking.image_id? %>
+                        <%= cl_image_tag(checking.image_id, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max) %>
+                      <% else %>
+                        <%= cl_image_tag(checking.image, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max) %>
+                      <% end %>
+                    </div>
+                    <div class="col-2 team-title-sub team-title-sub">
                       <h3><%= checking.first_name %></h3>
                       <h4><%= checking.title %></h4>
-                    <% end %>
-                  <% end %>              
-                </div>
+                    </div>
+                  <% end %>
+                <% end %>                  
                 <div class="col-1 team-icon-sub">
-                  <i class="fa fa-trash-o" id="trash" aria-hidden="true"></i>&nbsp         
+                  <i class="fa fa-trash-o team-trash" id="trash" aria-hidden="true"></i>&nbsp         
                 </div>
               <% end %>
+              <div class="team-divider">&nbsp;</div>
             </div>
-          <% end %> 
+          <% end %>    
         </div><br />
 
         <div class="dashboard-box">
