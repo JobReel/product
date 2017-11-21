@@ -136,7 +136,11 @@ $(document).on('turbolinks:load', function(){
       }
     });
 
-    $('#trash').click(function(){
+    $('#trash').click(function(e){
+      userid = parseInt(e.target.dataset.userid)
+      teamids = JSON.parse(e.target.parentNode.parentNode.dataset.teamids)
+      jobid = parseInt(e.target.parentNode.parentNode.dataset.jobid)
+      
       swal({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -146,13 +150,37 @@ $(document).on('turbolinks:load', function(){
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
       }).then(function (result) {
-        if (result.value) {
-          swal(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
-        }
+        if (result == true) {
+          var removeUserId = teamids.indexOf(userid)
+
+          if (removeUserId > -1) {
+            teamids.splice(removeUserId, 1);
+          }
+
+          var payload = {};
+          payload["team_ids"] = teamids
+
+          $.ajax({
+            'type' : 'PATCH',
+            'url': "/jobs/" + jobid,
+            'dataType' : 'JSON',
+            'data': {job: payload},
+            statusCode: {
+                     200: function (response) {
+                            console.log(response);
+                            swal(
+                              'Deleted!',
+                              'Your file has been deleted.',
+                              'success'
+                            );
+                          },
+                     500: function (response) {
+                      alert('something went wrong :(');
+                     }
+            }
+          });          
+        } // end of if
+        window.location.reload();
       })       
     });
 

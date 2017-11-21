@@ -76,7 +76,7 @@
             </div>  
             <div class="team-divider">&nbsp;</div>    
           
-            <div class="row nomargin team-background">
+            <div class="row nomargin team-background" data-teamids="<%= job.team_ids %>" data-jobid="<%= job.id %>">
               <% job.team_ids.each do |teammember| %>
                 <% @teamcheck.each do |checking| %>
                   <% if teammember == checking.id %>
@@ -91,11 +91,11 @@
                       <h3><%= checking.first_name %></h3>
                       <h4><%= checking.title %></h4>
                     </div>
+                    <div class="col-1 team-icon-sub">
+                      <i class="fa fa-trash-o team-trash" id="trash" data-userid="<%= checking.id %>" aria-hidden="true"></i>&nbsp         
+                    </div>                    
                   <% end %>
                 <% end %>                  
-                <div class="col-1 team-icon-sub">
-                  <i class="fa fa-trash-o team-trash" id="trash" aria-hidden="true"></i>&nbsp         
-                </div>
               <% end %>
               <div class="team-divider">&nbsp;</div>
             </div>
