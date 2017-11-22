@@ -18,9 +18,10 @@ before_action :authenticate_user!
     @workhistory = WorkHistory.where(user_id: current_user.id)
     @videos = Video.where(user_id: current_user.id)
     @jobreels = Jobreel.where(user_id: current_user.id)
-    @jobs = Job.where(user_id: current_user.id)
+    @jobs = Job.order(created_at: :desc).where(user_id: current_user.id)
     @recs = Recommendation.where(user_id: current_user.id)
     @teamcheck = User.all
+    gon.user_id = @user.id
   end
 
   def settings
@@ -30,6 +31,7 @@ before_action :authenticate_user!
     @jobreels = Jobreel.where(user_id: current_user.id)
     @jobs = Job.where(user_id: current_user.id)
     @recs = Recommendation.where(user_id: current_user.id)
+    gon.user_id = @user.id
   end
 
   def addtoteamAPI

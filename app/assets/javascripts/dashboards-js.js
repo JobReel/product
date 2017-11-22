@@ -136,11 +136,19 @@ $(document).on('turbolinks:load', function(){
       }
     });
 
-    $('#trash').click(function(e){
+    removeFromTeam = document.getElementsByClassName("team-trash");
+
+    Array.from(removeFromTeam).forEach(function(elem) {
+      elem.addEventListener('click', function(e) {
       userid = parseInt(e.target.dataset.userid)
       teamids = JSON.parse(e.target.parentNode.parentNode.dataset.teamids)
       jobid = parseInt(e.target.parentNode.parentNode.dataset.jobid)
-      
+      removeUserId = teamids.indexOf(userid)
+
+      if (removeUserId > -1) {
+        teamids.splice(removeUserId, 1);
+      }
+
       swal({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -148,14 +156,17 @@ $(document).on('turbolinks:load', function(){
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Yes, delete it!',
+        preConfirm: function () {
+                if (teamids.length == 0) {
+                  swal.showValidationError('Cannot remove last person from job.')
+                  // swal.clickCancel();
+                
+                }
+              }
       }).then(function (result) {
         if (result == true) {
-          var removeUserId = teamids.indexOf(userid)
 
-          if (removeUserId > -1) {
-            teamids.splice(removeUserId, 1);
-          }
 
           var payload = {};
           payload["team_ids"] = teamids
@@ -183,6 +194,8 @@ $(document).on('turbolinks:load', function(){
         window.location.reload();
       })       
     });
+    });
+
 
     addToTeam = document.getElementsByClassName("btn-team");
 
@@ -220,23 +233,39 @@ $(document).on('turbolinks:load', function(){
     })
 
     function buildUserCards(response) {
-      // var teamHTML = '<div class="row nomargin team-background">                <div class="col-1 team-avatar-image vert-align">
-      //             // <% if checking.image_id? %>
-      //             //   <%= cl_image_tag(checking.image_id, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max) %>
-      //             // <% else %>
-      //             //   <%= cl_image_tag(checking.image, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max) %>
-      //             // <% end %>
-      //           </div>
-      //           <div class="col-2 team-title-sub team-title-sub">
-      //                 // <h3><%= checking.first_name %></h3>
-      //                 // <h4><%= checking.title %></h4>        
-      //           </div>
-      //       </div>'
-      // response.forEach(function(user) {
-      //   var userHTML = '<div class="col-1 team-avatar-image vert-align">'
+      var teamHTML = '<div class="row nomargin team-background">'
+                    // <div class="col-1 team-avatar-image vert-align">
+                  // <% if checking.image_id? %>
+                  //   <%= cl_image_tag(checking.image_id, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max) %>
+                  // <% else %>
+                  //   <%= cl_image_tag(checking.image, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max) %>
+                  // <% end %>
+                // </div>
+                // <div class="col-2 team-title-sub team-title-sub">
+                      // <h3><%= checking.first_name %></h3>
+                      // <h4><%= checking.title %></h4>        
+                // </div>
+            // </div>
+      response.forEach(function(user) {
+        var userHTML = '<div class="col-1 team-avatar-image vert-align">'
+          if (user.image_id !== null) {
+            //display the user-uploaded image
+              var userHTML = userHTML + '<img width="50" height="50" src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_50,r_max,w_50/' + user.image_id + '" alt="' + user.image_id + '"></div>'
+          }
+          else {
+              var userHTML = userHTML +  '<img width="50" height="50" src="' + user.image.url + '"></div>'
+          }
 
-      //   teamHTML += userHTML;
-      // });
+          userHTML = userHTML + '<div class="col-2 team-title-sub team-title-sub"><h3>' + user.first_name + '</h3>' + '<h4>' + user.title + '</h4></div>'
+
+
+          userHTML = userHTML +  '<div class="col-1">&nbsp</div>'
+
+        teamHTML = teamHTML + userHTML;
+      });
+      teamHTML = teamHTML + '</div>'
+      $(".swal2-content").append(teamHTML);
+      $(".swal2-content").css({'display': 'inline-block'})
     }
 
     // document.getElementsByClassName("btn-team").onclick = function() {

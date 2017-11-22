@@ -12,7 +12,7 @@ class Job < ApplicationRecord
 
   def create_jobreel_for_job!
     @jobreel = Jobreel.new()
-    @jobreel.user_id = current_user.id
+    @jobreel.user_id = Job.last.user_id
     @jobreel.job_id = Job.last.id
     @jobreel.section1_title = "About the Company"
     @jobreel.section2_title = "Challenges"
