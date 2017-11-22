@@ -5,7 +5,8 @@ class Job < ApplicationRecord
   has_many :videos
   has_many :competencies
   has_many :questions
-
+  
+  validates_uniqueness_of :job_title, scope: [:user_id, :city, :state]
   after_create :create_jobreel_for_job!
 
 
