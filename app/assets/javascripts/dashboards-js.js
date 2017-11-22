@@ -208,6 +208,7 @@ $(document).on('turbolinks:load', function(){
         title: 'Add to Hiring Team',
         customClass: 'dashboard-add-team-modal',
         onOpen: function () {
+          $('.swal2-content').empty();
           //get all the users
             $.ajax({
             'type' : 'GET',
@@ -216,7 +217,6 @@ $(document).on('turbolinks:load', function(){
             statusCode: {
                      200: function (response) {
                             console.log(response);
-                            alert('omg it worked');
                             buildUserCards(response);
                             // window.location.replace("http://localhost:3030/step2/"+response.id);
                           },
@@ -227,7 +227,7 @@ $(document).on('turbolinks:load', function(){
             }
           });
 
-        } //end of onOpen function, need to create a onClose function that clears the swal2-content div
+        } //end of onOpen function
       })
     });
     })
