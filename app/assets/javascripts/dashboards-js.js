@@ -227,7 +227,7 @@ $(document).on('turbolinks:load', function(){
             }
           });
 
-        }
+        } //end of onOpen function, need to create a onClose function that clears the swal2-content div
       })
     });
     })
