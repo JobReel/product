@@ -184,20 +184,75 @@ $(document).on('turbolinks:load', function(){
       })       
     });
 
-    document.getElementById("addToTeam").onclick = function() {
+    addToTeam = document.getElementsByClassName("btn-team");
+
+    Array.from(addToTeam).forEach(function(elem) {
+      elem.addEventListener('click', function(e) {
+        jobID = e.target.dataset.jobid;
+
       $(this).blur()
       swal({
-        title: 'How old are you?',
-        type: 'question',
-        input: 'range',
-        inputAttributes: {
-          min: 8,
-          max: 120,
-          step: 1
-        },
-        inputValue: 25
+        title: 'Add to Hiring Team',
+        customClass: 'dashboard-add-team-modal',
+        onOpen: function () {
+          //get all the users
+            $.ajax({
+            'type' : 'GET',
+            'url': "/addtoteamAPI/",
+            'dataType' : 'JSON',
+            statusCode: {
+                     200: function (response) {
+                            console.log(response);
+                            alert('omg it worked');
+                            buildUserCards(response);
+                            // window.location.replace("http://localhost:3030/step2/"+response.id);
+                          },
+                     500: function (response) {
+                      console.log(response);
+                      alert('something went wrong :(');
+                     }
+            }
+          });
+
+        }
       })
-    };
+    });
+    })
+
+    function buildUserCards(response) {
+      // var teamHTML = '<div class="row nomargin team-background">                <div class="col-1 team-avatar-image vert-align">
+      //             // <% if checking.image_id? %>
+      //             //   <%= cl_image_tag(checking.image_id, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max) %>
+      //             // <% else %>
+      //             //   <%= cl_image_tag(checking.image, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max) %>
+      //             // <% end %>
+      //           </div>
+      //           <div class="col-2 team-title-sub team-title-sub">
+      //                 // <h3><%= checking.first_name %></h3>
+      //                 // <h4><%= checking.title %></h4>        
+      //           </div>
+      //       </div>'
+      // response.forEach(function(user) {
+      //   var userHTML = '<div class="col-1 team-avatar-image vert-align">'
+
+      //   teamHTML += userHTML;
+      // });
+    }
+
+    // document.getElementsByClassName("btn-team").onclick = function() {
+    //   $(this).blur()
+    //   swal({
+    //     title: 'How old are you?',
+    //     type: 'question',
+    //     input: 'range',
+    //     inputAttributes: {
+    //       min: 8,
+    //       max: 120,
+    //       step: 1
+    //     },
+    //     inputValue: 25
+    //   })
+    // };
 
   }
 // End dashboard-team

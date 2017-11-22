@@ -32,4 +32,10 @@ before_action :authenticate_user!
     @recs = Recommendation.where(user_id: current_user.id)
   end
 
+  def addtoteamAPI
+    @userlist = User.select("id, title, image, image_id, first_name, last_name").all
+
+    render json: @userlist
+  end
+
 end
