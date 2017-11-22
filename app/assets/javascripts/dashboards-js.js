@@ -122,7 +122,7 @@ $(document).on('turbolinks:load', function(){
         $(this).attr('disabled','disabled');
         $("#team-title-active").css('background-color', '#eceeef');
         $("#show").css('display', 'none');
-        $("#hidden").css('display', 'inline-block');
+        $("#hidden").css('display', 'inline');
       }
     });
     $("#team-title-active").click(function() {
@@ -132,29 +132,73 @@ $(document).on('turbolinks:load', function(){
         $(this).attr('disabled','disabled');
         $("#team-title-inactive").css('background-color', '#eceeef');
         $("#hidden").css('display', 'none');
-        $("#show").css('display', 'inline-block');
+        $("#show").css('display', 'inline');
       }
-    });   
+    });
+
+    $('#trash').click(function(e){
+      userid = parseInt(e.target.dataset.userid)
+      teamids = JSON.parse(e.target.parentNode.parentNode.dataset.teamids)
+      jobid = parseInt(e.target.parentNode.parentNode.dataset.jobid)
+      
+      swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        if (result == true) {
+          var removeUserId = teamids.indexOf(userid)
+
+          if (removeUserId > -1) {
+            teamids.splice(removeUserId, 1);
+          }
+
+          var payload = {};
+          payload["team_ids"] = teamids
+
+          $.ajax({
+            'type' : 'PATCH',
+            'url': "/jobs/" + jobid,
+            'dataType' : 'JSON',
+            'data': {job: payload},
+            statusCode: {
+                     200: function (response) {
+                            console.log(response);
+                            swal(
+                              'Deleted!',
+                              'Your file has been deleted.',
+                              'success'
+                            );
+                          },
+                     500: function (response) {
+                      alert('something went wrong :(');
+                     }
+            }
+          });          
+        } // end of if
+        window.location.reload();
+      })       
+    });
 
     document.getElementById("addToTeam").onclick = function() {
       $(this).blur()
-
-  
-
-swal({
-  title: 'How old are you?',
-  type: 'question',
-  input: 'range',
-  inputAttributes: {
-    min: 8,
-    max: 120,
-    step: 1
-  },
-  inputValue: 25
-})
-
-
+      swal({
+        title: 'How old are you?',
+        type: 'question',
+        input: 'range',
+        inputAttributes: {
+          min: 8,
+          max: 120,
+          step: 1
+        },
+        inputValue: 25
+      })
     };
+
   }
 // End dashboard-team
 

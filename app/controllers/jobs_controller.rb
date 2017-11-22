@@ -150,7 +150,7 @@ before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, 
 private
 
 def job_params
-  params.require(:job).permit(:user_id, :job_title, :city, :state, :job_description, {:requirements => []}, {:question_id => []}, :qualifications)
+  params.require(:job).permit(:user_id, {:team_ids => []}, :job_title, :city, :state, :job_description, {:requirements => []}, {:question_id => []}, :qualifications)
 end
 
 
