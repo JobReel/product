@@ -234,18 +234,6 @@ $(document).on('turbolinks:load', function(){
 
     function buildUserCards(response) {
       var teamHTML = '<div class="row nomargin team-background">'
-                    // <div class="col-1 team-avatar-image vert-align">
-                  // <% if checking.image_id? %>
-                  //   <%= cl_image_tag(checking.image_id, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max) %>
-                  // <% else %>
-                  //   <%= cl_image_tag(checking.image, :width => 50, :height => 50, :crop => :thumb, :gravity => :face, :radius => :max) %>
-                  // <% end %>
-                // </div>
-                // <div class="col-2 team-title-sub team-title-sub">
-                      // <h3><%= checking.first_name %></h3>
-                      // <h4><%= checking.title %></h4>        
-                // </div>
-            // </div>
       response.forEach(function(user) {
         var userHTML = '<div class="row nomargin col-4 addusercard" data-userid="'+user.id+'"><div class="col-3 team-avatar-image vert-align" data-userid="'+user.id+'">'
           if (user.image_id !== null) {
