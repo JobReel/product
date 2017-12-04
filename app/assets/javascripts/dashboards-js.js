@@ -247,25 +247,46 @@ $(document).on('turbolinks:load', function(){
                 // </div>
             // </div>
       response.forEach(function(user) {
-        var userHTML = '<div class="col-1 team-avatar-image vert-align">'
+        var userHTML = '<div class="row nomargin col-4 addusercard" data-userid="'+user.id+'"><div class="col-3 team-avatar-image vert-align" data-userid="'+user.id+'">'
           if (user.image_id !== null) {
             //display the user-uploaded image
-              var userHTML = userHTML + '<img width="50" height="50" src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_50,r_max,w_50/' + user.image_id + '" alt="' + user.image_id + '"></div>'
+              var userHTML = userHTML + '<img width="50" height="50" src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,g_face,h_50,r_max,w_50/' + user.image_id + '" alt="' + user.image_id + '" data-userid="'+user.id+'"></div>'
           }
           else {
-              var userHTML = userHTML +  '<img width="50" height="50" src="' + user.image.url + '"></div>'
+              var userHTML = userHTML +  '<img width="50" height="50" src="' + user.image.url + '" data-userid="'+user.id+'"></div>'
           }
 
-          userHTML = userHTML + '<div class="col-2 team-title-sub team-title-sub"><h3>' + user.first_name + '</h3>' + '<h4>' + user.title + '</h4></div>'
+          userHTML = userHTML + '<div class="col-6 team-title-sub team-title-sub" data-userid="'+user.id+'"><h3 data-userid="'+user.id+'">' + user.first_name + '</h3>' + '<h4 data-userid="'+user.id+'">' + user.title + '</h4></div>'
 
 
-          userHTML = userHTML +  '<div class="col-1">&nbsp</div>'
+          userHTML = userHTML +  '<div class="col-3" data-userid="'+user.id+'">&nbsp</div></div>'
 
         teamHTML = teamHTML + userHTML;
       });
       teamHTML = teamHTML + '</div>'
       $(".swal2-content").append(teamHTML);
       $(".swal2-content").css({'display': 'inline-block'})
+
+      userCards = document.getElementsByClassName("addusercard");
+
+      Array.from(userCards).forEach(function(elem) {
+        elem.addEventListener('click', function(e) {
+          selectedID = parseInt(e.target.parentElement.dataset.userid);
+          activeUserCard = $('.addusercard[data-userid="'+selectedID+'"]')
+
+          if (activeUserCard.hasClass('dashboard-active-select')) {
+            //deselect a user
+            activeUserCard.removeClass('dashboard-active-select')
+          }
+          else {
+          //select a user
+          activeUserCard.addClass('dashboard-active-select')
+  
+          }
+          
+        });
+        });
+
     }
 
     // document.getElementsByClassName("btn-team").onclick = function() {

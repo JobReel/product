@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 20171115172121) do
     t.string   "degree_field"
     t.string   "image"
     t.string   "video"
+    t.string   "role"
     t.boolean  "employer_role",          default: false
     t.string   "image_id"
     t.index ["city"], name: "index_users_on_city", using: :btree
