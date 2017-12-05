@@ -40,4 +40,10 @@ before_action :authenticate_user!
     render json: @userlist
   end
 
+  def addnewpersonAPI
+    @joblist = Job.select("id, job_title, logo, city, state, created_at").all
+
+    render json: @joblist
+  end  
+
 end

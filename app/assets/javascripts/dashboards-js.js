@@ -196,6 +196,78 @@ $(document).on('turbolinks:load', function(){
     });
     });
 
+    addNewPerson = document.getElementsByClassName("btn-add-team");
+
+    Array.from(addNewPerson).forEach(function(elem) {
+      elem.addEventListener('click', function(e) {
+        userID = e.target.dataset.jobid;
+
+      $(this).blur()
+      swal({
+        title: 'Add to a Team',
+        customClass: 'dashboard-add-team-modal',
+        onOpen: function () {
+          $('.swal2-content').empty();
+          //get all the users
+            $.ajax({
+            'type' : 'GET',
+            'url': "/addnewpersonAPI/",
+            'dataType' : 'JSON',
+            statusCode: {
+                     200: function (response) {
+                            console.log(response);
+                            buildTeamCards(response);
+                            // window.location.replace("http://localhost:3030/step2/"+response.id);
+                          },
+                     500: function (response) {
+                      console.log(response);
+                      alert('something went wrong :(');
+                     }
+            }
+          });
+
+        } //end of onOpen function
+      })
+    });
+    })
+
+    function buildTeamCards(response) {
+      var teamHTML = '<div class="nomargin team-background">'
+
+      response.forEach(function(job) {
+        var userHTML = '<div class="row nomargin addteamcard" data-jobID="'+job.id+'"><div class="col-1 team-image-modal" data-jobID="'+job.id+'"><img width="60" height="60" src="http://res.cloudinary.com/jobreel/image/upload/c_thumb,h_60,w_60/v1511371578/employer1.png" alt="Employer1"></div>'
+          userHTML = userHTML + '<div class="col-5 team-title-main team-title" data-jobID="'+job.id+'"><h3 data-jobID="'+job.id+'">' + job.job_title + '</h3>' + '<div><i class="fa fa-map-marker team-title-icon" aria-hidden="true"></i><h4 data-jobID="'+job.id+'">' + job.city + ', ' + job.state +'</h4></div></div>'
+          userHTML = userHTML +  '<div class="col-5 team-title-main team-title" data-jobID="'+job.id+'"><h3 data-jobID="'+job.id+'">Published: </h3><h4 data-jobID="'+job.id+'">February 11th, 2017</h4></div></div>'
+        teamHTML = teamHTML + userHTML;
+      });
+
+      teamHTML = teamHTML + '</div>'
+      $(".swal2-content").append(teamHTML);
+      $(".swal2-content").css({'display': 'inline-block'})
+
+      teamCards = document.getElementsByClassName("addteamcard");
+
+      Array.from(teamCards).forEach(function(elem) {
+        elem.addEventListener('click', function(e) {
+          selectedID = parseInt(e.target.parentElement.dataset.jobid);
+          activeTeamCard = $('.addteamcard[data-jobID="'+selectedID+'"]')
+
+          if (activeTeamCard.hasClass('dashboard-active-select')) {
+            //deselect a user
+            activeTeamCard.removeClass('dashboard-active-select')
+          }
+          else {
+          //select a user
+          activeTeamCard.addClass('dashboard-active-select')
+  
+          }
+          
+        });
+        });
+
+    }
+    // End add new person to team
+
 
     addToTeam = document.getElementsByClassName("btn-team");
 
@@ -276,22 +348,7 @@ $(document).on('turbolinks:load', function(){
         });
 
     }
-
-    // document.getElementsByClassName("btn-team").onclick = function() {
-    //   $(this).blur()
-    //   swal({
-    //     title: 'How old are you?',
-    //     type: 'question',
-    //     input: 'range',
-    //     inputAttributes: {
-    //       min: 8,
-    //       max: 120,
-    //       step: 1
-    //     },
-    //     inputValue: 25
-    //   })
-    // };
-
+    // End add to team    
   }
 // End dashboard-team
 

@@ -1561,6 +1561,12 @@ video {
   margin-left: 0px;
 }
 
+.team-image-modal {
+  text-align: center;
+  padding: 8px 60px 8px 8px;
+  margin-left: 0px;
+}
+
 .team-image-pending {
   padding-top: 8px;
   margin-left: -40px;
@@ -1640,6 +1646,50 @@ video {
   display: inline;
   padding-top: 30px;
   margin-left: -70px;
+}
+
+.btn-add-team {
+  display: inline-block;
+  font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  padding: .5em 1.4em;
+  padding-right: 4.7em;
+  background: #31cd66;
+  border: none;
+  color: white;
+  transition: .2s;
+  min-width: 180px;
+  cursor: pointer;
+  &:before,
+  &:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: inherit;
+    padding-bottom: inherit;
+    width: 2.8em;
+    content: "\00a0";
+    font-family: 'FontAwesome', sans-serif;
+    font-size: 1.2em;
+    text-align: center; 
+    transition: .2s;
+    transform-origin: 50% 60%;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &:hover {
+    background: darken(#31cd66, 10%);
+  }
+  &:active,
+  &:focus {
+    background: darken(#31cd66, 20%);
+    outline: none;
+  }
+  &:after {
+    content: "\f067";
+  }
 }
 
 .btn-team {
