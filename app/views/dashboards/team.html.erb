@@ -71,7 +71,7 @@
                 <h4>February 11th, 2017</h4>
               </div>
               <div class="col-4 team-button-spacing text-center">
-                <button class="btn-team" id="addToTeam" data-jobID='<%= job.id %>'>Add New Person</button>
+                <button class="btn-team" id="addToTeam" data-jobID='<%= job.id %>' data-teamIDs='<%= job.team_ids.flatten %>'>Add New Person</button>
               </div>
             </div>  
             <div class="team-divider">&nbsp;</div>    
@@ -183,7 +183,7 @@
               <h4>February 11th, 2017</h4>
             </div>
             <div class="col-4 team-button-spacing text-center">
-              <button class="btn-team">Add To Team</button>
+              <button class="btn-add-team">Add To Team</button>
             </div>
           </div>
           <div class="team-divider">&nbsp;</div>     

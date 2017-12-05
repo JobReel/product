@@ -156,16 +156,18 @@ $(document).on('turbolinks:load', function(){
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
-        preConfirm: function () {
-                if (teamids.length == 0) {
-                  swal.showValidationError('Cannot remove last person from job.')
-                  // swal.clickCancel();
+        confirmButtonText: 'Yes, delete it!'
+        // preConfirm: function () {
+        //         return new Promise((resolve) => {
+                  // if (teamids.length == 0) {
+                  // swal.showValidationError('Cannot remove last person from job.')
+                  // // swal.clickCancel();
                 
-                }
-              }
+        //         }
+        //         })
+        //       }
       }).then(function (result) {
-        if (result == true) {
+        if (result == true && teamids.length > 0) {
 
 
           var payload = {};
@@ -179,20 +181,34 @@ $(document).on('turbolinks:load', function(){
             statusCode: {
                      200: function (response) {
                             console.log(response);
-                            swal(
-                              'Deleted!',
-                              'Your file has been deleted.',
-                              'success'
-                            );
+                            swal({
+                              title: 'Deleted!',
+                              text: 'Your file has been deleted.',
+                              type: 'success',
+                              timer: 1500,
+                              showConfirmButton: false
+                            });
+                            window.location.reload();
                           },
                      500: function (response) {
                       alert('something went wrong :(');
                      }
             }
           });          
-        } // end of if
-        window.location.reload();
-      })       
+        }
+        else {
+            // swal.showValidationError('Cannot remove last person from job.');
+            swal({
+            title: 'Oh no!',
+            text: 'Cannot remove last person from job.',
+            type: 'error',
+            showConfirmButton: false,
+            timer: 1500
+          });
+         // end of if
+
+      }
+    })       
     });
     });
 
@@ -202,6 +218,7 @@ $(document).on('turbolinks:load', function(){
     Array.from(addToTeam).forEach(function(elem) {
       elem.addEventListener('click', function(e) {
         jobID = e.target.dataset.jobid;
+        teamIDs = JSON.parse(e.target.dataset.teamids);
 
       $(this).blur()
       swal({
@@ -228,7 +245,36 @@ $(document).on('turbolinks:load', function(){
           });
 
         } //end of onOpen function
-      })
+
+      }).then(function (result) {
+        if (result == true) {
+
+          memberIDs = Array.prototype.concat.apply(memberIDs, teamIDs)
+          var addUserpayload = {};
+          addUserpayload["team_ids"] = memberIDs
+
+          $.ajax({
+            'type' : 'PATCH',
+            'url': "/jobs/" + jobID,
+            'dataType' : 'JSON',
+            'data': {job: addUserpayload},
+            statusCode: {
+                     200: function (response) {
+                            console.log(response);
+                            swal(
+                              'Success!',
+                              'Added users to team!.',
+                              'success'
+                            );
+                          },
+                     500: function (response) {
+                      alert('something bad happened :(');
+                     }
+            }
+          });          
+        } // end of if
+        window.location.reload();
+      })       
     });
     })
 
@@ -256,41 +302,37 @@ $(document).on('turbolinks:load', function(){
       $(".swal2-content").css({'display': 'inline-block'})
 
       userCards = document.getElementsByClassName("addusercard");
+      memberIDs = [];
+      addMemberpayload= {};
 
       Array.from(userCards).forEach(function(elem) {
         elem.addEventListener('click', function(e) {
           selectedID = parseInt(e.target.parentElement.dataset.userid);
           activeUserCard = $('.addusercard[data-userid="'+selectedID+'"]')
 
+
           if (activeUserCard.hasClass('dashboard-active-select')) {
             //deselect a user
-            activeUserCard.removeClass('dashboard-active-select')
+            removeUserId = memberIDs.indexOf(selectedID)
+
+            if (removeUserId > -1) {
+              memberIDs.splice(removeUserId, 1);
+            }
+            activeUserCard.removeClass('dashboard-active-select');
           }
           else {
           //select a user
-          activeUserCard.addClass('dashboard-active-select')
+          memberIDs.push(selectedID);
+          activeUserCard.addClass('dashboard-active-select');
   
           }
+
+
           
         });
         });
 
     }
-
-    // document.getElementsByClassName("btn-team").onclick = function() {
-    //   $(this).blur()
-    //   swal({
-    //     title: 'How old are you?',
-    //     type: 'question',
-    //     input: 'range',
-    //     inputAttributes: {
-    //       min: 8,
-    //       max: 120,
-    //       step: 1
-    //     },
-    //     inputValue: 25
-    //   })
-    // };
 
   }
 // End dashboard-team
