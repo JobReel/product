@@ -182,8 +182,8 @@ $(document).on('turbolinks:load', function(){
                      200: function (response) {
                             console.log(response);
                             swal({
-                              title: 'Deleted!',
-                              text: 'Your file has been deleted.',
+                              title: 'Success!',
+                              text: 'The selected team members have been removed from the job',
                               type: 'success',
                               timer: 1500,
                               showConfirmButton: false
@@ -261,17 +261,20 @@ $(document).on('turbolinks:load', function(){
             statusCode: {
                      200: function (response) {
                             console.log(response);
-                            swal(
-                              'Success!',
-                              'Added users to team!.',
-                              'success'
-                            );
+                            swal({
+                              title: 'Success!',
+                              text: 'Added users to team!.',
+                              type: 'success',
+                              timer: 1500,
+                              showConfirmButton: false
+                            });
+                            window.location.reload();
+                            }
                           },
                      500: function (response) {
                       alert('something bad happened :(');
                      }
-            }
-          });          
+                });          
         } // end of if
         window.location.reload();
       })       
