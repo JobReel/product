@@ -1881,6 +1881,25 @@ li.dashboard-menu-items-bold {
     z-index: 1;
 }
 
+.new-jobreel {
+  float: right;
+  margin-right: 15px;
+  background-color: #4795fb;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+
+.new-jobreel:hover, .dropbtn:focus {
+    background-color: #579df9;
+}
+
 .dropdown-content span {
     color: black;
     padding: 12px 16px;

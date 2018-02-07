@@ -13,7 +13,7 @@ after :store, :add_duration
       return model.private_id
     end
 
-    def add_duration
+    def add_duration(vid)
       @vid = Video.last
       meta = Cloudinary::Api.resource("#{@vid.private_id}", :resource_type => "video", :image_metadata => true)
       @vid.duration = meta['duration']

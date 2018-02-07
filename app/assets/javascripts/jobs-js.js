@@ -198,7 +198,25 @@ $(document).on('turbolinks:load', function(){
       statusCode: {
                200: function (response) {
                       console.log(response);
+                      console.log(response.length); //0 means no jobreels with comps
                       alert('omg it worked');
+                            $.ajax({
+                            'type' : 'POST',
+                            'url': "/jobreelAPI/",
+                            'dataType' : 'JSON',
+                            'data': {jobreel: fullPayload},
+                            statusCode: {
+                              200: function (response) {
+                                console.log(response);
+                                alert('redirecting now')
+                              },
+                              500: function (response) {
+                                console.log(response);
+                                alert('it failed at the last step');
+                              }
+                            }
+                          })
+
                       // window.location.replace("http://localhost:3030/step2/"+response.id);
                     },
                500: function (response) {

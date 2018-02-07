@@ -29,6 +29,13 @@ class JobreelsController < ApplicationController
     @new_jobreel = Jobreel.new
   end
 
+  def instant_jobreel(params)
+    @instant_jobreel = Jobreel.new(params)
+
+    #redirect to studio page
+    redirect_to video_path(@instant_jobreel.id)
+  end
+
   def edit
     @jobreel = Jobreel.find(params[:id])
   end
@@ -59,6 +66,10 @@ class JobreelsController < ApplicationController
 
   def instant_apply_params
     params.require(:application).permit(:user_id, :job_id, {:jobComps => []})
+  end
+
+  def instant_jobreel_params
+    params.require(:jobreel).permit(:user_id, :job_id, :section2_title, :section3_title, :section4_title, :section5_title, :section1_duration, :section2_duration, :section3_duration, :section4_duration, :section5_duration, {:section1_videos=>[]}, {:section2_videos=>[]}, {:section3_videos=>[]}, {:section4_videos=>[]}, {:section5_videos=>[]}, :section1)
   end
 
 end
