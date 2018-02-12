@@ -165,18 +165,23 @@ $(document).on('turbolinks:load', function(){
   if ($('body').hasClass("jobs-show")) {
 
     var applyBox = document.getElementById("apply-box");
+    var instantJobreelBox = document.getElementById("instantjobreel-box");
 
     var applyTool = {
     init : function() {
       var that = this;
+//checkComps checks if the user has videos that match any requirements
+      applyBox.addEventListener('click', this.checkComps, false);
+//createApp is available when the user has a Jobreel that matches the required job comps
+      //checkCompsBox.addEventListener('click', this.createApp, false);
 
-      // applyBox.addEventListener('click', this.createApp, false);
-      applyBox.addEventListener('click', this.instantApply, false);
+//createJobreel will create an empty jobreel for this job and redirect to studio page
+      instantJobreelBox.addEventListener('click', this.createJobreel, false);
 
     },
 
-    instantApply : function() {
-      var instaPayload = {},
+    checkComps : function() {
+      var compPayload = {},
       userID = gon.user_id;
 
       var jobComps = document.getElementsByClassName('job-requirements-text'),
@@ -187,35 +192,35 @@ $(document).on('turbolinks:load', function(){
       
     };
 
-      instaPayload["user_id"] = userID;
-      instaPayload["jobComps"] = requiredComps;
+      compPayload["user_id"] = userID;
+      compPayload["jobComps"] = requiredComps;
 
       $.ajax({
       'type' : 'GET',
-      'url': "/applicationAPI/",
+      'url': "/jobreelAPI/checkComps",
       'dataType' : 'JSON',
-      'data': {application: instaPayload},
+      'data': {application: compPayload},
       statusCode: {
                200: function (response) {
                       console.log(response);
                       console.log(response.length); //0 means no jobreels with comps
                       alert('omg it worked');
-                            $.ajax({
-                            'type' : 'POST',
-                            'url': "/jobreelAPI/",
-                            'dataType' : 'JSON',
-                            'data': {jobreel: fullPayload},
-                            statusCode: {
-                              200: function (response) {
-                                console.log(response);
-                                alert('redirecting now')
-                              },
-                              500: function (response) {
-                                console.log(response);
-                                alert('it failed at the last step');
-                              }
-                            }
-                          })
+                          //   $.ajax({
+                          //   'type' : 'POST',
+                          //   'url': "/jobreelAPI/",
+                          //   'dataType' : 'JSON',
+                          //   'data': {jobreel: fullPayload},
+                          //   statusCode: {
+                          //     200: function (response) {
+                          //       console.log(response);
+                          //       alert('recoloring page now')
+                          //     },
+                          //     500: function (response) {
+                          //       console.log(response);
+                          //       alert('it failed at the last step');
+                          //     }
+                          //   }
+                          // })
 
                       // window.location.replace("http://localhost:3030/step2/"+response.id);
                     },
@@ -229,9 +234,9 @@ $(document).on('turbolinks:load', function(){
 
     },
 
-    createApp : function(e) {
+    createJobreel : function(e) {
       console.log(e);
-      var appPayload = {},
+      var jobreelPayload = {},
       jobID = e.target.dataset.jobid,
       userID = gon.user_id;
 
@@ -239,24 +244,26 @@ $(document).on('turbolinks:load', function(){
       requiredComps = []
 
       for(var i=0; i<jobComps.length; i++){
-      requiredComps.push(jobComps[i].innerText)
+      requiredComps.push(jobComps[i].innerText);
+      jobreelPayload["section"+(i+2)+"_title"] = jobComps[i].innerText;
       
     };
 
-      appPayload["user_id"] = userID;
-      appPayload["job_id"] = jobID;
-      appPayload["jobComps"] = requiredComps;
+      jobreelPayload["user_id"] = userID;
+      jobreelPayload["job_id"] = jobID;
+      jobreelPayload["section1_title"] = "Introduction";
+      // jobreelPayload["jobComps"] = requiredComps;
 
 
       $.ajax({
       'type' : 'POST',
-      'url': "/applications/",
+      'url': "/jobreelAPI/",
       'dataType' : 'JSON',
-      'data': {application: appPayload},
+      'data': {jobreel: jobreelPayload},
       statusCode: {
                200: function (response) {
                       console.log(response);
-                      alert('application creation successful');
+                      alert('new JobReel creation successful');
                       // window.location.replace("http://localhost:3030/step2/"+response.id);
                     },
                500: function (response) {

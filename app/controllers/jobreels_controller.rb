@@ -10,9 +10,9 @@ class JobreelsController < ApplicationController
     render json: Jobreel.where(job_id: (params[:job_id]))
   end
 
-  def instant_apply
+  def check_comps
     @jobcomps = []
-    @jobcomps = instant_apply_params[:jobComps]
+    @jobcomps = check_comps_params[:jobComps]
 
     # @results = Jobreel.where(:user_id => current_user.id)
 
@@ -29,11 +29,13 @@ class JobreelsController < ApplicationController
     @new_jobreel = Jobreel.new
   end
 
-  def instant_jobreel(params)
-    @instant_jobreel = Jobreel.new(params)
-
+  def instant_jobreel
+    byebug
+    @instant_jobreel = Jobreel.new(instant_jobreel_params)
+    @instant_jobreel.save!
+    render json: @instant_jobreel
     #redirect to studio page
-    redirect_to video_path(@instant_jobreel.id)
+    # redirect_to video_path(@instant_jobreel.id)
   end
 
   def edit
@@ -64,12 +66,12 @@ class JobreelsController < ApplicationController
     params.require(:jobreel).permit(:user_id, :job_id, {:section1_videos=>[]}, {:section2_videos=>[]}, {:section3_videos=>[]}, {:section4_videos=>[]}, {:section5_videos=>[]})
   end
 
-  def instant_apply_params
+  def check_comps_params
     params.require(:application).permit(:user_id, :job_id, {:jobComps => []})
   end
 
   def instant_jobreel_params
-    params.require(:jobreel).permit(:user_id, :job_id, :section2_title, :section3_title, :section4_title, :section5_title, :section1_duration, :section2_duration, :section3_duration, :section4_duration, :section5_duration, {:section1_videos=>[]}, {:section2_videos=>[]}, {:section3_videos=>[]}, {:section4_videos=>[]}, {:section5_videos=>[]}, :section1)
+    params.require(:jobreel).permit(:user_id, :job_id, :section1_title, :section2_title, :section3_title, :section4_title, :section5_title)
   end
 
 end

@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   get '/step2/:id' => 'jobs#step2'
   get '/team' => 'dashboards#team'
   get '/settings' => 'dashboards#settings'
-  get '/applicationAPI' => 'jobreels#instant_apply'
+  get '/jobreelAPI/checkComps' => 'jobreels#check_comps'
   get '/addtoteamAPI' =>'dashboards#addtoteamAPI'
-  get '/jobreelAPI' =>'jobreels#instant_jobreel'
+  post '/jobreelAPI' =>'jobreels#instant_jobreel'
   # Going to need to use nested resources so that a work history is created for a specific user
 
   resources :users, only: [:show, :edit, :update, :destroy]
