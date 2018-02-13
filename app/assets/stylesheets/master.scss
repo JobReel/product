@@ -471,15 +471,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .job-requirements-icons {
   background-color: #FFFFFF;
-  padding: 37px;
+  padding: 37px 37px 21px 37px;
   border-right: 1px solid;
   border-bottom:1px solid;
   border-color: #E4E4E4;
 }
 
-.job-requirements-icons img {
+.job-requirements-icons-img {
   height: 48px;
   width: 48px;
+}
+
+.invisible {
+  height: 16px;
+  width: 16px;
+  visibility: hidden;
 }
 
 .jobposting-top h1 {

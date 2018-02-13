@@ -85,20 +85,24 @@
         <div class="card-block">
           <div class="row nomargin text-center">
           <div class="col-6 job-requirements-icons">
-            <%= image_tag("#{@job.requirements[0]}"+".gif") %>
+            <%= image_tag("#{@job.requirements[0]}"+".gif", :class =>'job-requirements-icons-img') %>
             <p class="job-requirements-text"><%= @competencies[@job.requirements[0].to_sym] %></p>
+            <%= image_tag("check.gif", :class => "#{@competencies[@job.requirements[0].to_sym].split(' ').join('_').upcase}"+" invisible") %>
           </div>
           <div class="col-6 job-requirements-icons">
-            <%= image_tag("#{@job.requirements[1]}"+".gif") %>
+            <%= image_tag("#{@job.requirements[1]}"+".gif", :class =>'job-requirements-icons-img') %>
             <p class="job-requirements-text"><%= @competencies[@job.requirements[1].to_sym] %></p>
+            <%= image_tag("check.gif", :class => "#{@competencies[@job.requirements[1].to_sym].split(' ').join('_').upcase}"+" invisible") %>
           </div>
           <div class="col-6 job-requirements-icons">
-            <%= image_tag("#{@job.requirements[2]}"+".gif") %>
+            <%= image_tag("#{@job.requirements[2]}"+".gif", :class =>'job-requirements-icons-img') %>
             <p class="job-requirements-text"><%= @competencies[@job.requirements[2].to_sym] %></p>
+            <%= image_tag("check.gif", :class => "#{@competencies[@job.requirements[2].to_sym].split(' ').join('_').upcase}"+" invisible") %>
           </div>
           <div class="col-6 job-requirements-icons">
-            <%= image_tag("#{@job.requirements[3]}"+".gif") %>
+            <%= image_tag("#{@job.requirements[3]}"+".gif", :class =>'job-requirements-icons-img') %>
             <p class="job-requirements-text"><%= @competencies[@job.requirements[3].to_sym] %></p>
+            <%= image_tag("check.gif", :class => "#{@competencies[@job.requirements[3].to_sym].split(' ').join('_').upcase}"+" invisible") %>
           </div>
         </div>
       </div>

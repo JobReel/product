@@ -205,6 +205,24 @@ $(document).on('turbolinks:load', function(){
                       console.log(response);
                       console.log(response.length); //0 means no jobreels with comps
                       alert('omg it worked');
+                      if (response.length > 0) {
+                              for(var i=0; i<response.length; i++){
+                                //checks each jobreel for a section that matches a required comp and then adds the check mark for that comp
+                                    if (requiredComps.includes(response[i].section2_title.toUpperCase())) {
+                                          $("."+response[i].section2_title.split(' ').join('_').toUpperCase()).removeClass("invisible");
+                                    }
+                                    if (requiredComps.includes(response[i].section3_title.toUpperCase())) {
+                                          $("."+response[i].section3_title.split(' ').join('_').toUpperCase()).removeClass("invisible");
+                                    }
+                                    if (requiredComps.includes(response[i].section4_title.toUpperCase())) {
+                                          $("."+response[i].section4_title.split(' ').join('_').toUpperCase()).removeClass("invisible");
+                                    }
+                                    if (requiredComps.includes(response[i].section5_title.toUpperCase())) {
+                                          $("."+response[i].section5_title.split(' ').join('_').toUpperCase()).removeClass("invisible");
+                                    }                                    
+                                    
+                                  };
+                      }
                           //   $.ajax({
                           //   'type' : 'POST',
                           //   'url': "/jobreelAPI/",
