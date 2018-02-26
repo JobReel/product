@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 users = User.create([
-  { first_name: 'user1', last_name: 'user1ln', email: 'user1@email.com', title: 'title1', city: 'city1', state: 'state1', password: 'password', password_confirmation: 'password' },
-  { first_name: 'user2', last_name: 'user2ln', email: 'user2@email.com', title: 'title2', city: 'city2', state: 'state2', password: 'password', password_confirmation: 'password' },
-  { first_name: 'user3', last_name: 'user3ln', email: 'user3@email.com', title: 'title3', city: 'city3', state: 'state3', password: 'password', password_confirmation: 'password' },
-  { first_name: 'user4', last_name: 'user4ln', email: 'user4@email.com', title: 'title4', city: 'city4', state: 'state4', password: 'password', password_confirmation: 'password' },
+  { first_name: 'user1', last_name: 'user1ln', email: 'user1@email.com', title: 'title1', city: 'city1', state: 'state1', password: 'password', password_confirmation: 'password', video: ImageUploader.new },
+  { first_name: 'user2', last_name: 'user2ln', email: 'user2@email.com', title: 'title2', city: 'city2', state: 'state2', password: 'password', password_confirmation: 'password', video: ImageUploader.new },
+  { first_name: 'user3', last_name: 'user3ln', email: 'user3@email.com', title: 'title3', city: 'city3', state: 'state3', password: 'password', password_confirmation: 'password', video: ImageUploader.new },
+  { first_name: 'user4', last_name: 'user4ln', email: 'user4@email.com', title: 'title4', city: 'city4', state: 'state4', password: 'password', password_confirmation: 'password', video: ImageUploader.new },
   { first_name: 'employer1', last_name: 'employerln', email: 'employer1@email.com', title: 'title5', city: 'city5', state: 'state5', password: 'password', password_confirmation: 'password', employer_role: true },
   { first_name: 'employer2', last_name: 'employerln', email: 'employer2@email.com', title: 'title5', city: 'city5', state: 'state5', password: 'password', password_confirmation: 'password', employer_role: true },
   { first_name: 'employer3', last_name: 'employerln', email: 'employer3@email.com', title: 'title5', city: 'city5', state: 'state5', password: 'password', password_confirmation: 'password', employer_role: true },
