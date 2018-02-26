@@ -37,11 +37,11 @@ function setDefaultJobreel() {
         $('#section5_collapse').html("Recommendations");
        }
        else {
-        $('#section1_collapse').html(activeJobreel.section1_title);
-        $('#section2_collapse').html(activeJobreel.section2_title);
-        $('#section3_collapse').html(activeJobreel.section3_title);
-        $('#section4_collapse').html(activeJobreel.section4_title);
-        $('#section5_collapse').html(activeJobreel.section5_title);
+        $('#section1_collapse').html(activeJobreel.section1_title.toLowerCase());
+        $('#section2_collapse').html(activeJobreel.section2_title.toLowerCase());
+        $('#section3_collapse').html(activeJobreel.section3_title.toLowerCase());
+        $('#section4_collapse').html(activeJobreel.section4_title.toLowerCase());
+        $('#section5_collapse').html(activeJobreel.section5_title.toLowerCase());
         }
       $('#library-dropdown').html('Current Jobreel - ' + activeJobreel.job_title);
     });
@@ -75,6 +75,7 @@ function setDefaultJobreel() {
   $(function() {
     $.get("/jobreels").success( function( data ) {
       var htmlString = "";
+      console.log(data);
       $.each(data, function(index,  jobreel) {
         console.log(jobreel);
         var liElement = '<div id="jobreel-id-' +
